@@ -210,7 +210,7 @@ MonoBehaviour:
   player1ref: {fileID: 154449790}
   player2ref: {fileID: 1431949661}
   cameraRef: {fileID: 16067850}
-  cameraOptions: 0
+  cameraOptions: 2
   cameraSizeFactorOpt1: 1
   howClosePlayersNeedToBeForZoomOpt2: 3
   cameraZoomVariationLimitCloseUp: 2
