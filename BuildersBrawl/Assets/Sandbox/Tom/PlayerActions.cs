@@ -24,4 +24,32 @@ public class PlayerActions : MonoBehaviour
 
         //triggers is board slam
     }
+
+    public void Push()
+    {
+
+    }
+
+    public void Charge()
+    {
+
+    }
+
+    public void PickUpBoard()
+    {
+
+    }
+
+    public void DropBoard()
+    {
+
+    }
+
+    public void BoardSlam()
+    {
+
+    }
+
+
+
 }

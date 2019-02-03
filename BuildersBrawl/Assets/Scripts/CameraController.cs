@@ -215,14 +215,28 @@ public class CameraController : MonoBehaviour
 
     private void GetDistanceBetweenPlayers()
     {
-        //gets float of distance between players
-        distanceBetweenPlayers = Vector3.Distance(player1ref.transform.position, player2ref.transform.position);
+        if(player1ref != null && player2ref != null)
+        {
+            //gets float of distance between players
+            distanceBetweenPlayers = Vector3.Distance(player1ref.transform.position, player2ref.transform.position);
+        }
+        else
+        {
+            print("Error: you need to drag and drop the player gameobjects into the CameraController");
+        }
     }
 
     private void GetAveragePositionBetweenPlayers()
     {
-        //gets point in the center of these two
-        averagePositionBetweenPlayers = Vector3.Lerp(player1ref.transform.position, player2ref.transform.position, 0.5f);
+        if (player1ref != null && player2ref != null)
+        {
+            //gets point in the center of these two
+            averagePositionBetweenPlayers = Vector3.Lerp(player1ref.transform.position, player2ref.transform.position, 0.5f);
+        }
+        else
+        {
+            print("Error: you need to drag and drop the player gameobjects into the CameraController");
+        }
     }
 
 }

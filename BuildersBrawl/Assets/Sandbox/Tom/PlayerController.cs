@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum InputType
+    {
+        controller,
+        keyboard
+    }
+
+    
+
     public enum PlayerState
     {
         defaultMovement,
@@ -13,6 +21,12 @@ public class PlayerController : MonoBehaviour
         cooldown
     }
 
+    [Header("Input")]
+    public GameInputManager gameInputManager;
+
+    public InputType inputType;
+
+    [Header("Player info")]
     public PlayerState playerState;
 
     //Char cont reference
@@ -42,11 +56,11 @@ public class PlayerController : MonoBehaviour
     public bool left;
     public bool forward;
     public bool backwards;
-    public bool AInput;
-    public bool BInput;
-    public bool XInput;
-    public bool YInput;
-    public bool BumpOrTrigInput;
+    public bool AJump;
+    public bool BCharge;
+    public bool XPush;
+    public bool YPickOrDrop;
+    public bool BumpOrTrigSlam;
 
     Vector3 joyInput;
 
@@ -73,8 +87,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    //private float slowDownPhysics = 1f;
-
     //around cos(pi/4) or sin (pi/4) (they're the same number)
     private const float TURN_INPUT_45_DEGREES_CONSTANT = 0.70710678118f;
 
@@ -93,6 +105,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             charContRef = this.gameObject.AddComponent<CharacterController>();
+        }
+
+        //get char cont
+        if (this.gameObject.GetComponent<GameInputManager>() != null)
+        {
+            gameInputManager = this.gameObject.GetComponent<GameInputManager>();
+        }
+        else
+        {
+            gameInputManager = this.gameObject.AddComponent<GameInputManager>();
         }
 
         //get move cont
@@ -128,6 +150,20 @@ public class PlayerController : MonoBehaviour
     //unsteady frames for input
     private void Update()
     {
+        if (inputType == InputType.keyboard)
+        {
+            KeyboardInput();
+        }
+        else if(inputType == InputType.controller)
+        {
+            ControllerInput();
+        }
+    }
+
+    //keyboard input
+    private void KeyboardInput()
+    {
+        //temp
         if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
         {
             right = true;
@@ -162,11 +198,11 @@ public class PlayerController : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            AInput = true;
+            AJump = true;
         }
         else
         {
-            AInput = false;
+            AJump = false;
         }
 
         if (right)
@@ -185,6 +221,18 @@ public class PlayerController : MonoBehaviour
         {
             joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, -1));
         }
+    }
+
+    //controller input
+    private void ControllerInput()
+    {
+        //input
+        joyInput = gameInputManager.joystickInput;
+        AJump = gameInputManager.pressedJumpButton;
+        BCharge = gameInputManager.pressedChargeButton;
+        XPush = gameInputManager.pressedPushButton;
+        YPickOrDrop = gameInputManager.pressedBoardPickUpOrDropButton;
+        BumpOrTrigSlam = gameInputManager.pressedSlamButton;
 
     }
 
@@ -204,7 +252,7 @@ public class PlayerController : MonoBehaviour
         if (playerState != PlayerState.action && playerState != PlayerState.jumping && playerState != PlayerState.cooldown && playerState != PlayerState.holdingPlank && playerGrounded)
         {
             //a jump
-            moveVector += playerMovement.Jump(AInput);
+            moveVector += playerMovement.Jump(AJump);
         }
 
         //print("After jump state is " + playerState);
