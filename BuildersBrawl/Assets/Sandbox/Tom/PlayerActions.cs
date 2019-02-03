@@ -7,6 +7,8 @@ public class PlayerActions : MonoBehaviour
     //player controller ref
     PlayerController playerController;
 
+    public float actionCooldown = 1f;
+
     public void InitAct(PlayerController pC)
     {
         playerController = pC;
