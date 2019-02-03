@@ -23,7 +23,7 @@ public class InputManager : MonoBehaviour
     void Awake()
     {
         player = ReInput.players.GetPlayer(playerID);
-        
+        player.controllers.maps.LoadDefaultMaps(ControllerType.Joystick);
 
     }
 
