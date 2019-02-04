@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour
         keyboard
     }
 
+    public enum PlayerNumber
+    {
+        p1,
+        p2
+    }
     
     //TODO: Add rotation to char controller so facing direction moving
 
@@ -26,6 +31,8 @@ public class PlayerController : MonoBehaviour
     public GameInputManager gameInputManager;
 
     public InputType inputType;
+
+    public PlayerNumber playerNumber;
 
     [Header("Player info")]
     public PlayerState playerState;
@@ -165,63 +172,134 @@ public class PlayerController : MonoBehaviour
     private void KeyboardInput()
     {
         //temp
-        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
+
+        if(playerNumber == PlayerNumber.p1)
         {
-            right = true;
+            if (Input.GetKey(KeyCode.D))
+            {
+                right = true;
+            }
+            else
+            {
+                right = false;
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                left = true;
+            }
+            else
+            {
+                left = false;
+            }
+            if (Input.GetKey(KeyCode.W))
+            {
+                forward = true;
+            }
+            else
+            {
+                forward = false;
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                backwards = true;
+            }
+            else
+            {
+                backwards = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                AJump = true;
+            }
+            else
+            {
+                AJump = false;
+            }
+
+            if (right)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(1, 0, 0));
+            }
+            if (left)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(-1, 0, 0));
+            }
+            if (forward)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, 1));
+            }
+            if (backwards)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, -1));
+            }
+        }
+        else if (playerNumber == PlayerNumber.p2)
+        {
+            if (Input.GetKey(KeyCode.RightArrow))
+            {
+                right = true;
+            }
+            else
+            {
+                right = false;
+            }
+            if (Input.GetKey(KeyCode.LeftArrow))
+            {
+                left = true;
+            }
+            else
+            {
+                left = false;
+            }
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                forward = true;
+            }
+            else
+            {
+                forward = false;
+            }
+            if (Input.GetKey(KeyCode.DownArrow))
+            {
+                backwards = true;
+            }
+            else
+            {
+                backwards = false;
+            }
+            if (Input.GetKeyDown(KeyCode.Keypad0))
+            {
+                AJump = true;
+            }
+            else
+            {
+                AJump = false;
+            }
+
+            if (right)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(1, 0, 0));
+            }
+            if (left)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(-1, 0, 0));
+            }
+            if (forward)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, 1));
+            }
+            if (backwards)
+            {
+                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, -1));
+            }
         }
         else
         {
-            right = false;
-        }
-        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
-        {
-            left = true;
-        }
-        else
-        {
-            left = false;
-        }
-        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
-        {
-            forward = true;
-        }
-        else
-        {
-            forward = false;
-        }
-        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
-        {
-            backwards = true;
-        }
-        else
-        {
-            backwards = false;
-        }
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            AJump = true;
-        }
-        else
-        {
-            AJump = false;
+            print("Error: no control scheme for this player number");
         }
 
-        if (right)
-        {
-            joyInput += ConvertJoystickInputToNewDirection(new Vector3(1, 0, 0));
-        }
-        if (left)
-        {
-            joyInput += ConvertJoystickInputToNewDirection(new Vector3(-1, 0, 0));
-        }
-        if (forward)
-        {
-            joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, 1));
-        }
-        if (backwards)
-        {
-            joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, -1));
-        }
+
+
     }
 
     //controller input

@@ -13,6 +13,12 @@ public class CameraController : MonoBehaviour
     //gets average point between players for camera position
     //gets size of distance between players for camera size
 
+        /// <summary>
+        /// Camera pan backwar and side to side
+        /// Camera zooms/pans back and moves down/angles up based off of player position
+        /// 
+        /// </summary>
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     [Header("References")]
@@ -55,7 +61,10 @@ public class CameraController : MonoBehaviour
     [Header("Position")]
     [Tooltip("Offset of camera position on vertical axis")]
     [SerializeField]
-    private float cameraVertOffset = 6.5f;
+    private float cameraPlaneOffset = 6.5f;
+    [SerializeField]
+    private float cameraYOffset = 3f;
+
 
     [Header("Size")]
     [Tooltip("Opt1: How zoomed in the camera can be \nOpt2: Amount camera zooms in /nOpt3: What size camera uses as reference point for being close up")]
@@ -125,9 +134,9 @@ public class CameraController : MonoBehaviour
         //make sure y always = 10
         cameraFinalPosition = centerPoint;
 
-        cameraFinalPosition.y += 10f;
-        cameraFinalPosition.x += cameraVertOffset;
-        cameraFinalPosition.z -= cameraVertOffset;
+        cameraFinalPosition.y += cameraYOffset;
+        cameraFinalPosition.x += cameraPlaneOffset;
+        cameraFinalPosition.z += cameraPlaneOffset;
 
 
         cameraRef.transform.position = cameraFinalPosition;
