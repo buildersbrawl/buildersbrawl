@@ -11,6 +11,7 @@ public class PlayerController : MonoBehaviour
     }
 
     
+    //TODO: Add rotation to char controller so facing direction moving
 
     public enum PlayerState
     {

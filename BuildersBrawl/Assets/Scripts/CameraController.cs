@@ -116,9 +116,6 @@ public class CameraController : MonoBehaviour
                 print("Error: no option for this cameraSize option");
             }
         }
-
-
-
     }
 
     public void SetCameraPosition(Vector3 centerPoint)
@@ -128,7 +125,7 @@ public class CameraController : MonoBehaviour
         //make sure y always = 10
         cameraFinalPosition = centerPoint;
 
-        cameraFinalPosition.y = 10f;
+        cameraFinalPosition.y += 10f;
         cameraFinalPosition.x += cameraVertOffset;
         cameraFinalPosition.z -= cameraVertOffset;
 
