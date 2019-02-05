@@ -6,7 +6,8 @@ public class Snap : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag.Equals("Node") && other.transform.parent.gameObject.GetComponent<Rigidbody>() != null)
+        if (other.tag.Equals("Node") && other.transform.parent.gameObject.GetComponent<Rigidbody>() != null
+            && transform.parent.gameObject.GetComponent<Rigidbody>() == null)
         {
             Destroy(other.transform.parent.gameObject.GetComponent<Rigidbody>());
             other.transform.parent.position = new Vector3(other.transform.parent.position.x,
