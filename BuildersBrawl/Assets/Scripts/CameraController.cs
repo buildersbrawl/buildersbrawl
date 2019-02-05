@@ -8,7 +8,9 @@ public class CameraController : MonoBehaviour
     {
         option1,
         option2,
-        option3
+        option3,
+        side,
+        front
     }
     //gets average point between players for camera position
     //gets size of distance between players for camera size
@@ -61,7 +63,9 @@ public class CameraController : MonoBehaviour
     [Header("Position")]
     [Tooltip("Offset of camera position on vertical axis")]
     [SerializeField]
-    private float cameraPlaneOffset = 6.5f;
+    private float cameraXOffset = 6.5f;
+    [SerializeField]
+    private float cameraZOffset = 6.5f;
     [SerializeField]
     private float cameraYOffset = 3f;
 
@@ -75,6 +79,37 @@ public class CameraController : MonoBehaviour
     private float cameraSizeCeiling = 20f;
     [SerializeField]
     private float cameraZoomSpeed = .1f;
+
+    [Header("Perspective")]
+    [SerializeField]
+    private float cameraFOVFactor = 10f;            //simply used to increase/decrease how large the base camera is
+    [Tooltip("How zoomed in the camera can be")]
+    [SerializeField]
+    private float cameraFOVFloor = 20f;
+    [Tooltip("How zoomed out the camera can be")]
+    [SerializeField]
+    private float cameraFOVCeiling = 50f;
+    private float cameraFinalFOV;
+
+    [Header("Adjust Pitch and Height")]
+    [Tooltip("How low an angle the camera can be")]
+    [SerializeField]
+    float cameraAngleFloor = 5;
+    [Tooltip("How high an angle the camera can be")]
+    [SerializeField]
+    float cameraAngleCeiling = 80;
+    [Tooltip("How far the players must be to hit bottom angle")]
+    [SerializeField]
+    float cameraAnglePlayerDistanceFloor = 3;           //default middle distance is 13
+    [Tooltip("How high an angle the camera can be")]
+    [SerializeField]
+    float cameraAnglePlayerDistanceCeiling = 23;
+    float pitchPercent; //45 degrees is ~.533333
+    private float startingYAngle;
+    private float finalPitchAngle;
+    private float finalCameraHeight;
+    private Vector3 cameraRotationSetter;
+    private Vector3 cameraHeightSetter;
 
     [Header("Other")]
     [Tooltip("Whether or not the camera is setting its position/size based off of the players")]
@@ -107,18 +142,66 @@ public class CameraController : MonoBehaviour
 
             if (cameraOptions == CameraOptions.option1)
             {
+                
                 //apply distance between players to set camera size algorhythm
                 SetCameraSizeOpt1(distanceBetweenPlayers);
+
             }
             else if (cameraOptions == CameraOptions.option2)
             {
+                
                 //apply distance between players to set camera size algorhythm
                 SetCameraSizeOpt2(distanceBetweenPlayers);
             }
             else if (cameraOptions == CameraOptions.option3)
             {
+                
                 //apply distance between players to set camera size algorhythm
                 SetCameraSizeOpt3(distanceBetweenPlayers);
+            }
+            else if (cameraOptions == CameraOptions.side)
+            {
+                //SHOULD GO IN INIT
+                //y angle = -90 or 270
+                startingYAngle = 270;
+                //apply
+                cameraRotationSetter = cameraRef.transform.eulerAngles;
+                cameraRotationSetter.y = startingYAngle;
+
+                //x angle starts off as 45
+                //y pso offset starts at 10
+                cameraYOffset = 10;
+                //z pos offset = 0
+                cameraZOffset = 0;
+
+                SetCameraPosition(averagePositionBetweenPlayers);
+
+                //apply distance between players to set camera size algorhythm
+                SetCameraFOV(distanceBetweenPlayers);
+
+                //add height and pitch(up and down angle) adjustment
+                AdjustCameraPitchAndHeight(distanceBetweenPlayers, averagePositionBetweenPlayers);
+                print(cameraYOffset);
+            }
+            else if (cameraOptions == CameraOptions.front)
+            {
+                //SHOULD GO IN INIT
+                //y angle = -90 or 270
+                startingYAngle = 180;
+                //x angle starts off as 45
+                //y pso offset starts at 10
+                cameraYOffset = 10;
+                //z pos offset = 0
+                cameraXOffset = 0;
+
+                SetCameraPosition(averagePositionBetweenPlayers);
+
+                //apply distance between players to set camera size algorhythm
+                SetCameraFOV(distanceBetweenPlayers);
+                //add height and pitch(up and down angle) adjustment
+                AdjustCameraPitchAndHeight(distanceBetweenPlayers, averagePositionBetweenPlayers);
+
+
             }
             else
             {
@@ -135,11 +218,61 @@ public class CameraController : MonoBehaviour
         cameraFinalPosition = centerPoint;
 
         cameraFinalPosition.y += cameraYOffset;
-        cameraFinalPosition.x += cameraPlaneOffset;
-        cameraFinalPosition.z += cameraPlaneOffset;
+        cameraFinalPosition.x += cameraXOffset;
+        cameraFinalPosition.z += cameraZOffset;
 
 
         cameraRef.transform.position = cameraFinalPosition;
+    }
+
+    public void AdjustCameraPitchAndHeight(float distanceBetweenPlayers, Vector3 averagePlayerPosition)
+    {
+        //larger distance = higher height, larger angle
+        //if distance between players is less than 23 (cameraAnglePlayerDistanceCeiling) camera angle below 80 (cameraAngleCeiling)
+        //smaller distance = lower height, smaller angle
+        //if distance between players is greater than 3 (cameraAnglePlayerDistanceFloor) camera angle above 5 (cameraAngleFloor)
+
+        pitchPercent = (distanceBetweenPlayers - cameraAnglePlayerDistanceFloor) / (cameraAnglePlayerDistanceCeiling - cameraAnglePlayerDistanceFloor);
+
+        //because using lerp will automatically stop camera from going above or below angle
+
+        finalPitchAngle = Mathf.Lerp(cameraAngleFloor, cameraAngleCeiling, pitchPercent);
+
+        //height = yoffset + average position height
+        cameraYOffset = Mathf.Lerp(cameraAnglePlayerDistanceFloor, cameraAnglePlayerDistanceCeiling, pitchPercent);
+
+        //apply
+        //angle
+        cameraRotationSetter = cameraRef.transform.eulerAngles;
+        cameraRotationSetter.x = finalPitchAngle;
+        cameraRef.transform.eulerAngles = cameraRotationSetter;
+
+        //height
+        cameraHeightSetter = cameraRef.transform.position;
+        cameraHeightSetter.y = cameraYOffset;
+        cameraRef.transform.position = cameraHeightSetter;
+
+        
+    }
+
+    //essentially the zoom in or out with floor/ceiling
+    public void SetCameraFOV(float distanceBetweenPlayers)
+    {
+        //set size
+        cameraFinalFOV = distanceBetweenPlayers * cameraFOVFactor;
+
+        //stop camera from getting too big or small
+        if (cameraFinalFOV >= cameraFOVCeiling)
+        {
+            cameraFinalFOV = cameraFOVCeiling;
+        }
+        else if (cameraFinalFOV <= cameraFOVFloor)
+        {
+            cameraFinalFOV = cameraFOVFloor;
+        }
+
+        cameraRef.GetComponent<Camera>().fieldOfView = Mathf.Lerp(cameraRef.GetComponent<Camera>().fieldOfView, cameraFinalFOV, cameraZoomSpeed);
+
     }
 
     //essentially the zoom in or out with floor/ceiling
