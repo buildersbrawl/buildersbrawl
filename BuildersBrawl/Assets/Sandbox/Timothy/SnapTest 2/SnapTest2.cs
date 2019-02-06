@@ -23,54 +23,40 @@ public class SnapTest2 : MonoBehaviour
         GameObject snappableNode;
         GameObject closestNode;
 
-        //other = falling Plank
         if (other.tag.Equals("Plank") && other.gameObject.GetComponent<Rigidbody>() != null)
         {
-            Debug.Log("here");
             Destroy(other.gameObject.GetComponent<Rigidbody>());
 
-            snappableNode = FindClosestEndNode(other.gameObject);
-            closestNode = FindClosestNode(snappableNode, other.gameObject);
-            SnapNodes(snappableNode, closestNode);
+            snappableNode = other.gameObject.GetComponent<SnapTest2>().nodes[0];
+            //Debug.Log("Snappable Node: " + snappableNode.transform.localPosition);
+            closestNode = FindClosestNode(snappableNode);
 
         }
     }
 
-    private void SnapNodes(GameObject snappableNode, GameObject snapTo)
+    private GameObject FindClosestNode(GameObject snappableNode)
     {
-        Debug.Log("Here");
-    }
+        GameObject closestNode = nodes[0];
+        float smallestDistance = 200f;
 
-    private GameObject FindClosestEndNode(GameObject fallingPlank)
-    {
-        SnapTest2 endSnap = fallingPlank.GetComponent<SnapTest2>();
-        if (Vector3.Distance(endSnap.nodes[0].transform.position, transform.position)
-            < Vector3.Distance(endSnap.nodes[nodes.Length - 1].transform.position, transform.position))
-        {
-            return endSnap.nodes[0];
-        }
-        else
-            return endSnap.nodes[nodes.Length - 1];
-    }
-
-    private GameObject FindClosestNode(GameObject snappableNode, GameObject snaptoPlank)
-    {
-        SnapTest2 checkSnap = snaptoPlank.GetComponent<SnapTest2>();
-        float smallestDistance = 0;
-        GameObject node = null;
-
+        //float distance = Vector3.Distance(snappableNode.transform.position, nodes[2].transform.position);
+        //Debug.Log("Normal Position Distance: " + distance);
+        //float distance = Vector3.Distance(snappableNode.transform.localPosition, nodes[2].transform.localPosition);
+        //Debug.Log("Local Position Distance: " + distance);
+        
         for (int i = 0; i < nodes.Length; i++)
         {
-            float distanceCheck = Vector3.Distance(snappableNode.transform.position, 
-                checkSnap.nodes[i].transform.position);
-
-            if (distanceCheck < smallestDistance)
+            float distance = Vector3.Distance(snappableNode.transform.position,
+                nodes[i].transform.position);
+            Debug.Log("Node " + i + ":" + distance);
+            if (distance < smallestDistance)
             {
-                smallestDistance = distanceCheck;
-                node = checkSnap.nodes[i];
+                smallestDistance = distance;
+                //Debug.Log(smallestDistance);
+                closestNode = nodes[i];
             }
         }
 
-        return node;
+        return closestNode;
     }
 }
