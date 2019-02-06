@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 34944575546813292}
   m_Layer: 0
   m_Name: Plank
-  m_TagString: Untagged
+  m_TagString: Plank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -92,7 +92,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 34944575546813303}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 34944575761004846}
   m_Layer: 0
   m_Name: Node (2)
-  m_TagString: Node
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -169,7 +169,7 @@ GameObject:
   - component: {fileID: 34944576471287763}
   m_Layer: 0
   m_Name: Node (1)
-  m_TagString: Node
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 34944576745207492}
   m_Layer: 0
   m_Name: Node
-  m_TagString: Node
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -257,7 +257,7 @@ GameObject:
   - component: {fileID: 34944576794553082}
   m_Layer: 0
   m_Name: Node (4)
-  m_TagString: Node
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -301,7 +301,7 @@ GameObject:
   - component: {fileID: 34944577483965261}
   m_Layer: 0
   m_Name: Node (3)
-  m_TagString: Node
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
