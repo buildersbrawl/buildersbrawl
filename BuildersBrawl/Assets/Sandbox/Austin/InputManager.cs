@@ -9,8 +9,8 @@ public class InputManager : MonoBehaviour
     [Range(0f, 1f)]
     public float triggerSensitivity = 0.5f;
 
-    public int playerID;
-    private Player player;
+    public int gamePlayerId = 0;
+    //private Player player;
 
     private Controller activeController;
 
@@ -35,6 +35,8 @@ public class InputManager : MonoBehaviour
     private string sceneName = "";
     public bool controllerSelected = false;
 
+    private Rewired.Player player { get { return ControllerAssigner.GetRewiredPlayer(gamePlayerId); } }
+
     void Start()
     {
 
@@ -48,6 +50,11 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
+        if (!ReInput.isReady)
+            return;
+        if (player == null)
+            return;
+
         GetInput();
         ProcessInput();
     }
@@ -55,16 +62,18 @@ public class InputManager : MonoBehaviour
     void GetInput()
     {
         //give player a playerID
-        player = ReInput.players.GetPlayer(playerID);
+        //player = ReInput.players.GetPlayer(playerID);
 
         if (isUsingUI)
         {
             Debug.Log(isUsingUI);
-            //player.controllers.maps.LoadDefaultMaps(ControllerType.Joystick);
-            player.controllers.maps.LoadMap(ControllerType.Joystick, 1, 0, 1, true);
+            
+            //player.controllers.maps.LoadMap(ControllerType.Joystick, 1, 0, 1, true);
 
-            if (sceneName == "ControllerSelectScreen" && controllerSelected == false)
+            if (sceneName == "ControllerSelectScreen")
             {
+
+
                 controllerSelected = player.GetButtonDown("Submit");
                 moveUIDown = player.GetButtonDown("UIDown");
                 moveUILeft = player.GetButtonDown("UILeft");
@@ -80,6 +89,8 @@ public class InputManager : MonoBehaviour
         }
         else
         {
+
+            Debug.Log("INPUT FOR GAME");
             //input for left stick
             moveVector.x = player.GetAxis("Move Horizontal");
             moveVector.y = player.GetAxis("Move Vertical");
@@ -139,17 +150,5 @@ public class InputManager : MonoBehaviour
             Debug.Log("UISubmit");
         if (isMovingUI)
             Debug.Log("UIMoving");
-    }
-
-    public void SelectController1()
-    {
-        playerID = 1;
-        Debug.Log("ID = 1");
-    }
-
-    public void SelectedController2()
-    {
-        playerID = 2;
-        Debug.Log("ID = 2");
     }
 }
