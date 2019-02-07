@@ -34,6 +34,8 @@ public class PlayerController : MonoBehaviour
 
     public PlayerNumber playerNumber;
 
+    public CameraController cameraRef;
+
     [Header("Player info")]
     public PlayerState playerState;
 
@@ -147,6 +149,11 @@ public class PlayerController : MonoBehaviour
         }
         playerActions.InitAct(this);
 
+        //camera
+        if(cameraRef == null)
+        {
+            cameraRef = GameObject.FindObjectOfType<CameraController>();
+        }
 
         playerState = PlayerState.defaultMovement;
 
@@ -166,6 +173,20 @@ public class PlayerController : MonoBehaviour
         {
             ControllerInput();
         }
+
+        if(cameraRef.cameraOptions == CameraController.CameraOptions.side)
+        {
+            joyInput = ConvertJoystickInputToSide(joyInput);
+        }
+        else if (cameraRef.cameraOptions == CameraController.CameraOptions.front)
+        {
+            joyInput = ConvertJoystickInputToFront(joyInput);
+        }
+        else if (cameraRef.cameraOptions == CameraController.CameraOptions.fortyFiveDegrees)
+        {
+            joyInput = ConvertJoystickInput45Degrees(joyInput);
+        }
+
     }
 
     //keyboard input
@@ -216,22 +237,6 @@ public class PlayerController : MonoBehaviour
                 AJump = false;
             }
 
-            if (right)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(1, 0, 0));
-            }
-            if (left)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(-1, 0, 0));
-            }
-            if (forward)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, 1));
-            }
-            if (backwards)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, -1));
-            }
         }
         else if (playerNumber == PlayerNumber.p2)
         {
@@ -276,28 +281,30 @@ public class PlayerController : MonoBehaviour
                 AJump = false;
             }
 
-            if (right)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(1, 0, 0));
-            }
-            if (left)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(-1, 0, 0));
-            }
-            if (forward)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, 1));
-            }
-            if (backwards)
-            {
-                joyInput += ConvertJoystickInputToNewDirection(new Vector3(0, 0, -1));
-            }
+            
         }
         else
         {
             print("Error: no control scheme for this player number");
         }
 
+
+        if (right)
+        {
+            joyInput += (new Vector3(1, 0, 0));
+        }
+        if (left)
+        {
+            joyInput += (new Vector3(-1, 0, 0));
+        }
+        if (forward)
+        {
+            joyInput += (new Vector3(0, 0, 1));
+        }
+        if (backwards)
+        {
+            joyInput += (new Vector3(0, 0, -1));
+        }
 
 
     }
@@ -367,7 +374,7 @@ public class PlayerController : MonoBehaviour
         charContRef.Move(moveVector * Time.fixedDeltaTime);
 
         //next frame figure out collision
-        moveVector += CollisionCheck(moveVector);
+        //moveVector += CollisionCheck(moveVector);
 
         //see if grounded
         playerGrounded = IsPlayerGrounded();
@@ -430,7 +437,7 @@ public class PlayerController : MonoBehaviour
     }
 
     //takes input and rotates it 45 degrees to match the 
-    public Vector3 ConvertJoystickInputToNewDirection(Vector3 input)
+    public Vector3 ConvertJoystickInput45Degrees(Vector3 input)
     {
         Vector3 answer = Vector3.zero;
 
@@ -444,8 +451,27 @@ public class PlayerController : MonoBehaviour
         return answer;
     }
 
+    public Vector3 ConvertJoystickInputToSide(Vector3 input)
+    {
+        Vector3 answer = Vector3.zero;
 
-    
+        answer.x = -joyInput.z;
+        answer.z = joyInput.x;
+
+        return answer;
+    }
+
+    public Vector3 ConvertJoystickInputToFront(Vector3 input)
+    {
+        Vector3 answer = Vector3.zero;
+
+        answer.x = -joyInput.x;
+        answer.z = joyInput.z;
+
+        return answer;
+    }
+
+
     private Vector3 CollisionCheck(Vector3 directionMoving)
     {
         //raycast in direction moving

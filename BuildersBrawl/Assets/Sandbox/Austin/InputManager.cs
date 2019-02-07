@@ -40,7 +40,7 @@ public class InputManager : MonoBehaviour
     void Start()
     {
 
-        currentScene = SceneManager.GetActiveScene();
+        //currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         if(sceneName == "Main_Menu" || sceneName == "ControllerSelectScreen")
         {
