@@ -13,8 +13,9 @@ GameObject:
   - component: {fileID: 34944575546813297}
   - component: {fileID: 34944575546813296}
   - component: {fileID: 34944575546813292}
+  - component: {fileID: 5340682005446591790}
   m_Layer: 0
-  m_Name: Plank
+  m_Name: TempPlank
   m_TagString: Plank
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -113,6 +114,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5340682005446591790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 34944575546813303}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodes: []
 --- !u!1 &34944575761004844
 GameObject:
   m_ObjectHideFlags: 0
