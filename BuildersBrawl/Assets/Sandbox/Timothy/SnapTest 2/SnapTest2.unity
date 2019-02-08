@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 3
   nodes: []
 --- !u!54 &116290984
 Rigidbody:
@@ -165,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!54 &251067678
 Rigidbody:
@@ -450,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!54 &350706003
 Rigidbody:
@@ -501,6 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!1 &559163634
 GameObject:
@@ -1068,6 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!54 &1305631090
 Rigidbody:
@@ -1277,4 +1282,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []

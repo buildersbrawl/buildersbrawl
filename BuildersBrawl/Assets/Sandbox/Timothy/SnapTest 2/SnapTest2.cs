@@ -5,6 +5,16 @@ using UnityEngine;
 
 public class SnapTest2 : MonoBehaviour
 {
+    public enum PlankState
+    {
+        beingplaced,
+        held,
+        dropped,
+        placed
+    }
+
+    public PlankState plankState;
+
     [HideInInspector]
     public GameObject[] nodes;
 
@@ -23,7 +33,8 @@ public class SnapTest2 : MonoBehaviour
         GameObject snappableNode;
         GameObject closestNode;
 
-        if (other.tag.Equals("Plank") && other.gameObject.GetComponent<Rigidbody>() != null)
+        if (other.tag.Equals("Plank") && other.gameObject.GetComponent<Rigidbody>() != null
+            && plankState.Equals(PlankState.beingplaced))
         {
             Destroy(other.gameObject.GetComponent<Rigidbody>());
 
@@ -53,6 +64,8 @@ public class SnapTest2 : MonoBehaviour
 
         snapNode.transform.parent.rotation = new Quaternion(0, snapNode.transform.parent.rotation.y, 0,
             snapNode.transform.parent.rotation.w);
+
+        plankState = PlankState.placed;
     }
 
     private GameObject FindClosestNode(GameObject snappableNode)
