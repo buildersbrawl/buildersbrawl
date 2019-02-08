@@ -80,7 +80,7 @@ public class CameraController : MonoBehaviour
     [Tooltip("Opt1: How zoomed out the camera can be \nOpt2: Amount camera zooms out /nOpt3: What size camera uses as reference point for being far away")]
     //[SerializeField]
     private float cameraSizeCeiling = 20f;
-    //[SerializeField]
+    [SerializeField]
     private float cameraZoomSpeed = .1f;
 
     [Header("Perspective")]
@@ -131,6 +131,10 @@ public class CameraController : MonoBehaviour
     [Header("Other")]
     [Tooltip("Whether or not the camera is setting its position/size based off of the players")]
     public bool setCameraBasedOnPlayers = true;
+
+    [Tooltip("Players cannot go further apart than this")]
+    //[SerializeField]
+    private float playersApartMaxDistance = 50f;
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -448,7 +452,7 @@ public class CameraController : MonoBehaviour
     }
     */
 
-    private void GetDistanceBetweenPlayers()
+    public void GetDistanceBetweenPlayers()
     {
         if(player1ref != null && player2ref != null)
         {
@@ -458,6 +462,12 @@ public class CameraController : MonoBehaviour
         else
         {
             print("Error: you need to drag and drop the player gameobjects into the CameraController");
+        }
+
+        //if distance too large stop players
+        if (distanceBetweenPlayers > playersApartMaxDistance)
+        {
+            print("players too far apart. Note to self: figure out how to limit this");
         }
     }
 

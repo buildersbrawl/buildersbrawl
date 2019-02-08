@@ -100,6 +100,10 @@ public class PlayerController : MonoBehaviour
     //around cos(pi/4) or sin (pi/4) (they're the same number)
     private const float TURN_INPUT_45_DEGREES_CONSTANT = 0.70710678118f;
 
+    private Vector3 directionPlayerFacing; //same as x and z of direction moving
+
+
+
     private void Start()
     {
         Init();
@@ -174,17 +178,20 @@ public class PlayerController : MonoBehaviour
             ControllerInput();
         }
 
-        if(cameraRef.cameraOptions == CameraController.CameraOptions.side)
+        if (cameraRef != null)
         {
-            joyInput = ConvertJoystickInputToSide(joyInput);
-        }
-        else if (cameraRef.cameraOptions == CameraController.CameraOptions.front)
-        {
-            joyInput = ConvertJoystickInputToFront(joyInput);
-        }
-        else if (cameraRef.cameraOptions == CameraController.CameraOptions.fortyFiveDegrees)
-        {
-            joyInput = ConvertJoystickInput45Degrees(joyInput);
+            if (cameraRef.cameraOptions == CameraController.CameraOptions.side)
+            {
+                joyInput = ConvertJoystickInputToSide(joyInput);
+            }
+            else if (cameraRef.cameraOptions == CameraController.CameraOptions.front)
+            {
+                joyInput = ConvertJoystickInputToFront(joyInput);
+            }
+            else if (cameraRef.cameraOptions == CameraController.CameraOptions.fortyFiveDegrees)
+            {
+                joyInput = ConvertJoystickInput45Degrees(joyInput);
+            }
         }
 
     }
@@ -370,8 +377,25 @@ public class PlayerController : MonoBehaviour
 
         //print(moveVector);
 
+
+        //-------------------------
         //apply movement
         charContRef.Move(moveVector * Time.fixedDeltaTime);
+
+
+
+        //apply rotation
+
+        Vector3 moveVectorLimitY = moveVector;
+        moveVectorLimitY.y = 0;
+
+        if (moveVectorLimitY != Vector3.zero)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVectorLimitY, Vector3.up), 0.15f);
+        }
+        //----------------------------
+
+
 
         //next frame figure out collision
         //moveVector += CollisionCheck(moveVector);
@@ -436,6 +460,12 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.defaultMovement;
     }
 
+
+
+
+
+
+
     //takes input and rotates it 45 degrees to match the 
     public Vector3 ConvertJoystickInput45Degrees(Vector3 input)
     {
@@ -466,7 +496,7 @@ public class PlayerController : MonoBehaviour
         Vector3 answer = Vector3.zero;
 
         answer.x = -joyInput.x;
-        answer.z = joyInput.z;
+        answer.z = -joyInput.z;
 
         return answer;
     }

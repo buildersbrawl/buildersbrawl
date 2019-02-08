@@ -37,11 +37,31 @@ public class PlayerActions : MonoBehaviour
 
     public void PickUpBoard()
     {
+        //check to see if board is in front of player
+        //boxcast in front of player
+        //Physics.BoxCast()
 
+        //if hits board that is dropped, pick up board
+        //if hits board maker, make board, pick up board
+
+        //make board child of player, put above players head
+
+
+    }
+
+    public void PlaceBoard()
+    {
+        //if player holding a board
+        //unchild it
+        //rotate it so facing correct direction
+        //set to placing
     }
 
     public void DropBoard()
     {
+        //if player holding a board
+        //unchild it
+        //set to dropped
 
     }
 
