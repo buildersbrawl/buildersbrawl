@@ -34,13 +34,15 @@ public class SnapTest2 : MonoBehaviour
         GameObject closestNode;
 
         if (other.tag.Equals("Plank") && other.gameObject.GetComponent<Rigidbody>() != null
-            && plankState.Equals(PlankState.beingplaced))
+            && other.gameObject.GetComponent<SnapTest2>().plankState.Equals(PlankState.beingplaced))
         {
             Destroy(other.gameObject.GetComponent<Rigidbody>());
 
             snappableNode = other.gameObject.GetComponent<SnapTest2>().nodes[0];
             closestNode = FindClosestNode(snappableNode);
             SnapNodes(snappableNode, closestNode);
+
+            other.gameObject.GetComponent<SnapTest2>().plankState = PlankState.placed;
         }
     }
 
@@ -64,8 +66,6 @@ public class SnapTest2 : MonoBehaviour
 
         snapNode.transform.parent.rotation = new Quaternion(0, snapNode.transform.parent.rotation.y, 0,
             snapNode.transform.parent.rotation.w);
-
-        plankState = PlankState.placed;
     }
 
     private GameObject FindClosestNode(GameObject snappableNode)
