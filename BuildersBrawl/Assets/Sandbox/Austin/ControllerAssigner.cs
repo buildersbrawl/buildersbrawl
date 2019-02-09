@@ -13,6 +13,8 @@ public class ControllerAssigner : MonoBehaviour
 
     private int gamePlayerIdCounter = 0;
 
+    public InputManager inputManagerInstance; // = gameObject.GetComponent<InputManager>();
+
     public static Rewired.Player GetRewiredPlayer(int gamePlayerId)
     {
         if (!Rewired.ReInput.isReady)
@@ -44,7 +46,7 @@ public class ControllerAssigner : MonoBehaviour
         {
             if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
             {
-                //Debug.Log("ASSIGNING PLAYER. i = " + i + " playerCount = " + ReInput.players.playerCount );
+                Debug.Log("ASSIGNING PLAYER. i = " + i + " playerCount = " + ReInput.players.playerCount );
                 AssignNextPlayer(i);
             }
             
@@ -67,9 +69,16 @@ public class ControllerAssigner : MonoBehaviour
 
         Player rewiredPlayer = ReInput.players.GetPlayer(rewiredPlayerId);
 
+        //detect that they are no longer using UI and are in the game now
+        //rewiredPlayer.controllers.maps.SetMapsEnabled(false, "UI");
+        //rewiredPlayer.controllers.maps.SetMapsEnabled(true, "Default");
+
         //change joysticks
-        rewiredPlayer.controllers.maps.SetMapsEnabled(false, "UI");
-        rewiredPlayer.controllers.maps.SetMapsEnabled(true, "Default");
+        inputManagerInstance.ChangeControllerForGame(rewiredPlayer);
+
+        inputManagerInstance.isUsingUI = false;
+        
+        
     }
 
     //increment the playercounter

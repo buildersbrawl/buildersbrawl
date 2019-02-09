@@ -40,12 +40,12 @@ public class InputManager : MonoBehaviour
     void Start()
     {
 
-        currentScene = SceneManager.GetActiveScene();
+        /*currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
         if(sceneName == "Main_Menu" || sceneName == "ControllerSelectScreen")
         {
             isUsingUI = true;
-        }
+        }*/
     }
 
     void Update()
@@ -59,19 +59,23 @@ public class InputManager : MonoBehaviour
         ProcessInput();
     }
 
+     
+
     void GetInput()
     {
         //give player a playerID
         //player = ReInput.players.GetPlayer(playerID);
+        Debug.Log("Using UI in GETINPUT() "+ isUsingUI);
 
         if (isUsingUI)
         {
-            Debug.Log(isUsingUI);
+            
+            
             
             //player.controllers.maps.LoadMap(ControllerType.Joystick, 1, 0, 1, true);
 
-            if (sceneName == "ControllerSelectScreen")
-            {
+            //if (sceneName == "ControllerSelectScreen")
+            //{
 
 
                 controllerSelected = player.GetButtonDown("Submit");
@@ -85,7 +89,7 @@ public class InputManager : MonoBehaviour
                 moveVector.y = 0f;
                 if (moveVector != Vector3.zero)
                     isMovingUI = true;
-            }
+            //}
         }
         else
         {
@@ -150,5 +154,18 @@ public class InputManager : MonoBehaviour
             Debug.Log("UISubmit");
         if (isMovingUI)
             Debug.Log("UIMoving");
+    }
+
+    public void ChangeControllerForGame(Rewired.Player rewiredPlayer)
+    {
+        rewiredPlayer.controllers.maps.SetMapsEnabled(false, "UI");
+        rewiredPlayer.controllers.maps.SetMapsEnabled(true, "Default");
+    }
+
+    public void ChangeControllerForUI(Rewired.Player rewiredPlayer)
+    {
+        rewiredPlayer.controllers.maps.SetMapsEnabled(false, "Default");
+        rewiredPlayer.controllers.maps.SetMapsEnabled(true, "UI");
+        
     }
 }

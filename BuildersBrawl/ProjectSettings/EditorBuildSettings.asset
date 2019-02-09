@@ -8,4 +8,10 @@ EditorBuildSettings:
   - enabled: 0
     path: 
     guid: 00000000000000000000000000000000
+  - enabled: 1
+    path: Assets/Sandbox/Austin/ControllerSelectScreen.unity
+    guid: 2e964cb17cf9a1744afa2121a9d37ef2
+  - enabled: 1
+    path: Assets/Sandbox/Austin/AustinTestScene1.unity
+    guid: 1801ab478aaec644fb514fcf36f0b21a
   m_configObjects: {}
