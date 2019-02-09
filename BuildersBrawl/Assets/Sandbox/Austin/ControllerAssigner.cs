@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.UI;
 
 public class ControllerAssigner : MonoBehaviour
 {
@@ -14,6 +15,12 @@ public class ControllerAssigner : MonoBehaviour
     private int gamePlayerIdCounter = 0;
 
     public InputManager inputManagerInstance; // = gameObject.GetComponent<InputManager>();
+
+    public bool controllerSelected = false;
+
+    //set up panels so the color can be changed once the controller is selected
+    public Image controller1Image;
+    public Image controller2Image;
 
     public static Rewired.Player GetRewiredPlayer(int gamePlayerId)
     {
@@ -44,7 +51,7 @@ public class ControllerAssigner : MonoBehaviour
     {
         for (int i = 0; i < ReInput.players.playerCount; i++)
         {
-            if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
+            if (ReInput.players.GetPlayer(i).GetButtonDown("Submit") && controllerSelected == false)
             {
                 Debug.Log("ASSIGNING PLAYER. i = " + i + " playerCount = " + ReInput.players.playerCount );
                 AssignNextPlayer(i);
@@ -54,9 +61,12 @@ public class ControllerAssigner : MonoBehaviour
     }
 
     //assign a player to a controller and change their joystick to the in game joystick
-    void AssignNextPlayer(int rewiredPlayerId)
+    public void AssignNextPlayer(int rewiredPlayerId)
     {
-        if(playerMap.Count >= maxPlayers)
+        //controllerSelected = true;
+
+
+        if (playerMap.Count >= maxPlayers)
         {
             Debug.Log("Max players");
             return;
@@ -77,18 +87,37 @@ public class ControllerAssigner : MonoBehaviour
         inputManagerInstance.ChangeControllerForGame(rewiredPlayer);
 
         inputManagerInstance.isUsingUI = false;
-        
-        
+        inputManagerInstance.controllerSelected = true;
+        Debug.Log("rewiredPlayerId" + rewiredPlayerId);
+        if (rewiredPlayerId == 0)
+            controller1Image = ChangeToRed(controller1Image, rewiredPlayerId);
+        if (rewiredPlayerId == 1)
+            controller2Image = ChangeToRed(controller2Image, rewiredPlayerId);
+
     }
 
     //increment the playercounter
-    private int GetNextPlayerId()
+    public int GetNextPlayerId()
     {
         return gamePlayerIdCounter++;
     }
 
+    public Image ChangeToRed(Image toChange, int gamePlayerId)
+    {
+        Debug.Log("I'm here");
+        if (gamePlayerId == 0)
+        {
+            toChange.color = UnityEngine.Color.red;
+        }
+        else if (gamePlayerId == 1)
+        {
+            toChange.color = UnityEngine.Color.red;
+        }
+        return toChange;
+    }
+
     //class to map the rewired player id to game player id
-    private class PlayerMap
+    public class PlayerMap
     {
         public int rewiredPlayerId;
         public int gamePlayerId;

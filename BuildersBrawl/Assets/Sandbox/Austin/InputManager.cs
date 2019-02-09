@@ -2,10 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Rewired;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class InputManager : MonoBehaviour
 {
+    public ControllerAssigner controllerAssignerInstance;
+
     [Range(0f, 1f)]
     public float triggerSensitivity = 0.5f;
 
@@ -57,6 +60,8 @@ public class InputManager : MonoBehaviour
 
         GetInput();
         ProcessInput();
+
+        Debug.Log(controllerSelected);
     }
 
      
@@ -65,9 +70,9 @@ public class InputManager : MonoBehaviour
     {
         //give player a playerID
         //player = ReInput.players.GetPlayer(playerID);
-        Debug.Log("Using UI in GETINPUT() "+ isUsingUI);
+        //Debug.Log("Using UI in GETINPUT() "+ isUsingUI);
 
-        if (isUsingUI)
+        if (isUsingUI && controllerSelected == false)
         {
             
             
@@ -91,9 +96,12 @@ public class InputManager : MonoBehaviour
                     isMovingUI = true;
             //}
         }
-        else
+        else if(controllerSelected)
         {
-
+            
+            
+            
+            
             Debug.Log("INPUT FOR GAME");
             //input for left stick
             moveVector.x = player.GetAxis("Move Horizontal");
@@ -167,5 +175,18 @@ public class InputManager : MonoBehaviour
         rewiredPlayer.controllers.maps.SetMapsEnabled(false, "Default");
         rewiredPlayer.controllers.maps.SetMapsEnabled(true, "UI");
         
+    }
+
+    public Image ChangeToRed(Image toChange)
+    {
+        if (gamePlayerId == 0)
+        {
+            toChange.color = UnityEngine.Color.red;
+        }
+        else if (gamePlayerId == 1)
+        {
+            toChange.color = UnityEngine.Color.red;
+        }
+        return toChange;
     }
 }
