@@ -56,7 +56,10 @@ public class PlayerMovement : MonoBehaviour
             playerFinalDirection = direction * playerSpeed;
 
         }
-        reversePlayerMovementFromJoysticks = (playerFinalDirection * -1);
+
+        
+
+            reversePlayerMovementFromJoysticks = (playerFinalDirection * -1);
         return playerFinalDirection;
     }
 

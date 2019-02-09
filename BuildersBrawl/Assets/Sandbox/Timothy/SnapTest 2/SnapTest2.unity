@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -130,6 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 3
   nodes: []
 --- !u!54 &116290984
 Rigidbody:
@@ -165,6 +166,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!54 &251067678
 Rigidbody:
@@ -342,7 +344,7 @@ PrefabInstance:
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.52
+      value: -2.331
       objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -450,6 +452,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!54 &350706003
 Rigidbody:
@@ -501,6 +504,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!1 &559163634
 GameObject:
@@ -835,7 +839,7 @@ PrefabInstance:
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.12
+      value: -0.91
       objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -1068,6 +1072,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []
 --- !u!54 &1305631090
 Rigidbody:
@@ -1277,4 +1282,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4263707f131f13d4394eee230a00da67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  plankState: 0
   nodes: []

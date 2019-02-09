@@ -1796,32 +1796,7 @@ PrefabInstance:
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: cameraOptions
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraSizeFactorOpt1Perspective
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraFOVFloor
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraFOVCeiling
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681249, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: orthographic
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681249, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: field of view
-      value: 20.4
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f696b49a827a3044882a85a174dccf6, type: 3}
