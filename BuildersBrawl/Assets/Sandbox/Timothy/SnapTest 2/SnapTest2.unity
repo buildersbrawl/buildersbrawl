@@ -721,6 +721,31 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 34944575761004844, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944576471287761, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944576745207498, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944576794553080, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944577483965267, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 34944575546813292, guid: 343849e8772006e45b6c64399bf66674, type: 3}
     - {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674, type: 3}
@@ -1265,6 +1290,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575761004844, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944576471287761, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944576745207498, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944576794553080, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944577483965267, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_TagString
+      value: Node
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 34944575546813292, guid: 343849e8772006e45b6c64399bf66674, type: 3}

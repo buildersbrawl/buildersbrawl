@@ -14,19 +14,17 @@ public class SnapTest2 : MonoBehaviour
     }
 
     public PlankState plankState;
-
     [HideInInspector]
     public GameObject[] nodes;
+    //[HideInInspector]
+    //public Quaternion plankRotation;
 
     private void Start()
     {
-        nodes = new GameObject[transform.childCount];
-
-        for (int i = 0; i < nodes.Length; i++)
-        {
-            nodes[i] = transform.GetChild(i).gameObject;
-        }
+        PopulateNodeArray();
+        //plankRotation = transform.rotation;
     }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -46,6 +44,24 @@ public class SnapTest2 : MonoBehaviour
         }
     }
 
+    private void PopulateNodeArray()
+    {
+        List<GameObject> nodeList = new List<GameObject>();
+
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            if(transform.GetChild(i).gameObject.tag.Equals("Node"))
+                nodeList.Add(transform.GetChild(i).gameObject);
+        }
+
+        nodes = new GameObject[nodeList.Count];
+
+        for (int i = 0; i < nodes.Length; i++)
+        {
+            nodes[i] = nodeList[i];
+        }
+    }
+
     private void SnapNodes(GameObject snapNode, GameObject closeNode)
     {
         /*
@@ -61,11 +77,12 @@ public class SnapTest2 : MonoBehaviour
 
         snapNode.transform.parent.transform.position =
             new Vector3(snapNode.transform.parent.transform.position.x - offSet.x,
-            snapNode.transform.parent.transform.position.y + .001f,
+            snapNode.transform.parent.transform.position.y + .0034f,
             snapNode.transform.parent.transform.position.z - offSet.z);
 
-        snapNode.transform.parent.rotation = new Quaternion(0, snapNode.transform.parent.rotation.y, 0,
-            snapNode.transform.parent.rotation.w);
+        /*snapNode.transform.parent.rotation = new Quaternion(0, snapNode.transform.parent.rotation.y, 0,
+            snapNode.transform.parent.rotation.w);*/
+        //snapNode.transform.parent.rotation = snapNode.transform.parent.GetComponent<SnapTest2>().plankRotation;
     }
 
     private GameObject FindClosestNode(GameObject snappableNode)
