@@ -61,7 +61,7 @@ public class InputManager : MonoBehaviour
         GetInput();
         ProcessInput();
 
-        Debug.Log(controllerSelected);
+        //Debug.Log(controllerSelected);
     }
 
      

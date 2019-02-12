@@ -17,6 +17,7 @@ public class ControllerAssigner : MonoBehaviour
     public InputManager inputManagerInstance; // = gameObject.GetComponent<InputManager>();
 
     public bool controllerSelected = false;
+    public int playerCounter = 0;
 
     //set up panels so the color can be changed once the controller is selected
     public Image controller1Image;
@@ -51,10 +52,14 @@ public class ControllerAssigner : MonoBehaviour
     {
         for (int i = 0; i < ReInput.players.playerCount; i++)
         {
+            //problem is with if statement
+            Debug.Log(i);
             if (ReInput.players.GetPlayer(i).GetButtonDown("Submit") && controllerSelected == false)
             {
-                Debug.Log("ASSIGNING PLAYER. i = " + i + " playerCount = " + ReInput.players.playerCount );
+                playerCounter++;
+                Debug.Log(playerCounter);
                 AssignNextPlayer(i);
+                
             }
             
         }
@@ -63,8 +68,12 @@ public class ControllerAssigner : MonoBehaviour
     //assign a player to a controller and change their joystick to the in game joystick
     public void AssignNextPlayer(int rewiredPlayerId)
     {
+        if(playerCounter != 1)
+        {
+            rewiredPlayerId = 1;
+        }
         //controllerSelected = true;
-
+        Debug.Log("rewiredPlayerId = " + rewiredPlayerId);
 
         if (playerMap.Count >= maxPlayers)
         {
@@ -83,8 +92,11 @@ public class ControllerAssigner : MonoBehaviour
         //rewiredPlayer.controllers.maps.SetMapsEnabled(false, "UI");
         //rewiredPlayer.controllers.maps.SetMapsEnabled(true, "Default");
 
+        Debug.Log("Added Rewired Player id " + rewiredPlayerId + " to game player " + gamePlayerId);
+
         //change joysticks
-        inputManagerInstance.ChangeControllerForGame(rewiredPlayer);
+        //inputManagerInstance.ChangeControllerForGame(rewiredPlayer);
+        
 
         inputManagerInstance.isUsingUI = false;
         inputManagerInstance.controllerSelected = true;
@@ -107,11 +119,11 @@ public class ControllerAssigner : MonoBehaviour
         Debug.Log("I'm here");
         if (gamePlayerId == 0)
         {
-            toChange.color = UnityEngine.Color.red;
+            toChange.color = Color.red;
         }
         else if (gamePlayerId == 1)
         {
-            toChange.color = UnityEngine.Color.red;
+            toChange.color =Color.red;
         }
         return toChange;
     }
