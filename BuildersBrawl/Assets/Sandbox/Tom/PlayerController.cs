@@ -102,6 +102,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 directionPlayerFacing; //same as x and z of direction moving
 
+    [HideInInspector]
+    public bool addWackyMovement;
 
 
     private void Start()
@@ -243,6 +245,16 @@ public class PlayerController : MonoBehaviour
             {
                 AJump = false;
             }
+            if (Input.GetKey(KeyCode.E))
+            {
+                //print("hit e");
+                YPickOrDrop = true;
+            }
+            else
+            {
+                YPickOrDrop = false;
+            }
+
 
         }
         else if (playerNumber == PlayerNumber.p2)
@@ -287,8 +299,15 @@ public class PlayerController : MonoBehaviour
             {
                 AJump = false;
             }
+            if (Input.GetKey(KeyCode.Keypad1))
+            {
+                YPickOrDrop = true;
+            }
+            else
+            {
+                YPickOrDrop = false;
+            }
 
-            
         }
         else
         {
@@ -336,7 +355,6 @@ public class PlayerController : MonoBehaviour
         //check to see if just hit the ground from jumping
         if (playerGrounded && playerState == PlayerState.jumping)
         {
-            playerState = PlayerState.cooldown;
             //start jump cooldown
             StartCoroutine(ReturnPlayerStateToMoving(playerMovement.postJumpCooldown));
         }
@@ -350,7 +368,7 @@ public class PlayerController : MonoBehaviour
 
         //print("After jump state is " + playerState);
 
-        //IF JUMPING OVERRIDE ACTION
+        //IF JUMPING OVERRIDE ACTION or if doing other action
         if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown)
         {
             //x is push
@@ -359,6 +377,22 @@ public class PlayerController : MonoBehaviour
 
             //y pick up
             //y drop board
+
+            if (YPickOrDrop)
+            {
+                //print("action");
+                if (playerActions.holdingBoard) //holding board
+                {
+                    //drop
+                    playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
+                }
+                else //NOT holding board
+                {
+                    //pick up
+                    playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.pickUp);
+                }
+
+            }
 
             //bumpers are board slam
         }
@@ -455,6 +489,7 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ReturnPlayerStateToMoving(float waitTime)
     {
+        playerState = PlayerState.cooldown;
         yield return new WaitForSeconds(waitTime);
         //reset state
         playerState = PlayerState.defaultMovement;
