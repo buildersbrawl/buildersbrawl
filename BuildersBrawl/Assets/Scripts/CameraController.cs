@@ -107,13 +107,14 @@ public class CameraController : MonoBehaviour
     [Tooltip("How high the camera can be")]
     [SerializeField]
     float cameraYHeightCeiling = 27;
-    [Tooltip("How close the camera can be")]
+    //[Tooltip("How close the camera can be")]
     //[SerializeField]
     //float cameraAdjacentAxisFloor = 8;
     //[Tooltip("How far the camera can be")]
     //[SerializeField]
     //float cameraAdjacentAxisCeiling = 12;
-    //[Tooltip("How close the players must be to hit bottom angle")]
+    [Header("Percentage")]
+    [Tooltip("How close the players must be to hit bottom angle")]
     [SerializeField]
     float cameraPlayerDistanceFloor = 3;           
     [Tooltip("How far the players must be to hit top angle")]
@@ -280,7 +281,7 @@ public class CameraController : MonoBehaviour
         //finalPitchAngle = Mathf.Lerp(cameraAngleFloor, cameraAngleCeiling, pitchPercent);
 
         //height = yoffset + average position height
-        cameraYOffset = Mathf.Lerp(cameraYHeightFloor, cameraYHeightCeiling, pitchPercent);
+        cameraYOffset = Mathf.Lerp(cameraYHeightFloor + averagePlayerPosition.y, cameraYHeightCeiling + averagePlayerPosition.y, pitchPercent);
 
         //apply
         //height
