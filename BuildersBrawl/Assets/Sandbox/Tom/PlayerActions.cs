@@ -27,8 +27,8 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private Vector3 boxCastOffset = new Vector3(0,0,0);
     [SerializeField]
-    private Vector3 boxCasthalfSize = new Vector3(.5f, .5f, .5f);
-    private Vector3 boxCastDirection = new Vector3(0, 0, 1); //positive on z axis
+    private Vector3 boxCasthalfSize = new Vector3(.5f, .5f, .1f);
+    [SerializeField]
     private float boxCastMaxDistance = 1;
     private Quaternion playerRotation;
     private Vector3 playerForward;
@@ -56,31 +56,31 @@ public class PlayerActions : MonoBehaviour
             case PlayerActionType.push:
                 playerActionDelegate = null;
                 playerActionDelegate += PreAction;
-                playerActionDelegate += Push;
+                playerActionDelegate += PushAction;
                 playerActionDelegate += PostAction;
                 break;
             case PlayerActionType.charge:
                 playerActionDelegate = null;
                 playerActionDelegate += PreAction;
-                playerActionDelegate += Charge;
+                playerActionDelegate += ChargeAction;
                 playerActionDelegate += PostAction;
                 break;
             case PlayerActionType.pickUp:
                 playerActionDelegate = null;
                 playerActionDelegate += PreAction;
-                playerActionDelegate += PickUpBoard;
+                playerActionDelegate += PickUpPlankAction;
                 playerActionDelegate += PostAction;
                 break;
             case PlayerActionType.drop:
                 playerActionDelegate = null;
                 playerActionDelegate += PreAction;
-                playerActionDelegate += DropBoard;
+                playerActionDelegate += DropPlankAction;
                 playerActionDelegate += PostAction;
                 break;
             case PlayerActionType.slam:
                 playerActionDelegate = null;
                 playerActionDelegate += PreAction;
-                playerActionDelegate += BoardSlam;
+                playerActionDelegate += BoardSlamAction;
                 playerActionDelegate += PostAction;
                 break;
             default:
@@ -105,32 +105,22 @@ public class PlayerActions : MonoBehaviour
         StartCoroutine(playerController.ReturnPlayerStateToMoving(actionCooldown));
     }
 
-    public void PlayerActionsFunction()
-    {
-        //x is push
 
-        //b is charge
-
-        //y pick up and drop board
-
-        //triggers is board slam
-    }
-
-    private void Push()
+    private void PushAction()
     {
         print("Push");
 
         
     }
 
-    private void Charge()
+    private void ChargeAction()
     {
         print("Charge");
 
         
     }
 
-    private void PickUpBoard()
+    private void PickUpPlankAction()
     {
         print("Try PickUpBoard");
 
@@ -145,15 +135,7 @@ public class PlayerActions : MonoBehaviour
 
         if (testCubes)
         {
-            startCube.GetComponent<Collider>().enabled = false;
-            startCube.transform.position = this.gameObject.transform.position + boxCastOffset;
-            startCube.transform.rotation = playerRotation;
-            startCube.transform.localScale = boxCasthalfSize * 2;
-
-            endCube.GetComponent<Collider>().enabled = false;
-            endCube.transform.position = this.gameObject.transform.position + boxCastOffset + (playerForward * boxCastMaxDistance);
-            endCube.transform.rotation = playerRotation;
-            endCube.transform.localScale = boxCasthalfSize * 2;
+            TestBoxCast(startCube, endCube);
         }
 
 
@@ -165,19 +147,20 @@ public class PlayerActions : MonoBehaviour
         {
             //if hits board that is dropped, pick up board
             //if hit plank, and plank is dropped
-            if (boxHitInfo[index].collider.gameObject.GetComponent<SnapTest2>() != null && boxHitInfo[index].collider.gameObject.GetComponent<SnapTest2>().plankState == SnapTest2.PlankState.dropped) 
+            if (boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>() != null && boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>().plankState == PlankManager.PlankState.dropped) 
             {
                 heldPlank = boxHitInfo[index].collider.gameObject;
 
                 //set state of plank
-                heldPlank.GetComponent<SnapTest2>().plankState = SnapTest2.PlankState.held;
+                heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.held;
 
-                //pick it up
-                //boxHitInfo.collider.gameObject.GetComponent<SnapTest2>().pickUp(this.gameObject)
-                //temp
+                heldPlank.GetComponent<PlankManager>().PickUpPlank();
+
+                //make parent
                 heldPlank.transform.parent = this.gameObject.transform;
-                //turn off collider
-                heldPlank.GetComponent<Collider>().enabled = false;
+
+
+
                 //move up a bit
                 heldPlank.transform.position = this.gameObject.transform.position + Vector3.up;
 
@@ -200,7 +183,7 @@ public class PlayerActions : MonoBehaviour
 
     }
 
-    private void PlaceBoard()
+    private void PlacePlankAction()
     {
         print("place board");
 
@@ -211,24 +194,33 @@ public class PlayerActions : MonoBehaviour
 
     }
 
-    private void DropBoard()
+    private void DropPlankAction()
     {
-        print("drop board");
+        print("drop Plank");
 
         //if player holding a board
         if (heldPlank != null)
         {
             //holding plank
 
+            //SHOULD HAPPEN IN PLANK
+            //---------------------------------------------------------------
             //unchild it
             heldPlank.transform.parent = null;
 
             //set to dropped
-            heldPlank.GetComponent<SnapTest2>().plankState = SnapTest2.PlankState.dropped;
+            heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.dropped;
 
             //give it physics
             heldPlank.GetComponent<Collider>().enabled = true;
 
+            //add rigidbody
+            if (heldPlank.GetComponent<Rigidbody>() == null)
+            {
+                heldPlank.AddComponent<Rigidbody>();
+            }
+
+            //---------------------------------------------------------------
 
             //get rid of reference to board
             heldPlank = null;
@@ -239,7 +231,7 @@ public class PlayerActions : MonoBehaviour
 
     }
 
-    private void BoardSlam()
+    private void BoardSlamAction()
     {
         print("board slam");
 
@@ -247,6 +239,17 @@ public class PlayerActions : MonoBehaviour
 
     }
 
+    public void TestBoxCast(GameObject startCube, GameObject endCube)
+    {
+        startCube.GetComponent<Collider>().enabled = false;
+        startCube.transform.position = this.gameObject.transform.position + boxCastOffset;
+        startCube.transform.rotation = playerRotation;
+        startCube.transform.localScale = boxCasthalfSize * 2;
 
-
+        endCube.GetComponent<Collider>().enabled = false;
+        endCube.transform.position = this.gameObject.transform.position + boxCastOffset + (playerForward * boxCastMaxDistance);
+        endCube.transform.rotation = playerRotation;
+        endCube.transform.localScale = boxCasthalfSize * 2;
+    }
 }
+
