@@ -535,7 +535,7 @@ PrefabInstance:
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.33
+      value: 2.81
       objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -587,7 +587,17 @@ PrefabInstance:
       propertyPath: plankState
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 34944575546813296, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 34944577483965261, guid: 343849e8772006e45b6c64399bf66674, type: 3}
+    - {fileID: 34944576794553082, guid: 343849e8772006e45b6c64399bf66674, type: 3}
+    - {fileID: 34944576745207492, guid: 343849e8772006e45b6c64399bf66674, type: 3}
+    - {fileID: 34944576471287763, guid: 343849e8772006e45b6c64399bf66674, type: 3}
+    - {fileID: 34944575761004846, guid: 343849e8772006e45b6c64399bf66674, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 343849e8772006e45b6c64399bf66674, type: 3}
 --- !u!1001 &1735661238
 PrefabInstance:
@@ -669,21 +679,31 @@ PrefabInstance:
     - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: boxCasthalfSize.x
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: boxCasthalfSize.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: boxCasthalfSize.z
-      value: 1
+      value: 0.1
       objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: testCubes
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: boxCastMaxDistance
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: inputType
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
