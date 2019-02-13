@@ -10,6 +10,7 @@ public class PlayerDeath : MonoBehaviour
     public float deathMoveSpeed = 10f;
     private Transform target;
     private int pointIndex = 0;
+    public static bool deathHappened = false;
     
 
     // Start is called before the first frame update
@@ -31,20 +32,23 @@ public class PlayerDeath : MonoBehaviour
         playerRenderer.enabled = true;
     }
 
+    //when it contacts a 
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "DeathObject")
         {
-            MovePlayer();
+            deathHappened = true;
+            StartCoroutine(DeathWait());
+            //other.enabled = false;
+            
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        MovePlayer();
     }
-    
+
     void MovePlayer()
     {
         //start coroutine for the player's renderer to turn off then on
@@ -59,13 +63,18 @@ public class PlayerDeath : MonoBehaviour
         {
             GetNextWaypoint();
         }
-
-        //transform.position = spawnPoint.transform.position;
         
     }
 
+    //get the next waypoint in the array and set it as the target
     void GetNextWaypoint()
     {
+
+        if(pointIndex >= Waypoints.points.Length - 1)
+        {
+            Debug.Log("Reached the end");
+            return;
+        }
         pointIndex++;
         target = Waypoints.points[pointIndex];
     }
