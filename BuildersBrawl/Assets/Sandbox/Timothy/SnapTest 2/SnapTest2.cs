@@ -13,18 +13,41 @@ public class SnapTest2 : MonoBehaviour
         placed
     }
 
+    public GameObject player;
     public PlankState plankState;
     [HideInInspector]
     public GameObject[] nodes;
+    public bool gravity = false;
+    public float fallSpeed = 30;
     //[HideInInspector]
     //public Quaternion plankRotation;
 
     private void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         PopulateNodeArray();
         //plankRotation = transform.rotation;
     }
 
+
+    private void FixedUpdate()
+    {
+        if (gravity)
+        {
+            Collider plankCollider = this.gameObject.GetComponent<Collider>();
+            if (!Physics.BoxCast(plankCollider.bounds.center, plankCollider.bounds.extents, Vector3.down, transform.rotation, .01f))
+            {
+                
+                transform.position += Vector3.down * Time.fixedDeltaTime;
+            }
+
+            if (this.gameObject.GetComponent<BoxCastStuff>() != null)
+            {
+                this.gameObject.GetComponent<BoxCastStuff>().TestBoxCast();
+            }
+
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -34,15 +57,17 @@ public class SnapTest2 : MonoBehaviour
         if (other.tag.Equals("Plank") && other.gameObject.GetComponent<Rigidbody>() != null
             && other.gameObject.GetComponent<SnapTest2>().plankState.Equals(PlankState.beingplaced))
         {
-            Destroy(other.gameObject.GetComponent<Rigidbody>());
+            //Destroy(other.gameObject.GetComponent<Rigidbody>());
 
-            snappableNode = other.gameObject.GetComponent<SnapTest2>().nodes[0];
-            closestNode = FindClosestNode(snappableNode);
+            //snappableNode = other.gameObject.GetComponent<SnapTest2>().nodes[0];
+            snappableNode = FindClosestEndNode(other.gameObject);
+            closestNode = FindClosestSnapLoc(snappableNode);
             SnapNodes(snappableNode, closestNode);
 
             other.gameObject.GetComponent<SnapTest2>().plankState = PlankState.placed;
         }
     }
+
 
     private void PopulateNodeArray()
     {
@@ -85,7 +110,22 @@ public class SnapTest2 : MonoBehaviour
         //snapNode.transform.parent.rotation = snapNode.transform.parent.GetComponent<SnapTest2>().plankRotation;
     }
 
-    private GameObject FindClosestNode(GameObject snappableNode)
+    private GameObject FindClosestEndNode(GameObject fallingPlank)
+    {
+        SnapTest2 nodeRef = fallingPlank.GetComponent<SnapTest2>();
+
+        if (Vector3.Distance(nodeRef.nodes[0].transform.position, player.transform.position)
+            <= Vector3.Distance(nodeRef.nodes[nodes.Length - 1].transform.position, player.transform.position))
+        {
+            return fallingPlank.GetComponent<SnapTest2>().nodes[0];
+        }
+        else
+        {
+            return fallingPlank.GetComponent<SnapTest2>().nodes[nodes.Length - 1];
+        }
+    }
+
+    private GameObject FindClosestSnapLoc(GameObject snappableNode)
     {
         GameObject closestNode = nodes[0];
         float smallestDistance = 200f;
@@ -103,5 +143,11 @@ public class SnapTest2 : MonoBehaviour
         }
 
         return closestNode;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireCube(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.size);
     }
 }
