@@ -16,6 +16,12 @@ public class MainMenuManager : MonoBehaviour
         Controls.gameObject.SetActive(false);
     }
 
+    public void StartGame(string PS_Scene)
+    {
+        //Load Player_Select scene
+        SceneManager.LoadScene(PS_Scene);
+    }
+
     public void HowToPlayBtn()
     {
         //Show the player control screen

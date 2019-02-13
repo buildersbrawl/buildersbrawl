@@ -14,4 +14,25 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Sandbox/Austin/AustinTestScene1.unity
     guid: 1801ab478aaec644fb514fcf36f0b21a
+  - enabled: 1
+    path: Assets/Scenes/Main_Menu.unity
+    guid: e868bc57f0740df479a714242fa694c9
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/Player_Select.unity
+    guid: eabe07b9e9d2c4443bb92202be1cc164
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/TestScenes/A.unity
+    guid: a31770f17aa4489449cea1bfb465c6ad
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/TestScenes/B.unity
+    guid: 42964a7a5cec24f4f9ccd2ffe3787b78
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/TestScenes/C.unity
+    guid: 0749d8304a076f6428e9161ba73ff38a
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/TestScenes/D.unity
+    guid: 4f86791083409c245bde990e2f061740
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/TestScenes/E.unity
+    guid: aeaa0c923058b414db3d98cdc4547445
   m_configObjects: {}
