@@ -371,17 +371,12 @@ public class PlayerController : MonoBehaviour
         //IF JUMPING OVERRIDE ACTION or if doing other action
         if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown)
         {
-            //x is push
-
-            //b is charge
-
             //y pick up
             //y drop board
-
             if (YPickOrDrop)
             {
                 //print("action");
-                if (playerActions.holdingBoard) //holding board
+                if (playerActions.HeldPlank != null) //holding board
                 {
                     //drop
                     playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
@@ -393,8 +388,21 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-
+            //x is push
+            else if (XPush)
+            {
+                playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.push);
+            }
+            //b is charge
+            else if (BCharge)
+            {
+                playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.charge);
+            }
             //bumpers are board slam
+            else if (BumpOrTrigSlam)
+            {
+                playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.slam);
+            }
         }
 
         //move based off of joystick, if performing action don't do this

@@ -12,7 +12,8 @@ public class PlayerActions : MonoBehaviour
         charge,
         pickUp,
         drop,
-        slam
+        slam,
+        place
     }
 
     public delegate void PlayerActionDelegate();
@@ -22,6 +23,10 @@ public class PlayerActions : MonoBehaviour
     PlayerController playerController;
 
     public float actionCooldown = 1f;
+
+    public Vector3 whereBoardHeld = new Vector3(0, 1.5f, 0);
+
+    public bool throwBoardOnDrop = false;
 
     [Header("BoxCast")]
     [SerializeField]
@@ -35,7 +40,7 @@ public class PlayerActions : MonoBehaviour
 
     RaycastHit[] boxHitInfo;
 
-    public bool holdingBoard = false;
+    //public bool holdingBoard = false;
 
     [Header("TestCubes")]
     public bool testCubes;
@@ -43,6 +48,16 @@ public class PlayerActions : MonoBehaviour
     public GameObject endCube;
 
     private GameObject heldPlank;
+    public GameObject HeldPlank
+    {
+        get
+        {
+            return heldPlank;
+        }
+    }
+
+
+    //------------------------------------------------------------------------------------------------------
 
     public void InitAct(PlayerController pC)
     {
@@ -83,6 +98,12 @@ public class PlayerActions : MonoBehaviour
                 playerActionDelegate += BoardSlamAction;
                 playerActionDelegate += PostAction;
                 break;
+            case PlayerActionType.place:
+                playerActionDelegate = null;
+                playerActionDelegate += PreAction;
+                playerActionDelegate += PlacingPlankAction;
+                playerActionDelegate += PostAction;
+                break;
             default:
                 break;
         }
@@ -108,35 +129,29 @@ public class PlayerActions : MonoBehaviour
 
     private void PushAction()
     {
-        print("Push");
-
+        print("Push action");
+        //make boxcast in front of player
+        //if hits opponent knock back opponent
         
     }
 
     private void ChargeAction()
     {
-        print("Charge");
+        print("Charge action");
+        //move player forward in direction
+        //make boxcast in front of player
+        //if hits opponent knock back opponent (probably more force than push)
 
-        
     }
 
     private void PickUpPlankAction()
     {
-        print("Try PickUpBoard");
+        print("Try PickUpBoard action");
 
         //check to see if board is in front of player
         //boxcast in front of player
-
-        //make cubes to visualize cast
-        //instantiate cubes
-
         playerRotation = this.gameObject.transform.rotation;
         playerForward = this.transform.forward;
-
-        if (testCubes)
-        {
-            TestBoxCast(startCube, endCube);
-        }
 
 
         //boxcast (is an array)
@@ -159,15 +174,17 @@ public class PlayerActions : MonoBehaviour
                 //make parent
                 heldPlank.transform.parent = this.gameObject.transform;
 
+                //rotate it so facing correct direction
+                heldPlank.transform.rotation = this.gameObject.transform.rotation;
+                //add 90 degrees to rotation
+                heldPlank.transform.Rotate(new Vector3(0, 90, 0));
 
-
-                //move up a bit
-                heldPlank.transform.position = this.gameObject.transform.position + Vector3.up;
-
+                //move up a bit so over players head
+                heldPlank.transform.position = this.gameObject.transform.position + whereBoardHeld + this.gameObject.transform.forward;
 
                 print("player picked up plank");
 
-                holdingBoard = true;
+                //holdingBoard = true;
 
                 //stop looking for other hit boards
                 index = boxHitInfo.Length;
@@ -179,63 +196,78 @@ public class PlayerActions : MonoBehaviour
 
         }
 
-        //make board child of player, put above players head
+        //make cubes to visualize boxcast
+        if (testCubes)
+        {
+            TestBoxCast(startCube, endCube);
+        }
 
     }
 
-    private void PlacePlankAction()
+    private void PlacingPlankAction()
     {
-        print("place board");
+        print("placing board action");
 
         //if player holding a board
-        //unchild it
-        //rotate it so facing correct direction
-        //set to placing
+        if(heldPlank != null)
+        {
+            //unchild it
+            heldPlank.transform.parent = null;
+
+            //set to placing
+            heldPlank.GetComponent<PlankManager>().PlacingPlank();
+
+            //null heldplank
+            heldPlank = null;
+        }
+
 
     }
 
     private void DropPlankAction()
     {
-        print("drop Plank");
+        print("drop Plank action");
 
         //if player holding a board
         if (heldPlank != null)
         {
             //holding plank
 
-            //SHOULD HAPPEN IN PLANK
-            //---------------------------------------------------------------
             //unchild it
             heldPlank.transform.parent = null;
 
-            //set to dropped
-            heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.dropped;
+            heldPlank.GetComponent<PlankManager>().DropPlank();
 
-            //give it physics
-            heldPlank.GetComponent<Collider>().enabled = true;
-
-            //add rigidbody
-            if (heldPlank.GetComponent<Rigidbody>() == null)
+            //fun
+            if (throwBoardOnDrop)
             {
-                heldPlank.AddComponent<Rigidbody>();
+                print("throwing");
+                heldPlank.GetComponent<Rigidbody>().AddForce(this.gameObject.transform.forward * 500f);
             }
 
-            //---------------------------------------------------------------
 
             //get rid of reference to board
             heldPlank = null;
 
             //tell player they dropped board
-            holdingBoard = false;
+            //holdingBoard = false;
         }
 
     }
 
     private void BoardSlamAction()
     {
-        print("board slam");
+        print("board slam action");
 
-        //do stuff
+        //turn on player collider detection
+        heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
+        //if hit opponent player
+
+        //do board slam
+
+
+        //turn off player collider detection
+        heldPlank.GetComponent<PlankManager>().SetToNotHitPlayers();
 
     }
 
@@ -251,5 +283,12 @@ public class PlayerActions : MonoBehaviour
         endCube.transform.rotation = playerRotation;
         endCube.transform.localScale = boxCasthalfSize * 2;
     }
+
+    public void PlayActionAnimation()
+    {
+        //too put in delegate
+    }
+
+
 }
 
