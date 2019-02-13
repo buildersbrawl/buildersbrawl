@@ -15,13 +15,30 @@ public class PlankManager : MonoBehaviour
 
     public PlankState plankState;
 
-
-    GameObject myParentPlayer;
+    private SnapTest2 snapRef;
 
     private void Start()
     {
-        
-        //defualt is dropping
+        Init();
+    }
+
+    private void Init()
+    {
+        //get snap
+        if(this.gameObject.GetComponent<SnapTest2>() != null)
+        {
+            snapRef = this.gameObject.GetComponent<SnapTest2>();
+        }
+        else
+        {
+            snapRef = this.gameObject.AddComponent<SnapTest2>();
+        }
+
+        //not trigger
+        //make trigger
+        this.gameObject.GetComponent<Collider>().isTrigger = false;
+
+        //default is dropping
         if (plankState == PlankState.beingplaced)
         {
             PlacingPlank();
@@ -45,17 +62,16 @@ public class PlankManager : MonoBehaviour
     public void PlacingPlank()
     {
         //don't let plank hit players
+        SetToNotHitPlayers();
 
-        //get rid of rigidbody?? what about gravity?
+        //turn on artificial gravity
+        //snapRef.TurnOnGravity
 
         //unparent
-        if (myParentPlayer != null)
+        if (this.gameObject.transform.parent != null)
         {
             //unparent
-
-
-            //set parent to null
-            myParentPlayer = null;
+            this.gameObject.transform.parent = null;
         }
 
         plankState = PlankState.beingplaced;
@@ -63,9 +79,11 @@ public class PlankManager : MonoBehaviour
 
     public void PickUpPlank()
     {
-        //pick it up
-        //boxHitInfo.collider.gameObject.GetComponent<SnapTest2>().PickUpPlank(this.gameObject)
-        
+        //pick it up (done by player)
+
+        //set to not hit players
+        SetToNotHitPlayers(); //turn on then off when board slamming
+
         //destroy rigidbody
         if (this.gameObject.GetComponent<Rigidbody>() != null)
         {
@@ -85,17 +103,11 @@ public class PlankManager : MonoBehaviour
         //turn on collider
         this.gameObject.GetComponent<Collider>().enabled = true;
 
+        //turn off artificial gravity
+        //snapRef.TurnOffGravity
+
         //make hitable by players
-
-        //unparent
-        if (this.transform.parent != null)
-        {
-            //unparent
-            this.transform.parent = null;
-
-            //set parent to null
-            myParentPlayer = null;
-        }
+        SetToHitPlayers();
 
         //if no rigidbody add one
         if (this.gameObject.GetComponent<Rigidbody>() == null)
@@ -114,10 +126,39 @@ public class PlankManager : MonoBehaviour
             Destroy(this.gameObject.GetComponent<Rigidbody>());
         }
 
+        //turn off artifical gravity (stop from moving)
+        //snapRef.TurnOffGravity
+
+        //make trigger
+        this.gameObject.GetComponent<Collider>().isTrigger = true;
 
         plankState = PlankState.placed;
     }
 
+
+    public void SetToNotHitPlayers()
+    {
+        if(GameManager.S != null && GameManager.S.player1 != null & GameManager.S.player2 != null)
+        {
+            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<Collider>(), true);
+        }
+        else
+        {
+            print("Error: No GameManager with references to players");
+        }
+      
+    }
+    public void SetToHitPlayers()
+    {
+        if (GameManager.S != null && GameManager.S.player1 != null & GameManager.S.player2 != null)
+        {
+            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<Collider>(), false);
+        }
+        else
+        {
+            print("Error: No GameManager with references to players");
+        }
+    }
 
 
 }
