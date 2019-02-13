@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Plank
   - Node
+  - DeathObject
   layers:
   - Default
   - TransparentFX
