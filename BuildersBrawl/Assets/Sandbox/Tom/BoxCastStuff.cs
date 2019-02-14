@@ -37,7 +37,7 @@ public class BoxCastStuff : MonoBehaviour
 
     public void TestBoxCast()
     {
-        boxCasthalfSize = this.gameObject.GetComponent<Collider>().bounds.extents;
+        boxCasthalfSize = this.gameObject.GetComponent<Renderer>().bounds.extents;
 
         playerRotation = this.gameObject.transform.rotation;
         playerForward = Vector3.down;
