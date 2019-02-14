@@ -50,6 +50,10 @@ public class SnapTest2 : MonoBehaviour
 
             other.gameObject.GetComponent<PlankManager>().PlacePlank();
         }
+        else
+        {
+            GetComponent<PlankManager>().DropPlank();
+        }
     }
 
 
