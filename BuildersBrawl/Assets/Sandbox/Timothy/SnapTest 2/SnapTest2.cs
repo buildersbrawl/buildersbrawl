@@ -5,24 +5,16 @@ using UnityEngine;
 
 public class SnapTest2 : MonoBehaviour
 {
-    public enum PlankState
-    {
-        beingplaced,
-        held,
-        dropped,
-        placed
-    }
 
     public GameObject player;
-    public PlankState plankState;
     [HideInInspector]
     public GameObject[] nodes;
     public bool gravity = false;
-    public float fallSpeed = 1f;
+    public float fallSpeed = 3f;
 
     private void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        //player = GameObject.FindGameObjectWithTag("Player");
         PopulateNodeArray();
     }
 
@@ -46,14 +38,17 @@ public class SnapTest2 : MonoBehaviour
         GameObject snappableNode;
         GameObject closestNode;
 
-        if (other.tag.Equals("Plank") && other.gameObject.GetComponent<SnapTest2>().plankState.Equals(PlankState.beingplaced))
+        if (other.tag.Equals("Plank") && other.gameObject.GetComponent<PlankManager>().plankState.Equals(PlankManager.PlankState.beingplaced))
         {
+            print("FIRE BITVH");
+            print("I am " + this.gameObject.name);
+            player = other.GetComponent<SnapTest2>().player;
             other.gameObject.GetComponent<SnapTest2>().gravity = false;
             snappableNode = FindClosestEndNode(other.gameObject);
             closestNode = FindClosestSnapLoc(snappableNode);
             SnapNodes(snappableNode, closestNode);
 
-            other.gameObject.GetComponent<SnapTest2>().plankState = PlankState.placed;
+            other.gameObject.GetComponent<PlankManager>().PlacePlank();
         }
     }
 
@@ -130,7 +125,7 @@ public class SnapTest2 : MonoBehaviour
         return closestNode;
     }
 
-    private void GravitySwitch(bool switchState)
+    public void GravitySwitch(bool switchState)
     {
         gravity = switchState;
     }

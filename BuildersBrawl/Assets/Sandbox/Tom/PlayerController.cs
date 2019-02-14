@@ -69,7 +69,8 @@ public class PlayerController : MonoBehaviour
     public bool AJump;
     public bool BCharge;
     public bool XPush;
-    public bool YPickOrDrop;
+    public bool YPickOrPlace;
+    public bool dropPlankControl;
     public bool BumpOrTrigSlam;
 
     Vector3 joyInput;
@@ -248,11 +249,20 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.E))
             {
                 //print("hit e");
-                YPickOrDrop = true;
+                YPickOrPlace = true;
             }
             else
             {
-                YPickOrDrop = false;
+                YPickOrPlace = false;
+            }
+            if (Input.GetKey(KeyCode.Q))
+            {
+                //print("hit e");
+                dropPlankControl = true;
+            }
+            else
+            {
+                dropPlankControl = false;
             }
 
 
@@ -301,11 +311,11 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.Keypad1))
             {
-                YPickOrDrop = true;
+                YPickOrPlace = true;
             }
             else
             {
-                YPickOrDrop = false;
+                YPickOrPlace = false;
             }
 
         }
@@ -343,7 +353,7 @@ public class PlayerController : MonoBehaviour
         AJump = gameInputManager.pressedJumpButton;
         BCharge = gameInputManager.pressedChargeButton;
         XPush = gameInputManager.pressedPushButton;
-        YPickOrDrop = gameInputManager.pressedBoardPickUpOrDropButton;
+        YPickOrPlace = gameInputManager.pressedBoardPickUpOrDropButton;
         BumpOrTrigSlam = gameInputManager.pressedSlamButton;
 
     }
@@ -373,13 +383,13 @@ public class PlayerController : MonoBehaviour
         {
             //y pick up
             //y drop board
-            if (YPickOrDrop)
+            if (YPickOrPlace)
             {
                 //print("action");
                 if (playerActions.HeldPlank != null) //holding board
                 {
-                    //drop
-                    playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
+                    //place
+                    playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.place);
                 }
                 else //NOT holding board
                 {
@@ -402,6 +412,11 @@ public class PlayerController : MonoBehaviour
             else if (BumpOrTrigSlam)
             {
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.slam);
+            }
+            else if (dropPlankControl)
+            {
+                //drop
+                playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
             }
         }
 

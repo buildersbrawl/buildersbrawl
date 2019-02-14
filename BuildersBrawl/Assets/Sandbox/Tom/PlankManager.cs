@@ -35,7 +35,6 @@ public class PlankManager : MonoBehaviour
         }
 
         //not trigger
-        //make trigger
         this.gameObject.GetComponent<Collider>().isTrigger = false;
 
         //default is dropping
@@ -45,7 +44,8 @@ public class PlankManager : MonoBehaviour
         }
         else if (plankState == PlankState.held)
         {
-            PickUpPlank();
+            //PickUpPlank();
+            print("somethign wroong: initialized as held");
         }
         else if (plankState == PlankState.dropped)
         {
@@ -65,7 +65,16 @@ public class PlankManager : MonoBehaviour
         SetToNotHitPlayers();
 
         //turn on artificial gravity
-        //snapRef.TurnOnGravity
+        snapRef.GravitySwitch(true);
+
+        //turn on collider
+        this.gameObject.GetComponent<Collider>().enabled = true;
+
+        //make trigger
+        this.gameObject.GetComponent<Collider>().isTrigger = true;
+
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
 
         //unparent
         if (this.gameObject.transform.parent != null)
@@ -77,18 +86,25 @@ public class PlankManager : MonoBehaviour
         plankState = PlankState.beingplaced;
     }
 
-    public void PickUpPlank()
+    public void PickUpPlank(GameObject playerRef)
     {
+
         //pick it up (done by player)
+
+        //tell plank what player to look at
+        this.gameObject.GetComponent<SnapTest2>().player = playerRef;
 
         //set to not hit players
         SetToNotHitPlayers(); //turn on then off when board slamming
 
+        /*
         //destroy rigidbody
         if (this.gameObject.GetComponent<Rigidbody>() != null)
         {
             Destroy(this.gameObject.GetComponent<Rigidbody>());
         }
+        */
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
         //turn off collider
         this.gameObject.GetComponent<Collider>().enabled = false;
@@ -109,28 +125,39 @@ public class PlankManager : MonoBehaviour
         //make hitable by players
         SetToHitPlayers();
 
+        /*
         //if no rigidbody add one
         if (this.gameObject.GetComponent<Rigidbody>() == null)
         {
             this.gameObject.AddComponent<Rigidbody>();
         }
+        */
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
         plankState = PlankState.dropped;
     }
 
     public void PlacePlank()
     {
+        /*
         //get rid of rigidbody
         if (this.gameObject.GetComponent<Rigidbody>() != null)
         {
             Destroy(this.gameObject.GetComponent<Rigidbody>());
         }
+        */
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        this.gameObject.GetComponent<Collider>().isTrigger = false;
 
         //turn off artifical gravity (stop from moving)
-        //snapRef.TurnOffGravity
+        snapRef.GravitySwitch(false);
 
+
+        //turn on collider
+        this.gameObject.GetComponent<Collider>().enabled = true;
         //make trigger
-        this.gameObject.GetComponent<Collider>().isTrigger = true;
+        this.gameObject.GetComponent<Collider>().isTrigger = false;
 
         plankState = PlankState.placed;
     }

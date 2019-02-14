@@ -167,9 +167,9 @@ public class PlayerActions : MonoBehaviour
                 heldPlank = boxHitInfo[index].collider.gameObject;
 
                 //set state of plank
-                heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.held;
+                //heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.held;
 
-                heldPlank.GetComponent<PlankManager>().PickUpPlank();
+                heldPlank.GetComponent<PlankManager>().PickUpPlank(this.gameObject);
 
                 //make parent
                 heldPlank.transform.parent = this.gameObject.transform;
