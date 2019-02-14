@@ -7,6 +7,8 @@ TagManager:
   - Plank
   - Node
   - DeathObject
+  - RestartObject
+  - Floor
   layers:
   - Default
   - TransparentFX

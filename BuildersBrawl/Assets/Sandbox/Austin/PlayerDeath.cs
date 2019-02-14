@@ -4,78 +4,93 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
-    public GameObject spawnPoint;
-    public float waitTime = 5f;
+    public int playerNumber = 0;
+    private int playerDeathNumber = -1;
+    public Transform spawnPoint;
     private Renderer playerRenderer;
     public float deathMoveSpeed = 10f;
     private Transform target;
-    private int pointIndex = 0;
     public static bool deathHappened = false;
+    public float minDistance = .2f;
+    public bool isRigidbody = false;
+    public CharacterController cController;
     
+    public float oldGravity = 10f;
+    public float gravity;
+    public Vector3 moveForward;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRenderer = GetComponent<Renderer>();
-        playerRenderer.enabled = true;
-
-        target = Waypoints.points[0];
+        gravity = oldGravity;
+        if (!isRigidbody)
+        {
+            cController = GetComponent<CharacterController>();
+            moveForward = transform.TransformDirection(Vector3.forward);
+            
+        }
+            
+        //target = Waypoints.points[0];
     }
 
-    //once they die, wait 5 seconds, have player be there but not visible
-    IEnumerator DeathWait()
-    {
-        //turn off the player's mesh renderer
-        playerRenderer.enabled = false;
-        yield return new WaitForSeconds(waitTime);
-        //turn on player's mesh renderer
-        playerRenderer.enabled = true;
-    }
-
-    //when it contacts a 
+    //when it contacts a death object, turn the player's renderer off and allow update() to move the player
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == "DeathObject")
         {
-            deathHappened = true;
-            StartCoroutine(DeathWait());
-            //other.enabled = false;
             
+            deathHappened = true;
+            //GetComponent<Rigidbody>().useGravity = false;
+            //playerRenderer.enabled = false;
+            playerDeathNumber = playerNumber;
         }
+
     }
 
     void Update()
     {
-        MovePlayer();
-    }
-
-    void MovePlayer()
-    {
-        //start coroutine for the player's renderer to turn off then on
-        //StartCoroutine(DeathWait());
-
-        //move towards the waypoint
-        Vector3 dir = target.position - transform.position;
-        transform.Translate(dir.normalized * deathMoveSpeed * Time.deltaTime, Space.World);
-
-        //if they are close to the current waypoint, get the next waypoint
-        if(Vector3.Distance(transform.position, target.position) <= 0.2f)
+        if(!isRigidbody && cController.isGrounded)
         {
-            GetNextWaypoint();
+            moveForward.y -= (gravity * Time.deltaTime);
+            cController.Move(moveForward);
         }
-        
-    }
 
-    //get the next waypoint in the array and set it as the target
-    void GetNextWaypoint()
-    {
-
-        if(pointIndex >= Waypoints.points.Length - 1)
+        if(deathHappened && isRigidbody)
         {
-            Debug.Log("Reached the end");
-            return;
+            transform.LookAt(spawnPoint);
+            
+            if (Vector3.Distance(transform.position, spawnPoint.position) >= minDistance && playerDeathNumber == playerNumber)
+            {
+                transform.position += transform.forward * deathMoveSpeed * Time.deltaTime;
+                //transform.Translate(spawnPoint.position - transform.position, Space.World);
+            }
+            else
+            {
+                playerRenderer.enabled = true;
+                GetComponent<Rigidbody>().useGravity = true;
+                deathHappened = false;
+            }
         }
-        pointIndex++;
-        target = Waypoints.points[pointIndex];
-    }
+        else if(deathHappened && !isRigidbody)
+        {
+            gravity = 0;
+
+            if (Vector3.Distance(transform.position, spawnPoint.position) >= minDistance && playerDeathNumber == playerNumber)
+            {
+                
+                cController.SimpleMove(moveForward * deathMoveSpeed);
+                transform.LookAt(spawnPoint);
+            }
+            else
+            {
+                playerRenderer.enabled = true;
+                GetComponent<Rigidbody>().useGravity = true;
+                gravity = oldGravity;
+                deathHappened = false;
+            }
+            
+            
+        }
+    }  
 }
