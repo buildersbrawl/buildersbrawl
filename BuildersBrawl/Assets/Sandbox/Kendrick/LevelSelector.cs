@@ -19,6 +19,8 @@ public class LevelSelector : MonoBehaviour
     public float waitTime = 0.1f;
     private float timer = 0.0f;
     public float maxWaitTime;
+    public float minWaitTime;
+    public float waitInterval;
 
     // Start is called before the first frame update
     void Start()
@@ -38,13 +40,15 @@ public class LevelSelector : MonoBehaviour
         if (!chosenShown)
         {
             timer += Time.deltaTime;
+            //Slows down the cycle between levels shown until the chosen level is displayed
             if (timer > waitTime)
             {
              CycleChoices();
                 timer -= waitTime;
+                //The cycle between levels slows down until the max wait time is reached
                 if(waitTime < maxWaitTime)
                 {
-                    waitTime += 0.1f;
+                    waitTime += waitInterval;
                 }
             }
         }
@@ -57,8 +61,8 @@ public class LevelSelector : MonoBehaviour
         {
             RotateLevels();
         }
-        //Displays the randomly chosen level
-        if (waitTime >= maxWaitTime && show == levelNumber)
+        //Displays the randomly chosen level after the min wait time is reached.
+        if (waitTime >= minWaitTime && show == levelNumber && PlayerSelect.PS.bothPlayersReady)
         {
             DisplayChosen();
         }
@@ -96,6 +100,8 @@ public class LevelSelector : MonoBehaviour
 
         //Stops random level stuff in order to not slow down Unity
         chosenShown = true;
+
+        PlayerSelect.PS.LevelStartBtn.interactable = true;
     }
 
     public void StartLevel (string level)
