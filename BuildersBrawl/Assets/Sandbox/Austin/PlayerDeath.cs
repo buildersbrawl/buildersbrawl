@@ -18,6 +18,7 @@ public class PlayerDeath : MonoBehaviour
     public float oldGravity = 10f;
     public float gravity;
     public Vector3 moveForward;
+    public float waitTime = 5f;
 
     // Start is called before the first frame update
     void Start()
@@ -34,6 +35,8 @@ public class PlayerDeath : MonoBehaviour
         //target = Waypoints.points[0];
     }
 
+
+
     //when it contacts a death object, turn the player's renderer off and allow update() to move the player
     private void OnTriggerEnter(Collider other)
     {
@@ -42,55 +45,41 @@ public class PlayerDeath : MonoBehaviour
             
             deathHappened = true;
             //GetComponent<Rigidbody>().useGravity = false;
-            //playerRenderer.enabled = false;
+            playerRenderer.enabled = false;
             playerDeathNumber = playerNumber;
         }
 
     }
 
+    IEnumerator WaitForRenderer()
+    {
+        yield return new WaitForSeconds(waitTime);
+        playerRenderer.enabled = true;
+    }
+
     void Update()
     {
-        if(!isRigidbody && cController.isGrounded)
-        {
-            moveForward.y -= (gravity * Time.deltaTime);
-            cController.Move(moveForward);
-        }
 
-        if(deathHappened && isRigidbody)
+
+        if(deathHappened)
         {
-            transform.LookAt(spawnPoint);
+            //transform.LookAt(spawnPoint);
+
+            transform.position = spawnPoint.transform.position;
+            deathHappened = false;
+            StartCoroutine(WaitForRenderer());
             
-            if (Vector3.Distance(transform.position, spawnPoint.position) >= minDistance && playerDeathNumber == playerNumber)
+            
+            /*if (Vector3.Distance(transform.position, spawnPoint.position) >= minDistance && playerDeathNumber == playerNumber)
             {
                 transform.position += transform.forward * deathMoveSpeed * Time.deltaTime;
-                //transform.Translate(spawnPoint.position - transform.position, Space.World);
+                transform.Translate(transform.position - spawnPoint.position, Space.World);
             }
             else
             {
                 playerRenderer.enabled = true;
-                GetComponent<Rigidbody>().useGravity = true;
                 deathHappened = false;
-            }
-        }
-        else if(deathHappened && !isRigidbody)
-        {
-            gravity = 0;
-
-            if (Vector3.Distance(transform.position, spawnPoint.position) >= minDistance && playerDeathNumber == playerNumber)
-            {
-                
-                cController.SimpleMove(moveForward * deathMoveSpeed);
-                transform.LookAt(spawnPoint);
-            }
-            else
-            {
-                playerRenderer.enabled = true;
-                GetComponent<Rigidbody>().useGravity = true;
-                gravity = oldGravity;
-                deathHappened = false;
-            }
-            
-            
+            }*/
         }
     }  
 }

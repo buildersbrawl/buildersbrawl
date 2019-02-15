@@ -5,27 +5,46 @@ using UnityEngine;
 public class TestSceneControls : MonoBehaviour
 {
     public int playerNumber = 0;
+    public GameObject RestartObject;
     public float speed = 10f;
     public float gravity = 1f;
     public Vector3 moveDirection;
+    public Vector3 moveD;
     public CharacterController controller;
     public bool isMovingUp = false;
     public bool isMovingDown = false;
     public bool isMovingLeft = false;
     public bool isMovingRight = false;
     public bool isRigidbody = false;
+    public Transform playerTransform;
 
     // Start is called before the first frame update
     void Start()
     {
-        if(!isRigidbody)
-            controller = GetComponent<CharacterController>();
+        playerTransform = GetComponent<Transform>();
+        moveDirection = RestartObject.transform.position;
+        //if (!isRigidbody)
+        //    controller = GetComponent<CharacterController>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "DeathObject")
+            isRigidbody = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isRigidbody)
+        if (!isRigidbody)
+        {
+            moveD.y -= (gravity * Time.deltaTime);
+            controller.Move(moveD);
+        }
+        else { }
+            
+
+        /*if (isRigidbody)
         {
             if (playerNumber == 0)
             {
@@ -54,9 +73,9 @@ public class TestSceneControls : MonoBehaviour
         else
         {
             Debug.Log("hello " + controller.isGrounded);
-            if (controller.isGrounded && playerNumber == 0)
+            if (playerNumber == 0)
             {
-                
+                Debug.Log("in player 0");
                 if (Input.GetKey(KeyCode.UpArrow))
                 {
                     moveDirection.z += (speed * Time.deltaTime);
@@ -74,9 +93,9 @@ public class TestSceneControls : MonoBehaviour
                 //moveDirection = transform.TransformDirection(moveDirection);
                 //moveDirection *= speed;
             }
-            else if (controller.isGrounded && playerNumber == 1)
+            else if(playerNumber == 1) //(controller.isGrounded &&
             {
-                Debug.Log("hi");
+                Debug.Log("in player 1");
                 if (Input.GetKey("a"))
                     moveDirection.z += (speed * Time.deltaTime);
                 if (Input.GetKey("s"))
@@ -92,11 +111,18 @@ public class TestSceneControls : MonoBehaviour
             }
 
             if (!controller.isGrounded)
+            {
                 moveDirection.y -= (gravity * Time.deltaTime);
+                Debug.Log("Not Grounded");
+            }
+            else
+            {
+                Debug.Log("Grounded");
+            }
 
             controller.Move(moveDirection * Time.deltaTime);
-            Debug.Log(moveDirection);
-        }
+            //Debug.Log(moveDirection);
+    }*/
         
     }
 }
