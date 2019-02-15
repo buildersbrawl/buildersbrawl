@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
 {
-    public Graphic m_Graphic;
-    public Color[] levels;
+    public Image levelDisplay;
+    public Sprite[] levels;
     public int levelNumber;
     public int show = 0;
     public bool chosenShown = false;
@@ -26,7 +26,6 @@ public class LevelSelector : MonoBehaviour
     void Start()
     {
         //Control what is displayed on the image
-        m_Graphic = GetComponent<Graphic>();
         Debug.Log(levels.Length);
 
         //Immediately chooses the next level
@@ -57,7 +56,7 @@ public class LevelSelector : MonoBehaviour
     void FixedUpdate()
     {
         //If the random level is not shown, then the levels will be displayed in rapid succession
-        if (!chosenShown)
+        if (!chosenShown && levels.Length-1 > 0)
         {
             RotateLevels();
         }
@@ -90,13 +89,13 @@ public class LevelSelector : MonoBehaviour
     void RotateLevels()
     {
         //displays level based on the order in the array
-        m_Graphic.color = levels[show];
+        levelDisplay.sprite = levels[show];
     }
 
     void DisplayChosen()
     {
         //Displays the chosen level after a certain amount of time. Can be changed to display level after all players are ready.
-        m_Graphic.color = levels[levelNumber];
+        levelDisplay.sprite = levels[levelNumber];
 
         //Stops random level stuff in order to not slow down Unity
         chosenShown = true;
