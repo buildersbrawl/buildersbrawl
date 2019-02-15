@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Main_Menu.unity
     guid: e868bc57f0740df479a714242fa694c9
   - enabled: 1
-    path: Assets/Sandbox/Kendrick/Player_Select.unity
+    path: Assets/Scenes/Player_Select.unity
     guid: eabe07b9e9d2c4443bb92202be1cc164
   - enabled: 1
     path: Assets/Sandbox/Kendrick/TestScenes/A.unity

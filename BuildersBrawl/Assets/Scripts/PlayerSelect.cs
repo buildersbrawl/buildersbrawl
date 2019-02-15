@@ -17,6 +17,7 @@ public class PlayerSelect : MonoBehaviour
     public Text P2_selected;
 
     public Button LevelStartBtn;
+    public Text LevelStartBtnText;
 
     //checks if players one and player two is selected
     public bool playerOneSelected;
@@ -36,12 +37,15 @@ public class PlayerSelect : MonoBehaviour
         //Displays the text that shows up before the players are selected
         B4_P1_select.enabled = true;
         B4_P2_select.enabled = true;
+        B4_P2_select.text = "Waiting for Player 1";
+
 
         //Hides the text
         P1_selected.enabled = false;
         P2_selected.enabled = false;
 
         LevelStartBtn.interactable = false;
+        LevelStartBtnText.text = "Waiting for Players...";
     }
 
     public void SelectPlayerOne()
@@ -73,6 +77,7 @@ public class PlayerSelect : MonoBehaviour
         {
             B4_P1_select.enabled = false;
             P1_selected.enabled = true;
+            B4_P2_select.text = "Press A to be Player 2";
         }
 
         if (playerTwoSelected)
@@ -85,6 +90,7 @@ public class PlayerSelect : MonoBehaviour
         if (playerOneSelected && playerTwoSelected)
         {
             bothPlayersReady = true;
+            LevelStartBtnText.text = "Selecting Level...";
             Debug.Log("Both players selected");
         }
     }

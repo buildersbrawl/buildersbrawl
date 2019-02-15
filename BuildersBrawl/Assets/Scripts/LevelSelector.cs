@@ -26,6 +26,7 @@ public class LevelSelector : MonoBehaviour
     void Start()
     {
         //Control what is displayed on the image
+        levelDisplay = GetComponent<Image>();
         Debug.Log(levels.Length);
 
         //Immediately chooses the next level
@@ -55,15 +56,28 @@ public class LevelSelector : MonoBehaviour
 
     void FixedUpdate()
     {
-        //If the random level is not shown, then the levels will be displayed in rapid succession
-        if (!chosenShown && levels.Length-1 > 0)
+        //Does process if there are more than 1 level in the list
+        if (levels.Length - 1 > 0)
+        {
+            //If the random level is not shown, then the levels will be displayed in rapid succession
+            if (!chosenShown)
+            {
+                RotateLevels();
+                //Displays the randomly chosen level after the min wait time is reached.
+                if (waitTime >= minWaitTime && show == levelNumber && PlayerSelect.PS.bothPlayersReady)
+                {
+                    DisplayChosen();
+                }
+            }
+        }
+        //Displays the chosen level if there is one level in the list
+        else
         {
             RotateLevels();
-        }
-        //Displays the randomly chosen level after the min wait time is reached.
-        if (waitTime >= minWaitTime && show == levelNumber && PlayerSelect.PS.bothPlayersReady)
-        {
-            DisplayChosen();
+            if (PlayerSelect.PS.bothPlayersReady)
+            {
+                DisplayChosen();
+            }
         }
     }
 
@@ -101,6 +115,7 @@ public class LevelSelector : MonoBehaviour
         chosenShown = true;
 
         PlayerSelect.PS.LevelStartBtn.interactable = true;
+        PlayerSelect.PS.LevelStartBtnText.text = "Press A to Start Game";
     }
 
     public void StartLevel (string level)
@@ -108,5 +123,10 @@ public class LevelSelector : MonoBehaviour
         level = chosenLevel;
         Debug.Log(level);
         SceneManager.LoadScene(level);
+    }
+
+    public void ReturnToMainMenu(string MainMenu)
+    {
+        SceneManager.LoadScene(MainMenu);
     }
 }
