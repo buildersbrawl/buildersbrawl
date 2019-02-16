@@ -83,10 +83,11 @@ public class PlayerSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+       
         for (int i = 0; i < ReInput.players.playerCount; i++)
         {
             
-            Debug.Log(i);
+            //Debug.Log(i);
             if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
             {
                 playerCounter++;
@@ -153,9 +154,18 @@ public class PlayerSelect : MonoBehaviour
     //assign a player to a controller and change their joystick to the in game joystick
     public void AssignNextPlayer(int rewiredPlayerId)
     {
-        if (playerCounter != 1)
+        if (playerCounter == 2)
         {
             rewiredPlayerId = 1;
+        }
+        else if (playerCounter == 1)
+        {
+            rewiredPlayerId = 0;
+        }
+        else
+        {
+            Debug.Log("Max players - Tom");
+            return;
         }
 
         //controllerSelected = true;

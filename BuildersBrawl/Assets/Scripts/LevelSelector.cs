@@ -22,9 +22,13 @@ public class LevelSelector : MonoBehaviour
     public float minWaitTime;
     public float waitInterval;
 
+    public bool levelChosen = false;
+
     // Start is called before the first frame update
     void Start()
     {
+        levelChosen = false;
+
         //Control what is displayed on the image
         levelDisplay = GetComponent<Image>();
         Debug.Log(levels.Length);
@@ -56,29 +60,34 @@ public class LevelSelector : MonoBehaviour
 
     void FixedUpdate()
     {
-        //Does process if there are more than 1 level in the list
-        if (levels.Length - 1 > 0)
+        //stop doing this if leveCHosen/displayed
+        if (!levelChosen)
         {
-            //If the random level is not shown, then the levels will be displayed in rapid succession
-            if (!chosenShown)
+            //Does process if there are more than 1 level in the list
+            if (levels.Length - 1 > 0)
+            {
+                //If the random level is not shown, then the levels will be displayed in rapid succession
+                if (!chosenShown)
+                {
+                    RotateLevels();
+                    //Displays the randomly chosen level after the min wait time is reached.
+                    if (waitTime >= minWaitTime && show == levelNumber && PlayerSelect.PS.bothPlayersReady)
+                    {
+                        DisplayChosen();
+                    }
+                }
+            }
+            //Displays the chosen level if there is one level in the list
+            else
             {
                 RotateLevels();
-                //Displays the randomly chosen level after the min wait time is reached.
-                if (waitTime >= minWaitTime && show == levelNumber && PlayerSelect.PS.bothPlayersReady)
+                if (PlayerSelect.PS.bothPlayersReady)
                 {
                     DisplayChosen();
                 }
             }
         }
-        //Displays the chosen level if there is one level in the list
-        else
-        {
-            RotateLevels();
-            if (PlayerSelect.PS.bothPlayersReady)
-            {
-                DisplayChosen();
-            }
-        }
+
     }
 
     void ChooseLevel()
@@ -108,6 +117,10 @@ public class LevelSelector : MonoBehaviour
 
     void DisplayChosen()
     {
+        print("Level chosen");
+
+        levelChosen = true;
+
         //Displays the chosen level after a certain amount of time. Can be changed to display level after all players are ready.
         levelDisplay.sprite = levels[levelNumber];
 
@@ -120,7 +133,13 @@ public class LevelSelector : MonoBehaviour
 
     public void StartLevel (string level)
     {//Opens level based on which level was chosen in ChooseLevel
-        level = chosenLevel;
+        if(SceneManager.GetSceneByName(level) == null)
+        {
+            print("No scene with this name");
+            return;
+        }
+        //obselete
+        //level = chosenLevel;
         Debug.Log(level);
         InputManager.isUsingUI = false;
         SceneManager.LoadScene(level);

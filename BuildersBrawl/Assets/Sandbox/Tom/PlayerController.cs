@@ -505,6 +505,7 @@ public class PlayerController : MonoBehaviour
 
 
     //TODO: add more raycasts for accuracy
+
     public bool IsPlayerGrounded()
     {
         //raycast down short distance, if hits anything grounded
