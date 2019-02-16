@@ -23,14 +23,8 @@ public class PlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        playerRenderer = GetComponent<Renderer>();
-        gravity = oldGravity;
-        if (!isRigidbody)
-        {
-            cController = GetComponent<CharacterController>();
-            moveForward = transform.TransformDirection(Vector3.forward);
-            
-        }
+        playerRenderer = this.GetComponent<Renderer>();
+        
             
         //target = Waypoints.points[0];
     }
@@ -63,23 +57,21 @@ public class PlayerDeath : MonoBehaviour
 
         if(deathHappened)
         {
-            //transform.LookAt(spawnPoint);
-
-            transform.position = spawnPoint.transform.position;
-            deathHappened = false;
-            StartCoroutine(WaitForRenderer());
-            
-            
-            /*if (Vector3.Distance(transform.position, spawnPoint.position) >= minDistance && playerDeathNumber == playerNumber)
+            if(playerDeathNumber == 0)
             {
-                transform.position += transform.forward * deathMoveSpeed * Time.deltaTime;
-                transform.Translate(transform.position - spawnPoint.position, Space.World);
-            }
-            else
-            {
-                playerRenderer.enabled = true;
+                transform.position = spawnPoint.transform.position;
                 deathHappened = false;
-            }*/
+                StartCoroutine(WaitForRenderer());
+            
+            }
+
+            else if (playerDeathNumber == 1)
+            {
+                transform.position = spawnPoint.transform.position;
+                deathHappened = false;
+                StartCoroutine(WaitForRenderer());
+
+            }
         }
     }  
 }
