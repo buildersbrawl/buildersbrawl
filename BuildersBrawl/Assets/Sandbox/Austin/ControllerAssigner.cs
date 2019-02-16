@@ -10,7 +10,7 @@ public class ControllerAssigner : MonoBehaviour
 
     public int maxPlayers = 2;
 
-    private List<PlayerMap> playerMap;
+    /*private List<PlayerMap> playerMap;
 
     private int gamePlayerIdCounter = 0;
 
@@ -84,7 +84,7 @@ public class ControllerAssigner : MonoBehaviour
         int gamePlayerId = GetNextPlayerId();
 
         //set rewired player to next game player slot
-        playerMap.Add(new PlayerMap(rewiredPlayerId, gamePlayerId));
+        //playerMap.Add(new PlayerMap(rewiredPlayerId, gamePlayerId));
 
         Player rewiredPlayer = ReInput.players.GetPlayer(rewiredPlayerId);
 
@@ -139,5 +139,5 @@ public class ControllerAssigner : MonoBehaviour
             this.rewiredPlayerId = rewiredPlayerID;
             this.gamePlayerId = gamePlayerID;
         }
-    }
+    }*/
 }

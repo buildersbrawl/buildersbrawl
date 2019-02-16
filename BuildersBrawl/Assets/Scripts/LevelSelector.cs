@@ -122,6 +122,7 @@ public class LevelSelector : MonoBehaviour
     {//Opens level based on which level was chosen in ChooseLevel
         level = chosenLevel;
         Debug.Log(level);
+        InputManager.isUsingUI = false;
         SceneManager.LoadScene(level);
     }
 

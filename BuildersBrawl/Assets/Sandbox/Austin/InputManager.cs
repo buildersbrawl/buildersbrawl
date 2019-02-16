@@ -31,14 +31,14 @@ public class InputManager : MonoBehaviour
     public bool moveUIRight = false;
     public bool moveUIDown = false;
 
-    public bool isUsingUI = true;
+    public static bool isUsingUI = true;
     public bool isMovingUI = false;
 
     private Scene currentScene;
     private string sceneName = "";
     public bool controllerSelected = false;
 
-    private Rewired.Player player { get { return ControllerAssigner.GetRewiredPlayer(gamePlayerId); } }
+    private Rewired.Player player { get { return PlayerSelect.GetRewiredPlayer(gamePlayerId); } }
 
     void Start()
     {
@@ -59,7 +59,7 @@ public class InputManager : MonoBehaviour
             return;
 
         GetInput();
-        ProcessInput();
+        //ProcessInput();
 
         //Debug.Log(controllerSelected);
     }
@@ -72,17 +72,8 @@ public class InputManager : MonoBehaviour
         //player = ReInput.players.GetPlayer(playerID);
         //Debug.Log("Using UI in GETINPUT() "+ isUsingUI);
 
-        if (isUsingUI && controllerSelected == false)
+        /*if (isUsingUI)
         {
-            
-            
-            
-            //player.controllers.maps.LoadMap(ControllerType.Joystick, 1, 0, 1, true);
-
-            //if (sceneName == "ControllerSelectScreen")
-            //{
-
-
                 controllerSelected = player.GetButtonDown("Submit");
                 moveUIDown = player.GetButtonDown("UIDown");
                 moveUILeft = player.GetButtonDown("UILeft");
@@ -94,9 +85,9 @@ public class InputManager : MonoBehaviour
                 moveVector.y = 0f;
                 if (moveVector != Vector3.zero)
                     isMovingUI = true;
-            //}
-        }
-        else if(controllerSelected)
+            
+        }*/
+        if(!isUsingUI)
         {
             
             

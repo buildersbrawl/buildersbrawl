@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Rewired;
 
 public class PlayerSelect : MonoBehaviour
 {
@@ -23,6 +24,37 @@ public class PlayerSelect : MonoBehaviour
     public bool playerOneSelected;
     public bool playerTwoSelected;
     public bool bothPlayersReady;
+
+    //variables for assigning controller
+    public int maxPlayers = 2;
+    private List<PlayerMap> playerMap;
+    private int gamePlayerIdCounter = 0;
+    public InputManager inputManagerInstance;
+    public bool controllerSelected = false;
+    public int playerCounter = 0;
+
+    public static Rewired.Player GetRewiredPlayer(int gamePlayerId)
+    {
+        if (!Rewired.ReInput.isReady)
+            return null;
+        if (PS == null)
+        {
+            Debug.Log("Not initialized");
+            return null;
+        }
+
+        for (int i = 0; i < PS.playerMap.Count; i++)
+        {
+            if (PS.playerMap[i].gamePlayerId == gamePlayerId)
+                return ReInput.players.GetPlayer(PS.playerMap[i].rewiredPlayerId);
+        }
+        return null;
+    }
+
+    void Awake()
+    {
+        playerMap = new List<PlayerMap>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +78,29 @@ public class PlayerSelect : MonoBehaviour
 
         LevelStartBtn.interactable = false;
         LevelStartBtnText.text = "Waiting for Players...";
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        for (int i = 0; i < ReInput.players.playerCount; i++)
+        {
+            
+            Debug.Log(i);
+            if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
+            {
+                playerCounter++;
+                //Debug.Log(playerCounter);
+                AssignNextPlayer(i);
+
+                //change ui to reflect a controller being selected
+                if (playerCounter == 1)
+                    SelectPlayerOne();
+                else if (playerCounter == 2)
+                    SelectPlayerTwo();
+            }
+
+        }
     }
 
     public void SelectPlayerOne()
@@ -92,6 +147,57 @@ public class PlayerSelect : MonoBehaviour
             bothPlayersReady = true;
             LevelStartBtnText.text = "Selecting Level...";
             Debug.Log("Both players selected");
+        }
+    }
+
+    //assign a player to a controller and change their joystick to the in game joystick
+    public void AssignNextPlayer(int rewiredPlayerId)
+    {
+        if (playerCounter != 1)
+        {
+            rewiredPlayerId = 1;
+        }
+
+        //controllerSelected = true;
+        Debug.Log("rewiredPlayerId = " + rewiredPlayerId);
+
+        if (playerMap.Count >= maxPlayers)
+        {
+            Debug.Log("Max players");
+            return;
+        }
+
+        int gamePlayerId = GetNextPlayerId();
+
+        //set rewired player to next game player slot
+        playerMap.Add(new PlayerMap(rewiredPlayerId, gamePlayerId));
+
+        //Players.AssignControllerNumber(rewiredPlayerId, gamePlayerId);
+
+        Player rewiredPlayer = ReInput.players.GetPlayer(rewiredPlayerId);
+
+        Debug.Log("Added Rewired Player id " + rewiredPlayerId + " to game player " + gamePlayerId);
+
+        Debug.Log("rewiredPlayerId" + rewiredPlayerId);
+
+    }
+
+    //increment the playercounter
+    public int GetNextPlayerId()
+    {
+        return gamePlayerIdCounter++;
+    }
+
+    //class to map the rewired player id to game player id
+    public class PlayerMap
+    {
+        public int rewiredPlayerId;
+        public int gamePlayerId;
+
+        public PlayerMap(int rewiredPlayerID, int gamePlayerID)
+        {
+            this.rewiredPlayerId = rewiredPlayerID;
+            this.gamePlayerId = gamePlayerID;
         }
     }
 }
