@@ -146,7 +146,7 @@ public class PlayerActions : MonoBehaviour
 
     private void PickUpPlankAction()
     {
-        print("Try PickUpBoard action");
+        //print("Try PickUpBoard action");
 
         //check to see if board is in front of player
         //boxcast in front of player
@@ -169,6 +169,7 @@ public class PlayerActions : MonoBehaviour
                 //set state of plank
                 //heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.held;
 
+                //PICK UP
                 heldPlank.GetComponent<PlankManager>().PickUpPlank(this.gameObject);
 
                 //make parent
@@ -182,7 +183,7 @@ public class PlayerActions : MonoBehaviour
                 //move up a bit so over players head
                 heldPlank.transform.position = this.gameObject.transform.position + whereBoardHeld + this.gameObject.transform.forward;
 
-                print("player picked up plank");
+                //print("player picked up plank");
 
                 //holdingBoard = true;
 
@@ -206,7 +207,7 @@ public class PlayerActions : MonoBehaviour
 
     private void PlacingPlankAction()
     {
-        print("placing board action");
+        //print("placing board action");
 
         //if player holding a board
         if(heldPlank != null)

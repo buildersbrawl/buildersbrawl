@@ -38,21 +38,27 @@ public class SnapTest2 : MonoBehaviour
         GameObject snappableNode;
         GameObject closestNode;
 
-        if (other.tag.Equals("Plank") && other.gameObject.GetComponent<PlankManager>().plankState.Equals(PlankManager.PlankState.beingplaced))
+        if (other.gameObject.GetComponent<PlayerController>() != null || (other.gameObject.transform.parent != null && other.gameObject.transform.parent.GetComponent<PlayerController>() != null) || this.gameObject.GetComponent<PlankManager>().plankState == PlankManager.PlankState.placed) //make sure to ignore if this plank is already placed
         {
-            print("FIRE BITVH");
+            //ignore players, player children and if this is a placed plank
+            print("ignoring");
+        }
+        else if (other.tag.Equals("Plank") && other.gameObject.GetComponent<PlankManager>().plankState.Equals(PlankManager.PlankState.placed))
+        {
             print("I am " + this.gameObject.name);
-            player = other.GetComponent<SnapTest2>().player;
-            other.gameObject.GetComponent<SnapTest2>().gravity = false;
-            snappableNode = FindClosestEndNode(other.gameObject);
-            closestNode = FindClosestSnapLoc(snappableNode);
+            print("triggered by " + other.gameObject.name);
+            //other.GetComponent<SnapTest2>().player = player;
+            GravitySwitch(false);
+            snappableNode = FindClosestEndNode(gameObject);
+            closestNode = FindClosestSnapLoc(snappableNode, other.gameObject);
             SnapNodes(snappableNode, closestNode);
 
-            other.gameObject.GetComponent<PlankManager>().PlacePlank();
+            gameObject.GetComponent<PlankManager>().PlacePlank();
         }
         else
         {
-            GetComponent<PlankManager>().DropPlank();
+            print("dropped becasuse hit not placed plank: " + other.gameObject.name);
+            gameObject.GetComponent<PlankManager>().DropPlank();
         }
     }
 
@@ -109,20 +115,20 @@ public class SnapTest2 : MonoBehaviour
         }
     }
 
-    private GameObject FindClosestSnapLoc(GameObject snappableNode)
+    private GameObject FindClosestSnapLoc(GameObject snappableNode, GameObject placedPlank)
     {
-        GameObject closestNode = nodes[0];
+        GameObject closestNode = placedPlank.GetComponent<SnapTest2>().nodes[0];
         float smallestDistance = 200f;
         
-        for (int i = 0; i < nodes.Length; i++)
+        for (int i = 0; i < placedPlank.GetComponent<SnapTest2>().nodes.Length; i++)
         {
             float distance = Vector3.Distance(snappableNode.transform.position,
-                nodes[i].transform.position);
+                placedPlank.GetComponent<SnapTest2>().nodes[i].transform.position);
 
             if (distance < smallestDistance)
             {
                 smallestDistance = distance;
-                closestNode = nodes[i];
+                closestNode = placedPlank.GetComponent<SnapTest2>().nodes[i];
             }
         }
 

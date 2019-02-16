@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class PlankManager : MonoBehaviour
 {
+
+    //when a placing plank hits a non-plank or a plank that is not placed
+    //make it drop
+    //when a placing plank hits a placed plank
+    //make it snap and place it
+
+
     //defulat is droppng
     public enum PlankState
     {
@@ -61,6 +68,8 @@ public class PlankManager : MonoBehaviour
 
     public void PlacingPlank()
     {
+        print(this.gameObject + " Placing");
+
         //don't let plank hit players
         SetToNotHitPlayers();
 
@@ -88,7 +97,7 @@ public class PlankManager : MonoBehaviour
 
     public void PickUpPlank(GameObject playerRef)
     {
-
+        print(this.gameObject + " Picked Up");
         //pick it up (done by player)
 
         //tell plank what player to look at
@@ -116,11 +125,15 @@ public class PlankManager : MonoBehaviour
 
     public void DropPlank()
     {
+        print(this.gameObject + " Dropped");
         //turn on collider
         this.gameObject.GetComponent<Collider>().enabled = true;
 
+        //not trigger
+        this.gameObject.GetComponent<Collider>().isTrigger = false;
+
         //turn off artificial gravity
-        //snapRef.TurnOffGravity
+        snapRef.GravitySwitch(false);
 
         //make hitable by players
         SetToHitPlayers();
@@ -139,6 +152,8 @@ public class PlankManager : MonoBehaviour
 
     public void PlacePlank()
     {
+        print(this.gameObject + "Placed");
+
         /*
         //get rid of rigidbody
         if (this.gameObject.GetComponent<Rigidbody>() != null)
@@ -168,6 +183,7 @@ public class PlankManager : MonoBehaviour
         if(GameManager.S != null && GameManager.S.player1 != null & GameManager.S.player2 != null)
         {
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<Collider>(), true);
+            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player2.GetComponent<Collider>(), true);
         }
         else
         {
@@ -180,6 +196,7 @@ public class PlankManager : MonoBehaviour
         if (GameManager.S != null && GameManager.S.player1 != null & GameManager.S.player2 != null)
         {
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<Collider>(), false);
+            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player2.GetComponent<Collider>(), false);
         }
         else
         {

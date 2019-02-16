@@ -319,12 +319,12 @@ PrefabInstance:
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.4
+      value: 0.483
       objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 3.21
+      value: -0.33
       objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -376,6 +376,11 @@ PrefabInstance:
       propertyPath: plankState
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813297, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 702ad6d0563dc674dae7bbb92e7731ed, type: 2}
     - target: {fileID: 34944575546813296, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_IsTrigger
@@ -778,7 +783,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f20862225707034ab7981ed10d800b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plankState: 0
+  plankState: 3
 --- !u!1001 &1509398199
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -856,6 +861,11 @@ PrefabInstance:
       propertyPath: fallSpeed
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813297, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e346b762267c7914ab0476ee7130c148, type: 2}
     - target: {fileID: 34944575546813296, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_IsTrigger
@@ -935,11 +945,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: inputType
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: startCube
@@ -950,36 +955,6 @@ PrefabInstance:
       propertyPath: endCube
       value: 
       objectReference: {fileID: 1955596956}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: boxCasthalfSize.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: boxCasthalfSize.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: boxCasthalfSize.z
-      value: 0.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: testCubes
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: boxCastMaxDistance
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: throwBoardOnDrop
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976d66702bbc334d9a158045b06242f, type: 3}
 --- !u!1001 &1753580054

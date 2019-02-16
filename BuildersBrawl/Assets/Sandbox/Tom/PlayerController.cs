@@ -257,7 +257,7 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.Q))
             {
-                //print("hit e");
+                //print("hit q");
                 dropPlankControl = true;
             }
             else
@@ -316,6 +316,14 @@ public class PlayerController : MonoBehaviour
             else
             {
                 YPickOrPlace = false;
+            }
+            if (Input.GetKey(KeyCode.Keypad2))
+            {
+                dropPlankControl = true;
+            }
+            else
+            {
+                dropPlankControl = false;
             }
 
         }
@@ -495,6 +503,8 @@ public class PlayerController : MonoBehaviour
         joyInput = Vector3.zero;
     }
 
+
+    //TODO: add more raycasts for accuracy
     public bool IsPlayerGrounded()
     {
         //raycast down short distance, if hits anything grounded
