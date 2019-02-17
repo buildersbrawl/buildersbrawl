@@ -33,6 +33,8 @@ public class PlayerSelect : MonoBehaviour
     public bool controllerSelected = false;
     public int playerCounter = 0;
 
+    public LevelSelector ls;
+
     public static Rewired.Player GetRewiredPlayer(int gamePlayerId)
     {
         if (!Rewired.ReInput.isReady)
@@ -91,14 +93,17 @@ public class PlayerSelect : MonoBehaviour
             if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
             {
                 playerCounter++;
-                //Debug.Log(playerCounter);
-                AssignNextPlayer(i);
 
                 //change ui to reflect a controller being selected
                 if (playerCounter == 1)
                     SelectPlayerOne();
                 else if (playerCounter == 2)
                     SelectPlayerTwo();
+
+                //Debug.Log(playerCounter);
+                AssignNextPlayer(i);
+
+                
             }
 
         }
@@ -188,7 +193,7 @@ public class PlayerSelect : MonoBehaviour
 
         Debug.Log("Added Rewired Player id " + rewiredPlayerId + " to game player " + gamePlayerId);
 
-        Debug.Log("rewiredPlayerId" + rewiredPlayerId);
+        //Debug.Log("rewiredPlayerId" + rewiredPlayerId);
 
     }
 

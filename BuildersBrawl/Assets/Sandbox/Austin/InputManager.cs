@@ -40,8 +40,11 @@ public class InputManager : MonoBehaviour
 
     private Rewired.Player player { get { return PlayerSelect.GetRewiredPlayer(gamePlayerId); } }
 
+
     void Start()
     {
+
+        
 
         /*currentScene = SceneManager.GetActiveScene();
         sceneName = currentScene.name;
@@ -59,7 +62,7 @@ public class InputManager : MonoBehaviour
             return;
 
         GetInput();
-        //ProcessInput();
+        ProcessInput();
 
         //Debug.Log(controllerSelected);
     }
@@ -89,10 +92,7 @@ public class InputManager : MonoBehaviour
         }*/
         if(!isUsingUI)
         {
-            
-            
-            
-            
+          
             Debug.Log("INPUT FOR GAME");
             //input for left stick
             moveVector.x = player.GetAxis("Move Horizontal");

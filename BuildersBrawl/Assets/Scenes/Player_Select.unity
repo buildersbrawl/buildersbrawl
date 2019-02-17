@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.5748172, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -555,7 +555,7 @@ MonoBehaviour:
   cancelActionId: -1
   m_HorizontalAxis: UIHorizontal
   m_VerticalAxis: UIVertical
-  m_SubmitButton: UISubmit
+  m_SubmitButton: Submit
   m_CancelButton: UICancel
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0
@@ -844,7 +844,7 @@ MonoBehaviour:
   show: 0
   chosenShown: 0
   levelNames:
-  - A
+  - lvl2_river_build_2
   chosenLevel: 
   waitTime: 0
   maxWaitTime: 1
@@ -972,6 +972,7 @@ MonoBehaviour:
   inputManagerInstance: {fileID: 0}
   controllerSelected: 0
   playerCounter: 0
+  ls: {fileID: 0}
 --- !u!4 &870890347
 Transform:
   m_ObjectHideFlags: 0
