@@ -260,6 +260,10 @@ public class PlayerActions : MonoBehaviour
     {
         print("board slam action");
 
+        if(heldPlank == null)
+        {
+            return;
+        }
         //turn on player collider detection
         heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
         //if hit opponent player

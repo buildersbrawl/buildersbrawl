@@ -7,6 +7,10 @@ using Rewired;
 public class PlayerSelect : MonoBehaviour
 {
 
+    //players
+    public int p1Controller;
+    public int p2Controller;
+
     public static PlayerSelect PS;
 
     //Text before the players are selected
@@ -62,6 +66,9 @@ public class PlayerSelect : MonoBehaviour
     void Start()
     {
         PS = this;
+
+        //don't destory when going to next scene
+        DontDestroyOnLoad(this.gameObject);
 
         //Shows that none of the players are selected
         playerOneSelected = false;
@@ -162,10 +169,12 @@ public class PlayerSelect : MonoBehaviour
         if (playerCounter == 2)
         {
             rewiredPlayerId = 1;
+            p1Controller = rewiredPlayerId;
         }
         else if (playerCounter == 1)
         {
             rewiredPlayerId = 0;
+            p2Controller = rewiredPlayerId;
         }
         else
         {

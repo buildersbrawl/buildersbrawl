@@ -134,6 +134,7 @@ public class PlayerController : MonoBehaviour
             gameInputManager = this.gameObject.AddComponent<GameInputManager>();
         }
 
+
         //get move cont
         if (this.gameObject.GetComponent<PlayerMovement>() != null)
         {

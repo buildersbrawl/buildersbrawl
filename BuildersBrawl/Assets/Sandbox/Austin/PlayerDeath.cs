@@ -57,9 +57,10 @@ public class PlayerDeath : MonoBehaviour
 
         if(deathHappened)
         {
+            print("death happened");
             if(playerDeathNumber == 0)
             {
-                transform.position = spawnPoint.transform.position;
+                this.gameObject.transform.position = spawnPoint.transform.position;
                 deathHappened = false;
                 StartCoroutine(WaitForRenderer());
             
@@ -67,7 +68,7 @@ public class PlayerDeath : MonoBehaviour
 
             else if (playerDeathNumber == 1)
             {
-                transform.position = spawnPoint.transform.position;
+                this.gameObject.transform.position = spawnPoint.transform.position;
                 deathHappened = false;
                 StartCoroutine(WaitForRenderer());
 
