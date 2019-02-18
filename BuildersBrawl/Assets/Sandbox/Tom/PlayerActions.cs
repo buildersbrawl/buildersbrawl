@@ -56,6 +56,7 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
+    private bool omitCooldown = false;
 
     //------------------------------------------------------------------------------------------------------
 
@@ -116,14 +117,22 @@ public class PlayerActions : MonoBehaviour
     {
         //print("PreAction");
         playerController.playerState = PlayerController.PlayerState.action;
-
+        omitCooldown = false;
         //stop outside movement? Weird movement caused by it subtracting last frames movement constatntly?
     }
 
     private void PostAction()
     {
+        if (omitCooldown)
+        {
+            playerController.playerState = PlayerController.PlayerState.defaultMovement;
+        }
+        else
+        {
+            StartCoroutine(playerController.ReturnPlayerStateToMoving(actionCooldown));
+        }
         //print("PostAction");
-        StartCoroutine(playerController.ReturnPlayerStateToMoving(actionCooldown));
+        
     }
 
 
@@ -157,6 +166,9 @@ public class PlayerActions : MonoBehaviour
         //boxcast (is an array)
         boxHitInfo = Physics.BoxCastAll(this.transform.position + boxCastOffset, boxCasthalfSize, playerForward, playerRotation, boxCastMaxDistance);
 
+        //cooldown not happening until proven otherwise
+        omitCooldown = true;
+
         //go through array looking for plank
         for (int index = 0; index < boxHitInfo.Length; index++)
         {
@@ -164,34 +176,25 @@ public class PlayerActions : MonoBehaviour
             //if hit plank, and plank is dropped
             if (boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>() != null && boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>().plankState == PlankManager.PlankState.dropped) 
             {
-                heldPlank = boxHitInfo[index].collider.gameObject;
+                PickUpPlank(boxHitInfo[index].collider.gameObject);
 
-                //set state of plank
-                //heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.held;
-
-                //PICK UP
-                heldPlank.GetComponent<PlankManager>().PickUpPlank(this.gameObject);
-
-                //make parent
-                heldPlank.transform.parent = this.gameObject.transform;
-
-                //rotate it so facing correct direction
-                heldPlank.transform.rotation = this.gameObject.transform.rotation;
-                //add 90 degrees to rotation
-                heldPlank.transform.Rotate(new Vector3(0, 90, 0));
-
-                //move up a bit so over players head
-                heldPlank.transform.position = this.gameObject.transform.position + whereBoardHeld + this.gameObject.transform.forward;
-
-                //print("player picked up plank");
-
-                //holdingBoard = true;
-
-                //stop looking for other hit boards
+                //stop looking for other hit boards (stop for loop)
                 index = boxHitInfo.Length;
             }
 
             //if hits board maker, make board, pick up board
+
+            else if(boxHitInfo[index].collider.gameObject.GetComponent<PlankPile>() != null)
+            {
+                //make plank
+                GameObject newPlank = boxHitInfo[index].collider.gameObject.GetComponent<PlankPile>().GeneratePlank(this.gameObject.transform.position, this.gameObject.transform.rotation);
+
+                //pivk it up
+                PickUpPlank(newPlank);
+
+                //stop looking (stop for loop)
+                index = boxHitInfo.Length;
+            }
 
             //----------------------------------
 
@@ -202,6 +205,32 @@ public class PlayerActions : MonoBehaviour
         {
             TestBoxCast(startCube, endCube);
         }
+
+    }
+
+    private void PickUpPlank(GameObject plank)
+    {
+        //cooldown is occuring
+        omitCooldown = false;
+
+        heldPlank = plank;
+
+        //set state of plank
+        //heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.held;
+
+        //PICK UP
+        heldPlank.GetComponent<PlankManager>().PickUpPlank(this.gameObject);
+
+        //make parent
+        heldPlank.transform.parent = this.gameObject.transform;
+
+        //rotate it so facing correct direction
+        heldPlank.transform.rotation = this.gameObject.transform.rotation;
+        //add 90 degrees to rotation
+        heldPlank.transform.Rotate(new Vector3(0, 90, 0));
+
+        //move up a bit so over players head
+        heldPlank.transform.position = this.gameObject.transform.position + whereBoardHeld + this.gameObject.transform.forward;
 
     }
 

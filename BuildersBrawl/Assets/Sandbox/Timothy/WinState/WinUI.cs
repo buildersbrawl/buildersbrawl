@@ -9,14 +9,9 @@ public class WinUI : MonoBehaviour
     public string sceneToRestart;
     public Text winText;
 
-    private void Start()
+    private void SetWinText(string playerName)
     {
-        SetWinText();
-    }
-
-    private void SetWinText()
-    {
-        winText.text = PlayerWinData.winningPlayer + " Wins!";
+        winText.text = playerName + " Wins!";
     }
 
     public void Restart()

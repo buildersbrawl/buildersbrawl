@@ -49,6 +49,7 @@ public class GameInputManager : MonoBehaviour
         if(player == null)
         {
             print("Input isn't set up, start in controller select");
+            return;
         }
         print("Player is " + player.id);
 

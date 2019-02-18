@@ -42,11 +42,17 @@ public class PlayerController : MonoBehaviour
     //Char cont reference
     CharacterController charContRef;
 
+    [HideInInspector]
     //player actions ref
-    PlayerActions playerActions;
+    public PlayerActions playerActions;
 
+    [HideInInspector]
     //player move ref
-    PlayerMovement playerMovement;
+    public PlayerMovement playerMovement;
+
+    [HideInInspector]
+    //player death ref
+    public PlayerDeath playerDeath;
 
     //determines player movement
     private Vector3 moveVector;
@@ -157,8 +163,18 @@ public class PlayerController : MonoBehaviour
         }
         playerActions.InitAct(this);
 
+        //get action cont
+        if (this.gameObject.GetComponent<PlayerDeath>() != null)
+        {
+            playerDeath = this.gameObject.GetComponent<PlayerDeath>();
+        }
+        else
+        {
+            playerDeath = this.gameObject.AddComponent<PlayerDeath>();
+        }
+
         //camera
-        if(cameraRef == null)
+        if (cameraRef == null)
         {
             cameraRef = GameObject.FindObjectOfType<CameraController>();
         }
@@ -173,31 +189,31 @@ public class PlayerController : MonoBehaviour
     //unsteady frames for input
     private void Update()
     {
-        if (inputType == InputType.keyboard)
-        {
-            KeyboardInput();
-        }
-        else if(inputType == InputType.controller)
-        {
-            ControllerInput();
-        }
+            if (inputType == InputType.keyboard)
+            {
+                KeyboardInput();
+            }
+            else if (inputType == InputType.controller)
+            {
+                ControllerInput();
+            }
 
-        if (cameraRef != null)
-        {
-            if (cameraRef.cameraOptions == CameraController.CameraOptions.side)
+            if (cameraRef != null)
             {
-                joyInput = ConvertJoystickInputToSide(joyInput);
+                if (cameraRef.cameraOptions == CameraController.CameraOptions.side)
+                {
+                    joyInput = ConvertJoystickInputToSide(joyInput);
+                }
+                else if (cameraRef.cameraOptions == CameraController.CameraOptions.front)
+                {
+                    joyInput = ConvertJoystickInputToFront(joyInput);
+                }
+                else if (cameraRef.cameraOptions == CameraController.CameraOptions.fortyFiveDegrees)
+                {
+                    joyInput = ConvertJoystickInput45Degrees(joyInput);
+                }
             }
-            else if (cameraRef.cameraOptions == CameraController.CameraOptions.front)
-            {
-                joyInput = ConvertJoystickInputToFront(joyInput);
-            }
-            else if (cameraRef.cameraOptions == CameraController.CameraOptions.fortyFiveDegrees)
-            {
-                joyInput = ConvertJoystickInput45Degrees(joyInput);
-            }
-        }
-
+        
     }
 
     //keyboard input
@@ -370,9 +386,25 @@ public class PlayerController : MonoBehaviour
     //steady frames for physics and movement
     public void FixedUpdate()
     {
+        //if player dead stop control
+        if (playerDeath.playerDead)
+        {
+            moveVector = Vector3.zero;
+            playerMovement.PlayerMomentum = Vector3.zero;
+            playerMovement.reversePlayerMovementFromJoysticks = Vector3.zero;
+            return;
+        }
 
-        //check to see if just hit the ground from jumping
-        if (playerGrounded && playerState == PlayerState.jumping)
+        //temp
+        //if someone won then if "a" hit restart
+        if (GameManager.S.someoneWon && AJump)
+        {
+            GameManager.S.RestartGame();
+        }
+
+
+            //check to see if just hit the ground from jumping
+            if (playerGrounded && playerState == PlayerState.jumping)
         {
             //start jump cooldown
             StartCoroutine(ReturnPlayerStateToMoving(playerMovement.postJumpCooldown));
@@ -381,8 +413,8 @@ public class PlayerController : MonoBehaviour
         //if not doing something else and grounded a will activate jump
         if (playerState != PlayerState.action && playerState != PlayerState.jumping && playerState != PlayerState.cooldown && playerState != PlayerState.holdingPlank && playerGrounded)
         {
-            //a jump
-            moveVector += playerMovement.Jump(AJump);
+            //a jump                                        //true if holding plank
+            moveVector += playerMovement.Jump(AJump, playerActions.HeldPlank != null);
         }
 
         //print("After jump state is " + playerState);
@@ -509,11 +541,21 @@ public class PlayerController : MonoBehaviour
 
     public bool IsPlayerGrounded()
     {
+        RaycastHit groundInfo;
+
         //raycast down short distance, if hits anything grounded
         //Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, groundCheckDistance);
-        if(Physics.Raycast(this.gameObject.transform.position, Vector3.down, groundCheckDistance))
+        if(Physics.Raycast(this.gameObject.transform.position, Vector3.down, out groundInfo, groundCheckDistance)) //out groundInfo
         {
-            return true;
+            //if didn't hit trigger
+            if (!groundInfo.collider.isTrigger)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
         else
         {
@@ -614,3 +656,4 @@ public class PlayerController : MonoBehaviour
     }
 
 }
+

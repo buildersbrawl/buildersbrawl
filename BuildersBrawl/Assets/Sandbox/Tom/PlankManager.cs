@@ -161,7 +161,11 @@ public class PlankManager : MonoBehaviour
             Destroy(this.gameObject.GetComponent<Rigidbody>());
         }
         */
-        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        if(this.gameObject.GetComponent<Rigidbody>() != null)
+        {
+            this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+        }
+        
 
         this.gameObject.GetComponent<Collider>().isTrigger = false;
 

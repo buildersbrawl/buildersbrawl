@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -8,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject player1;
     public GameObject player2;
+
+    public bool someoneWon = false;
 
     private void Awake()
     {
@@ -37,4 +40,11 @@ public class GameManager : MonoBehaviour
         
 
     }
+
+    public void RestartGame()
+    {
+        someoneWon = false;
+        SceneManager.LoadScene("Main_Menu");
+    }
+
 }

@@ -25,6 +25,14 @@ public class PlayerMovement : MonoBehaviour
     private Vector3 gravityVector;
 
     private Vector3 playerMomentum;
+    public Vector3 PlayerMomentum
+    {
+        set
+        {
+            playerMomentum = value;
+        }
+    }
+
 
     public Vector3 reversePlayerMovementFromJoysticks;
 
@@ -63,9 +71,10 @@ public class PlayerMovement : MonoBehaviour
         return playerFinalDirection;
     }
 
-    public Vector3 Jump(bool buttonPressed)
+    public Vector3 Jump(bool buttonPressed, bool holdingPlank)
     {
-        if (buttonPressed)
+        //if button pressed and not holding plank
+        if (buttonPressed && !holdingPlank)
         {
             //print("Jump button pressed");
 

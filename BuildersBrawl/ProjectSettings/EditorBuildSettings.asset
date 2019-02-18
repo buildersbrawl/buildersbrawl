@@ -9,38 +9,14 @@ EditorBuildSettings:
     path: 
     guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Sandbox/Austin/ControllerSelectScreen.unity
-    guid: 2e964cb17cf9a1744afa2121a9d37ef2
-  - enabled: 1
-    path: Assets/Sandbox/Austin/AustinTestScene1.unity
-    guid: 1801ab478aaec644fb514fcf36f0b21a
-  - enabled: 1
     path: Assets/Scenes/Main_Menu.unity
     guid: e868bc57f0740df479a714242fa694c9
   - enabled: 1
+    path: Assets/Sandbox/Austin/ControllerSelectScreen.unity
+    guid: 2e964cb17cf9a1744afa2121a9d37ef2
+  - enabled: 1
     path: Assets/Scenes/Player_Select.unity
     guid: eabe07b9e9d2c4443bb92202be1cc164
-  - enabled: 1
-    path: Assets/Sandbox/Kendrick/TestScenes/A.unity
-    guid: a31770f17aa4489449cea1bfb465c6ad
-  - enabled: 1
-    path: Assets/Sandbox/Kendrick/TestScenes/B.unity
-    guid: 42964a7a5cec24f4f9ccd2ffe3787b78
-  - enabled: 1
-    path: Assets/Sandbox/Kendrick/TestScenes/C.unity
-    guid: 0749d8304a076f6428e9161ba73ff38a
-  - enabled: 1
-    path: Assets/Sandbox/Kendrick/TestScenes/D.unity
-    guid: 4f86791083409c245bde990e2f061740
-  - enabled: 1
-    path: Assets/Sandbox/Kendrick/TestScenes/E.unity
-    guid: aeaa0c923058b414db3d98cdc4547445
-  - enabled: 1
-    path: Assets/Sandbox/Timothy/WinState/winstateDemo.unity
-    guid: aa4b25f52019a2e4cbd6bfbf48d1102d
-  - enabled: 1
-    path: Assets/Sandbox/Timothy/WinState/WinScreen.unity
-    guid: bfa283a19c85ebf449bbce6cea76a5ff
   - enabled: 1
     path: Assets/Scenes/Build2/River_TestingBuild.unity
     guid: 4230cb6bf2e61cd4aa2a8f9a2727f8c8

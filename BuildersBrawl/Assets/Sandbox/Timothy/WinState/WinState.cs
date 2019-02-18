@@ -2,16 +2,40 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class WinState : MonoBehaviour
 {
+    string playerWhoWon;
+
+    public GameObject winUI;
+
+    private void Awake()
+    {
+        Init();
+    }
+
+    public void Init()
+    {
+        if(winUI == null)
+        {
+            print("no reference to winUI");
+        }
+        winUI.SetActive(false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag.Equals("Player"))
+        if (other.gameObject.GetComponent<PlayerController>() != null)
         {
-            PlayerWinData.winningPlayer = other.gameObject.name;
+            playerWhoWon = other.gameObject.name;
 
-            SceneManager.LoadScene("WinScreen");
+            //turn on win UI
+            winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit A to Restart";
+            winUI.SetActive(true);
+
+            //make ability to move to MM available
+            GameManager.S.someoneWon = true;
         }
     }
 }

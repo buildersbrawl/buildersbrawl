@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerDeath : MonoBehaviour
 {
+    /*
     public int playerNumber = 0;
     private int playerDeathNumber = -1;
     public Transform spawnPoint;
-    private Renderer playerRenderer;
+    
     public float deathMoveSpeed = 10f;
     private Transform target;
     public static bool deathHappened = false;
@@ -19,18 +20,44 @@ public class PlayerDeath : MonoBehaviour
     public float gravity;
     public Vector3 moveForward;
     public float waitTime = 5f;
+    */
+
+    private Renderer playerRenderer;
+    public Transform spawnPoint;
+    public float respawnTime = 5f;
+
+    [HideInInspector]
+    public bool playerDead;
 
     // Start is called before the first frame update
     void Start()
     {
         playerRenderer = this.GetComponent<Renderer>();
-        
-            
+
+        playerDead = false;
         //target = Waypoints.points[0];
     }
 
 
+    public void KillMe()
+    {
+        playerRenderer.enabled = false;
+        this.gameObject.transform.position = spawnPoint.transform.position;
+        print(this.gameObject.transform.position + " " + this.gameObject.name);
+        playerDead = true;
+        StartCoroutine(WaitForRenderer());
 
+    }
+
+    IEnumerator WaitForRenderer()
+    {
+        yield return new WaitForSeconds(respawnTime);
+        playerRenderer.enabled = true;
+        playerDead = false;
+        print(this.gameObject.transform.position + " " + this.gameObject.name);
+    }
+
+    /*
     //when it contacts a death object, turn the player's renderer off and allow update() to move the player
     private void OnTriggerEnter(Collider other)
     {
@@ -45,11 +72,7 @@ public class PlayerDeath : MonoBehaviour
 
     }
 
-    IEnumerator WaitForRenderer()
-    {
-        yield return new WaitForSeconds(waitTime);
-        playerRenderer.enabled = true;
-    }
+    
 
     void Update()
     {
@@ -75,4 +98,5 @@ public class PlayerDeath : MonoBehaviour
             }
         }
     }  
+    */
 }
