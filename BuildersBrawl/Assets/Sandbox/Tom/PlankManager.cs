@@ -84,7 +84,6 @@ public class PlankManager : MonoBehaviour
 
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
-
         //unparent
         if (this.gameObject.transform.parent != null)
         {
@@ -172,6 +171,15 @@ public class PlankManager : MonoBehaviour
         //turn off artifical gravity (stop from moving)
         snapRef.GravitySwitch(false);
 
+        //this fixes boards snapping to wrong places
+        //if z mildly rotated make it 0
+        if (this.gameObject.transform.eulerAngles.z != 0)
+        {
+            Vector3 temp;
+            temp = this.gameObject.transform.eulerAngles;
+            temp.z = 0;
+            this.gameObject.transform.eulerAngles = temp;
+        }
 
         //turn on collider
         this.gameObject.GetComponent<Collider>().enabled = true;

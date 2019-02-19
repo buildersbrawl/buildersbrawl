@@ -4590,7 +4590,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9187f19924980cc43a5f57647549850f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plankPrefab: {fileID: 181014790, guid: 4648a00a6f0fc4644926f91cfb3e9b4b, type: 3}
+  plankPrefab: {fileID: 7794223285287323015, guid: 4648a00a6f0fc4644926f91cfb3e9b4b,
+    type: 3}
 --- !u!4 &1409201216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,

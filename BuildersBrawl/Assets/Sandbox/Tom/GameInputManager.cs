@@ -74,7 +74,7 @@ public class GameInputManager : MonoBehaviour
         }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (!ReInput.isReady)
             return;

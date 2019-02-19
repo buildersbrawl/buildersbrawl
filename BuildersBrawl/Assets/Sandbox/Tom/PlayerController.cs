@@ -185,36 +185,6 @@ public class PlayerController : MonoBehaviour
 
     }
 
-    //unsteady frames for input
-    private void Update()
-    {
-            if (inputType == InputType.keyboard)
-            {
-                KeyboardInput();
-            }
-            else if (inputType == InputType.controller)
-            {
-                ControllerInput();
-            }
-
-            if (cameraRef != null)
-            {
-                if (cameraRef.cameraOptions == CameraController.CameraOptions.side)
-                {
-                    joyInput = ConvertJoystickInputToSide(joyInput);
-                }
-                else if (cameraRef.cameraOptions == CameraController.CameraOptions.front)
-                {
-                    joyInput = ConvertJoystickInputToFront(joyInput);
-                }
-                else if (cameraRef.cameraOptions == CameraController.CameraOptions.fortyFiveDegrees)
-                {
-                    joyInput = ConvertJoystickInput45Degrees(joyInput);
-                }
-            }
-        
-    }
-
     //keyboard input
     private void KeyboardInput()
     {
@@ -289,6 +259,15 @@ public class PlayerController : MonoBehaviour
             {
                 XPush = false;
             }
+            if (Input.GetKey(KeyCode.B))
+            {
+                //print("hit q");
+                BCharge = true;
+            }
+            else
+            {
+                BCharge = false;
+            }
 
         }
         else if (playerNumber == PlayerNumber.p2)
@@ -343,11 +322,11 @@ public class PlayerController : MonoBehaviour
             }
             if (Input.GetKey(KeyCode.Keypad2))
             {
-                dropPlankControl = true;
+                BCharge = true;
             }
             else
             {
-                dropPlankControl = false;
+                BCharge = false;
             }
             if (Input.GetKey(KeyCode.Keypad3))
             {
@@ -403,6 +382,37 @@ public class PlayerController : MonoBehaviour
     //steady frames for physics and movement
     public void FixedUpdate()
     {
+
+        //Input fix?
+        ///-------------------------------------------------------------------------------------
+        if (inputType == InputType.keyboard)
+        {
+            KeyboardInput();
+        }
+        else if (inputType == InputType.controller)
+        {
+            ControllerInput();
+        }
+
+        if (cameraRef != null)
+        {
+            if (cameraRef.cameraOptions == CameraController.CameraOptions.side)
+            {
+                joyInput = ConvertJoystickInputToSide(joyInput);
+            }
+            else if (cameraRef.cameraOptions == CameraController.CameraOptions.front)
+            {
+                joyInput = ConvertJoystickInputToFront(joyInput);
+            }
+            else if (cameraRef.cameraOptions == CameraController.CameraOptions.fortyFiveDegrees)
+            {
+                joyInput = ConvertJoystickInput45Degrees(joyInput);
+            }
+        }
+
+        //------------------------------------------------------------------------------------------
+
+
         //if player dead stop control
         if (playerDeath.playerDead)
         {

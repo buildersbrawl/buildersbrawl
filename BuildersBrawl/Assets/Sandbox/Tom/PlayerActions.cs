@@ -253,7 +253,7 @@ public class PlayerActions : MonoBehaviour
         //rotate it so facing correct direction
         heldPlank.transform.rotation = this.gameObject.transform.rotation;
         //add 90 degrees to rotation
-        heldPlank.transform.Rotate(new Vector3(0, 90, 0));
+        heldPlank.transform.Rotate(new Vector3(0, 90, -5));
 
         //move up a bit so over players head
         heldPlank.transform.position = this.gameObject.transform.position + whereBoardHeld + this.gameObject.transform.forward;
