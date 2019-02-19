@@ -397,7 +397,7 @@ public class PlayerController : MonoBehaviour
 
         //temp
         //if someone won then if "a" hit restart
-        if (GameManager.S.someoneWon && AJump)
+        if (GameManager.S.someoneWon && BCharge)
         {
             GameManager.S.RestartGame();
         }

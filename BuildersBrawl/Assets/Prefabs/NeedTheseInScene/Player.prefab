@@ -221,10 +221,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameInputManager: {fileID: 0}
-  inputType: 1
-  playerNumber: 1
+  inputType: 0
+  playerNumber: 0
   cameraRef: {fileID: 0}
   playerState: 0
+  playerActions: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerDeath: {fileID: 0}
   right: 0
   left: 0
   forward: 0
@@ -257,7 +260,7 @@ MonoBehaviour:
   whereBoardHeld: {x: 0, y: 1.5, z: 0}
   throwBoardOnDrop: 0
   boxCastOffset: {x: 0, y: 0, z: 0}
-  boxCasthalfSize: {x: 0.5, y: 0.5, z: 0.1}
+  boxCasthalfSize: {x: 0.5, y: 1.5, z: 0.1}
   boxCastMaxDistance: 1
   testCubes: 0
   startCube: {fileID: 0}
@@ -274,7 +277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971c64850ae8bfa499dba371d4cf9510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2
+  playerSpeed: 3
   slowDownSpeedPercentage: 0.1
   postJumpCooldown: 0.2
   jumpHeight: 7

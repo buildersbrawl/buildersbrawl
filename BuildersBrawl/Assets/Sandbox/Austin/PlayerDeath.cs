@@ -22,6 +22,8 @@ public class PlayerDeath : MonoBehaviour
     public float waitTime = 5f;
     */
 
+    PlayerController playerController;
+
     private Renderer playerRenderer;
     public Transform spawnPoint;
     public float respawnTime = 5f;
@@ -32,6 +34,15 @@ public class PlayerDeath : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(this.gameObject.GetComponent<PlayerController>() != null)
+        {
+            playerController = this.gameObject.GetComponent<PlayerController>();
+        }
+        else
+        {
+            playerController = this.gameObject.AddComponent<PlayerController>();
+        }
+
         playerRenderer = this.GetComponent<Renderer>();
 
         playerDead = false;
@@ -41,6 +52,12 @@ public class PlayerDeath : MonoBehaviour
 
     public void KillMe()
     {
+        //if holding plank drop it
+        if(playerController.playerActions.HeldPlank != null)
+        {
+            playerController.playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
+        }
+
         playerRenderer.enabled = false;
         this.gameObject.transform.position = spawnPoint.transform.position;
         print(this.gameObject.transform.position + " " + this.gameObject.name);
