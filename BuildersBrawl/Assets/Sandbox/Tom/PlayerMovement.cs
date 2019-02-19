@@ -14,27 +14,40 @@ public class PlayerMovement : MonoBehaviour
     Vector3 playerFinalDirection; 
 
     [Header("Jumping Variables")]
-    [Tooltip("Starts when player returns to ground")]
-    public float postJumpCooldown = .2f;
-    //public bool canJump = true;
-
-    public float jumpHeight = 1f;
+    [Tooltip("Starts when player returns to ground (OBSELETE)")]
+    public float postJumpCooldown = .2f; //OBSELETE
+    public float jumpHeight = 7f;
+    public float holdingBoardJumpHeight = 3f;
     private Vector3 jumpVector;
 
+    [Header("Physics")]
     public float gravity = -8f;
     private Vector3 gravityVector;
 
     private Vector3 playerMomentum;
     public Vector3 PlayerMomentum
     {
+        get
+        {
+            return playerMomentum;
+        }
         set
         {
             playerMomentum = value;
         }
     }
 
+    [SerializeField]
+    private float groundDrag = .1f;
+    [SerializeField]
+    private float airDrag = 0f;
 
-    public Vector3 reversePlayerMovementFromJoysticks;
+    //can use to get player momentum
+    private Vector3 reversePlayerMovementFromJoysticks;
+
+
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
     public void InitMove(PlayerController pC)
     {
@@ -54,6 +67,7 @@ public class PlayerMovement : MonoBehaviour
 
             //and add small amount of input direction
             playerFinalDirection += (direction * playerSpeed) * slowDownSpeedPercentage;
+            reversePlayerMovementFromJoysticks = ((direction * playerSpeed) * slowDownSpeedPercentage) * -1;
 
             //TODO: figure out how to stop player from doing accelerated jump
             //clamp magnitude so players cannot accelerate past momentum
@@ -61,30 +75,40 @@ public class PlayerMovement : MonoBehaviour
         }
         else
         {
-            playerFinalDirection = direction * playerSpeed;
+            //keep player momentum 
+            playerFinalDirection = playerMomentum;
+
+            reversePlayerMovementFromJoysticks = (direction * playerSpeed) * -1;
+            playerFinalDirection += direction * playerSpeed;
 
         }
-
-        
-
-            reversePlayerMovementFromJoysticks = (playerFinalDirection * -1);
+            
         return playerFinalDirection;
     }
 
     public Vector3 Jump(bool buttonPressed, bool holdingPlank)
     {
         //if button pressed and not holding plank
-        if (buttonPressed && !holdingPlank)
+        if (buttonPressed)
         {
             //print("Jump button pressed");
 
             //record player momentum
             playerMomentum = playerController.LastFramesMoveVector;
+            print("Momentum is " + playerMomentum);
 
             //change state
             playerController.playerState = PlayerController.PlayerState.jumping;
 
             //jump
+            if (!holdingPlank)
+            {
+                jumpVector = new Vector3(0, jumpHeight, 0);
+            }
+            else
+            {
+                jumpVector = new Vector3(0, holdingBoardJumpHeight, 0);
+            }
             return jumpVector;
         }
         else
@@ -118,6 +142,34 @@ public class PlayerMovement : MonoBehaviour
         {
             return gravityVector;
         }
+    }
+
+    public Vector3 ApplyDrag(Vector3 directionMoving, bool grounded)
+    {
+        if (grounded)
+        {
+            //ground drag
+            //take x and z
+            //reduce them by drag percentage
+            directionMoving.x *= (1 - groundDrag);
+            directionMoving.z *= (1 - groundDrag);
+
+        }
+        else
+        {
+            //airdrag
+            //take x and z
+            //reduce them by drag percentage
+            directionMoving.x *= (1 - airDrag);
+            directionMoving.z *= (1 - airDrag);
+        }
+        return directionMoving;
+    }
+
+    public void ResetMovement()
+    {
+        playerMomentum = Vector3.zero;
+        reversePlayerMovementFromJoysticks = Vector3.zero;
     }
 
 }

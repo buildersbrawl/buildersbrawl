@@ -58,6 +58,9 @@ public class PlayerActions : MonoBehaviour
 
     private bool omitCooldown = false;
 
+    [Header("Push")]
+    public float pushForce = 1f;
+
     //------------------------------------------------------------------------------------------------------
 
     public void InitAct(PlayerController pC)
@@ -126,6 +129,8 @@ public class PlayerActions : MonoBehaviour
         if (omitCooldown)
         {
             playerController.playerState = PlayerController.PlayerState.defaultMovement;
+            //reset
+            omitCooldown = false;
         }
         else
         {
@@ -140,8 +145,25 @@ public class PlayerActions : MonoBehaviour
     {
         print("Push action");
         //make boxcast in front of player
+        SeeWhatIsInFrontOfPlayer();
         //if hits opponent knock back opponent
-        
+        for (int index = 0; index < boxHitInfo.Length; index++)
+        {
+            print("Push hit " + boxHitInfo[index]);
+
+            //look to see if hit player other than self
+            if(boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && boxHitInfo[index].collider.gameObject != this.gameObject)
+            {
+                //"push" that player
+                //get the vector this player is facing      //boxcasting sets player forward
+
+                //push other player
+                boxHitInfo[index].collider.GetComponent<PlayerController>().PushMe(playerForward, pushForce);
+
+                //end loop
+                index = boxHitInfo.Length;
+            }
+        }
     }
 
     private void ChargeAction()
@@ -159,12 +181,9 @@ public class PlayerActions : MonoBehaviour
 
         //check to see if board is in front of player
         //boxcast in front of player
-        playerRotation = this.gameObject.transform.rotation;
-        playerForward = this.transform.forward;
 
-
-        //boxcast (is an array)
-        boxHitInfo = Physics.BoxCastAll(this.transform.position + boxCastOffset, boxCasthalfSize, playerForward, playerRotation, boxCastMaxDistance);
+        //boxcast (makes an array)
+        SeeWhatIsInFrontOfPlayer();
 
         //cooldown not happening until proven otherwise
         omitCooldown = true;
@@ -283,6 +302,9 @@ public class PlayerActions : MonoBehaviour
             //holdingBoard = false;
         }
 
+        //omit cooldown cause not players fault
+        omitCooldown = true;
+
     }
 
     private void BoardSlamAction()
@@ -323,6 +345,13 @@ public class PlayerActions : MonoBehaviour
         //too put in delegate
     }
 
+    //boxcast
+    public void SeeWhatIsInFrontOfPlayer()
+    {
+        playerRotation = this.gameObject.transform.rotation;
+        playerForward = this.gameObject.transform.forward;
 
+        boxHitInfo = Physics.BoxCastAll(this.transform.position + boxCastOffset, boxCasthalfSize, playerForward, playerRotation, boxCastMaxDistance);
+    }
 }
 

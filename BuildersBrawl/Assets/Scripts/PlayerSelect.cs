@@ -6,6 +6,7 @@ using Rewired;
 
 public class PlayerSelect : MonoBehaviour
 {
+    public static PlayerSelect S;
 
     //players
     public int p1Controller;
@@ -39,6 +40,8 @@ public class PlayerSelect : MonoBehaviour
 
     public LevelSelector ls;
 
+    public bool inPlayerSelect = true;
+
     public static Rewired.Player GetRewiredPlayer(int gamePlayerId)
     {
         if (!Rewired.ReInput.isReady)
@@ -59,6 +62,16 @@ public class PlayerSelect : MonoBehaviour
 
     void Awake()
     {
+        //if another one of these get rid of this one
+        if(PlayerSelect.S == null)
+        {
+            S = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+
         playerMap = new List<PlayerMap>();
     }
 
@@ -76,17 +89,20 @@ public class PlayerSelect : MonoBehaviour
         bothPlayersReady = false;
 
         //Displays the text that shows up before the players are selected
-        B4_P1_select.enabled = true;
-        B4_P2_select.enabled = true;
-        B4_P2_select.text = "Waiting for Player 1";
+        if(inPlayerSelect)
+        {
+            B4_P1_select.enabled = true;
+            B4_P2_select.enabled = true;
+            B4_P2_select.text = "Waiting for Player 1";
 
 
-        //Hides the text
-        P1_selected.enabled = false;
-        P2_selected.enabled = false;
+            //Hides the text
+            P1_selected.enabled = false;
+            P2_selected.enabled = false;
 
-        LevelStartBtn.interactable = false;
-        LevelStartBtnText.text = "Waiting for Players...";
+            LevelStartBtn.interactable = false;
+            LevelStartBtnText.text = "Waiting for Players...";
+        }
     }
 
     // Update is called once per frame
@@ -143,22 +159,31 @@ public class PlayerSelect : MonoBehaviour
         //Checks if players one and two have been selected
         if (playerOneSelected)
         {
-            B4_P1_select.enabled = false;
-            P1_selected.enabled = true;
-            B4_P2_select.text = "Press A to be Player 2";
+            if (inPlayerSelect)
+            {
+                B4_P1_select.enabled = false;
+                P1_selected.enabled = true;
+                B4_P2_select.text = "Press A to be Player 2";
+            }
         }
 
         if (playerTwoSelected)
         {
-            B4_P2_select.enabled = false;
-            P2_selected.enabled = true;
+            if (inPlayerSelect)
+            {
+                B4_P2_select.enabled = false;
+                P2_selected.enabled = true;
+            }
         }
 
         //If players one and two were selected, then the bool becomes true
         if (playerOneSelected && playerTwoSelected)
         {
             bothPlayersReady = true;
-            LevelStartBtnText.text = "Selecting Level...";
+            if (inPlayerSelect)
+            {
+                LevelStartBtnText.text = "Selecting Level...";
+            }
             Debug.Log("Both players selected");
         }
     }

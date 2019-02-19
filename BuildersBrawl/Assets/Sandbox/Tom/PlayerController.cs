@@ -67,27 +67,26 @@ public class PlayerController : MonoBehaviour
     }
 
 
-    [Header("For Testing")]
-    public bool right;
-    public bool left;
-    public bool forward;
-    public bool backwards;
-    public bool AJump;
-    public bool BCharge;
-    public bool XPush;
-    public bool YPickOrPlace;
-    public bool dropPlankControl;
-    public bool BumpOrTrigSlam;
+    //[Header("For Testing")]
+    private bool right;
+    private bool left;
+    private bool forward;
+    private bool backwards;
+    private bool AJump;
+    private bool BCharge;
+    private bool XPush;
+    private bool YPickOrPlace;
+    private bool dropPlankControl;
+    private bool BumpOrTrigSlam;
 
-    Vector3 joyInput;
+    private Vector3 joyInput;
 
     [Header("Bounce")]
     public float bounciness = 1f;
     [SerializeField]
     private float collisonCheckLength;
     [Tooltip("The more drag the faster the players excess momentum is stopped. Value between 0-1.")]
-    [SerializeField]
-    private float drag = .2f;
+    
 
     [Header("Grounding")]
 
@@ -281,7 +280,15 @@ public class PlayerController : MonoBehaviour
             {
                 dropPlankControl = false;
             }
-
+            if (Input.GetKey(KeyCode.F))
+            {
+                //print("hit q");
+                XPush = true;
+            }
+            else
+            {
+                XPush = false;
+            }
 
         }
         else if (playerNumber == PlayerNumber.p2)
@@ -342,6 +349,16 @@ public class PlayerController : MonoBehaviour
             {
                 dropPlankControl = false;
             }
+            if (Input.GetKey(KeyCode.Keypad3))
+            {
+                //print("hit q");
+                XPush = true;
+            }
+            else
+            {
+                XPush = false;
+            }
+
 
         }
         else
@@ -390,28 +407,27 @@ public class PlayerController : MonoBehaviour
         if (playerDeath.playerDead)
         {
             moveVector = Vector3.zero;
-            playerMovement.PlayerMomentum = Vector3.zero;
-            playerMovement.reversePlayerMovementFromJoysticks = Vector3.zero;
+            playerMovement.ResetMovement();
             return;
         }
 
         //temp
         //if someone won then if "a" hit restart
-        if (GameManager.S.someoneWon && BCharge)
+        if (GameManager.S != null && GameManager.S.someoneWon && BCharge)
         {
             GameManager.S.RestartGame();
         }
 
 
             //check to see if just hit the ground from jumping
-            if (playerGrounded && playerState == PlayerState.jumping)
+        if (playerGrounded && playerState == PlayerState.jumping)
         {
             //start jump cooldown
             StartCoroutine(ReturnPlayerStateToMoving(playerMovement.postJumpCooldown));
         }
 
         //if not doing something else and grounded a will activate jump
-        if (playerState != PlayerState.action && playerState != PlayerState.jumping && playerState != PlayerState.cooldown && playerState != PlayerState.holdingPlank && playerGrounded)
+        if (playerState != PlayerState.action && playerState != PlayerState.jumping && playerGrounded)
         {
             //a jump                                        //true if holding plank
             moveVector += playerMovement.Jump(AJump, playerActions.HeldPlank != null);
@@ -467,6 +483,11 @@ public class PlayerController : MonoBehaviour
             //call player movement based off of joystick movement
             moveVector += playerMovement.PlayerSideMovement(joyInput, playerState);
         }
+        else
+        {
+            //reset movement
+            playerMovement.ResetMovement();
+        }
 
         //apply gravity
         moveVector += playerMovement.Gravity() * Time.fixedDeltaTime;
@@ -483,23 +504,24 @@ public class PlayerController : MonoBehaviour
 
 
         //apply rotation
+        //make player look where input rotation is
 
-        Vector3 moveVectorLimitY = moveVector;
-        moveVectorLimitY.y = 0;
+        //Vector3 moveVectorLimitY = moveVector;
+        //moveVectorLimitY.y = 0;
 
-        if (moveVectorLimitY != Vector3.zero)
+        //if (moveVectorLimitY != Vector3.zero)
+        if(joyInput != Vector3.zero)
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(moveVectorLimitY, Vector3.up), 0.15f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(joyInput, Vector3.up), 0.15f);
         }
         //----------------------------
 
 
+        //see if grounded
+        playerGrounded = IsPlayerGrounded();
 
         //next frame figure out collision
         //moveVector += CollisionCheck(moveVector);
-
-        //see if grounded
-        playerGrounded = IsPlayerGrounded();
 
         //print("Groundid is: " + playerGrounded);
 
@@ -507,19 +529,26 @@ public class PlayerController : MonoBehaviour
         lastFramesMoveVector = moveVector;
 
         //reset moveVector by getting rid of impact of joystick input
-        moveVector += playerMovement.reversePlayerMovementFromJoysticks;
+        //moveVector += playerMovement.reversePlayerMovementFromJoysticks;
         //now if there extra x/z movement (momentum) reduce it with drag
-        moveVector = ApplyDrag(moveVector);
+        //moveVector = ApplyDrag(moveVector);
+
+        //add drag to momentum
+        playerMovement.PlayerMomentum = playerMovement.ApplyDrag(playerMovement.PlayerMomentum, playerGrounded);
+
 
         //old way
-        //moveVector.x = 0;
-        //moveVector.z = 0;
+        moveVector.x = 0;
+        moveVector.z = 0;
 
         //stop pushing player down if on ground
         if (playerGrounded)
         {
             moveVector.y = 0;
         }
+
+       
+
         //Mathf.Clamp(moveVector.x, 0, 0);
         //Mathf.Clamp(moveVector.z, 0, 0);
         /*if (playerGrounded)
@@ -530,7 +559,7 @@ public class PlayerController : MonoBehaviour
         {
             Mathf.Clamp(moveVector.y, -10, 10);
         }*/
-        
+
 
         //temp reset input vector
         joyInput = Vector3.zero;
@@ -645,14 +674,17 @@ public class PlayerController : MonoBehaviour
     */
 
 
-    public Vector3 ApplyDrag(Vector3 directionMoving)
-    {
-        //take x and z
-        //reduce them by drag percentage
-        directionMoving.x *= (1 - drag);
-        directionMoving.z *= (1 - drag);
+    
 
-        return directionMoving;
+    public void PushMe(Vector3 pushDirection, float pushForce)
+    {
+        print("I got pushed " + this.gameObject.name);
+        playerMovement.PlayerMomentum += pushDirection * pushForce;
+
+        if(playerActions.HeldPlank != null)
+        {
+            playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
+        }
     }
 
 }

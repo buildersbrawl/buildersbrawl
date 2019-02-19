@@ -110,7 +110,7 @@ GameObject:
   - component: {fileID: 925820138}
   - component: {fileID: 925820139}
   m_Layer: 0
-  m_Name: Player
+  m_Name: PlayerPrefab_P1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -228,19 +228,8 @@ MonoBehaviour:
   playerActions: {fileID: 0}
   playerMovement: {fileID: 0}
   playerDeath: {fileID: 0}
-  right: 0
-  left: 0
-  forward: 0
-  backwards: 0
-  AJump: 0
-  BCharge: 0
-  XPush: 0
-  YPickOrPlace: 0
-  dropPlankControl: 0
-  BumpOrTrigSlam: 0
   bounciness: 1
   collisonCheckLength: 0.6
-  drag: 0.05
   groundCheckDistance: 1.1
   playerGrounded: 0
   addWackyMovement: 0
@@ -260,11 +249,12 @@ MonoBehaviour:
   whereBoardHeld: {x: 0, y: 1.5, z: 0}
   throwBoardOnDrop: 0
   boxCastOffset: {x: 0, y: 0, z: 0}
-  boxCasthalfSize: {x: 0.5, y: 1.5, z: 0.1}
+  boxCasthalfSize: {x: 0.7, y: 1.5, z: 0.1}
   boxCastMaxDistance: 1
   testCubes: 0
   startCube: {fileID: 0}
   endCube: {fileID: 0}
+  pushForce: 2
 --- !u!114 &4205513807017318953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,8 +271,10 @@ MonoBehaviour:
   slowDownSpeedPercentage: 0.1
   postJumpCooldown: 0.2
   jumpHeight: 7
+  holdingBoardJumpHeight: 3
   gravity: -23
-  reversePlayerMovementFromJoysticks: {x: 0, y: 0, z: 0}
+  groundDrag: 0.1
+  airDrag: 0
 --- !u!114 &925820138
 MonoBehaviour:
   m_ObjectHideFlags: 0

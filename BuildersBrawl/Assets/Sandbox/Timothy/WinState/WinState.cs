@@ -31,7 +31,7 @@ public class WinState : MonoBehaviour
             playerWhoWon = other.gameObject.name;
 
             //turn on win UI
-            winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit A to Restart";
+            winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit B to Restart";
             winUI.SetActive(true);
 
             //make ability to move to MM available
