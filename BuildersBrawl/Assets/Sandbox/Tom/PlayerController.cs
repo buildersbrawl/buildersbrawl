@@ -601,12 +601,6 @@ public class PlayerController : MonoBehaviour
         playerState = PlayerState.defaultMovement;
     }
 
-
-
-
-
-
-
     //takes input and rotates it 45 degrees to match the 
     public Vector3 ConvertJoystickInput45Degrees(Vector3 input)
     {

@@ -143,6 +143,12 @@ public class PlayerActions : MonoBehaviour
 
     private void PushAction()
     {
+        //cant do if holding plank
+        if(heldPlank != null)
+        {
+            return;
+        }
+
         print("Push action");
         //make boxcast in front of player
         SeeWhatIsInFrontOfPlayer();
