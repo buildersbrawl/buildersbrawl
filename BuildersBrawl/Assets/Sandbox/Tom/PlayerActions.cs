@@ -47,6 +47,7 @@ public class PlayerActions : MonoBehaviour
     public GameObject startCube;
     public GameObject endCube;
 
+    [SerializeField]
     private GameObject heldPlank;
     public GameObject HeldPlank
     {
