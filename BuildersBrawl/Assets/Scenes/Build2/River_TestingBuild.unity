@@ -2197,36 +2197,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2452697667803802986, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: holdingBoardJumpHeight
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452697667803802986, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: groundDrag
-      value: 0.1
-      objectReference: {fileID: 0}
     - target: {fileID: 1753385755599016872, guid: 90fecd509f8421045a7e40a875876d99,
         type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1752594108}
-    - target: {fileID: 2452697667803802999, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7ab56de4d782cb14eaa9455a76a09f7e, type: 2}
-    - target: {fileID: 2452697667803802987, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: pushForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 1753385755928229710, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 7ab56de4d782cb14eaa9455a76a09f7e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fecd509f8421045a7e40a875876d99, type: 3}
 --- !u!1 &762488488 stripped
@@ -7013,11 +6988,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player1
       objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318964, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 98daa752210d3b948bbeba524cfc1801, type: 2}
     - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: startCube
@@ -7028,24 +6998,10 @@ PrefabInstance:
       propertyPath: endCube
       value: 
       objectReference: {fileID: 866006637}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: pushForce
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: testCubes
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 925820139, guid: a976d66702bbc334d9a158045b06242f, type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 196210179}
-    - target: {fileID: 466583565, guid: a976d66702bbc334d9a158045b06242f, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 98daa752210d3b948bbeba524cfc1801, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976d66702bbc334d9a158045b06242f, type: 3}
 --- !u!1 &1927858539

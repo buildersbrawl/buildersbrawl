@@ -58,7 +58,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98daa752210d3b948bbeba524cfc1801, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -156,7 +156,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 98daa752210d3b948bbeba524cfc1801, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -254,7 +254,8 @@ MonoBehaviour:
   testCubes: 0
   startCube: {fileID: 0}
   endCube: {fileID: 0}
-  pushForce: 2
+  heldPlank: {fileID: 0}
+  pushForce: 10
 --- !u!114 &4205513807017318953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -269,10 +270,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 3
   slowDownSpeedPercentage: 0.1
-  postJumpCooldown: 0.2
+  postJumpCooldown: 0
   jumpHeight: 7
   holdingBoardJumpHeight: 3
-  gravity: -23
+  gravity: -0.5
   groundDrag: 0.1
   airDrag: 0
 --- !u!114 &925820138

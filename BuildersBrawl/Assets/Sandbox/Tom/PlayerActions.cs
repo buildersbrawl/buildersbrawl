@@ -165,7 +165,7 @@ public class PlayerActions : MonoBehaviour
                 //get the vector this player is facing      //boxcasting sets player forward
 
                 //push other player
-                boxHitInfo[index].collider.GetComponent<PlayerController>().PushMe(playerForward, pushForce);
+                boxHitInfo[index].collider.GetComponent<PlayerController>().playerMovement.PushMe(playerForward, pushForce);
 
                 //end loop
                 index = boxHitInfo.Length;

@@ -65,7 +65,7 @@ PrefabInstance:
     - target: {fileID: 4205513807017318967, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: m_Name
-      value: Player2
+      value: PlayerPrefab_P2
       objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
@@ -81,5 +81,14 @@ PrefabInstance:
       propertyPath: gamePlayerId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318964, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ab56de4d782cb14eaa9455a76a09f7e, type: 2}
+    - target: {fileID: 466583565, guid: a976d66702bbc334d9a158045b06242f, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ab56de4d782cb14eaa9455a76a09f7e, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976d66702bbc334d9a158045b06242f, type: 3}

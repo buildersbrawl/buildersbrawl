@@ -432,6 +432,8 @@ public class PlayerController : MonoBehaviour
             //check to see if just hit the ground from jumping
         if (playerGrounded && playerState == PlayerState.jumping)
         {
+            playerMovement.JumpEnd();
+
             //start jump cooldown
             StartCoroutine(ReturnPlayerStateToMoving(playerMovement.postJumpCooldown));
         }
@@ -492,6 +494,7 @@ public class PlayerController : MonoBehaviour
         {
             //call player movement based off of joystick movement
             moveVector += playerMovement.PlayerSideMovement(joyInput, playerState);
+            //moveVector += playerMovement.AddPlayerMomentum(joyInput);
         }
         else
         {
@@ -500,17 +503,31 @@ public class PlayerController : MonoBehaviour
         }
 
         //apply gravity
-        moveVector += playerMovement.Gravity() * Time.fixedDeltaTime;
+        moveVector += playerMovement.Gravity();
+
+
+        //MOMENTUM
+        //-------------------------
+        //do all the changes to momentum
+
+        playerMovement.CalculateMomentum();
+
+        //apply momentum
+        moveVector += playerMovement.PlayerMomentum;
+        //-------------------------
+
 
         //print("After update state is " + playerState);
 
         //print(moveVector);
 
 
+
+
         //-------------------------
         //apply movement
         charContRef.Move(moveVector * Time.fixedDeltaTime);
-
+        //----------------------------
 
 
         //apply rotation
@@ -520,11 +537,11 @@ public class PlayerController : MonoBehaviour
         //moveVectorLimitY.y = 0;
 
         //if (moveVectorLimitY != Vector3.zero)
-        if(joyInput != Vector3.zero)
+        if (joyInput != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(joyInput, Vector3.up), 0.15f);
         }
-        //----------------------------
+        
 
 
         //see if grounded
@@ -544,7 +561,10 @@ public class PlayerController : MonoBehaviour
         //moveVector = ApplyDrag(moveVector);
 
         //add drag to momentum
-        playerMovement.PlayerMomentum = playerMovement.ApplyDrag(playerMovement.PlayerMomentum, playerGrounded);
+
+        //playerMovement.PlayerMomentum = playerMovement.ApplyDrag(playerMovement.PlayerMomentum, playerGrounded);
+
+        playerMovement.ApplyDrag(playerGrounded);
 
 
         //old way
@@ -569,7 +589,6 @@ public class PlayerController : MonoBehaviour
         {
             Mathf.Clamp(moveVector.y, -10, 10);
         }*/
-
 
         //temp reset input vector
         joyInput = Vector3.zero;
@@ -676,20 +695,6 @@ public class PlayerController : MonoBehaviour
         moveVector += reflection;
     }
     */
-
-
-    
-
-    public void PushMe(Vector3 pushDirection, float pushForce)
-    {
-        print("I got pushed " + this.gameObject.name);
-        playerMovement.PlayerMomentum += pushDirection * pushForce;
-
-        if(playerActions.HeldPlank != null)
-        {
-            playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
-        }
-    }
 
 }
 
