@@ -137,11 +137,22 @@ public class CameraController : MonoBehaviour
     //[SerializeField]
     private float playersApartMaxDistance = 50f;
 
+    //turns off the camera pan/zoom controls when a player dies to avoid camera jerk
+    public static bool playerDied = false; //use setCameraBasedOnPlayers instead
+    //start and end markers when the player dies
+    public Transform startMarker;
+    public Transform endMarker;
+    //speed at which the camera will move from startMarker to endMarker
+    public float deathCameraMoveSpeed = 1.0f;
+
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private void Start()
     {
         Init();
+        
+        //set the end marker to the initial camera position
+        endMarker = cameraRef.transform;
     }
 
     public void Init()
@@ -247,6 +258,33 @@ public class CameraController : MonoBehaviour
             else
             {
                 print("Error: no option for this cameraSize option");
+            }
+        }
+        //when a player dies, use these camera movement serttings 
+        else
+        {
+            //set the startMarker to the current transform only during the initial frame it is run
+            bool hasStartMarker = false;
+            if(!hasStartMarker)
+            {
+                startMarker = transform;
+                hasStartMarker = true;
+            }
+
+            //length of the total journey the camera will move
+            float journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
+            float startTime = Time.time;
+            float distCovered = (Time.time - startTime) * deathCameraMoveSpeed;
+            //a fraction of the total journey covered during this frame
+            float fractionJourney = distCovered / journeyLength;
+
+            //lerp or move the camera
+            transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fractionJourney);
+
+            //if the camera has reached the destination turn on normal cameras settings
+            if(Vector3.Distance(transform.position, endMarker.position) < 0.2f)
+            {
+                setCameraBasedOnPlayers = true;
             }
         }
     }

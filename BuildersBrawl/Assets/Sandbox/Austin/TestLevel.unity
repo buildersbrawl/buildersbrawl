@@ -415,16 +415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab21c4f28d3722b40bfab5788d28accf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
   spawnPoint: {fileID: 832970013}
-  deathMoveSpeed: 10
-  minDistance: 0.2
-  isRigidbody: 0
-  cController: {fileID: 0}
-  oldGravity: 10
-  gravity: 0
-  moveForward: {x: 0, y: 0, z: 0}
-  waitTime: 5
+  respawnTime: 5
+  playerDead: 0
 --- !u!1 &358309019
 GameObject:
   m_ObjectHideFlags: 0
@@ -490,16 +483,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab21c4f28d3722b40bfab5788d28accf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 1
   spawnPoint: {fileID: 832970013}
-  deathMoveSpeed: 10
-  minDistance: 0.2
-  isRigidbody: 0
-  cController: {fileID: 358309021}
-  oldGravity: 10
-  gravity: 0
-  moveForward: {x: 0, y: 0, z: 0}
-  waitTime: 5
+  respawnTime: 5
+  playerDead: 0
 --- !u!136 &358309024
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -693,16 +679,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab21c4f28d3722b40bfab5788d28accf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
   spawnPoint: {fileID: 1761532693}
-  deathMoveSpeed: 10
-  minDistance: 0.2
-  isRigidbody: 0
-  cController: {fileID: 476583276}
-  oldGravity: 10
-  gravity: 0
-  moveForward: {x: 0, y: 0, z: 0}
-  waitTime: 5
+  respawnTime: 5
+  playerDead: 0
 --- !u!136 &476583279
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1070,16 +1049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab21c4f28d3722b40bfab5788d28accf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerNumber: 0
   spawnPoint: {fileID: 1761532693}
-  deathMoveSpeed: 10
-  minDistance: 0.2
-  isRigidbody: 0
-  cController: {fileID: 0}
-  oldGravity: 10
-  gravity: 0
-  moveForward: {x: 0, y: 0, z: 0}
-  waitTime: 5
+  respawnTime: 5
+  playerDead: 0
 --- !u!1 &832970009
 GameObject:
   m_ObjectHideFlags: 0
@@ -1398,6 +1370,7 @@ GameObject:
   - component: {fileID: 1866067919}
   - component: {fileID: 1866067918}
   - component: {fileID: 1866067917}
+  - component: {fileID: 1866067921}
   m_Layer: 0
   m_Name: DeathObject (1)
   m_TagString: DeathObject
@@ -1477,6 +1450,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1866067921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1866067916}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e20a0a5f5ff4f64da7f153bed218f13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1892280633
 GameObject:
   m_ObjectHideFlags: 0

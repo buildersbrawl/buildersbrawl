@@ -64,6 +64,8 @@ public class PlayerDeath : MonoBehaviour
         playerDead = true;
         StartCoroutine(WaitForRenderer());
 
+        //change the camera settings to lerp/move the camera towards the player respawn
+        GetComponent<CameraController>().setCameraBasedOnPlayers = false;
     }
 
     IEnumerator WaitForRenderer()
