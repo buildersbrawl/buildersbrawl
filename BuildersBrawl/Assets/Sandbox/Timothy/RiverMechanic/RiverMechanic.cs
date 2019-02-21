@@ -49,6 +49,7 @@ public class RiverMechanic : MonoBehaviour
         }*/
     }
 
+    /*
     private void OnCollisionEnter(Collision collision)
     {
         collision.gameObject.transform.position += GetRiverFlowDirection(riverDirection);
@@ -57,14 +58,15 @@ public class RiverMechanic : MonoBehaviour
     {
         //collision.gameObject.GetComponent<TestGravity>().gravity = false;
         collision.gameObject.transform.position += GetRiverFlowDirection(riverDirection);
-    }
+    }*/
 
-    /*
+    
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("Triggered!");
     }
 
+    /*
     private void OnTriggerStay(Collider other)
     {
         Debug.Log("Still Triggered!");
