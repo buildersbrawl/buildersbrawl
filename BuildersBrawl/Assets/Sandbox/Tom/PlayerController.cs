@@ -435,7 +435,8 @@ public class PlayerController : MonoBehaviour
             playerMovement.JumpEnd();
 
             //start jump cooldown
-            StartCoroutine(ReturnPlayerStateToMoving(playerMovement.postJumpCooldown));
+            //StartCoroutine(ReturnPlayerStateToMoving(playerMovement.postJumpCooldown));
+            playerState = PlayerState.defaultMovement; //this should fix the infinite upwards jump
         }
 
         //if not doing something else and grounded a will activate jump
@@ -498,7 +499,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //reset movement
+            //stop player momentum and joystick movement if performing action
             playerMovement.ResetMovement();
         }
 
@@ -602,8 +603,25 @@ public class PlayerController : MonoBehaviour
         RaycastHit groundInfo;
 
         //raycast down short distance, if hits anything grounded
-        //Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, groundCheckDistance);
-        if(Physics.Raycast(this.gameObject.transform.position, Vector3.down, out groundInfo, groundCheckDistance)) //out groundInfo
+        Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * .5f, 0, this.gameObject.transform.localScale.z * .5f), Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * .5f, 0, this.gameObject.transform.localScale.z * .5f), Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * .5f, 0, -this.gameObject.transform.localScale.z * .5f), Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * .5f, 0, -this.gameObject.transform.localScale.z * .5f), Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * .5f, 0, 0), Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * .5f, 0, 0), Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(0, 0, this.gameObject.transform.localScale.z * .5f), Vector3.down, Color.red, groundCheckDistance);
+        Debug.DrawRay(this.gameObject.transform.position + new Vector3(0, 0, -this.gameObject.transform.localScale.z * .5f), Vector3.down, Color.red, groundCheckDistance);
+
+        if (Physics.Raycast(this.gameObject.transform.position, Vector3.down, out groundInfo, groundCheckDistance) 
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * .5f, 0, this.gameObject.transform.localScale.z * .5f), Vector3.down, out groundInfo, groundCheckDistance) 
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * .5f, 0, this.gameObject.transform.localScale.z * .5f), Vector3.down, out groundInfo, groundCheckDistance) 
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * .5f, 0, -this.gameObject.transform.localScale.z * .5f), Vector3.down, out groundInfo, groundCheckDistance)
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * .5f, 0, -this.gameObject.transform.localScale.z * .5f), Vector3.down, out groundInfo, groundCheckDistance)
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * .5f, 0, 0), Vector3.down, out groundInfo, groundCheckDistance)
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * .5f, 0, 0), Vector3.down, out groundInfo, groundCheckDistance)
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(0, 0, this.gameObject.transform.localScale.z * .5f), Vector3.down, out groundInfo, groundCheckDistance)
+            || Physics.Raycast(this.gameObject.transform.position + new Vector3(0, 0, -this.gameObject.transform.localScale.z * .5f), Vector3.down, out groundInfo, groundCheckDistance)) //out groundInfo
         {
             //if didn't hit trigger
             if (!groundInfo.collider.isTrigger)
