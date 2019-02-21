@@ -11,6 +11,8 @@ TagManager:
   - Floor
   - Player1
   - Player2
+  - MainMenu
+  - MainScreen
   layers:
   - Default
   - TransparentFX

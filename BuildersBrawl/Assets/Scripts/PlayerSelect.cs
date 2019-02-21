@@ -112,26 +112,27 @@ public class PlayerSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        for (int i = 0; i < ReInput.players.playerCount; i++)
+        CheckLevel();
+        if (inPlayerSelect)
         {
-
-            //Debug.Log(i);
-            if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
+            for (int i = 0; i < ReInput.players.playerCount; i++)
             {
-                playerCounter++;
+                //Debug.Log(i);
+                if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
+                {
+                    playerCounter++;
 
-                //change ui to reflect a controller being selected
-                if (playerCounter == 1)
-                    SelectPlayerOne();
-                else if (playerCounter == 2)
-                    SelectPlayerTwo();
+                    //change ui to reflect a controller being selected
+                    if (playerCounter == 1)
+                        SelectPlayerOne();
+                    else if (playerCounter == 2)
+                        SelectPlayerTwo();
 
-                //Debug.Log(playerCounter);
-                AssignNextPlayer(i);
+                    //Debug.Log(playerCounter);
+                    AssignNextPlayer(i);
+                }
             }
         }
-        CheckLevel();
     }
 
     public void SelectPlayerOne()
@@ -256,13 +257,17 @@ public class PlayerSelect : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "Player_Select")
         {
-            inPlayerSelect = true;
             InitializeScene();
+            inPlayerSelect = true;
         }
         else
         {
             initialized = false;
             inPlayerSelect = false;
+
+            playerOneSelected = false;
+            playerTwoSelected = false;
+            bothPlayersReady = false;
         }
     }
 
@@ -299,6 +304,7 @@ public class PlayerSelect : MonoBehaviour
             LevelStartBtnText.text = "Waiting for Players...";
 
             initialized = true;
+            Debug.Log("Scene Initialized!");
         }
     }
 }
