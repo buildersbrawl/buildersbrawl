@@ -76,7 +76,7 @@ public class PlayerSelect : MonoBehaviour
 
         playerMap = new List<PlayerMap>();
 
-        InitializeScene();
+        //InitializeScene();
     }
 
     // Start is called before the first frame update

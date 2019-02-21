@@ -142,6 +142,7 @@ public class CameraController : MonoBehaviour
     //start and end markers when the player dies
     public Transform startMarker;
     public Transform endMarker;
+
     //speed at which the camera will move from startMarker to endMarker
     public float deathCameraMoveSpeed = 1.0f;
 
@@ -152,7 +153,7 @@ public class CameraController : MonoBehaviour
         Init();
         
         //set the end marker to the initial camera position
-        endMarker = cameraRef.transform;
+        //endMarker = cameraRef.transform;
     }
 
     public void Init()
@@ -263,29 +264,33 @@ public class CameraController : MonoBehaviour
         //when a player dies, use these camera movement serttings 
         else
         {
-            //set the startMarker to the current transform only during the initial frame it is run
-            bool hasStartMarker = false;
-            if(!hasStartMarker)
+            Debug.Log("CameraController:Update");
+            
+            //move camera until it is even with position between players
+            if(transform.position != averagePositionBetweenPlayers)
             {
-                startMarker = transform;
-                hasStartMarker = true;
+                Debug.Log("Is lerping after death");
+                //cameraRef.transform.position = new Vector3(Mathf.Lerp(averagePositionBetweenPlayers, transform.position, XXXX), 0, 0);
+                cameraRef.transform.position = Vector3.Lerp(averagePositionBetweenPlayers, transform.position, 1.5f);
             }
-
-            //length of the total journey the camera will move
-            float journeyLength = Vector3.Distance(startMarker.position, endMarker.position);
-            float startTime = Time.time;
-            float distCovered = (Time.time - startTime) * deathCameraMoveSpeed;
-            //a fraction of the total journey covered during this frame
-            float fractionJourney = distCovered / journeyLength;
-
-            //lerp or move the camera
-            transform.position = Vector3.Lerp(startMarker.position, endMarker.position, fractionJourney);
-
-            //if the camera has reached the destination turn on normal cameras settings
-            if(Vector3.Distance(transform.position, endMarker.position) < 0.2f)
+            else
             {
                 setCameraBasedOnPlayers = true;
             }
+
+            //slwoly set parameters
+            //pitchPercent = 
+            //SetCameraPosition();
+            //SetCameraFOV();
+            //AdjustCameraPitchAndHeightNew();
+            //lerp or move the camera
+            
+
+            //if the camera has reached the destination turn on normal cameras settings
+            /*if(Vector3.Distance(transform.position, endMarker.position) < 0.2f)
+            {
+                setCameraBasedOnPlayers = true;
+            }*/
         }
     }
 
