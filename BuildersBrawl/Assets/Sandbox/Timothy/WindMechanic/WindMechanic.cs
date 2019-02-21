@@ -14,32 +14,69 @@ public class WindMechanic : MonoBehaviour
 
     public WindDirection windDirection;
     public bool windInProgress = false;
-    public float windSpeed;
-    public GameObject player;
+    public float windStartTimer = 1f;
+    public float windDurationTImer = 1f;
+    public float windSpeed = 1f;
+    public GameObject[] players;
+
+    private void Start()
+    {
+        StartCoroutine("WindTimer");
+    }
 
     private void Update()
     {
         if (windInProgress)
         {
-            switch (windDirection)
+            Vector3 windFlow = GetWindFlowDirectiond(windDirection);
+
+            for (int i = 0; i < players.Length; i++)
             {
-                case WindDirection.North:
-                    player.transform.position += Vector3.forward * windSpeed * Time.deltaTime;
-                    break;
-                case WindDirection.East:
-                    player.transform.position += Vector3.right * windSpeed * Time.deltaTime;
-                    break;
-                case WindDirection.South:
-                    player.transform.position += Vector3.back * windSpeed * Time.deltaTime;
-                    break;
-                case WindDirection.West:
-                    player.transform.position += Vector3.left * windSpeed * Time.deltaTime;
-                    break;
-                default:
-                    Debug.Log("This direction does not exist!");
-                    break;
+                players[i].transform.position += windFlow;
             }
         }
     }
 
+    private Vector3 GetWindFlowDirectiond(WindDirection direction)
+    {
+        Vector3 windDirection = Vector3.zero;
+
+        switch (direction)
+        {
+            case WindDirection.North:
+                windDirection = Vector3.forward * Time.deltaTime * windSpeed;
+                break;
+            case WindDirection.East:
+                windDirection = Vector3.right * Time.deltaTime * windSpeed;
+                break;
+            case WindDirection.South:
+                windDirection = Vector3.back * Time.deltaTime * windSpeed;
+                break;
+            case WindDirection.West:
+                windDirection = Vector3.left * Time.deltaTime * windSpeed;
+                break;
+            default:
+                Debug.Log("This direction does not exist!");
+                break;
+        }
+        return windDirection;
+    }
+
+    private IEnumerator WindTimer()
+    {
+        while (true)
+        {
+            if (windInProgress)
+            {
+                yield return new WaitForSeconds(windDurationTImer);
+                windInProgress = false;
+            }
+            else
+            {
+                yield return new WaitForSeconds(windStartTimer);
+                windInProgress = true;
+            }
+            yield return null;
+        }
+    }
 }
