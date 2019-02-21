@@ -469,8 +469,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPos: {x: 1.96, y: 2.96, z: 1.16}
   movePerFrame: 2
-  dissolveTime: 10
-  cooldownTime: 20
+  dissolveTime: 3
+  cooldownTime: 4
 --- !u!1 &1066889174
 GameObject:
   m_ObjectHideFlags: 0
