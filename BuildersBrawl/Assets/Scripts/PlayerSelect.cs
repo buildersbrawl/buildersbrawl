@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using Rewired;
+using UnityEngine.SceneManagement;
 
 public class PlayerSelect : MonoBehaviour
 {
@@ -41,6 +42,7 @@ public class PlayerSelect : MonoBehaviour
     public LevelSelector ls;
 
     public bool inPlayerSelect = true;
+    private bool initialized = false;
 
     public static Rewired.Player GetRewiredPlayer(int gamePlayerId)
     {
@@ -73,6 +75,8 @@ public class PlayerSelect : MonoBehaviour
         }
 
         playerMap = new List<PlayerMap>();
+
+        InitializeScene();
     }
 
     // Start is called before the first frame update
@@ -108,10 +112,10 @@ public class PlayerSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-       
+
         for (int i = 0; i < ReInput.players.playerCount; i++)
         {
-            
+
             //Debug.Log(i);
             if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
             {
@@ -125,11 +129,9 @@ public class PlayerSelect : MonoBehaviour
 
                 //Debug.Log(playerCounter);
                 AssignNextPlayer(i);
-
-                
             }
-
         }
+        CheckLevel();
     }
 
     public void SelectPlayerOne()
@@ -247,6 +249,56 @@ public class PlayerSelect : MonoBehaviour
         {
             this.rewiredPlayerId = rewiredPlayerID;
             this.gamePlayerId = gamePlayerID;
+        }
+    }
+
+    void CheckLevel()
+    {
+        if (SceneManager.GetActiveScene().name == "Player_Select")
+        {
+            inPlayerSelect = true;
+            InitializeScene();
+        }
+        else
+        {
+            initialized = false;
+            inPlayerSelect = false;
+        }
+    }
+
+    private void InitializeScene()
+    {
+        if (!initialized)
+        {
+            Debug.Log("Initializing Scene");
+            //Assigns object to appropriate spaces
+            B4_P1_select = GameObject.Find("SelectP1").GetComponent<Text>();
+            B4_P2_select = GameObject.Find("SelectP2").GetComponent<Text>();
+
+            P1_selected = GameObject.Find("Selected_P1").GetComponent<Text>();
+            P2_selected = GameObject.Find("Selected_P2").GetComponent<Text>();
+
+            LevelStartBtn = GameObject.Find("StartGameBtn").GetComponent<Button>();
+            LevelStartBtnText = GameObject.Find("StartGameBtnText").GetComponent<Text>();
+
+            //Shows that none of the players are selected
+            playerOneSelected = false;
+            playerTwoSelected = false;
+            bothPlayersReady = false;
+
+            B4_P1_select.enabled = true;
+            B4_P2_select.enabled = true;
+            B4_P2_select.text = "Waiting for Player 1";
+
+
+            //Hides the text
+            P1_selected.enabled = false;
+            P2_selected.enabled = false;
+
+            LevelStartBtn.interactable = false;
+            LevelStartBtnText.text = "Waiting for Players...";
+
+            initialized = true;
         }
     }
 }
