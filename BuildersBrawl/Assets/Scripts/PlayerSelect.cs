@@ -157,7 +157,7 @@ public class PlayerSelect : MonoBehaviour
         }
     }
 
-    void CheckSelectedPlayers()
+    public void CheckSelectedPlayers()
     {
         //Checks if players one and two have been selected
         if (playerOneSelected)

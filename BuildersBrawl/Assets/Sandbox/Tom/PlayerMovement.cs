@@ -39,6 +39,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 playerJumpMomentum;
     private Vector3 playerCombatMomentum;
+    //[SerializeField]
     private Vector3 playerEnvironmentMomentum;
     
 
@@ -50,15 +51,6 @@ public class PlayerMovement : MonoBehaviour
 
     //can use to get player momentum
     private Vector3 reversePlayerMovementFromJoysticks;
-
-    private Vector3 addedMomentumFromEnvironment;
-    public Vector3 EnviromentMomentum
-    {
-        set
-        {
-            addedMomentumFromEnvironment = value;
-        }
-    }
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -111,7 +103,8 @@ public class PlayerMovement : MonoBehaviour
             //print("Jump button pressed");
 
             //record player momentum
-            playerMomentum = playerController.LastFramesMoveVector;
+                                                                //temp solution
+            playerJumpMomentum = playerController.LastFramesMoveVector;
             print("Momentum is " + playerMomentum);
 
             //change state
@@ -188,6 +181,8 @@ public class PlayerMovement : MonoBehaviour
     */
     public void ApplyDrag(bool grounded)
     {
+        //TODO: add if mometum lower than certain number just make 0
+
         if (grounded)
         {
             //ground drag
@@ -204,12 +199,6 @@ public class PlayerMovement : MonoBehaviour
             playerEnvironmentMomentum *= (1 - airDrag);
             playerJumpMomentum *= (1 - airDrag);
         }
-    }
-
-
-    public void AddEnvironmentMomentum()
-    {
-        playerMomentum += addedMomentumFromEnvironment;
     }
 
     public void ResetMovement()
@@ -232,6 +221,11 @@ public class PlayerMovement : MonoBehaviour
     public void JumpEnd()
     {
         playerJumpMomentum = Vector3.zero;
+    }
+
+    public void SetEnvironmentMomentum(Vector3 newMomentum)
+    {
+        playerEnvironmentMomentum = newMomentum;
     }
 
     public void CalculateMomentum()
