@@ -49,29 +49,25 @@ public class RiverMechanic : MonoBehaviour
         }*/
     }
 
+    
     /*
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        collision.gameObject.transform.position += GetRiverFlowDirection(riverDirection);
-    }
-    private void OnCollisionStay(Collision collision)
-    {
-        //collision.gameObject.GetComponent<TestGravity>().gravity = false;
-        collision.gameObject.transform.position += GetRiverFlowDirection(riverDirection);
+        //Vector3 moveDirection = (other.transform.position += GetRiverFlowDirection(riverDirection));
+        other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
     }*/
 
     
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        Debug.Log("Triggered!");
+        other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
     }
 
     /*
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Still Triggered!");
-        other.gameObject.GetComponent<TestGravity>().gravity = false;
-        other.gameObject.transform.position += GetRiverFlowDirection(riverDirection);
+        //Vector3 moveDirection = (other.transform.position += GetRiverFlowDirection(riverDirection));
+        other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
     }*/
 
     private Vector3 GetRiverFlowDirection(RiverDirection direction)
