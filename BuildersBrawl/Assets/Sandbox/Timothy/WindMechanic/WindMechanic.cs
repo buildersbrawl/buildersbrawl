@@ -32,7 +32,7 @@ public class WindMechanic : MonoBehaviour
 
             for (int i = 0; i < players.Length; i++)
             {
-                players[i].transform.position += windFlow;
+                players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
             }
         }
     }
