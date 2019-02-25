@@ -52,6 +52,24 @@ public class PlayerMovement : MonoBehaviour
     //can use to get player momentum
     private Vector3 reversePlayerMovementFromJoysticks;
 
+
+    [Header("WackMovement")]
+    public bool addWackyMovement;
+    public float rangeTillChangeInDegrees;
+    [Tooltip("How extreme the lean is. 1 = lean constant")]
+    public float leanFactor = 1f;
+    //[SerializeField]
+    //public float leanStartTest; //obselete
+    private float leanAmount; //starts as somewhere between Vector3(1, 0, 0) and Vector3(-1, 0, 0)
+    [SerializeField]
+    private float leanCeiling = 45f; //to stop player from spinning so fast it just looks weird
+    [SerializeField]
+    private float leanAddOnceHitCeiling = 45f; //to stop player from spinning so fast it just looks weird
+    private Vector3 joyInputOriginalDirection;
+    private Vector3 joyInputRangeLeft, joyInputRangeRight;
+    //if player only minimally using joystick give them full control
+    private float lowInputNumberSoNoWackyMovement = .5f;
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -246,6 +264,101 @@ public class PlayerMovement : MonoBehaviour
 
         //environment
         playerMomentum += playerEnvironmentMomentum;
+    }
+
+    //--------------------------------------------------------------------------------------
+    //WACK
+    //
+
+    //for some reason every other frame joyinput is 0
+
+    public void StartWackMovement(Vector3 joystickInput)
+    {
+        //take vector joystick is at (this will be the center)
+        joyInputOriginalDirection = joystickInput;
+
+        print("new lean amount");
+        //set lean
+        leanAmount = Random.Range(-1f, 1f);
+        //testing
+       // leanAmount = leanStartTest;
+        //print("leanVector " + leanVector);
+    }
+
+    public Vector3 UpdateWackMovement(Vector3 joystickInput)
+    {
+        //if input too low or out of range
+        if((Mathf.Abs(joystickInput.x) < lowInputNumberSoNoWackyMovement) && (Mathf.Abs(joystickInput.z) < lowInputNumberSoNoWackyMovement))
+        {
+            //print("joy too low" + joystickInput);
+            //no wack movement
+            //set new wack move stuff
+            StartWackMovement(joystickInput);
+        }
+        else if(!(CheckPointInPieSlice(joyInputOriginalDirection, rangeTillChangeInDegrees, joystickInput)))
+        {
+            //print("joy not in right spot");
+            //set new wack move stuff
+            StartWackMovement(joystickInput);
+        }
+        //else if still in range
+        else
+        {
+            //print("lean" + joystickInput);
+            //else take current lean vector and multiply it by leanFactor
+            //else{
+
+            if(Mathf.Abs(leanAmount * leanFactor) > leanCeiling)
+            {
+                if(leanAmount > 0)
+                {
+                    leanAmount += leanAddOnceHitCeiling;
+                }
+                else
+                {
+                    leanAmount -= leanAddOnceHitCeiling;
+                }
+                
+            }
+            else
+            {
+                leanAmount *= leanFactor;
+            }
+            
+            /*if(leanAmount > 360)
+            {
+                leanAmount = leanAmount - 360;
+            }
+            */
+            
+            
+
+            //add lean vector to input
+            joystickInput = Quaternion.AngleAxis(leanAmount, Vector3.up) * joystickInput;
+        }
+
+        return joystickInput;
+    }
+
+    private bool CheckPointInPieSlice(Vector3 center, float range, Vector3 spotInQuestion)
+    {
+        bool inRange = true;
+
+        //make sure angle between center and spot in question is less than range
+        
+        if(!(Mathf.Abs(Vector3.Angle(center, spotInQuestion)) < Mathf.Abs(range)))
+        {
+            //if not not inRange
+            inRange = false;
+        }
+        //make sure distance between the point and the center is less than or equal to the radius (which is 1)
+        if(!(Mathf.Abs(Vector3.Distance(center, spotInQuestion)) <= 1f))
+        {
+            //if not not inRange
+            inRange = false;
+        }
+
+        return inRange;
     }
 
 }
