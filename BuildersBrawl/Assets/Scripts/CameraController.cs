@@ -144,16 +144,17 @@ public class CameraController : MonoBehaviour
     public Transform endMarker;
 
     //speed at which the camera will move from startMarker to endMarker
-    public float deathCameraMoveSpeed = 1.0f;
+    public float deathLerpTime = 5f;
+    private bool shouldGetLerpStartTime = true;
+    public float timeStartedLerping = 0f;
+    public float deathTimer = 0f;
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private void Start()
     {
         Init();
-        
-        //set the end marker to the initial camera position
-        //endMarker = cameraRef.transform;
+
     }
 
     public void Init()
@@ -202,6 +203,9 @@ public class CameraController : MonoBehaviour
         {
             GetAveragePositionBetweenPlayers();
             GetDistanceBetweenPlayers();
+
+            //reset bool for death lerping
+            shouldGetLerpStartTime = true;
 
             //apply average positon to camera position algorythm
             SetCameraPosition(averagePositionBetweenPlayers);
@@ -264,33 +268,46 @@ public class CameraController : MonoBehaviour
         //when a player dies, use these camera movement serttings 
         else
         {
-            Debug.Log("CameraController:Update");
+
+
+            //Debug.Log("CameraController:Update");
             
             //move camera until it is even with position between players
-            if(transform.position != averagePositionBetweenPlayers)
+            if(deathTimer < 5)
             {
-                Debug.Log("Is lerping after death");
+                //increment the deathTimer
+                deathTimer += Time.deltaTime;
+                //Debug.Log("deathTimer = " + deathTimer);
+
+                if (shouldGetLerpStartTime)
+                {
+                    timeStartedLerping = Time.time;
+                    shouldGetLerpStartTime = false;
+                }
+
+                //Debug.Log("Is lerping after death");
+
+                float timeSinceStarted = Time.time - timeStartedLerping;
+                float percentageComplete = timeSinceStarted / deathLerpTime;
+                //Debug.Log("Percentage complete = " + percentageComplete);
+
+                pitchPercent = (distanceBetweenPlayers - cameraPlayerDistanceFloor) / (cameraPlayerDistanceCeiling - cameraPlayerDistanceFloor);
+                cameraZOffset = -6.5f;
+                
+                SetCameraPosition(averagePositionBetweenPlayers);
+                SetCameraFOV(distanceBetweenPlayers);
+                AdjustCameraPitchAndHeightNew(distanceBetweenPlayers, averagePositionBetweenPlayers);
+
                 //cameraRef.transform.position = new Vector3(Mathf.Lerp(averagePositionBetweenPlayers, transform.position, XXXX), 0, 0);
-                cameraRef.transform.position = Vector3.Lerp(averagePositionBetweenPlayers, transform.position, 1.5f);
+                cameraRef.transform.position = Vector3.Lerp(transform.position, cameraFinalPosition, percentageComplete);
             }
             else
             {
+                //turn on the camera settings with both players alive
                 setCameraBasedOnPlayers = true;
+                deathTimer = 0f;
+                cameraZOffset = 6.5f;
             }
-
-            //slwoly set parameters
-            //pitchPercent = 
-            //SetCameraPosition();
-            //SetCameraFOV();
-            //AdjustCameraPitchAndHeightNew();
-            //lerp or move the camera
-            
-
-            //if the camera has reached the destination turn on normal cameras settings
-            /*if(Vector3.Distance(transform.position, endMarker.position) < 0.2f)
-            {
-                setCameraBasedOnPlayers = true;
-            }*/
         }
     }
 
@@ -305,8 +322,10 @@ public class CameraController : MonoBehaviour
         cameraFinalPosition.x += cameraXOffset;
         cameraFinalPosition.z += cameraZOffset;
 
-
-        cameraRef.transform.position = cameraFinalPosition;
+        
+        //dont transform if a player has died
+        if(setCameraBasedOnPlayers)
+            cameraRef.transform.position = cameraFinalPosition;
     }
 
     public void AdjustCameraPitchAndHeightNew(float distanceBetweenPlayers, Vector3 averagePlayerPosition)
