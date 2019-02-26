@@ -294,19 +294,27 @@ public class CameraController : MonoBehaviour
                 pitchPercent = (distanceBetweenPlayers - cameraPlayerDistanceFloor) / (cameraPlayerDistanceCeiling - cameraPlayerDistanceFloor);
                 cameraZOffset = -6.5f;
                 
+                //set the final camera position to the right spot
                 SetCameraPosition(averagePositionBetweenPlayers);
+
+                //lerp from the current position to the expected camera position once player spawns
+                cameraRef.transform.position = Vector3.Lerp(transform.position, cameraFinalPosition, percentageComplete);
+
+                //set the FOV to set camera size
                 SetCameraFOV(distanceBetweenPlayers);
+                //set the camera height and pitch
                 AdjustCameraPitchAndHeightNew(distanceBetweenPlayers, averagePositionBetweenPlayers);
 
-                //cameraRef.transform.position = new Vector3(Mathf.Lerp(averagePositionBetweenPlayers, transform.position, XXXX), 0, 0);
-                cameraRef.transform.position = Vector3.Lerp(transform.position, cameraFinalPosition, percentageComplete);
+                
             }
             else
             {
                 //turn on the camera settings with both players alive
                 setCameraBasedOnPlayers = true;
+                //reset death timer
                 deathTimer = 0f;
-                cameraZOffset = 6.5f;
+                //reset cameraZOffset to original value
+                cameraZOffset = 0f;
             }
         }
     }
@@ -352,7 +360,8 @@ public class CameraController : MonoBehaviour
         cameraRef.transform.position = cameraHeightSetter;
 
         //angle
-        cameraRef.transform.LookAt(averagePlayerPosition);
+        if(setCameraBasedOnPlayers)
+            cameraRef.transform.LookAt(averagePlayerPosition);
 
         
     }
