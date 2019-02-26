@@ -70,6 +70,15 @@ public class PlayerMovement : MonoBehaviour
     //if player only minimally using joystick give them full control
     private float lowInputNumberSoNoWackyMovement = .5f;
 
+    [Header("WobbleMovement")]
+    public bool addWobble;
+    [Range(0, 1)]
+    [Tooltip("Must be between 0 and 1")]
+    public float wobbleSpeed = .01f;
+    private float wobbleAmount;
+    private float sway = .5f;
+    public float maxWobbleAngleInDegrees = 30f;
+    bool swaySwitch;
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -359,6 +368,37 @@ public class PlayerMovement : MonoBehaviour
         }
 
         return inRange;
+    }
+
+    public Vector3 UpdateWobbleMovement(Vector3 joystickInput)
+    {
+        if (swaySwitch)
+        {
+            sway += wobbleSpeed;
+            if(sway > 1)
+            {
+                swaySwitch = false;
+            }
+        }
+        else
+        {
+            sway -= wobbleSpeed;
+            if (sway < 0)
+            {
+                swaySwitch = true;
+            }
+        }
+        //make wobble go between degree
+        //2
+        //1.5
+        //
+
+        wobbleAmount = Mathf.Lerp(maxWobbleAngleInDegrees, -maxWobbleAngleInDegrees, sway);
+
+        //add lean vector to input
+        joystickInput = Quaternion.AngleAxis(wobbleAmount, Vector3.up) * joystickInput;
+
+        return joystickInput;
     }
 
 }

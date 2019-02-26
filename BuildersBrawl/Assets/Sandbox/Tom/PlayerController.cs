@@ -496,6 +496,10 @@ public class PlayerController : MonoBehaviour
             {
                 joyInput = playerMovement.UpdateWackMovement(joyInput);
             }
+            if (playerMovement.addWobble)
+            {
+                joyInput = playerMovement.UpdateWobbleMovement(joyInput);
+            }
 
             //call player movement based off of joystick movement
             moveVector += playerMovement.PlayerSideMovement(joyInput, playerState);

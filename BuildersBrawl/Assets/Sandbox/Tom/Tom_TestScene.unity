@@ -7016,6 +7016,16 @@ PrefabInstance:
     - target: {fileID: 4205513807017318953, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: addWackyMovement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318953, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: wobbleSpeed
+      value: 0.01
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318953, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: addWobble
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
