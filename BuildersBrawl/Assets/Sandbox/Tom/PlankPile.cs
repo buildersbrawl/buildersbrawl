@@ -10,13 +10,13 @@ public class PlankPile : MonoBehaviour
 
     //gives plank to player
 
-    public GameObject plankPrefab;
+    public GameObject[] plankPrefab; 
 
     public GameObject GeneratePlank(Vector3 newPlankSpawnPosition, Quaternion newPlankSpawnRotation)
     {
         GameObject newlyBirthedPlank;
 
-        newlyBirthedPlank = Instantiate(plankPrefab, newPlankSpawnPosition, newPlankSpawnRotation);
+        newlyBirthedPlank = Instantiate(plankPrefab[Random.Range(0, plankPrefab.Length)], newPlankSpawnPosition, newPlankSpawnRotation);
 
         return newlyBirthedPlank;
     }
