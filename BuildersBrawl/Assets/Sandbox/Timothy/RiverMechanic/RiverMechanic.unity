@@ -692,7 +692,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fallSpeed: 1
-  gravity: 0
+  gravity: 1
 --- !u!1 &1127213947
 GameObject:
   m_ObjectHideFlags: 0
