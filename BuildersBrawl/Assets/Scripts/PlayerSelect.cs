@@ -19,9 +19,13 @@ public class PlayerSelect : MonoBehaviour
     public Text B4_P1_select;
     public Text B4_P2_select;
 
-    //Text after players are selected
+    /*//Text after players are selected
     public Text P1_selected;
-    public Text P2_selected;
+    public Text P2_selected;*/
+
+    //Character Models
+    private GameObject player1;
+    private GameObject player2;
 
     public Button LevelStartBtn;
     public Text LevelStartBtnText;
@@ -103,9 +107,13 @@ public class PlayerSelect : MonoBehaviour
             B4_P2_select.text = "Waiting for Player 1";
 
 
-            //Hides the text
+            /*//Hides the text
             P1_selected.enabled = false;
-            P2_selected.enabled = false;
+            P2_selected.enabled = false;*/
+
+            //Hides the player models
+            player1.SetActive(false);
+            player2.SetActive(false);
 
             LevelStartBtn.interactable = false;
             LevelStartBtnText.text = "Waiting for Players...";
@@ -168,7 +176,8 @@ public class PlayerSelect : MonoBehaviour
             if (inPlayerSelect)
             {
                 B4_P1_select.enabled = false;
-                P1_selected.enabled = true;
+                //P1_selected.enabled = true;
+                player1.SetActive(true);
                 B4_P2_select.text = "Press A to be Player 2";
             }
         }
@@ -178,7 +187,8 @@ public class PlayerSelect : MonoBehaviour
             if (inPlayerSelect)
             {
                 B4_P2_select.enabled = false;
-                P2_selected.enabled = true;
+                //P2_selected.enabled = true;
+                player2.SetActive(true);
             }
         }
 
@@ -283,8 +293,11 @@ public class PlayerSelect : MonoBehaviour
             B4_P1_select = GameObject.Find("SelectP1").GetComponent<Text>();
             B4_P2_select = GameObject.Find("SelectP2").GetComponent<Text>();
 
-            P1_selected = GameObject.Find("Selected_P1").GetComponent<Text>();
-            P2_selected = GameObject.Find("Selected_P2").GetComponent<Text>();
+            /*P1_selected = GameObject.Find("Selected_P1").GetComponent<Text>();
+            P2_selected = GameObject.Find("Selected_P2").GetComponent<Text>();*/
+
+            player1 = GameObject.Find("P1_Model");
+            player2 = GameObject.Find("P2_Model");
 
             LevelStartBtn = GameObject.Find("StartGameBtn").GetComponent<Button>();
             LevelStartBtnText = GameObject.Find("StartGameBtnText").GetComponent<Text>();
@@ -299,9 +312,13 @@ public class PlayerSelect : MonoBehaviour
             B4_P2_select.text = "Waiting for Player 1";
 
 
-            //Hides the text
+            /*//Hides the text
             P1_selected.enabled = false;
-            P2_selected.enabled = false;
+            P2_selected.enabled = false;*/
+
+            //Hides the player models
+            player1.SetActive(false);
+            player2.SetActive(false);
 
             LevelStartBtn.interactable = false;
             LevelStartBtnText.text = "Waiting for Players...";
