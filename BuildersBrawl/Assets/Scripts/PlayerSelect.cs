@@ -44,6 +44,9 @@ public class PlayerSelect : MonoBehaviour
     public bool inPlayerSelect = true;
     private bool initialized = false;
 
+    //Tom: for testing
+    public bool allowControllerSelection;
+
     public static Rewired.Player GetRewiredPlayer(int gamePlayerId)
     {
         if (!Rewired.ReInput.isReady)
@@ -76,7 +79,7 @@ public class PlayerSelect : MonoBehaviour
 
         playerMap = new List<PlayerMap>();
 
-        InitializeScene();
+        //InitializeScene();
     }
 
     // Start is called before the first frame update
@@ -113,7 +116,7 @@ public class PlayerSelect : MonoBehaviour
     void Update()
     {
         CheckLevel();
-        if (inPlayerSelect)
+        if (inPlayerSelect || allowControllerSelection)
         {
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
@@ -157,7 +160,7 @@ public class PlayerSelect : MonoBehaviour
         }
     }
 
-    void CheckSelectedPlayers()
+    public void CheckSelectedPlayers()
     {
         //Checks if players one and two have been selected
         if (playerOneSelected)

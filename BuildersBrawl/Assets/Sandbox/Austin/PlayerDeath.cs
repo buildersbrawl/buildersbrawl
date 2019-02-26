@@ -65,7 +65,8 @@ public class PlayerDeath : MonoBehaviour
         StartCoroutine(WaitForRenderer());
 
         //change the camera settings to lerp/move the camera towards the player respawn
-        GetComponent<CameraController>().setCameraBasedOnPlayers = false;
+        GameObject cc = GameObject.Find("Main Camera");
+        cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;      //remove comment when the camera works
     }
 
     IEnumerator WaitForRenderer()

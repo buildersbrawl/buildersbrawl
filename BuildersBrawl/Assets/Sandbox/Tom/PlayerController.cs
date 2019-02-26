@@ -81,7 +81,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 joyInput;
 
-    [Header("Bounce")]
+    [Header("Bounce (Deprecated)")]
     public float bounciness = 1f;
     [SerializeField]
     private float collisonCheckLength;
@@ -107,9 +107,6 @@ public class PlayerController : MonoBehaviour
     private const float TURN_INPUT_45_DEGREES_CONSTANT = 0.70710678118f;
 
     private Vector3 directionPlayerFacing; //same as x and z of direction moving
-
-    [HideInInspector]
-    public bool addWackyMovement;
 
 
     private void Start()
@@ -448,6 +445,8 @@ public class PlayerController : MonoBehaviour
 
         //print("After jump state is " + playerState);
 
+        //print("frame " + joyInput);
+
         //IF JUMPING OVERRIDE ACTION or if doing other action
         if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown)
         {
@@ -493,6 +492,15 @@ public class PlayerController : MonoBehaviour
         //move based off of joystick, if performing action don't do this
         if (playerState != PlayerState.action)
         {
+            if (playerMovement.addWackyMovement)
+            {
+                joyInput = playerMovement.UpdateWackMovement(joyInput);
+            }
+            if (playerMovement.addWobble)
+            {
+                joyInput = playerMovement.UpdateWobbleMovement(joyInput);
+            }
+
             //call player movement based off of joystick movement
             moveVector += playerMovement.PlayerSideMovement(joyInput, playerState);
             //moveVector += playerMovement.AddPlayerMomentum(joyInput);

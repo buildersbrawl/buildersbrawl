@@ -232,7 +232,6 @@ MonoBehaviour:
   collisonCheckLength: 0.6
   groundCheckDistance: 1.1
   playerGrounded: 0
-  addWackyMovement: 0
 --- !u!114 &4205513807017318952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -276,6 +275,11 @@ MonoBehaviour:
   gravity: -0.5
   groundDrag: 0.1
   airDrag: 0
+  addWackyMovement: 0
+  rangeTillChangeInDegrees: 15
+  leanFactor: 1.05
+  leanCeiling: 180
+  leanAddOnceHitCeiling: 5
 --- !u!114 &925820138
 MonoBehaviour:
   m_ObjectHideFlags: 0
