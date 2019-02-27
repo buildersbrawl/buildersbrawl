@@ -18,6 +18,10 @@ public class Countdown : MonoBehaviour
     {
         delayStart = delay;
         cd.text = count.ToString();
+
+        //disables player controller
+        GameManager.S.player1.GetComponent<PlayerController>().enabled = false;
+        GameManager.S.player2.GetComponent<PlayerController>().enabled = false;
     }
 
     // Update is called once per frame
@@ -42,6 +46,10 @@ public class Countdown : MonoBehaviour
             {
                 cd.enabled = false;
                 cd_panel.SetActive(false);
+
+                //re-enables player controller
+                GameManager.S.player1.GetComponent<PlayerController>().enabled = true;
+                GameManager.S.player2.GetComponent<PlayerController>().enabled = true;
             }
             delay = delayStart;
         }
