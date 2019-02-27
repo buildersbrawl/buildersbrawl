@@ -79,6 +79,8 @@ public class PlayerMovement : MonoBehaviour
     private float sway = .5f;
     public float maxWobbleAngleInDegrees = 30f;
     bool swaySwitch;
+    private Vector3 lastKnownJoyDirection;
+
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -395,10 +397,22 @@ public class PlayerMovement : MonoBehaviour
 
         wobbleAmount = Mathf.Lerp(maxWobbleAngleInDegrees, -maxWobbleAngleInDegrees, sway);
 
+        if(joystickInput != Vector3.zero)
+        {
+            lastKnownJoyDirection = joystickInput;
+            lastKnownJoyDirection.Normalize();
+            lastKnownJoyDirection *= .001f;
+        }
+        else
+        {
+            joystickInput = lastKnownJoyDirection;
+        }
+
         //add lean vector to input
         joystickInput = Quaternion.AngleAxis(wobbleAmount, Vector3.up) * joystickInput;
 
         return joystickInput;
     }
+
 
 }
