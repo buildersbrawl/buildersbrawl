@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: 4205513807017318953}
   - component: {fileID: 925820138}
   - component: {fileID: 925820139}
+  - component: {fileID: 2351750325762926708}
   m_Layer: 0
   m_Name: PlayerPrefab_P1
   m_TagString: Untagged
@@ -228,6 +229,7 @@ MonoBehaviour:
   playerActions: {fileID: 0}
   playerMovement: {fileID: 0}
   playerDeath: {fileID: 0}
+  playerPoints: {fileID: 0}
   bounciness: 1
   collisonCheckLength: 0.6
   groundCheckDistance: 1.1
@@ -267,8 +269,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971c64850ae8bfa499dba371d4cf9510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3
-  slowDownSpeedPercentage: 0.1
+  playerSpeed: 3.5
+  slowDownJumpSpeedPercentage: 0.9
+  slowDownHoldingPlankSpeedPercentage: 0.2
   postJumpCooldown: 0
   jumpHeight: 7
   holdingBoardJumpHeight: 3
@@ -280,6 +283,9 @@ MonoBehaviour:
   leanFactor: 1.05
   leanCeiling: 180
   leanAddOnceHitCeiling: 5
+  addWobble: 0
+  wobbleSpeed: 0.01
+  maxWobbleAngleInDegrees: 30
 --- !u!114 &925820138
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,4 +327,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
   respawnTime: 5
+  timeToWaitAfterPushed: 0.5
   playerDead: 0
+--- !u!114 &2351750325762926708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab7ea07c63f8bb4588d1423d7b11465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsForKill: 30
+  pointsForBoardPlace: 10
+  pointsForOtherSide: 200
