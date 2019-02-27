@@ -24,6 +24,8 @@ public class PlankManager : MonoBehaviour
 
     private SnapTest2 snapRef;
 
+    private PlayerController playerWhoPlacedMe;
+
     private void Start()
     {
         Init();
@@ -101,6 +103,9 @@ public class PlankManager : MonoBehaviour
 
         //tell plank what player to look at
         this.gameObject.GetComponent<SnapTest2>().player = playerRef;
+
+        //get player who placed me
+        playerWhoPlacedMe = playerRef.GetComponent<PlayerController>();
 
         //set to not hit players
         SetToNotHitPlayers(); //turn on then off when board slamming
@@ -185,6 +190,12 @@ public class PlankManager : MonoBehaviour
         this.gameObject.GetComponent<Collider>().enabled = true;
         //make trigger
         this.gameObject.GetComponent<Collider>().isTrigger = false;
+
+        
+
+        //give them points
+        playerWhoPlacedMe.GetComponent<Points>().AddPointsForBoardPlace();
+
 
         plankState = PlankState.placed;
     }

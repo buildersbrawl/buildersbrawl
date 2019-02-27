@@ -30,6 +30,9 @@ public class WinState : MonoBehaviour
         {
             playerWhoWon = other.gameObject.name;
 
+            //add points to the winner
+            other.gameObject.GetComponent<Points>().AddPointsForOtherSide();
+
             //turn on win UI
             winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit B to Restart";
             winUI.SetActive(true);

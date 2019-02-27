@@ -27,6 +27,7 @@ public class PlayerDeath : MonoBehaviour
     private Renderer playerRenderer;
     public Transform spawnPoint;
     public float respawnTime = 5f;
+    public float timeToWaitAfterPushed = 0.5f;
 
     [HideInInspector]
     public bool playerDead;
@@ -58,23 +59,45 @@ public class PlayerDeath : MonoBehaviour
             playerController.playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
 
+        GameObject cc = GameObject.Find("Main Camera");
+
         playerRenderer.enabled = false;
+
+        //set start avgposition/distance (before moved)
+        cc.GetComponent<CameraController>().SetDeathStartValues();
+
+        //move player
         this.gameObject.transform.position = spawnPoint.transform.position;
+
+        //set end avgposition/distance (before moved)
+        cc.GetComponent<CameraController>().SetDeathEndValues();
+
         print(this.gameObject.transform.position + " " + this.gameObject.name);
         playerDead = true;
         StartCoroutine(WaitForRenderer());
 
         //change the camera settings to lerp/move the camera towards the player respawn
-        GameObject cc = GameObject.Find("Main Camera");
-        cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;      //remove comment when the camera works
+        
+        //cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;      //remove comment when the camera works
+        cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;
+        
+        
     }
 
     IEnumerator WaitForRenderer()
     {
         yield return new WaitForSeconds(respawnTime);
+        this.gameObject.transform.eulerAngles = Vector3.zero;
         playerRenderer.enabled = true;
         playerDead = false;
         print(this.gameObject.transform.position + " " + this.gameObject.name);
+    }
+
+    IEnumerator WaitForDeath()
+    {
+        yield return new WaitForSeconds(timeToWaitAfterPushed);
+        //if player dies after a push, give points to other player
+        //if ()
     }
 
     /*

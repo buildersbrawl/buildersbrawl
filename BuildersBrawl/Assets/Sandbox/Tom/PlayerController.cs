@@ -54,6 +54,10 @@ public class PlayerController : MonoBehaviour
     //player death ref
     public PlayerDeath playerDeath;
 
+    [HideInInspector]
+    //score
+    public Points playerPoints;
+
     //determines player movement
     private Vector3 moveVector;
 
@@ -415,6 +419,7 @@ public class PlayerController : MonoBehaviour
         {
             moveVector = Vector3.zero;
             playerMovement.ResetMovement();
+            joyInput = Vector3.zero;
             return;
         }
 

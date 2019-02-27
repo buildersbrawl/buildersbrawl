@@ -144,10 +144,20 @@ public class CameraController : MonoBehaviour
     public Transform endMarker;
 
     //speed at which the camera will move from startMarker to endMarker
-    public float deathLerpTime = 5f;
+    private float deathLerpTime = 5f;
     private bool shouldGetLerpStartTime = true;
     public float timeStartedLerping = 0f;
     public float deathTimer = 0f;
+
+    [SerializeField]
+    private float deathStartDistance;
+    [SerializeField]
+    private float deathEndDistance;
+    [SerializeField]
+    private Vector3 deathStartAvgPos;
+    [SerializeField]
+    private Vector3 deathEndAvgPos;
+
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -195,7 +205,9 @@ public class CameraController : MonoBehaviour
         }
 
 
-        }
+        deathLerpTime = player1ref.GetComponent<PlayerDeath>().respawnTime * .8f;
+
+     }
 
     private void Update()
     {
@@ -269,11 +281,10 @@ public class CameraController : MonoBehaviour
         else
         {
 
-
             //Debug.Log("CameraController:Update");
-            
+
             //move camera until it is even with position between players
-            if(deathTimer < 5)
+            if (deathTimer < 5)
             {
                 //increment the deathTimer
                 deathTimer += Time.deltaTime;
@@ -288,24 +299,35 @@ public class CameraController : MonoBehaviour
                 //Debug.Log("Is lerping after death");
 
                 float timeSinceStarted = Time.time - timeStartedLerping;
-                float percentageComplete = timeSinceStarted / deathLerpTime;
+                float percentageComplete = deathTimer / deathLerpTime;
                 //Debug.Log("Percentage complete = " + percentageComplete);
 
+
+                //--------------
+
+                //function for before and after teleport
+
+                averagePositionBetweenPlayers = Vector3.Lerp(deathStartAvgPos, deathEndAvgPos, percentageComplete);
+                distanceBetweenPlayers = Mathf.Lerp(deathStartDistance, deathEndDistance, percentageComplete);
+
+                //---------------
+
+
                 pitchPercent = (distanceBetweenPlayers - cameraPlayerDistanceFloor) / (cameraPlayerDistanceCeiling - cameraPlayerDistanceFloor);
-                cameraZOffset = -6.5f;
+                //cameraZOffset = -6.5f;
                 
                 //set the final camera position to the right spot
                 SetCameraPosition(averagePositionBetweenPlayers);
 
                 //lerp from the current position to the expected camera position once player spawns
-                cameraRef.transform.position = Vector3.Lerp(transform.position, cameraFinalPosition, percentageComplete);
+                //cameraRef.transform.position = Vector3.Lerp(transform.position, cameraFinalPosition, percentageComplete);
 
                 //set the FOV to set camera size
                 SetCameraFOV(distanceBetweenPlayers);
                 //set the camera height and pitch
+                //averagePositionBetweenPlayers += new Vector3(0, -.005f, 0);
                 AdjustCameraPitchAndHeightNew(distanceBetweenPlayers, averagePositionBetweenPlayers);
 
-                
             }
             else
             {
@@ -332,7 +354,7 @@ public class CameraController : MonoBehaviour
 
         
         //dont transform if a player has died
-        if(setCameraBasedOnPlayers)
+        //if(setCameraBasedOnPlayers)
             cameraRef.transform.position = cameraFinalPosition;
     }
 
@@ -360,7 +382,7 @@ public class CameraController : MonoBehaviour
         cameraRef.transform.position = cameraHeightSetter;
 
         //angle
-        if(setCameraBasedOnPlayers)
+        //if(setCameraBasedOnPlayers)
             cameraRef.transform.LookAt(averagePlayerPosition);
 
         
@@ -556,6 +578,23 @@ public class CameraController : MonoBehaviour
         }
     }
 
+    public void SetDeathStartValues()
+    {
+        GetAveragePositionBetweenPlayers();
+        GetDistanceBetweenPlayers();
+
+        deathStartDistance = distanceBetweenPlayers;
+        deathStartAvgPos = averagePositionBetweenPlayers;
+    }
+
+    public void SetDeathEndValues()
+    {
+        GetAveragePositionBetweenPlayers();
+        GetDistanceBetweenPlayers();
+
+        deathEndDistance = distanceBetweenPlayers;
+        deathEndAvgPos = averagePositionBetweenPlayers;
+    }
 }
 
 ///Other optioons:
