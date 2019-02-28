@@ -256,7 +256,7 @@ MonoBehaviour:
   startCube: {fileID: 0}
   endCube: {fileID: 0}
   heldPlank: {fileID: 0}
-  pushForce: 10
+  pushForce: 13
 --- !u!114 &4205513807017318953
 MonoBehaviour:
   m_ObjectHideFlags: 0
