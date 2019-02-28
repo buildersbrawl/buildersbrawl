@@ -191,13 +191,16 @@ public class PlankManager : MonoBehaviour
         //make trigger
         this.gameObject.GetComponent<Collider>().isTrigger = false;
 
-        
+        //make collider full sized
+        this.gameObject.GetComponent<BoxCollider>().size = new Vector3(1,1,1);
+        this.gameObject.GetComponent<BoxCollider>().center = Vector3.zero;
 
         //give them points
-        if(playerWhoPlacedMe != null)
+        if (playerWhoPlacedMe != null)
         {
             playerWhoPlacedMe.GetComponent<Points>().AddPointsForBoardPlace();
         }
+        
         
 
 
