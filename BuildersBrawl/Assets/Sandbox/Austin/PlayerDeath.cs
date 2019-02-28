@@ -28,6 +28,7 @@ public class PlayerDeath : MonoBehaviour
     public Transform spawnPoint;
     public float respawnTime = 5f;
     public float timeToWaitAfterPushed = 0.5f;
+    private GameObject otherPlayer;
 
     [HideInInspector]
     public bool playerDead;
@@ -47,7 +48,15 @@ public class PlayerDeath : MonoBehaviour
         playerRenderer = this.GetComponent<Renderer>();
 
         playerDead = false;
-        //target = Waypoints.points[0];
+
+        if (this.name == "Player1")
+        {
+            otherPlayer = GameObject.Find("Player2");
+        }
+        else if(this.name == "Player2")
+        {
+            otherPlayer = GameObject.Find("Player1");
+        }
     }
 
 
@@ -93,11 +102,17 @@ public class PlayerDeath : MonoBehaviour
         print(this.gameObject.transform.position + " " + this.gameObject.name);
     }
 
-    IEnumerator WaitForDeath()
+    public IEnumerator WaitForDeathToHappen()
     {
+        Debug.Log(playerDead);
         yield return new WaitForSeconds(timeToWaitAfterPushed);
-        //if player dies after a push, give points to other player
-        //if ()
+        //if player dies after a push (which would trigger this function), give points to other player
+        if (playerDead)
+        {
+            Debug.Log("Player was pushed and killed");
+            otherPlayer.GetComponent<Points>().AddPointsForKill();
+        }
+        
     }
 
     /*

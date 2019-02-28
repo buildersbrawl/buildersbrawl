@@ -27,16 +27,19 @@ public class Points : MonoBehaviour
     //if they are pushed and they die, based on time?
     public void AddPointsForKill()
     {
+        Debug.Log("Points given for a kill");
         pointsTotal += pointsForKill;
     }
 
     public void AddPointsForBoardPlace()
     {
+        Debug.Log("Points given for a board place");
         pointsTotal += pointsForBoardPlace;
     }
 
     public void AddPointsForOtherSide()
     {
+        Debug.Log("Points given for a win");
         pointsTotal += pointsForOtherSide;
     }
 }

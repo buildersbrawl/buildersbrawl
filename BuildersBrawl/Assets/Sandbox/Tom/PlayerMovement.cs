@@ -247,7 +247,10 @@ public class PlayerMovement : MonoBehaviour
     }
 
     public void PushMe(Vector3 pushDirection, float pushForce)
-    {
+    { 
+        //wait to see if this player dies, if he does then give points to the other other player
+        StartCoroutine(this.GetComponent<PlayerDeath>().WaitForDeathToHappen());
+
         print("I got pushed " + this.gameObject.name);
         playerCombatMomentum = pushDirection * pushForce;
 
@@ -255,6 +258,8 @@ public class PlayerMovement : MonoBehaviour
         {
             playerController.playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
+
+       
     }
 
     public void JumpEnd()

@@ -2137,6 +2137,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2452697667803802996, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: m_Name
+      value: Player2
+      objectReference: {fileID: 0}
     - target: {fileID: 1753385755599016872, guid: 90fecd509f8421045a7e40a875876d99,
         type: 3}
       propertyPath: spawnPoint
@@ -2201,11 +2206,6 @@ PrefabInstance:
         type: 3}
       propertyPath: inputType
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452697667803802996, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: m_Name
-      value: Player2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fecd509f8421045a7e40a875876d99, type: 3}
@@ -2460,8 +2460,6 @@ MonoBehaviour:
   p2Controller: 0
   B4_P1_select: {fileID: 0}
   B4_P2_select: {fileID: 0}
-  P1_selected: {fileID: 0}
-  P2_selected: {fileID: 0}
   LevelStartBtn: {fileID: 0}
   LevelStartBtnText: {fileID: 0}
   playerOneSelected: 0
@@ -4571,8 +4569,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9187f19924980cc43a5f57647549850f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  plankPrefab: {fileID: 6879533599162455654, guid: 4648a00a6f0fc4644926f91cfb3e9b4b,
-    type: 3}
+  plankPrefab:
+  - {fileID: 6879533599162455654, guid: 4648a00a6f0fc4644926f91cfb3e9b4b, type: 3}
+  - {fileID: 6087109645313124721, guid: 5a69423163cc32e40b692218699977c1, type: 3}
+  - {fileID: 7561570254513574992, guid: b9b9d0959fb61854d9987c930dc0e546, type: 3}
 --- !u!4 &1409201216 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
@@ -6934,20 +6934,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 925820139, guid: a976d66702bbc334d9a158045b06242f, type: 3}
-      propertyPath: spawnPoint
-      value: 
-      objectReference: {fileID: 196210179}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: startCube
-      value: 
-      objectReference: {fileID: 1702756283}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: endCube
-      value: 
-      objectReference: {fileID: 866006637}
     - target: {fileID: 4205513807017318954, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -7003,15 +6989,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318967, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: m_Name
+      value: Player1
+      objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: inputType
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318967, guid: a976d66702bbc334d9a158045b06242f,
+    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
-      propertyPath: m_Name
-      value: Player1
+      propertyPath: startCube
+      value: 
+      objectReference: {fileID: 1702756283}
+    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: endCube
+      value: 
+      objectReference: {fileID: 866006637}
+    - target: {fileID: 925820139, guid: a976d66702bbc334d9a158045b06242f, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 196210179}
+    - target: {fileID: 925820139, guid: a976d66702bbc334d9a158045b06242f, type: 3}
+      propertyPath: timeToWaitAfterPushed
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976d66702bbc334d9a158045b06242f, type: 3}
