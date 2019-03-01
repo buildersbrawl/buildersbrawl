@@ -29,6 +29,7 @@ public class PlayerDeath : MonoBehaviour
     public float respawnTime = 5f;
     public float timeToWaitAfterPushed = 0.5f;
     private GameObject otherPlayer;
+    private Vector3 playerdeathPos;
 
     [HideInInspector]
     public bool playerDead;
@@ -74,7 +75,7 @@ public class PlayerDeath : MonoBehaviour
 
         //set start avgposition/distance (before moved)
         cc.GetComponent<CameraController>().SetDeathStartValues();
-
+        playerdeathPos = transform.position;
         //move player
         this.gameObject.transform.position = spawnPoint.transform.position;
 
