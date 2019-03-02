@@ -234,6 +234,8 @@ MonoBehaviour:
   collisonCheckLength: 0.6
   groundCheckDistance: 1.1
   playerGrounded: 0
+  flattenPercent: 0.2
+  flattenDownAmount: 0.4
 --- !u!114 &4205513807017318952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -249,9 +251,13 @@ MonoBehaviour:
   actionCooldown: 1
   whereBoardHeld: {x: 0, y: 1.5, z: 0}
   throwBoardOnDrop: 0
+  boardSlamWaitTime: 0.1
+  boardSlamStunTime: 2
   boxCastOffset: {x: 0, y: 0, z: 0}
   boxCasthalfSize: {x: 0.7, y: 1.5, z: 0.1}
-  boxCastMaxDistance: 1
+  boxCastMaxDistancePlankPickUp: 1
+  boxCastMaxDistancePush: 1
+  boxCastMaxDistanceSlam: 2
   testCubes: 0
   startCube: {fileID: 0}
   endCube: {fileID: 0}

@@ -28,13 +28,26 @@ public class PlayerActions : MonoBehaviour
 
     public bool throwBoardOnDrop = false;
 
+    [Tooltip("How long to wait after board slam called to check to see if there is a player infront of me")]
+    [SerializeField]
+    private float boardSlamWaitTime = .1f;
+    [SerializeField]
+    private float boardSlamStunTime = 2f;
+    private float boardAnimationTime = 0;
+    private bool boardAnimSwitch = true;
+    private bool boardAnimCont = true;
+
     [Header("BoxCast")]
     [SerializeField]
     private Vector3 boxCastOffset = new Vector3(0,0,0);
     [SerializeField]
     private Vector3 boxCasthalfSize = new Vector3(.5f, .5f, .1f);
     [SerializeField]
-    private float boxCastMaxDistance = 1;
+    private float boxCastMaxDistancePlankPickUp = 1;
+    [SerializeField]
+    private float boxCastMaxDistancePush = 1;
+    [SerializeField]
+    private float boxCastMaxDistanceSlam = 2;
     private Quaternion playerRotation;
     private Vector3 playerForward;
 
@@ -141,6 +154,9 @@ public class PlayerActions : MonoBehaviour
         
     }
 
+    //---------------------------------------------------------------------------------------
+    //PUSH
+
 
     private void PushAction()
     {
@@ -152,7 +168,12 @@ public class PlayerActions : MonoBehaviour
 
         print("Push action");
         //make boxcast in front of player
-        SeeWhatIsInFrontOfPlayer();
+        SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePush);
+        if (testCubes)
+        {
+            TestBoxCast(startCube, endCube, boxCastMaxDistancePush);
+        }
+
         //if hits opponent knock back opponent
         for (int index = 0; index < boxHitInfo.Length; index++)
         {
@@ -190,7 +211,7 @@ public class PlayerActions : MonoBehaviour
         //boxcast in front of player
 
         //boxcast (makes an array)
-        SeeWhatIsInFrontOfPlayer();
+        SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePlankPickUp);
 
         //cooldown not happening until proven otherwise
         omitCooldown = true;
@@ -229,7 +250,7 @@ public class PlayerActions : MonoBehaviour
         //make cubes to visualize boxcast
         if (testCubes)
         {
-            TestBoxCast(startCube, endCube);
+            TestBoxCast(startCube, endCube, boxCastMaxDistancePlankPickUp);
         }
 
     }
@@ -323,10 +344,20 @@ public class PlayerActions : MonoBehaviour
             return;
         }
         //turn on player collider detection
-        heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
-        //if hit opponent player
+        //heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
 
-        //do board slam
+        //temp plank animation
+        //reset anim things
+        boardAnimCont = true;
+        boardAnimationTime = 0;
+        boardAnimSwitch = true;
+        StartCoroutine(TempPlankAnim());
+        //after certain amount of time cast forward to see if player in front of me
+        StartCoroutine(BoardSlamCoroutine());
+        //if that player isn't me
+        //stun them
+        //flatten them
+        //cooldown
 
 
         //turn off player collider detection
@@ -334,15 +365,87 @@ public class PlayerActions : MonoBehaviour
 
     }
 
-    public void TestBoxCast(GameObject startCube, GameObject endCube)
+    private IEnumerator BoardSlamCoroutine()
     {
+        //after certain amount of time cast forward to see if player in front of me
+        //if that player isn't me
+        //stun them
+        //flatten them
+        //cooldown
+        yield return new WaitForSeconds(boardSlamWaitTime);
+        SeeWhatIsInFrontOfPlayer(boxCastMaxDistanceSlam);
+        if (testCubes)
+        {
+            TestBoxCast(startCube, endCube, boxCastMaxDistanceSlam);
+        }
+        for (int index = 0; index < boxHitInfo.Length; index++)
+        {
+            //if that player isn't me
+            if(boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && !(boxHitInfo[index].collider.gameObject.Equals(this.gameObject)))
+            {
+                PlayerController slammedPlayer = boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>();
+                slammedPlayer.StunMe(boardSlamStunTime);
+            }
+        }
+
+    } 
+
+    private IEnumerator TempPlankAnim()
+    {
+
+        //up 3 down 1
+
+        while (boardAnimCont)
+        {
+            yield return new WaitForSeconds(.01f);
+            //rotate plank on z
+            if (boardAnimSwitch)
+            {
+                //go up
+                HeldPlank.gameObject.transform.localEulerAngles += Vector3.forward * 10;
+                //HeldPlank.gameObject.transform.localPosition += new Vector3(0, .1f, 0);
+                //print("up");
+            }
+            else
+            {
+                //go down
+                HeldPlank.gameObject.transform.localEulerAngles -= Vector3.forward * 10;
+                //HeldPlank.gameObject.transform.localPosition -= new Vector3(0,.1f,0);
+
+            }
+            boardAnimationTime += .2f;
+            if (boardAnimationTime >= 1f)
+            {
+                boardAnimSwitch = false;
+            }
+
+            if (boardAnimationTime >= 2f)
+            {
+                boardAnimCont = false;
+            }
+            else
+            {
+                print("cont");
+                //StartCoroutine(TempPlankAnim());
+            }
+            
+        }
+
+
+
+}
+
+    public void TestBoxCast(GameObject startCube, GameObject endCube, float maxDistance)
+    {
+        //print("testbox");
+
         startCube.GetComponent<Collider>().enabled = false;
         startCube.transform.position = this.gameObject.transform.position + boxCastOffset;
         startCube.transform.rotation = playerRotation;
         startCube.transform.localScale = boxCasthalfSize * 2;
 
         endCube.GetComponent<Collider>().enabled = false;
-        endCube.transform.position = this.gameObject.transform.position + boxCastOffset + (playerForward * boxCastMaxDistance);
+        endCube.transform.position = this.gameObject.transform.position + boxCastOffset + (playerForward * maxDistance);
         endCube.transform.rotation = playerRotation;
         endCube.transform.localScale = boxCasthalfSize * 2;
     }
@@ -353,12 +456,12 @@ public class PlayerActions : MonoBehaviour
     }
 
     //boxcast
-    public void SeeWhatIsInFrontOfPlayer()
+    public void SeeWhatIsInFrontOfPlayer(float maxDistance)
     {
         playerRotation = this.gameObject.transform.rotation;
         playerForward = this.gameObject.transform.forward;
 
-        boxHitInfo = Physics.BoxCastAll(this.transform.position + boxCastOffset, boxCasthalfSize, playerForward, playerRotation, boxCastMaxDistance);
+        boxHitInfo = Physics.BoxCastAll(this.transform.position + boxCastOffset, boxCasthalfSize, playerForward, playerRotation, maxDistance);
     }
 }
 

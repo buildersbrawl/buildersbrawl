@@ -24,7 +24,8 @@ public class PlayerController : MonoBehaviour
         jumping,
         action,
         holdingPlank,
-        cooldown
+        cooldown,
+        stunned
     }
 
     [Header("Input")]
@@ -112,6 +113,11 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 directionPlayerFacing; //same as x and z of direction moving
 
+    [Header("Other")]
+    [SerializeField]
+    private float flattenPercent = .2f;
+    [SerializeField]
+    private float flattenDownAmount = .4f;
 
     private void Start()
     {
@@ -269,6 +275,15 @@ public class PlayerController : MonoBehaviour
             {
                 BCharge = false;
             }
+            if (Input.GetKey(KeyCode.R))
+            {
+                //print("hit q");
+                BumpOrTrigSlam = true;
+            }
+            else
+            {
+                BumpOrTrigSlam = false;
+            }
 
         }
         else if (playerNumber == PlayerNumber.p2)
@@ -338,7 +353,15 @@ public class PlayerController : MonoBehaviour
             {
                 XPush = false;
             }
-
+            if (Input.GetKey(KeyCode.Keypad4))
+            {
+                //print("hit q");
+                BumpOrTrigSlam = true;
+            }
+            else
+            {
+                BumpOrTrigSlam = false;
+            }
 
         }
         else
@@ -414,8 +437,8 @@ public class PlayerController : MonoBehaviour
         //------------------------------------------------------------------------------------------
 
 
-        //if player dead stop control
-        if (playerDeath.playerDead)
+        //if player dead or stunned stop control
+        if (playerDeath.playerDead || playerState == PlayerState.stunned)
         {
             moveVector = Vector3.zero;
             playerMovement.ResetMovement();
@@ -485,6 +508,7 @@ public class PlayerController : MonoBehaviour
             //bumpers are board slam
             else if (BumpOrTrigSlam)
             {
+                //print("pressed slam");
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.slam);
             }
             else if (dropPlankControl)
@@ -655,9 +679,17 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ReturnPlayerStateToMoving(float waitTime)
     {
-        playerState = PlayerState.cooldown;
+        if(playerState != PlayerState.stunned)
+        {
+            playerState = PlayerState.cooldown;
+        }
+        
         yield return new WaitForSeconds(waitTime);
         //reset state
+        if (playerState == PlayerState.stunned)
+        {
+            TempFlatten(false);
+        }
         playerState = PlayerState.defaultMovement;
     }
 
@@ -713,6 +745,50 @@ public class PlayerController : MonoBehaviour
 
         //return reflection
         return reflection;
+    }
+
+    public void StunMe(float stunLength)
+    {
+        playerState = PlayerState.stunned;
+        //flatten
+        TempFlatten(true);
+        //drop any held board
+        if(playerActions.HeldPlank != null)
+        {
+            playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
+        }
+        StartCoroutine(ReturnPlayerStateToMoving(stunLength));
+    }
+
+    private void TempFlatten(bool flattenMe)
+    {
+        Vector3 temp;
+
+        if (flattenMe)
+        {
+            //flattten
+            //print("faltten");
+            temp = this.gameObject.transform.localScale;
+            temp.y *= flattenPercent;
+            this.gameObject.transform.localScale = temp;
+            //move down (OBSELETE)
+            temp = this.gameObject.transform.position;
+            //temp.y -= flattenDownAmount;
+            this.gameObject.transform.position = temp;
+        }
+        else
+        {
+            //move up (OBSELETE)
+            temp = this.gameObject.transform.position;
+            //temp.y += flattenDownAmount;
+            this.gameObject.transform.position = temp;
+            //un flatten
+            //print("unflatten");
+            temp = this.gameObject.transform.localScale;
+            temp.y *= (1/flattenPercent *5f);
+            this.gameObject.transform.localScale = temp;
+            
+        }
     }
 
     /*

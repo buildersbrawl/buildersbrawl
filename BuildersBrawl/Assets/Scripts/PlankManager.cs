@@ -200,9 +200,6 @@ public class PlankManager : MonoBehaviour
         {
             playerWhoPlacedMe.GetComponent<Points>().AddPointsForBoardPlace();
         }
-        
-        
-
 
         plankState = PlankState.placed;
     }
