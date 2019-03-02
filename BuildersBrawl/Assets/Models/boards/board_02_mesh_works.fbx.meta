@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 3d1700bfbdd10d042a8a005e1c3d6dad
+guid: 2e97b2871e77cb947848aedf3ba76551
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: board_01
+    100000: board_02
     100002: //RootNode
-    400000: board_01
+    400000: board_02
     400002: //RootNode
-    2100000: lambert1
-    2300000: board_01
-    3300000: board_01
-    4300000: board_01
+    2100000: board_02_lambert
+    2300000: board_02
+    3300000: board_02
+    4300000: board_02
   externalObjects: {}
   materials:
     importMaterials: 1

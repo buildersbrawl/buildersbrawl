@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: bf15e1fe1ff8b6b4386c6b5fe0438cfb
+guid: 94d0c3b2166464d4499fbfc70847bd20
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -7,7 +7,7 @@ ModelImporter:
     100002: //RootNode
     400000: board_03
     400002: //RootNode
-    2100000: lambert1
+    2100000: board_03_lambert
     2300000: board_03
     3300000: board_03
     4300000: board_03
