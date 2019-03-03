@@ -15,61 +15,14 @@ public class RiverMechanic : MonoBehaviour
 
     public RiverDirection riverDirection;
     public float riverSpeed;
-
-    private Collider riverCollider;
-    private GameObject player;
-
-    private void Awake()
-    {
-        riverCollider = GetComponent<Collider>();
-    }
-
-    private void Update()
-    {
-        /*
-        if (Physics.Raycast(transform.position, Vector3.up, out RaycastHit hitInfo, .5f))
-        {
-            hitInfo.collider.gameObject.transform.position += GetRiverFlowDirection(riverDirection);
-        }
-        */
-        /*
-        if (Physics.BoxCast(riverCollider.bounds.center, riverCollider.bounds.extents, Vector3.up,
-            out RaycastHit hitInfo, transform.rotation, 0.1f))
-        {
-            
-            if (hitInfo.collider != null)
-                player = hitInfo.collider.gameObject;
-            hitInfo.collider.gameObject.GetComponent<TestGravity>().gravity = false;
-            hitInfo.collider.gameObject.transform.position += GetRiverFlowDirection(riverDirection);
-        }
-        else
-        {
-            if (player != null)
-                player.GetComponent<TestGravity>().gravity = true;
-        }*/
-    }
-
     
-    /*
-    private void OnTriggerEnter(Collider other)
-    {
-        //Vector3 moveDirection = (other.transform.position += GetRiverFlowDirection(riverDirection));
-        other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
-    }*/
-
-    
+    //Moves Player as long as they are touching the River Collider
     private void OnTriggerStay(Collider other)
     {
         other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
     }
 
-    /*
-    private void OnTriggerExit(Collider other)
-    {
-        //Vector3 moveDirection = (other.transform.position += GetRiverFlowDirection(riverDirection));
-        other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
-    }*/
-
+    //Finds River Flow Direction Based on Inspector
     private Vector3 GetRiverFlowDirection(RiverDirection direction)
     {
         Vector3 riverDirection = Vector3.zero;
@@ -93,11 +46,5 @@ public class RiverMechanic : MonoBehaviour
                 break;
         }
         return riverDirection;
-    }
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireCube(GetComponent<Collider>().bounds.center, GetComponent<Collider>().bounds.size);
     }
 }
