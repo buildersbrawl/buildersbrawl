@@ -5,7 +5,7 @@ using UnityEngine;
 public class Points : MonoBehaviour
 {
 
-    public static int pointsTotal = 0;
+    public int pointsTotal = 0;
     public int pointsForKill = 30;
     public int pointsForBoardPlace = 10;
     public int pointsForOtherSide = 200;
@@ -29,17 +29,30 @@ public class Points : MonoBehaviour
     {
         Debug.Log("Points given for a kill");
         pointsTotal += pointsForKill;
+        PrintPointsTotal();
     }
 
     public void AddPointsForBoardPlace()
     {
         Debug.Log("Points given for a board place");
         pointsTotal += pointsForBoardPlace;
+        PrintPointsTotal();
     }
 
     public void AddPointsForOtherSide()
     {
         Debug.Log("Points given for a win");
         pointsTotal += pointsForOtherSide;
+        PrintPointsTotal();
+    }
+
+    public int GetPointsTotal()
+    {
+        return pointsTotal;
+    }
+
+    private void PrintPointsTotal()
+    {
+        Debug.Log(this.name + " has " + pointsTotal + " total points");
     }
 }
