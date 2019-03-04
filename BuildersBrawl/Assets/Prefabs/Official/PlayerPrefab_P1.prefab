@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 925820138}
   - component: {fileID: 925820139}
   - component: {fileID: 2351750325762926708}
+  - component: {fileID: 1191528802872432584}
   m_Layer: 0
   m_Name: PlayerPrefab_P1
   m_TagString: Untagged
@@ -347,6 +348,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ab7ea07c63f8bb4588d1423d7b11465, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointsTotal: 0
   pointsForKill: 30
   pointsForBoardPlace: 10
   pointsForOtherSide: 200
+--- !u!114 &1191528802872432584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0638de8d676aad8468c14beee61abe35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsTextPrefab: {fileID: 978226239479157690, guid: 911067f5eb9aec24a9d1ac35de62fe6a,
+    type: 3}
+  textActiveTime: 3
