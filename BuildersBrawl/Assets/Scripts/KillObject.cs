@@ -12,5 +12,10 @@ public class KillObject : MonoBehaviour
             other.gameObject.GetComponent<PlayerDeath>().KillMe();
 
         }
+        else if(other.gameObject.GetComponent<PlankManager>() != null)
+        {
+            //destroys boards that go below map
+            Destroy(other.gameObject);
+        }
     }
 }

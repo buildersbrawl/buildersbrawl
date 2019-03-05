@@ -14,7 +14,7 @@ public class RiverMechanic : MonoBehaviour
     }
 
     public RiverDirection riverDirection;
-    public float riverSpeed;
+    public float riverSpeed = 10f;
     
     //Moves Player as long as they are touching the River Collider
     private void OnTriggerStay(Collider other)

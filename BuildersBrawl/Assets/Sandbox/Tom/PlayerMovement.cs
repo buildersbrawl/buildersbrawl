@@ -242,6 +242,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetMovement()
     {
+        //playerCombatMomentum = Vector3.zero;
+        playerJumpMomentum = Vector3.zero;
+        playerEnvironmentMomentum = Vector3.zero;
         playerMomentum = Vector3.zero;
         reversePlayerMovementFromJoysticks = Vector3.zero;
     }
@@ -258,8 +261,6 @@ public class PlayerMovement : MonoBehaviour
         {
             playerController.playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
-
-       
     }
 
     public void JumpEnd()

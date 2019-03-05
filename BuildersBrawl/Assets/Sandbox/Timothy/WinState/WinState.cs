@@ -29,6 +29,7 @@ public class WinState : MonoBehaviour
         if (other.gameObject.GetComponent<PlayerController>() != null)
         {
             playerWhoWon = other.gameObject.name;
+            playerWhoWon = playerWhoWon.Replace("Prefab_P", "");
 
             //add points to the winner
             other.gameObject.GetComponent<Points>().AddPointsForOtherSide();

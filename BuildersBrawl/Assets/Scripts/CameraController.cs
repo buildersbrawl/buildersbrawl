@@ -204,10 +204,19 @@ public class CameraController : MonoBehaviour
             cameraXOffset = 0;
         }
 
+        if(player1ref == null || player2ref == null)
+        {
+            if(GameManager.S != null)
+            {
+                player1ref = GameManager.S.player1;
+                player2ref = GameManager.S.player2;
+
+            }
+        }
 
         deathLerpTime = player1ref.GetComponent<PlayerDeath>().respawnTime * .8f;
 
-     }
+    }
 
     private void Update()
     {
@@ -305,6 +314,8 @@ public class CameraController : MonoBehaviour
 
                 //--------------
 
+                SetDeathEndValues();
+
                 //function for before and after teleport
 
                 averagePositionBetweenPlayers = Vector3.Lerp(deathStartAvgPos, deathEndAvgPos, percentageComplete);
@@ -336,7 +347,7 @@ public class CameraController : MonoBehaviour
                 //reset death timer
                 deathTimer = 0f;
                 //reset cameraZOffset to original value
-                cameraZOffset = 0f;
+                //cameraZOffset = 0f;
             }
         }
     }

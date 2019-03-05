@@ -8,22 +8,22 @@ public class SelectPlayer : MonoBehaviour
     public void SelectPlayerOne()
     {
         //Selects player one if not previously done
-        if (!PlayerSelect.PS.playerOneSelected)
+        if (!PlayerSelect.S.playerOneSelected)
         {
-            PlayerSelect.PS.playerOneSelected = true;
+            PlayerSelect.S.playerOneSelected = true;
             Debug.Log("Player One selected");
-            PlayerSelect.PS.CheckSelectedPlayers();
+            PlayerSelect.S.CheckSelectedPlayers();
         }
     }
 
     public void SelectPlayerTwo()
     {
         //Selects player two if not previously done and if player one was already selected
-        if (!PlayerSelect.PS.playerTwoSelected && PlayerSelect.PS.playerOneSelected)
+        if (!PlayerSelect.S.playerTwoSelected && PlayerSelect.S.playerOneSelected)
         {
-            PlayerSelect.PS.playerTwoSelected = true;
+            PlayerSelect.S.playerTwoSelected = true;
             Debug.Log("Player Two selected");
-            PlayerSelect.PS.CheckSelectedPlayers();
+            PlayerSelect.S.CheckSelectedPlayers();
         }
     }
 }

@@ -71,7 +71,7 @@ public class LevelSelector : MonoBehaviour
                 {
                     RotateLevels();
                     //Displays the randomly chosen level after the min wait time is reached.
-                    if (waitTime >= minWaitTime && show == levelNumber && PlayerSelect.PS.bothPlayersReady)
+                    if (waitTime >= minWaitTime && show == levelNumber && PlayerSelect.S.bothPlayersReady)
                     {
                         DisplayChosen();
                     }
@@ -81,7 +81,7 @@ public class LevelSelector : MonoBehaviour
             else
             {
                 RotateLevels();
-                if (PlayerSelect.PS.bothPlayersReady)
+                if (PlayerSelect.S.bothPlayersReady)
                 {
                     DisplayChosen();
                 }
@@ -127,11 +127,16 @@ public class LevelSelector : MonoBehaviour
         //Stops random level stuff in order to not slow down Unity
         chosenShown = true;
 
-        PlayerSelect.PS.LevelStartBtn.interactable = true;
-        PlayerSelect.PS.LevelStartBtnText.text = "Press A to Start Game";
+        PlayerSelect.S.LevelStartBtn.interactable = true;
+        PlayerSelect.S.LevelStartBtnText.text = "Press A to Start Game";
     }
 
-    public void StartLevel (string level)
+    public void ActuallyStartLevel()
+    {
+        StartLevel(chosenLevel);
+    }
+
+    private void StartLevel (string level)
     {//Opens level based on which level was chosen in ChooseLevel
         if(SceneManager.GetSceneByName(level) == null)
         {

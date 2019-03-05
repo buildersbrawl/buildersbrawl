@@ -188,6 +188,9 @@ public class PlayerActions : MonoBehaviour
                 //push other player
                 boxHitInfo[index].collider.GetComponent<PlayerController>().playerMovement.PushMe(playerForward, pushForce);
 
+                //tell the other player it was I who pushed you
+                boxHitInfo[index].collider.GetComponent<PlayerDeath>().OtherPlayer = this.gameObject;
+
                 //end loop
                 index = boxHitInfo.Length;
             }

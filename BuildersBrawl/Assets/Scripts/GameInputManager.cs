@@ -65,12 +65,12 @@ public class GameInputManager : MonoBehaviour
     {
         if(pNum == PlayerController.PlayerNumber.p1)
         {
-            gamePlayerId = PlayerSelect.PS.p1Controller;
+            gamePlayerId = PlayerSelect.S.p1Controller;
         }
         else
         {
             //p2
-            gamePlayerId = PlayerSelect.PS.p2Controller;
+            gamePlayerId = PlayerSelect.S.p2Controller;
         }
     }
 

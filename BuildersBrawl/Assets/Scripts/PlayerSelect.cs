@@ -13,7 +13,7 @@ public class PlayerSelect : MonoBehaviour
     public int p1Controller;
     public int p2Controller;
 
-    public static PlayerSelect PS;
+    //public static PlayerSelect PS;
 
     //Text before the players are selected
     public Text B4_P1_select;
@@ -55,16 +55,16 @@ public class PlayerSelect : MonoBehaviour
     {
         if (!Rewired.ReInput.isReady)
             return null;
-        if (PS == null)
+        if (S == null)
         {
             Debug.Log("Not initialized");
             return null;
         }
 
-        for (int i = 0; i < PS.playerMap.Count; i++)
+        for (int i = 0; i < S.playerMap.Count; i++)
         {
-            if (PS.playerMap[i].gamePlayerId == gamePlayerId)
-                return ReInput.players.GetPlayer(PS.playerMap[i].rewiredPlayerId);
+            if (S.playerMap[i].gamePlayerId == gamePlayerId)
+                return ReInput.players.GetPlayer(S.playerMap[i].rewiredPlayerId);
         }
         return null;
     }
@@ -89,7 +89,7 @@ public class PlayerSelect : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        PS = this;
+        //PS = this;
 
         //don't destory when going to next scene
         DontDestroyOnLoad(this.gameObject);
@@ -112,11 +112,13 @@ public class PlayerSelect : MonoBehaviour
             P2_selected.enabled = false;*/
 
             //Hides the player models
-            player1.SetActive(false);
-            player2.SetActive(false);
+            //player1.SetActive(false);
+            //player2.SetActive(false);
 
             LevelStartBtn.interactable = false;
             LevelStartBtnText.text = "Waiting for Players...";
+
+
         }
     }
 
@@ -325,6 +327,9 @@ public class PlayerSelect : MonoBehaviour
 
             initialized = true;
             Debug.Log("Scene Initialized!");
+
+            //reset player count
+            playerCounter = 0;
         }
     }
 }

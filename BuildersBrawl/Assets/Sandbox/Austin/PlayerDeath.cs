@@ -29,6 +29,14 @@ public class PlayerDeath : MonoBehaviour
     public float respawnTime = 5f;
     public float timeToWaitAfterPushed = 0.5f;
     private GameObject otherPlayer;
+    public GameObject OtherPlayer
+    {
+        set
+        {
+            otherPlayer = value;
+        }
+    }
+
     private Vector3 deathPos;
 
     [HideInInspector]
@@ -46,10 +54,13 @@ public class PlayerDeath : MonoBehaviour
             playerController = this.gameObject.AddComponent<PlayerController>();
         }
 
-        playerRenderer = this.GetComponent<Renderer>();
+        playerRenderer = this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
 
         playerDead = false;
 
+        //instead when a player pushes me that player tells me they pushed me
+
+        /*
         if (this.name == "Player1")
         {
             otherPlayer = GameObject.Find("Player2");
@@ -58,6 +69,7 @@ public class PlayerDeath : MonoBehaviour
         {
             otherPlayer = GameObject.Find("Player1");
         }
+        */
     }
 
 
@@ -82,7 +94,7 @@ public class PlayerDeath : MonoBehaviour
         //set end avgposition/distance (before moved)
         cc.GetComponent<CameraController>().SetDeathEndValues();
 
-        print(this.gameObject.transform.position + " " + this.gameObject.name);
+        //print(this.gameObject.transform.position + " " + this.gameObject.name);
         playerDead = true;
         StartCoroutine(WaitForRenderer());
 
@@ -90,7 +102,9 @@ public class PlayerDeath : MonoBehaviour
         
         //cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;      //remove comment when the camera works
         cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;
-        
+
+        //reset player's momentum
+        //playerController.playerMovement.ResetMovement();
         
     }
 

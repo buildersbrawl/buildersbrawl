@@ -84,6 +84,11 @@ public class PlankManager : MonoBehaviour
         //make trigger
         this.gameObject.GetComponent<Collider>().isTrigger = true;
 
+        //reduce size of collider
+        //make collider full sized
+        this.gameObject.GetComponent<BoxCollider>().size = new Vector3(0.308f, 1, 1);
+        this.gameObject.GetComponent<BoxCollider>().center = new Vector3(0.345f, 0, 0);
+
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
         //unparent
@@ -136,6 +141,11 @@ public class PlankManager : MonoBehaviour
         //not trigger
         this.gameObject.GetComponent<Collider>().isTrigger = false;
 
+        //make collider full sized
+        this.gameObject.GetComponent<BoxCollider>().size = new Vector3(1, 1, 1);
+        this.gameObject.GetComponent<BoxCollider>().center = Vector3.zero;
+
+
         //turn off artificial gravity
         snapRef.GravitySwitch(false);
 
@@ -172,6 +182,7 @@ public class PlankManager : MonoBehaviour
         
 
         this.gameObject.GetComponent<Collider>().isTrigger = false;
+
 
         //turn off artifical gravity (stop from moving)
         snapRef.GravitySwitch(false);

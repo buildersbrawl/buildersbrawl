@@ -76,19 +76,15 @@ PrefabInstance:
       propertyPath: playerNumber
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: inputType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318964, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7ab56de4d782cb14eaa9455a76a09f7e, type: 2}
-    - target: {fileID: 466583565, guid: a976d66702bbc334d9a158045b06242f, type: 3}
+    - target: {fileID: 321129468583990422, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7ab56de4d782cb14eaa9455a76a09f7e, type: 2}
+      objectReference: {fileID: 2100000, guid: 199e4527afc6ab448a3c53e15b0b34a7, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976d66702bbc334d9a158045b06242f, type: 3}
