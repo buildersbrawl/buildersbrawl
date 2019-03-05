@@ -49,10 +49,10 @@ public class PointsBar : MonoBehaviour
         //playerHeads[2] = player3Head;
         //playerHeads[3] = player4Head;
 
-        player1 = GameObject.Find("Player1");
+        player1 = GameManager.S.player1;
         players.Add(player1);
         //players[0] = player1;
-        player2 = GameObject.Find("Player2");
+        player2 = GameManager.S.player2;
         players.Add(player2);
         //players[1] = player2;
 
@@ -89,9 +89,9 @@ public class PointsBar : MonoBehaviour
             //set the index for each individual player
             int index = -1;
             Debug.Log("index before = " + index);
-            if (player.name == "Player1")
+            if (player == GameManager.S.player1)
                 index = 0;
-            else if (player.name == "Player2")
+            else if (player == GameManager.S.player2)
                 index = 1;
             else if (player.name == "Player3")
                 index = 2;

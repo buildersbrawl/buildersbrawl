@@ -27,7 +27,7 @@ public class PlayerDeath : MonoBehaviour
     private Renderer playerRenderer;
     public Transform spawnPoint;
     public float respawnTime = 5f;
-    public float timeToWaitAfterPushed = 0.5f;
+    public float timeToWaitAfterPushed = 1f;
     private GameObject otherPlayer;
     public GameObject OtherPlayer
     {

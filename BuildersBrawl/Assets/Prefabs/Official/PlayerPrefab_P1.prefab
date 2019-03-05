@@ -243,7 +243,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spawnPoint: {fileID: 0}
   respawnTime: 5
-  timeToWaitAfterPushed: 0.5
+  timeToWaitAfterPushed: 1
   playerDead: 0
 --- !u!114 &2351750325762926708
 MonoBehaviour:

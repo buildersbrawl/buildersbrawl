@@ -18,7 +18,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Official/Player_Select.unity
     guid: eabe07b9e9d2c4443bb92202be1cc164
   - enabled: 1
-    path: Assets/Scenes/Official/River_TestingBuild.unity
+    path: Assets/Scenes/River_TestingBuild.unity
     guid: 4230cb6bf2e61cd4aa2a8f9a2727f8c8
   - enabled: 1
     path: Assets/Scenes/Volcano.unity
