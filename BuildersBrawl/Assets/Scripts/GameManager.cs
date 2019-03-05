@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
 
     public bool someoneWon = false;
 
+    public GameObject cameraRef;
+
     private void Awake()
     {
         if(S == null)
@@ -38,6 +40,10 @@ public class GameManager : MonoBehaviour
             }
         }
         
+        if(cameraRef == null)
+        {
+            cameraRef = GameObject.FindObjectOfType<CameraController>().gameObject;
+        }
 
     }
 
