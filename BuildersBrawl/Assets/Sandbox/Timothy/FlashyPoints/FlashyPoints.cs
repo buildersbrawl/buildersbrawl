@@ -6,10 +6,12 @@ public class FlashyPoints : MonoBehaviour
 {
     public GameObject pointsTextPrefab;
     public float textActiveTime = 3;
+    public int uptravelDistance = 5;
 
     public void ShowPointsGained(Vector3 instantiatePos, int points)
     {
         GameObject pointsText = Instantiate(pointsTextPrefab, instantiatePos, Quaternion.identity);
+        /*
         if(GameManager.S.cameraRef.GetComponent<CameraController>().cameraOptions == CameraController.CameraOptions.side)
         {
             pointsText.transform.Rotate(new Vector3(0, -90));
@@ -17,14 +19,16 @@ public class FlashyPoints : MonoBehaviour
         else if(GameManager.S.cameraRef.GetComponent<CameraController>().cameraOptions == CameraController.CameraOptions.front)
         {
             pointsText.transform.Rotate(new Vector3(0, 180));
-        }
+        }*/
         pointsText.GetComponent<TextMesh>().text = "+" + points.ToString();
-        StartCoroutine(DestroyText(pointsText));
+        //StartCoroutine(FadeText(pointsText));
     }
 
-    private IEnumerator DestroyText(GameObject text)
+    /*
+    private IEnumerator FadeText(GameObject text)
     {
+
         yield return new WaitForSeconds(textActiveTime);
         Destroy(text);
-    }
+    }*/
 }
