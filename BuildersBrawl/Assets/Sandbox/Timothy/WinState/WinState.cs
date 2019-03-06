@@ -19,7 +19,8 @@ public class WinState : MonoBehaviour
     {
         if(winUI == null)
         {
-            print("no reference to winUI");
+            print("trying to set reference to winUI");
+            winUI = GameObject.Find("WinUI");
         }
         winUI.SetActive(false);
     }
