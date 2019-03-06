@@ -5914,6 +5914,7 @@ MonoBehaviour:
   player1: {fileID: 0}
   player2: {fileID: 0}
   someoneWon: 0
+  cameraRef: {fileID: 0}
 --- !u!4 &1591124281
 Transform:
   m_ObjectHideFlags: 0
