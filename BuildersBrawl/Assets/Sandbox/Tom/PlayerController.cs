@@ -28,6 +28,8 @@ public class PlayerController : MonoBehaviour
         stunned
     }
 
+    private bool stunSoDontStopFromCooldown;
+
     [Header("Input")]
     public GameInputManager gameInputManager;
 
@@ -679,17 +681,20 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ReturnPlayerStateToMoving(float waitTime)
     {
+        playerState = PlayerState.cooldown;
+        yield return new WaitForSeconds(waitTime);
         if(playerState != PlayerState.stunned)
         {
-            playerState = PlayerState.cooldown;
+            //reset state
+            playerState = PlayerState.defaultMovement;
         }
-        
+    }
+
+    public IEnumerator ReturnPlayerStateToMovingStun(float waitTime)
+    {
         yield return new WaitForSeconds(waitTime);
         //reset state
-        if (playerState == PlayerState.stunned)
-        {
-            TempFlatten(false);
-        }
+        TempFlatten(false);
         playerState = PlayerState.defaultMovement;
     }
 
@@ -749,23 +754,31 @@ public class PlayerController : MonoBehaviour
 
     public void StunMe(float stunLength)
     {
+        if(playerState == PlayerState.stunned)
+        {
+            return;
+        }
+
         playerState = PlayerState.stunned;
-        //flatten
-        TempFlatten(true);
-        //drop any held board
+        //drop any held board before flattening
         if(playerActions.HeldPlank != null)
         {
             playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
-        StartCoroutine(ReturnPlayerStateToMoving(stunLength));
+        //flatten
+        TempFlatten(true);
+        StartCoroutine(ReturnPlayerStateToMovingStun(stunLength));
     }
 
     private void TempFlatten(bool flattenMe)
     {
         Vector3 temp;
 
+        
+
         if (flattenMe)
         {
+            print("flatten");
             //flattten
             //print("faltten");
             temp = this.gameObject.transform.localScale;
@@ -778,6 +791,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            print("unflatten");
             //move up (OBSELETE)
             temp = this.gameObject.transform.position;
             //temp.y += flattenDownAmount;
@@ -785,7 +799,7 @@ public class PlayerController : MonoBehaviour
             //un flatten
             //print("unflatten");
             temp = this.gameObject.transform.localScale;
-            temp.y *= (1/flattenPercent *5f);
+            temp.y *= (1/flattenPercent);
             this.gameObject.transform.localScale = temp;
             
         }

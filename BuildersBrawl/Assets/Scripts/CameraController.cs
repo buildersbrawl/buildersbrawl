@@ -35,6 +35,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField]
     Vector3 averagePositionBetweenPlayers;
+    [SerializeField]
     float distanceBetweenPlayers;
 
     [Header("Options")]
@@ -313,7 +314,18 @@ public class CameraController : MonoBehaviour
 
 
                 //--------------
-
+               /* int playersDead = 0;
+                foreach (PlayerController player in GameManager.S.playerList)
+                {
+                    if (player.playerDeath.playerDead)
+                    {
+                        playersDead++;
+                    }
+                }
+                if (playersDead > 1)
+                {
+                    
+                }*/
                 SetDeathEndValues();
 
                 //function for before and after teleport
@@ -591,9 +603,25 @@ public class CameraController : MonoBehaviour
 
     public void SetDeathStartValues()
     {
+        //deathTimer = 0;
+
         GetAveragePositionBetweenPlayers();
         GetDistanceBetweenPlayers();
 
+        /*int playersDead = 0;
+        foreach (PlayerController player in GameManager.S.playerList)
+        {
+            print("dead chagne");
+            if (player.playerDeath.playerDead)
+            {
+                playersDead++;
+            }
+        }
+        if (playersDead <= 1)
+        {
+            
+            
+        }*/
         deathStartDistance = distanceBetweenPlayers;
         deathStartAvgPos = averagePositionBetweenPlayers;
     }

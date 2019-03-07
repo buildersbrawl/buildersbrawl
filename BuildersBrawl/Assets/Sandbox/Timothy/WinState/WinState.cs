@@ -27,7 +27,8 @@ public class WinState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<PlayerController>() != null)
+        //if player touching and no one has won yet
+        if (other.gameObject.GetComponent<PlayerController>() != null && (!GameManager.S.someoneWon))
         {
             playerWhoWon = other.gameObject.name;
             playerWhoWon = playerWhoWon.Replace("Prefab_P", "");

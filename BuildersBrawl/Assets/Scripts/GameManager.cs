@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public GameObject player1;
     public GameObject player2;
 
+    public PlayerController[] playerList;
+
     public bool someoneWon = false;
 
     public GameObject cameraRef;
@@ -25,18 +27,20 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
 
-        if(player1 == null || player2 == null)
+        playerList = GameObject.FindObjectsOfType<PlayerController>();
+
+        if (player1 == null || player2 == null)
         {
             //make sure 2 players
-            PlayerController[] players = GameObject.FindObjectsOfType<PlayerController>();
-            if(players.Length != 2)
+            
+            if(playerList.Length != 2)
             {
                 print("either to few or too many players");
             }
             else
             {
-                player1 = players[0].gameObject;
-                player2 = players[1].gameObject;
+                player1 = playerList[0].gameObject;
+                player2 = playerList[1].gameObject;
             }
         }
         

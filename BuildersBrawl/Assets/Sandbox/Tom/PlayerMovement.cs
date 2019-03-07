@@ -247,6 +247,10 @@ public class PlayerMovement : MonoBehaviour
         playerEnvironmentMomentum = Vector3.zero;
         playerMomentum = Vector3.zero;
         reversePlayerMovementFromJoysticks = Vector3.zero;
+        if (playerController.playerDeath.playerDead)
+        {
+            playerCombatMomentum = Vector3.zero;
+        }
     }
 
     public void PushMe(Vector3 pushDirection, float pushForce)

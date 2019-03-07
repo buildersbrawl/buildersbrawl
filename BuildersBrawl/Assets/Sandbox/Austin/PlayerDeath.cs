@@ -85,8 +85,15 @@ public class PlayerDeath : MonoBehaviour
 
         playerRenderer.enabled = false;
 
+
+        playerDead = true;
+
         //set start avgposition/distance (before moved)
+        //if other player dead dont set values
+
         cc.GetComponent<CameraController>().SetDeathStartValues();
+        
+        
         deathPos = transform.position;
         //move player
         this.gameObject.transform.position = spawnPoint.transform.position;
@@ -95,7 +102,7 @@ public class PlayerDeath : MonoBehaviour
         cc.GetComponent<CameraController>().SetDeathEndValues();
 
         //print(this.gameObject.transform.position + " " + this.gameObject.name);
-        playerDead = true;
+        
         StartCoroutine(WaitForRenderer());
 
         //change the camera settings to lerp/move the camera towards the player respawn
