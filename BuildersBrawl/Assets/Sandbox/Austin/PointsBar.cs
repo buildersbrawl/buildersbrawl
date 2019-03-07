@@ -56,9 +56,11 @@ public class PointsBar : MonoBehaviour
 
         player1 = GameManager.S.player1;
         players.Add(player1);
+        player1Head = player1.GetComponent<Points>().faces[player1.GetComponent<Points>().activeFaceNum];
         //players[0] = player1;
         player2 = GameManager.S.player2;
         players.Add(player2);
+        player2Head = player2.GetComponent<Points>().faces[player2.GetComponent<Points>().activeFaceNum];
         //players[1] = player2;
 
         //if there is no player3 or player4, do not assign their gameobject
@@ -66,12 +68,14 @@ public class PointsBar : MonoBehaviour
         {
             player3 = GameObject.Find("Player3");
             players.Add(player3);
+            player3Head = player3.GetComponent<Points>().faces[player3.GetComponent<Points>().activeFaceNum];
             //players[2] = player3;
         }
         if(GameObject.Find("Player4") != null)
         {
             player4 = GameObject.Find("Player4");
             players.Add(player4);
+            player4Head = player4.GetComponent<Points>().faces[player4.GetComponent<Points>().activeFaceNum];
             //players[3] = player4;
         }
     }
@@ -79,6 +83,9 @@ public class PointsBar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
+
+
         //reset totalGamePoints
         totalGamePoints = 0;
 
@@ -91,6 +98,7 @@ public class PointsBar : MonoBehaviour
 
         foreach (GameObject player in players)
         {
+
             //set the index for each individual player
             int index = -1;
             Debug.Log("index before = " + index);
@@ -104,6 +112,10 @@ public class PointsBar : MonoBehaviour
                 index = 3;
             Debug.Log("Player name = " + player.name);
             Debug.Log("index after = " + index);
+            
+            //determine the face to give the points bar
+            DetermineFace(players[index]);
+            
             
             //position on bar is the player's points as a percentage of the totalgamepoints
             pointsPercent = ((float)player.GetComponent<Points>().GetPointsTotal() / (float)totalGamePoints);
@@ -161,6 +173,40 @@ public class PointsBar : MonoBehaviour
             Debug.Log("totalGamePoints = " + totalGamePoints);
         }*/
 
-        
+        void DetermineFace(GameObject p)
+        {
+            int winner = 0;
+            int loser = 0;
+            int middleOne = 0;
+            int middleTwo = 0;
+
+
+            if (p.GetComponent<Points>().GetPointsTotal() >= winner) 
+            {
+                p.GetComponent<Points>().activeFaceNum = 2;
+                winner = p.GetComponent<Points>().GetPointsTotal();
+            }
+
+            if(p.GetComponent<Points>().GetPointsTotal() <= loser)
+            {
+                p.GetComponent<Points>().activeFaceNum = 0;
+                loser = p.GetComponent<Points>().GetPointsTotal();
+            }
+
+            if(players.Count > 2 && p.GetComponent<Points>().GetPointsTotal() > loser && 
+                p.GetComponent<Points>().GetPointsTotal() < winner)
+            {
+                if(players.Count == 3 || p.GetComponent<Points>().GetPointsTotal() > middleOne)
+                {
+                    p.GetComponent<Points>().activeFaceNum = 1;
+                    middleOne = p.GetComponent<Points>().GetPointsTotal();
+                }
+                else if (players.Count == 4 && p.GetComponent<Points>().GetPointsTotal() < middleOne)
+                {
+                    p.GetComponent<Points>().activeFaceNum = 1;
+                    middleTwo = p.GetComponent<Points>().GetPointsTotal();
+                }
+            }
+        }
     }
 }

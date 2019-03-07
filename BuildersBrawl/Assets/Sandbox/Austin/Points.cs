@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Points : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Points : MonoBehaviour
     public int pointsForKill = 30;
     public int pointsForBoardPlace = 10;
     public int pointsForOtherSide = 200;
+    public Image[] faces = new Image[3];
+    public int activeFaceNum = 1;
 
 
     // Start is called before the first frame update
