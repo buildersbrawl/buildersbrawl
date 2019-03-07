@@ -19,11 +19,15 @@ public class PointsBar : MonoBehaviour
     public Transform startPosition;
     public Transform endPosition;
 
+    public Image empty;
+
     //GameObjects to hold each player 
     private GameObject player1;
     private GameObject player2;
     private GameObject player3;
     private GameObject player4;
+
+    private float[] oldPointPercent = new float[4];
 
     private float pointsPercent = 0f;
 
@@ -43,6 +47,7 @@ public class PointsBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        empty.transform.position = startPosition.transform.position;
 
         playerHeads[0] = player1Head;
         playerHeads[1] = player2Head;
@@ -102,15 +107,32 @@ public class PointsBar : MonoBehaviour
             
             //position on bar is the player's points as a percentage of the totalgamepoints
             pointsPercent = ((float)player.GetComponent<Points>().GetPointsTotal() / (float)totalGamePoints);
+            
 
             Debug.Log("playerHeads[index].name = " + playerHeads[index].name);
             Vector3 before = playerHeads[index].transform.position;
 
             //set their position to the percent of the distance between the two points
-            if(totalGamePoints > 0)
-                playerHeads[index].transform.position = Vector3.Lerp(startPosition.position, endPosition.position, pointsPercent);
-            
+            if (oldPointPercent[index] != pointsPercent)
+            {
+                Debug.Log("oldpoint[index] = " + oldPointPercent[index]);
+                Debug.Log("pointspercent = " + pointsPercent);
+                
+                //playerHeads[index].transform.position = Vector3.Lerp(startPosition.position, endPosition.position, Mathf.Lerp(0, pointsPercent, .05f));
+                empty.transform.position = Vector3.Lerp(startPosition.position, endPosition.position, pointsPercent);
+                playerHeads[index].transform.position = Vector3.Lerp(playerHeads[index].transform.position, empty.transform.position, 0.05f);
+            }
+
             Vector3 after = playerHeads[index].transform.position;
+
+            if (before == after)
+            {
+                //oldPointPercent[index] = pointsPercent;
+                Debug.Log("BEFORE = AFTER");
+            }
+            
+
+            
             if (before != after)
                 Debug.Log("moved " + playerHeads[index].name + " from " + before + " to " + after);
             Debug.Log(player.name + "'s points total = " + (player.GetComponent<Points>().GetPointsTotal()));
