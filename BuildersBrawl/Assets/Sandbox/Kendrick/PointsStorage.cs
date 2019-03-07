@@ -7,11 +7,16 @@ public class PointsStorage : MonoBehaviour
 {
     public static PointsStorage P;
 
-    public List<string> players = new List<string>();
-    public int[] kills = new int[4];
-    public int[] builds = new int[4];
-    public int[] total = new int[4];
-    public int[] wins = new int[4];
+    //stores all players' points in array
+    public int[] P1Points= new int[5];
+    public int[] P2Points = new int[5];
+
+    //assigns point types to number in player array
+    public int kills = 0;
+    public int builds = 1;
+    public int total = 2;
+    public int wins = 3;
+    public int winPoints = 4;
 
     void Awake()
     {
@@ -34,37 +39,18 @@ public class PointsStorage : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(SceneManager.GetActiveScene().name == "Player_Select")
-        {
-            CheckForPlayers();
-        }
         if(SceneManager.GetActiveScene().name == "Main_Menu")
         {
             Reset();
         }
     }
 
-    void CheckForPlayers()
-    {
-        if(PlayerSelect.S.playerOneSelected)
-        {
-            players.Add("P1");
-        }
-        if(PlayerSelect.S.playerTwoSelected)
-        {
-            players.Add("P2");
-        }
-    }
-
     void Reset()
     {
-        players.Clear();
-        for (int i = 0; i < kills.Length; i++)
+        for (int i = 0; i < P1Points.Length; i++)
         {
-            kills[i] = 0;
-            builds[i] = 0;
-            total[i] = 0;
-            wins[i] = 0;
+            P1Points[i] = 0;
+            P2Points[i] = 0;
 
         }
     }

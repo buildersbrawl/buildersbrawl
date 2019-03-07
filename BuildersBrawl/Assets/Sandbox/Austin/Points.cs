@@ -33,6 +33,7 @@ public class Points : MonoBehaviour
         Debug.Log("Points given for a kill");
         pointsTotal += pointsForKill;
         PrintPointsTotal();
+        AddPlayerKill();
     }
 
     public void AddPointsForBoardPlace()
@@ -40,6 +41,7 @@ public class Points : MonoBehaviour
         Debug.Log("Points given for a board place");
         pointsTotal += pointsForBoardPlace;
         PrintPointsTotal();
+        AddPlayerBuild();
     }
 
     public void AddPointsForOtherSide()
@@ -47,6 +49,7 @@ public class Points : MonoBehaviour
         Debug.Log("Points given for a win");
         pointsTotal += pointsForOtherSide;
         PrintPointsTotal();
+        AddPlayerWin();
     }
 
     public int GetPointsTotal()
@@ -62,5 +65,48 @@ public class Points : MonoBehaviour
     public Image GetFace()
     {
         return faces[activeFaceNum];
+    }
+
+    //SAVE POINTS TO PointsStorage
+
+    //Save Kill Points
+    void AddPlayerKill()
+    {
+        if(this.gameObject.name.Equals("PlayerPrefab_P1"))
+        {
+            PointsStorage.P.P1Points[PointsStorage.P.kills] += pointsForKill;
+        }
+        if (this.gameObject.name.Equals("PlayerPrefab_P2"))
+        {
+            PointsStorage.P.P2Points[PointsStorage.P.kills] += pointsForKill;
+        }
+    }
+
+    //Save Build Points
+    void AddPlayerBuild()
+    {
+        if (this.gameObject.name.Equals("PlayerPrefab_P1"))
+        {
+            PointsStorage.P.P1Points[PointsStorage.P.builds] += pointsForBoardPlace;
+        }
+        if (this.gameObject.name.Equals("PlayerPrefab_P2"))
+        {
+            PointsStorage.P.P2Points[PointsStorage.P.builds] += pointsForBoardPlace;
+        }
+    }
+
+    //Save Win Points and total Wins
+    void AddPlayerWin()
+    {
+        if (this.gameObject.name.Equals("PlayerPrefab_P1"))
+        {
+            PointsStorage.P.P1Points[PointsStorage.P.winPoints] += pointsForOtherSide;
+            PointsStorage.P.P1Points[PointsStorage.P.wins] ++;
+        }
+        if (this.gameObject.name.Equals("PlayerPrefab_P2"))
+        {
+            PointsStorage.P.P2Points[PointsStorage.P.winPoints] += pointsForOtherSide;
+            PointsStorage.P.P1Points[PointsStorage.P.wins]++;
+        }
     }
 }

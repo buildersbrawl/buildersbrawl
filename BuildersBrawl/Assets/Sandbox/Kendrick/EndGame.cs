@@ -46,7 +46,7 @@ public class EndGame : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        DisplayPoints();
     }
 
     void CheckPlayerNumbers()
@@ -84,5 +84,10 @@ public class EndGame : MonoBehaviour
         P3Data.GetComponent<Image>().color = Color.gray;
         P3 = false;
         P2 = true;
+    }
+
+    void DisplayPoints()
+    {
+
     }
 }
