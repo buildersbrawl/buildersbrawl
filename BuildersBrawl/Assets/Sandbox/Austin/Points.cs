@@ -58,4 +58,9 @@ public class Points : MonoBehaviour
     {
         Debug.Log(this.name + " has " + pointsTotal + " total points");
     }
+
+    public Image GetFace()
+    {
+        return faces[activeFaceNum];
+    }
 }
