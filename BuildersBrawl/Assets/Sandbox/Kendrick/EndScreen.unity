@@ -141,19 +141,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baadccf4fc17b634d981f230f7d631e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: 000000000000000000000000
+  players: 00000000000000000000000000000000
   P1Data: {fileID: 490034033}
   P2Data: {fileID: 427056118}
   P3Data: {fileID: 661253127}
   P4Data: {fileID: 1328268934}
-  P4: 1
-  P3: 0
-  P2: 0
   title: 0
   kills: 1
   builds: 2
   points: 3
   wins: 4
+  P1_Color: {fileID: 2100000, guid: aa9bab9bb825fe94186be723e897aae0, type: 2}
+  P2_Color: {fileID: 2100000, guid: c9b4a503e3e21734e955212978f2fc3c, type: 2}
+  P3_Color: {fileID: 2100000, guid: 238cbd9a25bfd8049b654e97afa328ac, type: 2}
+  P4_Color: {fileID: 2100000, guid: d93ce2f03655ea54eb6a0c090908e614, type: 2}
 --- !u!4 &195579
 Transform:
   m_ObjectHideFlags: 0

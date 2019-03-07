@@ -13,12 +13,12 @@ public static class ExtensionFunction
 
 public class EndGame : MonoBehaviour
 {
-
+    //Keeps track of the number of players in the game
     public int[] players;
     public GameObject P1Data, P2Data, P3Data, P4Data;
 
-    public bool P4 = true;
-    public bool P3, P2 = false;
+    private bool P4 = true;
+    private bool P3, P2 = false;
 
     public int title = 0;
     public int kills = 1;
@@ -26,12 +26,15 @@ public class EndGame : MonoBehaviour
     public int points = 3;
     public int wins = 4;
 
+    //Stores player colors
+    public Material P1_Color, P2_Color, P3_Color, P4_Color;
+
     void Awake()
     {
-        P1Data.GetComponent<Image>().color = Color.blue;
-        P2Data.GetComponent<Image>().color = Color.red;
-        P3Data.GetComponent<Image>().color = Color.yellow;
-        P4Data.GetComponent<Image>().color = Color.magenta;
+        P1Data.GetComponent<Image>().color = P1_Color.color;
+        P2Data.GetComponent<Image>().color = P2_Color.color;
+        P3Data.GetComponent<Image>().color = P3_Color.color;
+        P4Data.GetComponent<Image>().color = P4_Color.color;
         CheckPlayerNumbers();
     }
     // Start is called before the first frame update
