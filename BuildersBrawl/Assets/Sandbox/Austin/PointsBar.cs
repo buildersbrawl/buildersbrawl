@@ -128,7 +128,8 @@ public class PointsBar : MonoBehaviour
 
             if(index == 0)
             {
-                player1Head = player1.GetComponent<Points>().GetFace();
+                playerHeads[index] = player1.GetComponent<Points>().GetFace();
+                Debug.Log("GOTTEN FACE = " + player1.GetComponent<Points>().GetFace() + " and facenum = " + player1.GetComponent<Points>().activeFaceNum);
             }
             if(index == 1)
             {
@@ -222,7 +223,8 @@ public class PointsBar : MonoBehaviour
 
             if(p.GetComponent<Points>().GetPointsTotal() >= winner) 
             {
-                p.GetComponent<Points>().activeFaceNum = 2;
+                //p.GetComponent<Points>().activeFaceNum = 2;
+                p.GetComponent<Points>().ChangeFaceNum(2);
                 winner = p.GetComponent<Points>().GetPointsTotal();
                 Debug.Log(p.name + "is the new winner");
             }

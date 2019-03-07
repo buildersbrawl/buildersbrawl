@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.2890127, g: 0.35902557, b: 0.39813998, a: 1}
+  m_IndirectSpecularColor: {r: 0.28887376, g: 0.35917673, b: 0.39803046, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1012,6 +1012,12 @@ PrefabInstance:
       propertyPath: faces.Array.data[2]
       value: 
       objectReference: {fileID: 5696834162539845114, guid: 1e4f775f795955e4abc02523893b9b79,
+        type: 3}
+    - target: {fileID: 1191528802872432584, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: pointsTextPrefab
+      value: 
+      objectReference: {fileID: 1447707977, guid: fb936dc01984f0642937ba0b127ace1a,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976d66702bbc334d9a158045b06242f, type: 3}
@@ -4849,6 +4855,12 @@ PrefabInstance:
       propertyPath: faces.Array.data[2]
       value: 
       objectReference: {fileID: 5696834162539845114, guid: 867931de251c85b46b57d57208096212,
+        type: 3}
+    - target: {fileID: 638506382995284107, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: pointsTextPrefab
+      value: 
+      objectReference: {fileID: 1447707977, guid: fb936dc01984f0642937ba0b127ace1a,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fecd509f8421045a7e40a875876d99, type: 3}

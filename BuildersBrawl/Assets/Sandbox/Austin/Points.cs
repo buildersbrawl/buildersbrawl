@@ -67,6 +67,11 @@ public class Points : MonoBehaviour
         return faces[activeFaceNum];
     }
 
+    public void ChangeFaceNum(int newNum)
+    {
+        activeFaceNum = newNum;
+    }
+
     //SAVE POINTS TO PointsStorage
 
     //Save Kill Points
