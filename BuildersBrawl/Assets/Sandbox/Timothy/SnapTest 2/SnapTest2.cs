@@ -54,6 +54,8 @@ public class SnapTest2 : MonoBehaviour
             SnapNodes(snappableNode, closestNode);
 
             gameObject.GetComponent<PlankManager>().PlacePlank();
+            GameManager.S.player1.GetComponent<FlashyPoints>().ShowPointsGained(transform.position,
+                GameManager.S.player1.GetComponent<Points>().pointsForBoardPlace);
         }
         else
         {
