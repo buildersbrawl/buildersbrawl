@@ -79,11 +79,13 @@ public class Points : MonoBehaviour
     {
         if(this.gameObject.name.Equals("PlayerPrefab_P1"))
         {
-            PointsStorage.P.P1Points[PointsStorage.P.kills] += pointsForKill;
+            PointsStorage.P.P1Points[PointsStorage.P.kills] ++;
+            PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForKill;
         }
         if (this.gameObject.name.Equals("PlayerPrefab_P2"))
         {
-            PointsStorage.P.P2Points[PointsStorage.P.kills] += pointsForKill;
+            PointsStorage.P.P2Points[PointsStorage.P.kills] ++;
+            PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForKill;
         }
     }
 
@@ -92,11 +94,13 @@ public class Points : MonoBehaviour
     {
         if (this.gameObject.name.Equals("PlayerPrefab_P1"))
         {
-            PointsStorage.P.P1Points[PointsStorage.P.builds] += pointsForBoardPlace;
+            PointsStorage.P.P1Points[PointsStorage.P.builds] ++;
+            PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForBoardPlace;
         }
         if (this.gameObject.name.Equals("PlayerPrefab_P2"))
         {
-            PointsStorage.P.P2Points[PointsStorage.P.builds] += pointsForBoardPlace;
+            PointsStorage.P.P2Points[PointsStorage.P.builds] ++;
+            PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForBoardPlace;
         }
     }
 
@@ -105,13 +109,13 @@ public class Points : MonoBehaviour
     {
         if (this.gameObject.name.Equals("PlayerPrefab_P1"))
         {
-            PointsStorage.P.P1Points[PointsStorage.P.winPoints] += pointsForOtherSide;
+            PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P1Points[PointsStorage.P.wins] ++;
         }
         if (this.gameObject.name.Equals("PlayerPrefab_P2"))
         {
-            PointsStorage.P.P2Points[PointsStorage.P.winPoints] += pointsForOtherSide;
-            PointsStorage.P.P1Points[PointsStorage.P.wins]++;
+            PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForOtherSide;
+            PointsStorage.P.P2Points[PointsStorage.P.wins]++;
         }
     }
 }
