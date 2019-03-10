@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     public enum PlayerNumber
     {
         p1,
-        p2
+        p2,
+        p3,
+        p4
     }
     
     //TODO: Add rotation to char controller so facing direction moving
@@ -199,7 +201,7 @@ public class PlayerController : MonoBehaviour
     {
         //temp
 
-        if(playerNumber == PlayerNumber.p1)
+        if (playerNumber == PlayerNumber.p1)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -364,8 +366,81 @@ public class PlayerController : MonoBehaviour
             {
                 BumpOrTrigSlam = false;
             }
+        }
+
+        else if (playerNumber == PlayerNumber.p3)
+        {
+            if (Input.GetKey(KeyCode.L))
+            {
+                right = true;
+            }
+            else
+            {
+                right = false;
+            }
+            if (Input.GetKey(KeyCode.J))
+            {
+                left = true;
+            }
+            else
+            {
+                left = false;
+            }
+            if (Input.GetKey(KeyCode.I))
+            {
+                forward = true;
+            }
+            else
+            {
+                forward = false;
+            }
+            if (Input.GetKey(KeyCode.K))
+            {
+                backwards = true;
+            }
+            else
+            {
+                backwards = false;
+            }
 
         }
+        else if (playerNumber == PlayerNumber.p4)
+        {
+            if (Input.GetKey(KeyCode.H))
+            {
+                right = true;
+            }
+            else
+            {
+                right = false;
+            }
+            if (Input.GetKey(KeyCode.F))
+            {
+                left = true;
+            }
+            else
+            {
+                left = false;
+            }
+            if (Input.GetKey(KeyCode.T))
+            {
+                forward = true;
+            }
+            else
+            {
+                forward = false;
+            }
+            if (Input.GetKey(KeyCode.G))
+            {
+                backwards = true;
+            }
+            else
+            {
+                backwards = false;
+            }
+
+        }
+
         else
         {
             print("Error: no control scheme for this player number");

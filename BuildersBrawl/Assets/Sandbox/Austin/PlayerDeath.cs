@@ -90,16 +90,33 @@ public class PlayerDeath : MonoBehaviour
 
         //set start avgposition/distance (before moved)
         //if other player dead dont set values
+        bool setValues = true;
+        for (int index = 0; index < GameManager.S.playerList.Length; index++)
+        {
+            if (GameManager.S.playerList[index] != this.gameObject.GetComponent<PlayerController>() && GameManager.S.playerList[index].playerDeath.playerDead)
+            {
+                setValues = false;
+            }
+        }
 
-        cc.GetComponent<CameraController>().SetDeathStartValues();
+        setValues = true;
+
+        if (setValues)
+        {
+            cc.GetComponent<CameraController>().SetDeathStartValues();
+        }
+        
         
         
         deathPos = transform.position;
         //move player
         this.gameObject.transform.position = spawnPoint.transform.position;
 
-        //set end avgposition/distance (before moved)
-        cc.GetComponent<CameraController>().SetDeathEndValues();
+        if (setValues)
+        {
+            //set end avgposition/distance (before moved)
+            cc.GetComponent<CameraController>().SetDeathEndValues();
+        }
 
         //print(this.gameObject.transform.position + " " + this.gameObject.name);
         

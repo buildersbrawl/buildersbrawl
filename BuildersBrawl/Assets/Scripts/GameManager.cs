@@ -9,6 +9,8 @@ public class GameManager : MonoBehaviour
 
     public GameObject player1;
     public GameObject player2;
+    public GameObject player3;
+    public GameObject player4;
 
     public PlayerController[] playerList;
 
@@ -33,7 +35,7 @@ public class GameManager : MonoBehaviour
         {
             //make sure 2 players
             
-            if(playerList.Length != 2)
+            if(playerList.Length < 2 || playerList.Length > 4)
             {
                 print("either to few or too many players");
             }
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour
             {
                 player1 = playerList[0].gameObject;
                 player2 = playerList[1].gameObject;
+                player3 = playerList[2].gameObject;
+                player4 = playerList[3].gameObject;
             }
         }
         
