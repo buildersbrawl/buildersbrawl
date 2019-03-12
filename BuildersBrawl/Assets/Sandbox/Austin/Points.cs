@@ -13,7 +13,6 @@ public class Points : MonoBehaviour
     public Sprite[] faces = new Sprite[3];
     public int activeFaceNum = 1;
 
-
     // Start is called before the first frame update
     void Start()
     {
