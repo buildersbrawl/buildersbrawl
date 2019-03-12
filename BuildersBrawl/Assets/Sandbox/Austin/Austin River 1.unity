@@ -1946,6 +1946,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3864598282897895317, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: faces.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f36cc04532f86b048bbbc6cd2755f4cb,
+        type: 3}
+    - target: {fileID: 3864598282897895317, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: faces.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 77c739f54a44a0e4c8fed897b83b5483,
+        type: 3}
+    - target: {fileID: 3864598282897895317, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: faces.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: a45d4ffe29d35a648ac6372a1c0b276b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a122de2bbb5da164b872459a52abdec9, type: 3}
 --- !u!1 &335202996
@@ -3557,6 +3575,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Controller: 0
   p2Controller: 0
+  p3Controller: 0
+  p4Controller: 0
   B4_P1_select: {fileID: 0}
   B4_P2_select: {fileID: 0}
   LevelStartBtn: {fileID: 0}
@@ -6045,6 +6065,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1: {fileID: 0}
   player2: {fileID: 0}
+  player3: {fileID: 0}
+  player4: {fileID: 0}
+  playerList: []
   someoneWon: 0
   cameraRef: {fileID: 0}
 --- !u!4 &1591124281
@@ -7611,7 +7634,7 @@ PrefabInstance:
     - target: {fileID: 2547010475574165556, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2547010475574165545, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
@@ -7668,6 +7691,24 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4154333681177768567, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: faces.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ee91f20a98d1c544fabe11337643acaa,
+        type: 3}
+    - target: {fileID: 4154333681177768567, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: faces.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c05f19c39e6c83c49b69b48f154e1641,
+        type: 3}
+    - target: {fileID: 4154333681177768567, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: faces.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2694a54c95284db43b9257af0b7b51ef,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e47230838d2df6145bf584f5f0377f22, type: 3}
 --- !u!1 &1814061911
