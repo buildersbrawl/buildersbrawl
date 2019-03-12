@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4873211181244048}
   - component: {fileID: 33348013126604304}
   - component: {fileID: 23807460559909636}
-  - component: {fileID: 9186745719522739041}
+  - component: {fileID: 1076960912251962522}
   m_Layer: 0
   m_Name: RailSmall_01
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &9186745719522739041
+--- !u!64 &1076960912251962522
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

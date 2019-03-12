@@ -13,7 +13,9 @@ public class PlayerController : MonoBehaviour
     public enum PlayerNumber
     {
         p1,
-        p2
+        p2,
+        p3,
+        p4
     }
     
     //TODO: Add rotation to char controller so facing direction moving
@@ -27,6 +29,8 @@ public class PlayerController : MonoBehaviour
         cooldown,
         stunned
     }
+
+    private bool stunSoDontStopFromCooldown;
 
     [Header("Input")]
     public GameInputManager gameInputManager;
@@ -197,7 +201,7 @@ public class PlayerController : MonoBehaviour
     {
         //temp
 
-        if(playerNumber == PlayerNumber.p1)
+        if (playerNumber == PlayerNumber.p1)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -362,8 +366,81 @@ public class PlayerController : MonoBehaviour
             {
                 BumpOrTrigSlam = false;
             }
+        }
+
+        else if (playerNumber == PlayerNumber.p3)
+        {
+            if (Input.GetKey(KeyCode.L))
+            {
+                right = true;
+            }
+            else
+            {
+                right = false;
+            }
+            if (Input.GetKey(KeyCode.J))
+            {
+                left = true;
+            }
+            else
+            {
+                left = false;
+            }
+            if (Input.GetKey(KeyCode.I))
+            {
+                forward = true;
+            }
+            else
+            {
+                forward = false;
+            }
+            if (Input.GetKey(KeyCode.K))
+            {
+                backwards = true;
+            }
+            else
+            {
+                backwards = false;
+            }
 
         }
+        else if (playerNumber == PlayerNumber.p4)
+        {
+            if (Input.GetKey(KeyCode.H))
+            {
+                right = true;
+            }
+            else
+            {
+                right = false;
+            }
+            if (Input.GetKey(KeyCode.F))
+            {
+                left = true;
+            }
+            else
+            {
+                left = false;
+            }
+            if (Input.GetKey(KeyCode.T))
+            {
+                forward = true;
+            }
+            else
+            {
+                forward = false;
+            }
+            if (Input.GetKey(KeyCode.G))
+            {
+                backwards = true;
+            }
+            else
+            {
+                backwards = false;
+            }
+
+        }
+
         else
         {
             print("Error: no control scheme for this player number");
@@ -679,17 +756,20 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ReturnPlayerStateToMoving(float waitTime)
     {
+        playerState = PlayerState.cooldown;
+        yield return new WaitForSeconds(waitTime);
         if(playerState != PlayerState.stunned)
         {
-            playerState = PlayerState.cooldown;
+            //reset state
+            playerState = PlayerState.defaultMovement;
         }
-        
+    }
+
+    public IEnumerator ReturnPlayerStateToMovingStun(float waitTime)
+    {
         yield return new WaitForSeconds(waitTime);
         //reset state
-        if (playerState == PlayerState.stunned)
-        {
-            TempFlatten(false);
-        }
+        TempFlatten(false);
         playerState = PlayerState.defaultMovement;
     }
 
@@ -749,23 +829,31 @@ public class PlayerController : MonoBehaviour
 
     public void StunMe(float stunLength)
     {
+        if(playerState == PlayerState.stunned)
+        {
+            return;
+        }
+
         playerState = PlayerState.stunned;
-        //flatten
-        TempFlatten(true);
-        //drop any held board
+        //drop any held board before flattening
         if(playerActions.HeldPlank != null)
         {
             playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
-        StartCoroutine(ReturnPlayerStateToMoving(stunLength));
+        //flatten
+        TempFlatten(true);
+        StartCoroutine(ReturnPlayerStateToMovingStun(stunLength));
     }
 
     private void TempFlatten(bool flattenMe)
     {
         Vector3 temp;
 
+        
+
         if (flattenMe)
         {
+            print("flatten");
             //flattten
             //print("faltten");
             temp = this.gameObject.transform.localScale;
@@ -778,6 +866,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            print("unflatten");
             //move up (OBSELETE)
             temp = this.gameObject.transform.position;
             //temp.y += flattenDownAmount;
@@ -785,7 +874,7 @@ public class PlayerController : MonoBehaviour
             //un flatten
             //print("unflatten");
             temp = this.gameObject.transform.localScale;
-            temp.y *= (1/flattenPercent *5f);
+            temp.y *= (1/flattenPercent);
             this.gameObject.transform.localScale = temp;
             
         }

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4769880240587254}
   - component: {fileID: 33744076900067656}
   - component: {fileID: 23479387340179598}
-  - component: {fileID: 2263718356027041243}
+  - component: {fileID: 2251288408942724387}
   m_Layer: 0
   m_Name: RailBase_01
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &2263718356027041243
+--- !u!64 &2251288408942724387
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

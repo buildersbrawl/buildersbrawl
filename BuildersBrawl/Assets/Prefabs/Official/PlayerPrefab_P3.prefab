@@ -67,15 +67,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
+    - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
-      propertyPath: startCube
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: endCube
-      value: 
+      propertyPath: playerNumber
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4205513807017318953, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
@@ -91,6 +86,20 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: bfa92667b8187cb429d4ec2e7c868e3c, type: 2}
+    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: startCube
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318952, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: endCube
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 925820138, guid: a976d66702bbc334d9a158045b06242f, type: 3}
+      propertyPath: gamePlayerId
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 466583565, guid: a976d66702bbc334d9a158045b06242f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

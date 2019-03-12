@@ -12,6 +12,8 @@ public class PlayerSelect : MonoBehaviour
     //players
     public int p1Controller;
     public int p2Controller;
+    public int p3Controller;
+    public int p4Controller;
 
     //public static PlayerSelect PS;
 
@@ -218,6 +220,16 @@ public class PlayerSelect : MonoBehaviour
         {
             rewiredPlayerId = 0;
             p2Controller = rewiredPlayerId;
+        }
+        else if (playerCounter == 3)
+        {
+            rewiredPlayerId = 2;
+            p3Controller = rewiredPlayerId;
+        }
+        else if (playerCounter == 4)
+        {
+            rewiredPlayerId = 3;
+            p4Controller = rewiredPlayerId;
         }
         else
         {

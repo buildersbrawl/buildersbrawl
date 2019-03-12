@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4147659406197376}
   - component: {fileID: 33196895836896062}
   - component: {fileID: 23528693176223712}
-  - component: {fileID: 7704035568311996060}
+  - component: {fileID: 8014848651013050250}
   m_Layer: 0
   m_Name: WalkwayThin_01
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &7704035568311996060
+--- !u!64 &8014848651013050250
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
