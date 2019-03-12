@@ -332,7 +332,7 @@ public class PlayerController : MonoBehaviour
             {
                 AJump = false;
             }
-            if (Input.GetKey(KeyCode.Keypad1))
+            if (Input.GetKey(KeyCode.Keypad1) || Input.GetKey(KeyCode.P))
             {
                 YPickOrPlace = true;
             }
