@@ -10,7 +10,7 @@ public class Points : MonoBehaviour
     public int pointsForKill = 30;
     public int pointsForBoardPlace = 10;
     public int pointsForOtherSide = 200;
-    public Image[] faces = new Image[3];
+    public Sprite[] faces = new Sprite[3];
     public int activeFaceNum = 1;
 
 
@@ -62,7 +62,7 @@ public class Points : MonoBehaviour
         Debug.Log(this.name + " has " + pointsTotal + " total points");
     }
 
-    public Image GetFace()
+    public Sprite GetFace()
     {
         return faces[activeFaceNum];
     }
