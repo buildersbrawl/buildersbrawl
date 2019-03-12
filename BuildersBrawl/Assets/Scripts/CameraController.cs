@@ -29,12 +29,17 @@ public class CameraController : MonoBehaviour
     GameObject player1ref;
     [SerializeField]
     GameObject player2ref;
+    [SerializeField]
+    GameObject player3ref;
+    [SerializeField]
+    GameObject player4ref;
 
     [SerializeField]
     GameObject cameraRef;
 
     [SerializeField]
     Vector3 averagePositionBetweenPlayers;
+    [SerializeField]
     float distanceBetweenPlayers;
 
     [Header("Options")]
@@ -133,10 +138,6 @@ public class CameraController : MonoBehaviour
     [Tooltip("Whether or not the camera is setting its position/size based off of the players")]
     public bool setCameraBasedOnPlayers = true;
 
-    [Tooltip("Players cannot go further apart than this")]
-    //[SerializeField]
-    private float playersApartMaxDistance = 50f;
-
     //turns off the camera pan/zoom controls when a player dies to avoid camera jerk
     public static bool playerDied = false; //use setCameraBasedOnPlayers instead
     //start and end markers when the player dies
@@ -158,6 +159,7 @@ public class CameraController : MonoBehaviour
     [SerializeField]
     private Vector3 deathEndAvgPos;
 
+    private List<float> distanceList;
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -210,11 +212,14 @@ public class CameraController : MonoBehaviour
             {
                 player1ref = GameManager.S.player1;
                 player2ref = GameManager.S.player2;
-
+                player3ref = GameManager.S.player3;
+                player4ref = GameManager.S.player4;
             }
         }
 
         deathLerpTime = player1ref.GetComponent<PlayerDeath>().respawnTime * .8f;
+
+        distanceList = new List<float>();
 
     }
 
@@ -313,6 +318,18 @@ public class CameraController : MonoBehaviour
 
 
                 //--------------
+               /* int playersDead = 0;
+                foreach (PlayerController player in GameManager.S.playerList)
+                {
+                    if (player.playerDeath.playerDead)
+                    {
+                        playersDead++;
+                    }
+                }
+                if (playersDead > 1)
+                {
+                    
+                }*/
 
                 SetDeathEndValues();
 
@@ -563,17 +580,44 @@ public class CameraController : MonoBehaviour
         {
             //gets float of distance between players
             distanceBetweenPlayers = Vector3.Distance(player1ref.transform.position, player2ref.transform.position);
+            distanceList.Add(distanceBetweenPlayers);
         }
         else
         {
-            print("Error: you need to drag and drop the player gameobjects into the CameraController");
+            print("Error: missing player reference");
         }
 
-        //if distance too large stop players
-        if (distanceBetweenPlayers > playersApartMaxDistance)
+        if (player3ref != null)
         {
-            print("players too far apart. Note to self: figure out how to limit this");
+            float p1p2Dist = distanceBetweenPlayers;
+            float p1p3Dist = Vector3.Distance(player1ref.transform.position, player3ref.transform.position);
+            float p2p3Dist = Vector3.Distance(player2ref.transform.position, player3ref.transform.position);
+
+            distanceList.Add(p1p2Dist);
+            distanceList.Add(p1p3Dist);
+            distanceList.Add(p2p3Dist);
+
+            if (player4ref != null)
+            {
+                float p1p4Dist = Vector3.Distance(player1ref.transform.position, player4ref.transform.position);
+                float p2p4Dist = Vector3.Distance(player2ref.transform.position, player4ref.transform.position);
+                float p3p4Dist = Vector3.Distance(player3ref.transform.position, player4ref.transform.position);
+
+            }
         }
+
+        
+
+        distanceBetweenPlayers = distanceList[0];
+
+        for (int index = 0; index < distanceList.Count; index++)
+        {
+            if(distanceBetweenPlayers < distanceList[index])
+            {
+                distanceBetweenPlayers = distanceList[index];
+            }
+        }
+
     }
 
     private void GetAveragePositionBetweenPlayers()
@@ -585,15 +629,58 @@ public class CameraController : MonoBehaviour
         }
         else
         {
-            print("Error: you need to drag and drop the player gameobjects into the CameraController");
+            print("Error: missing player reference");
         }
+
+        if (player3ref != null)
+        {
+            Vector3 p1p2 = averagePositionBetweenPlayers;
+            Vector3 p1p3 = Vector3.Lerp(player1ref.transform.position, player3ref.transform.position, 0.5f);
+            Vector3 p2p3 = Vector3.Lerp(player2ref.transform.position, player3ref.transform.position, 0.5f);
+
+            Vector3 avg_p1p2_p1p3 = Vector3.Lerp(p1p2, p1p3, 0.5f);
+            averagePositionBetweenPlayers = Vector3.Lerp(avg_p1p2_p1p3, p2p3, 0.5f);
+
+            if (player4ref != null)
+            {
+                Vector3 p1p4 = Vector3.Lerp(player1ref.transform.position, player4ref.transform.position, 0.5f);
+                Vector3 p2p4 = Vector3.Lerp(player2ref.transform.position, player4ref.transform.position, 0.5f);
+                Vector3 p3p4 = Vector3.Lerp(player3ref.transform.position, player4ref.transform.position, 0.5f);
+
+                Vector3 avg_p2p3_p1p4 = Vector3.Lerp(p2p3, p1p4, 0.5f);
+                Vector3 avg_p2p4_p3p4 = Vector3.Lerp(p2p4, p3p4, 0.5f);
+
+                Vector3 avg_p1p2_p1p3_p2p3_p1p4 = Vector3.Lerp(avg_p1p2_p1p3, avg_p2p3_p1p4, 0.5f);
+                averagePositionBetweenPlayers = Vector3.Lerp(avg_p1p2_p1p3_p2p3_p1p4, avg_p2p4_p3p4, 0.5f);
+
+            }
+        }
+
+        
+
     }
 
     public void SetDeathStartValues()
     {
-        GetAveragePositionBetweenPlayers();
-        GetDistanceBetweenPlayers();
+        deathTimer = 0;
 
+        //GetAveragePositionBetweenPlayers();
+        //GetDistanceBetweenPlayers();
+
+        /*int playersDead = 0;
+        foreach (PlayerController player in GameManager.S.playerList)
+        {
+            print("dead chagne");
+            if (player.playerDeath.playerDead)
+            {
+                playersDead++;
+            }
+        }
+        if (playersDead <= 1)
+        {
+            
+            
+        }*/
         deathStartDistance = distanceBetweenPlayers;
         deathStartAvgPos = averagePositionBetweenPlayers;
     }

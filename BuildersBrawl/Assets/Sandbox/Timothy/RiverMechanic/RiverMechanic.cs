@@ -19,7 +19,14 @@ public class RiverMechanic : MonoBehaviour
     //Moves Player as long as they are touching the River Collider
     private void OnTriggerStay(Collider other)
     {
-        other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
+        if(other.gameObject.GetComponent<PlayerMovement>() != null)
+        {
+            other.gameObject.GetComponent<PlayerMovement>().SetEnvironmentMomentum(GetRiverFlowDirection(riverDirection));
+        }
+        else if(other.gameObject.GetComponent<PlankManager>() != null)
+        {
+            other.gameObject.GetComponent<Rigidbody>().AddForce(GetRiverFlowDirection(riverDirection));
+        }
     }
 
     //Finds River Flow Direction Based on Inspector
