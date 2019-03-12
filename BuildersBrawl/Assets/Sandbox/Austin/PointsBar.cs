@@ -96,7 +96,7 @@ public class PointsBar : MonoBehaviour
             }
         }*/
 
-        Debug.Log("player1Head = " + player1.GetComponent<Points>().faces[player1.GetComponent<Points>().activeFaceNum]);
+        //Debug.Log("player1Head = " + player1.GetComponent<Points>().faces[player1.GetComponent<Points>().activeFaceNum]);
 
 
         //reset totalGamePoints

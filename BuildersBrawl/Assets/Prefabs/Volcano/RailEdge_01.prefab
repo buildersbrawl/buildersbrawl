@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4374931488391864}
   - component: {fileID: 33715299928045074}
   - component: {fileID: 23394382048857040}
-  - component: {fileID: 4808522927299851311}
+  - component: {fileID: 3565184269379409272}
   m_Layer: 0
   m_Name: RailEdge_01
   m_TagString: Untagged
@@ -78,7 +78,7 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &4808522927299851311
+--- !u!64 &3565184269379409272
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
