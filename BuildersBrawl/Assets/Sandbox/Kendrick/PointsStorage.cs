@@ -7,8 +7,11 @@ public class PointsStorage : MonoBehaviour
 {
     public static PointsStorage P;
 
+    //stores all players
+    public int[][] playersPoints;
+
     //stores all players' points in array
-    public int[] P1Points= new int[4];
+    public int[] P1Points = new int[4];
     public int[] P2Points = new int[4];
     public int[] P3Points = new int[4];
     public int[] P4Points = new int[4];
