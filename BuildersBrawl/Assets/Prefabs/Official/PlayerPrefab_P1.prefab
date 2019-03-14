@@ -279,8 +279,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0638de8d676aad8468c14beee61abe35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointsTextPrefab: {fileID: 978226239479157690, guid: 911067f5eb9aec24a9d1ac35de62fe6a,
-    type: 3}
+  pointsTextPrefab: {fileID: 1447707977, guid: fb936dc01984f0642937ba0b127ace1a, type: 3}
   textActiveTime: 3
   uptravelDistance: 5
 --- !u!1001 &321129468570296118
@@ -357,7 +356,7 @@ PrefabInstance:
     - target: {fileID: 13700000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 09be7763a1fd4784bbd70b68773d6e4f, type: 2}
+      objectReference: {fileID: 2100000, guid: baa8f4a3e18f1144b8924f3c21917262, type: 2}
     - target: {fileID: 9500000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -382,14 +381,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205513807017318954}
     m_Modifications:
-    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
-      propertyPath: m_Name
-      value: Brawl_Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -432,6 +423,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_Name
+      value: Brawl_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}

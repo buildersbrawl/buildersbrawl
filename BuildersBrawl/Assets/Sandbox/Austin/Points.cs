@@ -13,19 +13,6 @@ public class Points : MonoBehaviour
     public Sprite[] faces = new Sprite[3];
     public int activeFaceNum = 1;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-
     //if they are pushed and they die, based on time?
     public void AddPointsForKill()
     {
@@ -76,45 +63,75 @@ public class Points : MonoBehaviour
     //Save Kill Points
     void AddPlayerKill()
     {
-        if(this.gameObject.name.Equals("PlayerPrefab_P1"))
+        if(this.gameObject.name.Equals(GameManager.S.player1))
         {
             PointsStorage.P.P1Points[PointsStorage.P.kills] ++;
             PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForKill;
         }
-        if (this.gameObject.name.Equals("PlayerPrefab_P2"))
+        if (this.gameObject.name.Equals(GameManager.S.player2))
         {
             PointsStorage.P.P2Points[PointsStorage.P.kills] ++;
             PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForKill;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player3))
+        {
+            PointsStorage.P.P3Points[PointsStorage.P.kills]++;
+            PointsStorage.P.P3Points[PointsStorage.P.total] += pointsForKill;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player4))
+        {
+            PointsStorage.P.P4Points[PointsStorage.P.kills]++;
+            PointsStorage.P.P4Points[PointsStorage.P.total] += pointsForKill;
         }
     }
 
     //Save Build Points
     void AddPlayerBuild()
     {
-        if (this.gameObject.name.Equals("PlayerPrefab_P1"))
+        if (this.gameObject.name.Equals(GameManager.S.player1))
         {
-            PointsStorage.P.P1Points[PointsStorage.P.builds] ++;
+            PointsStorage.P.P1Points[PointsStorage.P.builds]++;
             PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForBoardPlace;
         }
-        if (this.gameObject.name.Equals("PlayerPrefab_P2"))
+        if (this.gameObject.name.Equals(GameManager.S.player2))
         {
             PointsStorage.P.P2Points[PointsStorage.P.builds] ++;
             PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForBoardPlace;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player3))
+        {
+            PointsStorage.P.P3Points[PointsStorage.P.builds]++;
+            PointsStorage.P.P3Points[PointsStorage.P.total] += pointsForBoardPlace;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player4))
+        {
+            PointsStorage.P.P4Points[PointsStorage.P.builds]++;
+            PointsStorage.P.P4Points[PointsStorage.P.total] += pointsForBoardPlace;
         }
     }
 
     //Save Win Points and total Wins
     void AddPlayerWin()
     {
-        if (this.gameObject.name.Equals("PlayerPrefab_P1"))
+        if (this.gameObject.name.Equals(GameManager.S.player1))
         {
             PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P1Points[PointsStorage.P.wins] ++;
         }
-        if (this.gameObject.name.Equals("PlayerPrefab_P2"))
+        if (this.gameObject.name.Equals(GameManager.S.player2))
         {
             PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P2Points[PointsStorage.P.wins]++;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player3))
+        {
+            PointsStorage.P.P3Points[PointsStorage.P.total] += pointsForOtherSide;
+            PointsStorage.P.P3Points[PointsStorage.P.wins]++;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player4))
+        {
+            PointsStorage.P.P4Points[PointsStorage.P.total] += pointsForOtherSide;
+            PointsStorage.P.P4Points[PointsStorage.P.wins]++;
         }
     }
 }

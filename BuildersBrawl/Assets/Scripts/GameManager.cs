@@ -41,10 +41,26 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                player1 = playerList[0].gameObject;
-                player2 = playerList[1].gameObject;
-                player3 = playerList[2].gameObject;
-                player4 = playerList[3].gameObject;
+                foreach(PlayerController player in playerList)
+                {
+                    switch (player.playerNumber)
+                    {
+                        case PlayerController.PlayerNumber.p1:
+                            player1 = player.gameObject;
+                            break;
+                        case PlayerController.PlayerNumber.p2:
+                            player2 = player.gameObject;
+                            break;
+                        case PlayerController.PlayerNumber.p3:
+                            player3 = player.gameObject;
+                            break;
+                        case PlayerController.PlayerNumber.p4:
+                            player4 = player.gameObject;
+                            break;
+                        default:
+                            break;
+                    }
+                }
             }
         }
         

@@ -32,7 +32,7 @@ public class PointsBar : MonoBehaviour
     private float pointsPercent = 0f;
 
     //array of heads
-    private Image[] playerHeads = new Image[2];
+    private Image[] playerHeads = new Image[4];
 
     //array of the pl;ayer GameObjects
     private List<GameObject> players = new List<GameObject>();
@@ -51,44 +51,51 @@ public class PointsBar : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        if(empty == null)
+        {
+            empty = GameObject.Find("Empty").GetComponent<Image>();
+        }
         empty.transform.position = startPosition.transform.position;
 
         playerHeads[0] = player1Head;
         playerHeads[1] = player2Head;
-        //playerHeads[2] = player3Head;
-        //playerHeads[3] = player4Head;
+        playerHeads[2] = player3Head;
+        playerHeads[3] = player4Head;
 
         player1 = GameManager.S.player1;
         players.Add(player1);
-        player1Head.sprite = player1.GetComponent<Points>().GetFace();
+        player1.GetComponent<Points>().ChangeFaceNum(0); //Tom: set face image
+        //player1Head.sprite = player1.GetComponent<Points>().GetFace();
         //players[0] = player1;
         player2 = GameManager.S.player2;
         players.Add(player2);
-        player2Head.sprite = player2.GetComponent<Points>().GetFace();
+        player2.GetComponent<Points>().ChangeFaceNum(1); //Tom: set face image
+        //player2Head.sprite = player2.GetComponent<Points>().GetFace();
         //players[1] = player2;
 
         //if there is no player3 or player4, do not assign their gameobject
-        if (GameObject.Find("PlayerPrefab_P3") != null)
+        if (GameManager.S.player3 != null)
         {
             
-            player3 = GameObject.Find("PlayerPrefab_P3");
+            player3 = GameManager.S.player3;
             players.Add(player3);
-            player3Head.sprite = player3.GetComponent<Points>().faces[player3.GetComponent<Points>().activeFaceNum];
+            player3.GetComponent<Points>().ChangeFaceNum(2); //Tom: set face image
+            //player3Head.sprite = player3.GetComponent<Points>().GetFace();
             //players[2] = player3;
-            if(player3.activeInHierarchy)
+            if (player3.activeInHierarchy)
                 player3Head.gameObject.SetActive(true);
             else
                 player3Head.gameObject.SetActive(false);
-            Debug.Log("Player3Head active: " + player4.activeInHierarchy);
+            Debug.Log("Player3Head active: " + player3.activeInHierarchy);
         }
         else
             player3Head.gameObject.SetActive(false);
-        if (GameObject.Find("PlayerPrefab_P4") != null)
+        if (GameManager.S.player4 != null)
         {
-            player4Head.gameObject.SetActive(true);
-            player4 = GameObject.Find("PlayerPrefab_P4");
+            player4 = GameManager.S.player4;
             players.Add(player4);
-            player4Head.sprite = player4.GetComponent<Points>().faces[player4.GetComponent<Points>().activeFaceNum];
+            player4.GetComponent<Points>().ChangeFaceNum(3); //Tom: set face image
+            //player4Head.sprite = player4.GetComponent<Points>().GetFace();
             //players[3] = player4;
             if (player4.activeInHierarchy)
                 player4Head.gameObject.SetActive(true);
@@ -119,13 +126,16 @@ public class PointsBar : MonoBehaviour
 
 
         //reset totalGamePoints
-        totalGamePoints = 0;
+        totalGamePoints = 1;
 
         //iterate through the players and add up their points
         foreach (GameObject player in players)
         {
-            //Points pointsScript = player.GetComponent<Points>();
-            totalGamePoints += player.GetComponent<Points>().pointsTotal;
+            if(player != null)
+            {
+                //Points pointsScript = player.GetComponent<Points>();
+                totalGamePoints += player.GetComponent<Points>().pointsTotal;
+            }
         }
 
         foreach (GameObject player in players)
@@ -138,14 +148,14 @@ public class PointsBar : MonoBehaviour
                 index = 0;
             else if (player == GameManager.S.player2)
                 index = 1;
-            else if (player.name == "Player3")
+            else if (player == GameManager.S.player3)
                 index = 2;
-            else if (player.name == "Player4")
+            else if (player == GameManager.S.player4)
                 index = 3;
             //Debug.Log("Player name = " + player.name);
             //Debug.Log("index after = " + index);
 
-            if (index == 0)
+            /*if (index == 0)
             {
                 playerHeads[index].sprite = player1.GetComponent<Points>().GetFace();
                 //Debug.Log("GOTTEN FACE = " + players[index].GetComponent<Points>().GetFace() + 
@@ -164,6 +174,7 @@ public class PointsBar : MonoBehaviour
             {
                 player4Head.sprite = player4.GetComponent<Points>().GetFace();
             }
+            */
 
             //determine the face to give the points bar
             if (player.GetComponent<Points>().GetPointsTotal() != 0)
@@ -189,7 +200,8 @@ public class PointsBar : MonoBehaviour
                 //Debug.Log("pointspercent = " + pointsPercent);
 
                 //playerHeads[index].transform.position = Vector3.Lerp(startPosition.position, endPosition.position, Mathf.Lerp(0, pointsPercent, .05f));
-                empty.transform.position = Vector3.Lerp(startPosition.position, endPosition.position, pointsPercent);
+                print(pointsPercent);
+                empty.transform.position = Vector3.Lerp(startPosition.transform.position, endPosition.transform.position, pointsPercent);
                 playerHeads[index].transform.position = Vector3.Lerp(playerHeads[index].transform.position, empty.transform.position, 0.05f);
             }
 
@@ -278,14 +290,14 @@ public class PointsBar : MonoBehaviour
         if (p.GetComponent<Points>().GetPointsTotal() >= winner)
         {
             //p.GetComponent<Points>().activeFaceNum = 2;
-            p.GetComponent<Points>().ChangeFaceNum(2);
+            //p.GetComponent<Points>().ChangeFaceNum(2);
             winner = p.GetComponent<Points>().GetPointsTotal();
             Debug.Log(p.name + "is the new winner");
         }
 
         else if (p.GetComponent<Points>().GetPointsTotal() <= loser)
         {
-            p.GetComponent<Points>().activeFaceNum = 0;
+            //p.GetComponent<Points>().activeFaceNum = 0;
             loser = p.GetComponent<Points>().GetPointsTotal();
             Debug.Log(p.name + "is the new loser");
         }
@@ -295,13 +307,13 @@ public class PointsBar : MonoBehaviour
         {
             if (players.Count == 3 || p.GetComponent<Points>().GetPointsTotal() > middleOne)
             {
-                p.GetComponent<Points>().activeFaceNum = 1;
+                //p.GetComponent<Points>().activeFaceNum = 3;
                 middleOne = p.GetComponent<Points>().GetPointsTotal();
                 Debug.Log(p.name + "is the new middleOne");
             }
             else if (players.Count == 4 && p.GetComponent<Points>().GetPointsTotal() < middleOne)
             {
-                p.GetComponent<Points>().activeFaceNum = 1;
+                //p.GetComponent<Points>().activeFaceNum = 4;
                 middleTwo = p.GetComponent<Points>().GetPointsTotal();
                 Debug.Log(p.name + "is the new middleTwo");
             }

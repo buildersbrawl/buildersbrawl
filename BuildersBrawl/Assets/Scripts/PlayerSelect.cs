@@ -214,12 +214,12 @@ public class PlayerSelect : MonoBehaviour
         if (playerCounter == 2)
         {
             rewiredPlayerId = 1;
-            p1Controller = rewiredPlayerId;
+            p2Controller = rewiredPlayerId;
         }
         else if (playerCounter == 1)
         {
             rewiredPlayerId = 0;
-            p2Controller = rewiredPlayerId;
+            p1Controller = rewiredPlayerId;
         }
         else if (playerCounter == 3)
         {

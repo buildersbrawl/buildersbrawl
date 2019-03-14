@@ -45,6 +45,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Controller: 0
   p2Controller: 0
+  p3Controller: 0
+  p4Controller: 0
   B4_P1_select: {fileID: 0}
   B4_P2_select: {fileID: 0}
   LevelStartBtn: {fileID: 0}

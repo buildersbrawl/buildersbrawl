@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.4753483, g: 0.4970876, b: 0.4995346, a: 1}
+  m_IndirectSpecularColor: {r: 0.47534585, g: 0.4970861, b: 0.4995315, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -916,12 +916,16 @@ MonoBehaviour:
   levels:
   - {fileID: 21300000, guid: 90f66340c8063544e84631cd1adf7c0b, type: 3}
   - {fileID: 21300000, guid: d49db4bbbdce90a41bdf90c0c900d804, type: 3}
+  - {fileID: 21300000, guid: 357567d8ced331047b525e41ac66ef7c, type: 3}
+  - {fileID: 21300000, guid: 5ed11dfcc6db8824781e209cad37c55d, type: 3}
   levelNumber: 0
   show: 0
   chosenShown: 0
   levelNames:
   - River
   - Volcano
+  - RailRoad
+  - Snowy_Mountain
   chosenLevel: 
   waitTime: 0
   maxWaitTime: 1
@@ -1038,6 +1042,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Controller: 0
   p2Controller: 0
+  p3Controller: 0
+  p4Controller: 0
   B4_P1_select: {fileID: 1453684683}
   B4_P2_select: {fileID: 1728140616}
   LevelStartBtn: {fileID: 1678999128}
@@ -1135,57 +1141,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
---- !u!1 &1283907575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1283907577}
-  - component: {fileID: 1283907576}
-  m_Layer: 0
-  m_Name: PointsStorage
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1283907576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283907575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42639cdd49a368c43871a15848ed7da2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  P1Points: 00000000000000000000000000000000
-  P2Points: 00000000000000000000000000000000
-  P3Points: 00000000000000000000000000000000
-  P4Points: 00000000000000000000000000000000
-  kills: 0
-  builds: 1
-  total: 2
-  wins: 3
---- !u!4 &1283907577
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1283907575}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 285.761, y: 150.7168, z: 113.8342}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1417075257
 GameObject:
   m_ObjectHideFlags: 0

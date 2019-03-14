@@ -203,6 +203,42 @@ MonoBehaviour:
       _assignMouseOnStart: 0
       _assignKeyboardOnStart: 0
       _excludeFromControllerAutoAssignment: 0
+    - _id: 3
+      _name: Controller3
+      _descriptiveName: Player3
+      _startPlaying: 0
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      - _enabled: 1
+        _categoryId: 1
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
+    - _id: 4
+      _name: Controller4
+      _descriptiveName: Player4
+      _startPlaying: 0
+      _defaultJoystickMaps:
+      - _enabled: 1
+        _categoryId: 0
+        _layoutId: 0
+      - _enabled: 1
+        _categoryId: 1
+        _layoutId: 0
+      _defaultMouseMaps: []
+      _defaultKeyboardMaps: []
+      _defaultCustomControllerMaps: []
+      _startingCustomControllers: []
+      _assignMouseOnStart: 0
+      _assignKeyboardOnStart: 0
+      _excludeFromControllerAutoAssignment: 0
     actions:
     - _id: 0
       _name: Move Horizontal
@@ -760,7 +796,7 @@ MonoBehaviour:
     mouseMaps: []
     customControllerMaps: []
     customControllers: []
-    playerIdCounter: 3
+    playerIdCounter: 5
     actionIdCounter: 15
     actionCategoryIdCounter: 1
     inputBehaviorIdCounter: 2
