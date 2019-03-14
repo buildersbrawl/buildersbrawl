@@ -141,7 +141,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: baadccf4fc17b634d981f230f7d631e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players: 00000000000000000000000000000000
+  players: 0
   P1Data: {fileID: 490034033}
   P2Data: {fileID: 427056118}
   P3Data: {fileID: 661253127}
@@ -154,7 +154,7 @@ MonoBehaviour:
   second: 
   third: 
   last: 
-  playerPoints: 
+  playerPoints: 0a000000060000000700000005000000
   playerName: []
   playerImages: []
   P1Faces:
@@ -200,7 +200,7 @@ GameObject:
   - component: {fileID: 9019855}
   m_Layer: 5
   m_Name: Points
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -279,7 +279,7 @@ GameObject:
   - component: {fileID: 13193811}
   m_Layer: 5
   m_Name: Total
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 311321604}
   m_Layer: 5
   m_Name: Wins
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -669,7 +669,7 @@ GameObject:
   - component: {fileID: 331545968}
   m_Layer: 5
   m_Name: Points
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1360,7 +1360,7 @@ GameObject:
   - component: {fileID: 844351088}
   m_Layer: 5
   m_Name: Wins
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1592,7 +1592,7 @@ GameObject:
   - component: {fileID: 942037457}
   m_Layer: 5
   m_Name: Wins
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1824,7 +1824,7 @@ GameObject:
   - component: {fileID: 1166974673}
   m_Layer: 5
   m_Name: Wins
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2372,7 +2372,7 @@ GameObject:
   - component: {fileID: 1421807301}
   m_Layer: 5
   m_Name: Wins
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2520,7 +2520,7 @@ GameObject:
   - component: {fileID: 1662490324}
   m_Layer: 5
   m_Name: Points
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2599,7 +2599,7 @@ GameObject:
   - component: {fileID: 1728178227}
   m_Layer: 5
   m_Name: Points
-  m_TagString: Untagged
+  m_TagString: EndGame
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

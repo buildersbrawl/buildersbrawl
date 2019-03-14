@@ -14,7 +14,7 @@ public static class ExtensionFunction
 public class EndGame : MonoBehaviour
 {
     //Keeps track of the number of players in the game
-    public int[] players;
+    public int players;
     public GameObject P1Data, P2Data, P3Data, P4Data;
 
     private bool P4 = true, P3 = true;
@@ -41,6 +41,9 @@ public class EndGame : MonoBehaviour
     public Sprite[] P3Faces = new Sprite[3];
     public Sprite[] P4Faces = new Sprite[3];
 
+    private bool endRound;
+    private GameObject[] endGameScreen;
+
     void Awake()
     {
         //Assigns appropriate player color to panels
@@ -51,10 +54,10 @@ public class EndGame : MonoBehaviour
         CheckPlayerNumbers();
 
         playerPoints = new int[4];
-       /* playerPoints[0] = PointsStorage.P.P1Points[PointsStorage.P.total];
+        playerPoints[0] = PointsStorage.P.P1Points[PointsStorage.P.total];
         playerPoints[1] = PointsStorage.P.P2Points[PointsStorage.P.total];
         playerPoints[2] = PointsStorage.P.P3Points[PointsStorage.P.total];
-        playerPoints[3] = PointsStorage.P.P4Points[PointsStorage.P.total];*/
+        playerPoints[3] = PointsStorage.P.P4Points[PointsStorage.P.total];
 
         playerImages = new Image[4];
         playerImages[0] = P1Data.GetComponentInChildren<Image>(title);
@@ -62,17 +65,20 @@ public class EndGame : MonoBehaviour
         playerImages[2] = P3Data.GetComponentInChildren<Image>(title);
         playerImages[3] = P4Data.GetComponentInChildren<Image>(title);
 
-        playerFaces = new Sprite[4][];
+        playerFaces = new Sprite[PlayerSelect.S.playerCounter][];
         playerFaces[0] = P1Faces;
         playerFaces[1] = P2Faces;
         playerFaces[2] = P3Faces;
         playerFaces[3] = P4Faces;
 
-        playerName = new string[4];
+        playerName = new string[PlayerSelect.S.playerCounter];
         playerName[0] = "Player 1";
         playerName[1] = "Player 2";
         playerName[2] = "Player 3";
         playerName[3] = "Player 4";
+
+        //Checks to see if screen is for the end of a round or the end of the game
+        CheckStatus();
     }
 
     // Update is called once per frame
@@ -80,7 +86,7 @@ public class EndGame : MonoBehaviour
     {
         CompareTotals();
         //Displays player points
-        //DisplayPoints();
+        DisplayPoints();
 
         /*Debug.Log("First Place: " + first);
         Debug.Log("Second Place: " + second);
@@ -90,12 +96,12 @@ public class EndGame : MonoBehaviour
 
     void CheckPlayerNumbers()
     {
-        players = new int[4];
-        if (players.Length < 4)
+        players = PlayerSelect.S.playerCounter;
+        if (players < 4)
         {
             DisablePlayer4();
         }
-        if (players.Length < 3)
+        if (players < 3)
         {
             DisablePlayer3();
         }
@@ -121,6 +127,18 @@ public class EndGame : MonoBehaviour
         P3Data.GetComponentInChildren<Text>(wins).text = "";
         P3Data.GetComponent<Image>().color = Color.gray;
         P3 = false;
+    }
+
+    void CheckStatus()
+    {
+        endGameScreen = GameObject.FindGameObjectsWithTag("EndGame");
+        if (endRound)
+        {
+            for (int i = 0; i < endGameScreen.Length; i++)
+            {
+                endGameScreen[i].SetActive(false);
+            }
+        }
     }
 
     void DisplayPoints()
@@ -159,7 +177,6 @@ public class EndGame : MonoBehaviour
     void CompareTotals()
     {
         int[] place = new int[4];
-        int prev = 0;
 
             //Calculate first place
             for (int f = 0; f < 4; f++)
@@ -169,12 +186,10 @@ public class EndGame : MonoBehaviour
                 {
                     place[0] = playerPoints[f];
                     first = playerName[f];
-                playerImages[prev].sprite = playerFaces[prev][2];
                 playerImages[f].sprite = playerFaces[f][1];
-                prev = f;
                 }
-            }
-        prev = 0;
+        }
+
             //Calculate second place
             for (int f = 0; f < 4; f++)
             {
@@ -184,23 +199,16 @@ public class EndGame : MonoBehaviour
                     {
                         place[1] = playerPoints[f];
                         second = playerName[f];
-                    playerImages[prev].sprite = playerFaces[prev][2];
-                    playerImages[f].sprite = playerFaces[f][0];
-                    prev = f;
-                    if (!P3)
+                        playerImages[f].sprite = playerFaces[f][0];
+                        if (!P3)
                         {
                             last = second;
                             playerImages[f].sprite = playerFaces[f][2];
-                    }
+                        }
                     }
                 }
             }
-        /*if (!P3)
-        {
-            last = second;
 
-        }*/
-        prev = 0;
         if (P3)
         {
             //Calculate third place
@@ -212,9 +220,7 @@ public class EndGame : MonoBehaviour
                     {
                         place[2] = playerPoints[f];
                         third = playerName[f];
-                        playerImages[prev].sprite = playerFaces[prev][2];
                         playerImages[f].sprite = playerFaces[f][0];
-                        prev = f;
                         if (!P4)
                         {
                             last = third;
@@ -223,25 +229,19 @@ public class EndGame : MonoBehaviour
                     }
                 }
             }
-           /* if (!P4)
-            {
-                last = third;
-            }*/
+
             if (P4)
             {
-
                 //Calculate forth place
                 for (int f = 0; f < 4; f++)
                 {
-                    if (place[0] < playerPoints[f] && place[1] < playerPoints[f] && place[2] < playerPoints[f])
+                    if (place[0] > playerPoints[f] && place[1] > playerPoints[f] && place[2] > playerPoints[f])
                     {
-                        if (place[3] < playerPoints[f])
+                        if (place[3] > playerPoints[f] || last == "")
                         {
                             place[3] = playerPoints[f];
                             last = playerName[f];
-                            playerImages[prev].sprite = playerFaces[prev][2];
                             playerImages[f].sprite = playerFaces[f][2];
-                            prev = f;
                         }
                     }
                 }
