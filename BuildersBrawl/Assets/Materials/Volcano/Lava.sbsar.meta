@@ -1,0 +1,273 @@
+fileFormatVersion: 2
+guid: ce5effd4de7398a4a80fdd2a8c4a4c89
+ScriptedImporter:
+  fileIDToRecycleName:
+    2100000: Lava
+    2100002: Lava_1
+    2100004: Lava_2
+    2800000: Lava - normal
+    2800002: Lava - metallic
+    2800004: Lava - baseColor
+    2800006: Lava - emissive
+    2800008: Lava - ambientOcclusion
+    2800010: Lava - height
+    2800012: Lava_1 - normal
+    2800014: Lava_1 - metallic
+    2800016: Lava_1 - baseColor
+    2800018: Lava_1 - emissive
+    2800020: Lava_1 - ambientOcclusion
+    2800022: Lava_1 - height
+    2800024: Lava_2 - normal
+    2800026: Lava_2 - metallic
+    2800028: Lava_2 - baseColor
+    2800030: Lava_2 - emissive
+    2800032: Lava_2 - ambientOcclusion
+    2800034: Lava_2 - height
+    11400000: sbsar
+    11400002: graph0
+    11400004: graph1
+    11400006: graph2
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 17
+  mGraphInstanceData:
+  - graphLabel: Lava
+    prototypeName: Lava
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Lava\" label=\"\" >\n  <presetinput identifier=\"$randomseed\"
+      uid=\"503433376\" type=\"4\" value=\"10000\" />\n  <presetinput identifier=\"Lava_Height\"
+      uid=\"599128729\" type=\"0\" value=\"1\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: normal,metallic,baseColor,emissive,ambientOcclusion,height
+    texturePackingList:
+    - outputName: normal
+      alphaSource: normal
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    - outputName: height
+      alphaSource: height
+    textureParameters:
+    - textureName: Lava - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: normal
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: emissive
+      bLinear: 0
+    - outputName: ambientOcclusion
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 2048
+      textureHeight: 2048
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100000, guid: ce5effd4de7398a4a80fdd2a8c4a4c89, type: 3}
+    generatedTextures: []
+  - graphLabel: Lava_1
+    prototypeName: Lava
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Lava\" label=\"\" >\n  <presetinput identifier=\"$randomseed\"
+      uid=\"503433376\" type=\"4\" value=\"1673\" />\n  <presetinput identifier=\"Lava_Height\"
+      uid=\"599128729\" type=\"0\" value=\"0.2\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: normal,metallic,baseColor,emissive,ambientOcclusion,height
+    texturePackingList:
+    - outputName: normal
+      alphaSource: normal
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    - outputName: height
+      alphaSource: height
+    textureParameters:
+    - textureName: Lava_1 - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_1 - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_1 - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_1 - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_1 - emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_1 - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_1 - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: normal
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: emissive
+      bLinear: 0
+    - outputName: ambientOcclusion
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 2048
+      textureHeight: 2048
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100002, guid: ce5effd4de7398a4a80fdd2a8c4a4c89, type: 3}
+    generatedTextures: []
+  - graphLabel: Lava_2
+    prototypeName: Lava
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Lava\" label=\"\" >\n  <presetinput identifier=\"$randomseed\"
+      uid=\"503433376\" type=\"4\" value=\"9638\" />\n  <presetinput identifier=\"Lava_Height\"
+      uid=\"599128729\" type=\"0\" value=\"0.225\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: normal,metallic,baseColor,emissive,ambientOcclusion,height
+    texturePackingList:
+    - outputName: normal
+      alphaSource: normal
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    - outputName: height
+      alphaSource: height
+    textureParameters:
+    - textureName: Lava_2 - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_2 - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_2 - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_2 - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_2 - emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_2 - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_2 - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: normal
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: emissive
+      bLinear: 0
+    - outputName: ambientOcclusion
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 2048
+      textureHeight: 2048
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100004, guid: ce5effd4de7398a4a80fdd2a8c4a4c89, type: 3}
+    generatedTextures: []
