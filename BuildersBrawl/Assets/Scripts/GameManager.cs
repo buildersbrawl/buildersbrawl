@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
 
         playerList = GameObject.FindObjectsOfType<PlayerController>();
 
-        if (player1 == null || player2 == null)
+        if (player1 == null || player2 == null || player3 == null || player4 == null)
         {
             //make sure 2 players
             

@@ -381,6 +381,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205513807017318954}
     m_Modifications:
+    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_Name
+      value: Brawl_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -423,14 +431,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
-      propertyPath: m_Name
-      value: Brawl_Idle
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}

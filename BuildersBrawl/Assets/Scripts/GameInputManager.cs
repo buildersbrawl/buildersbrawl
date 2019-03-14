@@ -92,6 +92,8 @@ public class GameInputManager : MonoBehaviour
     void GetInput()
     {
 
+        print("isUsingUI is " + isUsingUI);
+
         //print("Getting Input player " + player.id);
         //give player a playerID
         //player = ReInput.players.GetPlayer(playerID);
