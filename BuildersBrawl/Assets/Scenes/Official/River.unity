@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 170076734}
-  m_IndirectSpecularColor: {r: 0.28887376, g: 0.35917673, b: 0.39803046, a: 1}
+  m_IndirectSpecularColor: {r: 0.2890127, g: 0.35902557, b: 0.39813998, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -367,11 +367,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1322087304}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -441,6 +436,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.26209998
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -881,6 +881,24 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 196210179}
+    - target: {fileID: 2351750325762926708, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: faces.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: cd2a215ec1c805241856f68ddd0e5766,
+        type: 3}
+    - target: {fileID: 2351750325762926708, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: faces.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 96506e5a8462b3847ab969555d5710b3,
+        type: 3}
+    - target: {fileID: 2351750325762926708, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: faces.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 3ca4925122dc11b42a902fc2c911a322,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a976d66702bbc334d9a158045b06242f, type: 3}
 --- !u!1001 &167990060
@@ -890,11 +908,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1322087304}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -964,6 +977,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.27660507
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (5)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -1243,11 +1261,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1322087304}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1317,6 +1330,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.27660617
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -1567,11 +1585,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1191186014}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1641,6 +1654,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.27660507
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (5)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -1992,11 +2010,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1191186014}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2067,6 +2080,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.2621014
       objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (1)
+      objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: plankState
@@ -2098,11 +2116,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1191186014}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2173,6 +2186,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.26209998
       objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (2)
+      objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: plankState
@@ -2204,11 +2222,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2268,6 +2281,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -2675,11 +2693,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (7)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2739,6 +2752,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (7)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -3096,11 +3114,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1191186014}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (3)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3170,6 +3183,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.27660617
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (3)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -3332,6 +3350,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   p1Controller: 0
   p2Controller: 0
+  p3Controller: 0
+  p4Controller: 0
   B4_P1_select: {fileID: 0}
   B4_P2_select: {fileID: 0}
   LevelStartBtn: {fileID: 0}
@@ -3748,11 +3768,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1322087304}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3822,6 +3837,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.27660522
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (4)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -4025,11 +4045,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1322087304}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4099,6 +4114,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.2621014
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -4455,6 +4475,24 @@ PrefabInstance:
       propertyPath: inputType
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4104573080269578039, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: faces.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: d8bb4cb85936c5149a0b65c1bb95ab23,
+        type: 3}
+    - target: {fileID: 4104573080269578039, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: faces.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 541668a847b884243b76aec317c60e45,
+        type: 3}
+    - target: {fileID: 4104573080269578039, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: faces.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 98c6eb71a88218647884fbcf055df409,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fecd509f8421045a7e40a875876d99, type: 3}
 --- !u!1 &1218349878
@@ -4818,11 +4856,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (6)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4882,6 +4915,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (6)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -5083,6 +5121,24 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 35303515}
+    - target: {fileID: 4154333681177768567, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: faces.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ee91f20a98d1c544fabe11337643acaa,
+        type: 3}
+    - target: {fileID: 4154333681177768567, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: faces.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c05f19c39e6c83c49b69b48f154e1641,
+        type: 3}
+    - target: {fileID: 4154333681177768567, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: faces.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 2694a54c95284db43b9257af0b7b51ef,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e47230838d2df6145bf584f5f0377f22, type: 3}
 --- !u!1001 &1386927792
@@ -5092,11 +5148,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1191186014}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5166,6 +5217,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.27660522
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (4)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -5316,11 +5372,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (2)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5380,6 +5431,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (2)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -5736,11 +5792,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (5)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5800,6 +5851,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (5)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -5922,11 +5978,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5986,6 +6037,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -6914,11 +6970,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (4)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -6978,6 +7029,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (4)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -7522,6 +7578,24 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1777612803}
+    - target: {fileID: 3864598282897895317, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: faces.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: f36cc04532f86b048bbbc6cd2755f4cb,
+        type: 3}
+    - target: {fileID: 3864598282897895317, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: faces.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: 77c739f54a44a0e4c8fed897b83b5483,
+        type: 3}
+    - target: {fileID: 3864598282897895317, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: faces.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: a45d4ffe29d35a648ac6372a1c0b276b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a122de2bbb5da164b872459a52abdec9, type: 3}
 --- !u!1001 &1857920930
@@ -7965,11 +8039,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (8)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8029,6 +8098,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (8)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
@@ -8556,11 +8630,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (9)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8626,6 +8695,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.15649
       objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (9)
+      objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: plankState
@@ -8680,11 +8754,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 961495256}
     m_Modifications:
-    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
-        type: 3}
-      propertyPath: m_Name
-      value: TempPlank_Enviro (1)
-      objectReference: {fileID: 0}
     - target: {fileID: 34944575546813299, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -8744,6 +8813,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.x
       value: 2.1372895
+      objectReference: {fileID: 0}
+    - target: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
+        type: 3}
+      propertyPath: m_Name
+      value: TempPlank_Enviro (1)
       objectReference: {fileID: 0}
     - target: {fileID: 5340682005446591790, guid: 343849e8772006e45b6c64399bf66674,
         type: 3}
