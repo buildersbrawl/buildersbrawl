@@ -54,7 +54,7 @@ MonoBehaviour:
   playerOneSelected: 0
   playerTwoSelected: 0
   bothPlayersReady: 0
-  maxPlayers: 2
+  maxPlayers: 4
   inputManagerInstance: {fileID: 0}
   controllerSelected: 0
   playerCounter: 0
