@@ -34,6 +34,7 @@ public class WinState : MonoBehaviour
             playerWhoWon = playerWhoWon.Replace("Prefab_P", "");
 
             //add points to the winner
+            other.gameObject.GetComponent<FlashyPoints>().ShowPointsGained(other.gameObject.transform.position, other.gameObject.GetComponent<Points>().pointsForOtherSide);
             other.gameObject.GetComponent<Points>().AddPointsForOtherSide();
 
             //turn on win UI
