@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Official/RailRoad.unity
     guid: c2c9b1c79b75ecb4c9c0ce4e900c8b66
+  - enabled: 1
+    path: Assets/Scenes/Official/Snowy_Mountain.unity
+    guid: fe67155368b01ae4bbf4d2305e77991e
   m_configObjects: {}
