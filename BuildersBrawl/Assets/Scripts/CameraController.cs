@@ -206,7 +206,7 @@ public class CameraController : MonoBehaviour
             cameraXOffset = 0;
         }
 
-        if(player1ref == null || player2ref == null)
+        if(player1ref == null || player2ref == null || player3ref == null || player4ref == null)
         {
             if(GameManager.S != null)
             {
