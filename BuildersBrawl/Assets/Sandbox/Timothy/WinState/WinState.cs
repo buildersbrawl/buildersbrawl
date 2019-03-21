@@ -30,6 +30,10 @@ public class WinState : MonoBehaviour
         //if player touching and no one has won yet
         if (other.gameObject.GetComponent<PlayerController>() != null && (!GameManager.S.someoneWon))
         {
+            //set the winner
+            GameManager.S.winner = other.gameObject;
+            GameObject.Find("Main Camera").GetComponent<CameraController>().winnerDetermined = true;
+
             playerWhoWon = other.gameObject.name;
             playerWhoWon = playerWhoWon.Replace("Prefab_P", "");
 

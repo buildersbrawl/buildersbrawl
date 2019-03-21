@@ -167,8 +167,8 @@ public class PointsBar : MonoBehaviour
             if (index == 0)
             {
                 playerHeads[index].sprite = player1.GetComponent<Points>().GetFace();
-                Debug.Log("GOTTEN FACE = " + players[index].GetComponent<Points>().GetFace() + 
-                    " and facenum = " + players[index].GetComponent<Points>().activeFaceNum);
+                //Debug.Log("GOTTEN FACE = " + players[index].GetComponent<Points>().GetFace() + 
+                  //  " and facenum = " + players[index].GetComponent<Points>().activeFaceNum);
             }
             if (index == 1)
             {
@@ -202,81 +202,69 @@ public class PointsBar : MonoBehaviour
                 //Debug.Log("pointspercent = " + pointsPercent);
 
                 //playerHeads[index].transform.position = Vector3.Lerp(startPosition.position, endPosition.position, Mathf.Lerp(0, pointsPercent, .05f));
-                print(pointsPercent);
+                //print(pointsPercent);
                 empty.transform.position = Vector3.Lerp(startPosition.transform.position, endPosition.transform.position, pointsPercent);
                 playerHeads[index].transform.position = Vector3.Lerp(playerHeads[index].transform.position, empty.transform.position, 0.05f);
             }
 
             Vector3 after = playerHeads[index].transform.position;
-
-            if (before == after)
-            {
-                //oldPointPercent[index] = pointsPercent;
-                //Debug.Log("BEFORE = AFTER");
-            }
-
-
-
-            /*if (before != after)
-                Debug.Log("moved " + playerHeads[index].name + " from " + before + " to " + after);
-            Debug.Log(player.name + "'s points total = " + (player.GetComponent<Points>().GetPointsTotal()));
-            Debug.Log(player.name + "'s pointsPercent = " + pointsPercent);
-            Debug.Log("totalGamePoints = " + totalGamePoints);
-            */
-
-
         }
 
     }
 
     void DetermineFace(GameObject p)
     {
-        for (int i = 0; i < players.Count; i++)
-        {
-            if (players[i].GetComponent<Points>().GetPointsTotal() >= winner)
+        bool isWinner = false;
+
+        //for (int i = 0; i < players.Count; i++)
+        //{
+            if (p.GetComponent<Points>().GetPointsTotal() >= winner)
             {
                 p.GetComponent<Points>().ChangeFaceNum(2);
-                winner = players[i].GetComponent<Points>().GetPointsTotal();
-                Debug.Log("NEW WINNER FACE = " + p.GetComponent<Points>().activeFaceNum);
-                Debug.Log("WINNER HAS " + winner + " name = " + p.name);
+                winner = p.GetComponent<Points>().GetPointsTotal();
+                //Debug.Log("NEW WINNER FACE = " + p.GetComponent<Points>().activeFaceNum);
+                //Debug.Log("WINNER HAS " + winner + " name = " + p.name);
+                isWinner = true;
             }
-            else if (players[i].GetComponent<Points>().GetPointsTotal() < winner)
+            else if (p.GetComponent<Points>().GetPointsTotal() < winner && !isWinner)
             {
+                //Debug.Log(isWinner + " and name = " + p.name);
+                //Debug.Log("winner = " + winner + " and name = " +p.GetComponent<Points>().GetPointsTotal());
                 if(players.Count == 2)
                 {
                     p.GetComponent<Points>().ChangeFaceNum(0);
-                    loser = players[i].GetComponent<Points>().GetPointsTotal();
-                    Debug.Log("NEW LOSER FACE = " + p.GetComponent<Points>().activeFaceNum);
-                    Debug.Log("LOSER HAS " + loser + " name = " + p.name);
+                    loser = p.GetComponent<Points>().GetPointsTotal();
+                    //Debug.Log("IF 1 NEW LOSER FACE = " + p.GetComponent<Points>().activeFaceNum);
+                    //Debug.Log("IF 1 LOSER HAS " + loser + " name = " + p.name);
                 }
-                else if(players.Count == 3 && players[i].GetComponent<Points>().GetPointsTotal() < middleOne)
+                else if(players.Count == 3 && p.GetComponent<Points>().GetPointsTotal() < middleOne)
                 {
                     p.GetComponent<Points>().ChangeFaceNum(0);
-                    loser = players[i].GetComponent<Points>().GetPointsTotal();
-                    Debug.Log("NEW LOSER FACE = " + p.GetComponent<Points>().activeFaceNum);
-                    Debug.Log("LOSER HAS " + loser + " name = " + p.name);
+                    loser = p.GetComponent<Points>().GetPointsTotal();
+                    //Debug.Log("IF 2 NEW LOSER FACE = " + p.GetComponent<Points>().activeFaceNum);
+                    //Debug.Log("IF 2 LOSER HAS " + loser + " name = " + p.name);
                 }
-                else if(players.Count == 4 && players[i].GetComponent<Points>().GetPointsTotal() < middleOne 
-                    && players[i].GetComponent<Points>().GetPointsTotal() < middleTwo)
+                else if(players.Count == 4 && p.GetComponent<Points>().GetPointsTotal() < middleOne 
+                    && p.GetComponent<Points>().GetPointsTotal() < middleTwo)
                 {
                     p.GetComponent<Points>().ChangeFaceNum(0);
-                    loser = players[i].GetComponent<Points>().GetPointsTotal();
-                    Debug.Log("NEW LOSER FACE = " + p.GetComponent<Points>().activeFaceNum);
-                    Debug.Log("LOSER HAS " + loser + " name = " + p.name);
+                    loser = p.GetComponent<Points>().GetPointsTotal();
+                    //Debug.Log("IF 3 NEW LOSER FACE = " + p.GetComponent<Points>().activeFaceNum);
+                    //Debug.Log("IF 3 LOSER HAS " + loser + " name = " + p.name);
                 }
             }
-            else if(players[i].GetComponent<Points>().GetPointsTotal() > loser && players[i].GetComponent<Points>().GetPointsTotal() < winner)
+            else if(p.GetComponent<Points>().GetPointsTotal() > loser && p.GetComponent<Points>().GetPointsTotal() < winner)
             {
-                if(players.Count >= 3 && players[i].GetComponent<Points>().GetPointsTotal() > middleTwo)
+                if(players.Count >= 3 && p.GetComponent<Points>().GetPointsTotal() > middleTwo)
                 {
                     p.GetComponent<Points>().ChangeFaceNum(1);
-                    middleOne = players[i].GetComponent<Points>().GetPointsTotal();
+                    middleOne = p.GetComponent<Points>().GetPointsTotal();
                     Debug.Log("MIDDLEONE HAS " + middleOne + " name = " + p.name);
                 }
-                else if(players.Count == 4 && players[i].GetComponent<Points>().GetPointsTotal() < middleOne)
+                else if(players.Count == 4 && p.GetComponent<Points>().GetPointsTotal() < middleOne)
                 {
                     p.GetComponent<Points>().ChangeFaceNum(1);
-                    middleTwo = players[i].GetComponent<Points>().GetPointsTotal();
+                    middleTwo = p.GetComponent<Points>().GetPointsTotal();
                     Debug.Log("MIDDLEONE HAS " + middleTwo + " name = " + p.name);
                 }
             }
@@ -293,12 +281,12 @@ public class PointsBar : MonoBehaviour
             }*/
 
 
-        }
+        //}
 
         //Image tempFace;
         //Debug.Log(p.name + " has " + p.GetComponent<Points>().GetPointsTotal() + " points in DetermineFace");
-        Debug.Log("winner has " + winner + " points in DetermineFace");
-        Debug.Log("loser has " + loser + " points in DetermineFace");
+        //Debug.Log("winner has " + winner + " points in DetermineFace");
+        //Debug.Log("loser has " + loser + " points in DetermineFace");
         //Debug.Log("face before = " + p.GetComponent<Points>().activeFaceNum);
 
         /*if (p.GetComponent<Points>().GetPointsTotal() >= winner)

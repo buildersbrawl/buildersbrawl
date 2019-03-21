@@ -150,6 +150,11 @@ public class CameraController : MonoBehaviour
     public float timeStartedLerping = 0f;
     public float deathTimer = 0f;
 
+    public bool winnerDetermined = false;
+    public GameObject winner;   //storage of winner GO
+    public Vector3 winOffset = new Vector3(-10, 5, 0);   //position of the camera offset from the player
+    public float winCameraHeight = 5f;
+
     [SerializeField]
     private float deathStartDistance;
     [SerializeField]
@@ -166,7 +171,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         Init();
-
+        winnerDetermined = false;
     }
 
     public void Init()
@@ -225,7 +230,8 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (setCameraBasedOnPlayers)
+
+        if (setCameraBasedOnPlayers && !winnerDetermined)
         {
             GetAveragePositionBetweenPlayers();
             GetDistanceBetweenPlayers();
@@ -292,7 +298,7 @@ public class CameraController : MonoBehaviour
             }
         }
         //when a player dies, use these camera movement serttings 
-        else
+        else if (!winnerDetermined)
         {
 
             //Debug.Log("CameraController:Update");
@@ -366,6 +372,12 @@ public class CameraController : MonoBehaviour
                 //reset cameraZOffset to original value
                 //cameraZOffset = 0f;
             }
+        }
+        //if a winner has been determined, do stuff
+        else if (winnerDetermined)
+        {
+            ZoomOnWinner();
+            Debug.Log("We have a winner!!");
         }
     }
 
@@ -692,6 +704,31 @@ public class CameraController : MonoBehaviour
 
         deathEndDistance = distanceBetweenPlayers;
         deathEndAvgPos = averagePositionBetweenPlayers;
+    }
+
+    private void ZoomOnWinner()
+    {
+        //change winner gameobject to the actual winner elsewhere in code
+
+        //turn controls off
+        
+        //zoom
+        //lerp from current position to position in front of player
+        Vector3 winPos = GameManager.S.winner.transform.position + winOffset;
+        cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, winPos, .05f);
+        //set the camera height to a fixed value and pitch to lookat the winners position
+        //AdjustCameraPitchAndHeightNew(winPos.y, GameManager.S.winner.transform.position);
+        cameraRef.transform.LookAt(GameManager.S.winner.transform.position);    //adjust pitch
+
+
+        //if the camera is where it should be, do the other stuff
+        if(cameraRef.transform.position == winPos)
+        {
+            //initiate slow motion
+            //show flashy point ping 
+            //move the points bar face by adding points here
+        }
+
     }
 }
 

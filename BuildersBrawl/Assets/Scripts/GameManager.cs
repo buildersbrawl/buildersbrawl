@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerController[] playerList;
 
+    public GameObject winner;
     public bool someoneWon = false;
 
     public GameObject cameraRef;
