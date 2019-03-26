@@ -48,6 +48,7 @@ public class PointsStorage : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "Main_Menu")
         {
             Reset();
+            RoundsManager.R.Reset();
         }
     }
 
