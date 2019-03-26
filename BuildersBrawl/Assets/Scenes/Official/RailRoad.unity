@@ -19200,16 +19200,6 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 32906628}
-    - target: {fileID: 2452697667803802988, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: gameInputManager
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 2452697667803802988, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: inputType
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 90fecd509f8421045a7e40a875876d99, type: 3}
 --- !u!1 &1775877583 stripped
@@ -22719,6 +22709,10 @@ MonoBehaviour:
   endMarker: {fileID: 0}
   timeStartedLerping: 0
   deathTimer: 0
+  winnerDetermined: 0
+  winner: {fileID: 0}
+  winOffset: {x: -10, y: 5, z: 0}
+  winCameraHeight: 5
   deathStartDistance: 0
   deathEndDistance: 0
   deathStartAvgPos: {x: 0, y: 0, z: 0}

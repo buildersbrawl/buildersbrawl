@@ -105,6 +105,24 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 2351750325762926708, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: faces.Array.data[0]
+      value: 
+      objectReference: {fileID: 21300000, guid: ee91f20a98d1c544fabe11337643acaa,
+        type: 3}
+    - target: {fileID: 2351750325762926708, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: faces.Array.data[1]
+      value: 
+      objectReference: {fileID: 21300000, guid: c05f19c39e6c83c49b69b48f154e1641,
+        type: 3}
+    - target: {fileID: 2351750325762926708, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: faces.Array.data[2]
+      value: 
+      objectReference: {fileID: 21300000, guid: 98c6eb71a88218647884fbcf055df409,
+        type: 3}
     - target: {fileID: 466583565, guid: a976d66702bbc334d9a158045b06242f, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
