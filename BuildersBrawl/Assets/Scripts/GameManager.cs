@@ -19,6 +19,10 @@ public class GameManager : MonoBehaviour
 
     public GameObject cameraRef;
 
+    public int round;
+    public int maxRounds;
+    public bool endGame = false;
+
     private void Awake()
     {
         if(S == null)
@@ -76,6 +80,16 @@ public class GameManager : MonoBehaviour
     {
         someoneWon = false;
         SceneManager.LoadScene("Main_Menu");
+        round = 0;
+        endGame = false;
+    }
+
+    public void CheckEnd()
+    {
+        if(round >= maxRounds)
+        {
+            endGame = true;
+        }
     }
 
 }

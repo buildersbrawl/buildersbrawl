@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public static class ExtensionFunction
 {
@@ -132,7 +133,7 @@ public class EndGame : MonoBehaviour
     void CheckStatus()
     {
         endGameScreen = GameObject.FindGameObjectsWithTag("EndGame");
-        if (endRound)
+        if (!GameManager.S.endGame)
         {
             for (int i = 0; i < endGameScreen.Length; i++)
             {
@@ -246,6 +247,19 @@ public class EndGame : MonoBehaviour
                     }
                 }
             }
+        }
+    }
+
+    public void ContinueButton()
+    {
+        if(!GameManager.S.endGame)
+        {
+            GameManager.S.round++;
+            SceneManager.LoadScene("Player_Select");
+        }
+        if(GameManager.S.endGame)
+        {
+            GameManager.S.RestartGame();
         }
     }
 }
