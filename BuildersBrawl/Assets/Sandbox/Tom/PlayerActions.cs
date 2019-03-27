@@ -166,6 +166,9 @@ public class PlayerActions : MonoBehaviour
             return;
         }
 
+        //push anim
+        playerController.playerAnimation.PushAnim();
+
         print("Push action");
         //make boxcast in front of player
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePush);

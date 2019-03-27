@@ -63,6 +63,10 @@ public class PlayerController : MonoBehaviour
     //score
     public Points playerPoints;
 
+    [HideInInspector]
+    //score
+    public PlayerAnimation playerAnimation;
+
     //determines player movement
     private Vector3 moveVector;
 
@@ -181,6 +185,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             playerDeath = this.gameObject.AddComponent<PlayerDeath>();
+        }
+
+        //get anim
+        if (this.gameObject.GetComponent<PlayerAnimation>() != null)
+        {
+            playerAnimation = this.gameObject.GetComponent<PlayerAnimation>();
+        }
+        else
+        {
+            playerAnimation = this.gameObject.AddComponent<PlayerAnimation>();
         }
 
         //camera
