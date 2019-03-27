@@ -42,7 +42,7 @@ public class WinState : MonoBehaviour
             other.gameObject.GetComponent<Points>().AddPointsForOtherSide();
 
             //turn on win UI
-            winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit B to Restart";
+            winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit B to Continue";
             winUI.SetActive(true);
 
             //make ability to move to MM available

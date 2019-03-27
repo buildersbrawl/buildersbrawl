@@ -541,7 +541,7 @@ public class PlayerController : MonoBehaviour
         //if someone won then if "a" hit restart
         if (GameManager.S != null && GameManager.S.someoneWon && BCharge)
         {
-            GameManager.S.RestartGame();
+            GameManager.S.EndLevel();
         }
 
 

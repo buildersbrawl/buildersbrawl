@@ -4,15 +4,15 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public static class ExtensionFunction
+/*public static class ExtensionFunction
 {
     public static T GetComponentInChildren<T>(this GameObject gameObject, int index)
     {
         return gameObject.transform.GetChild(index).GetComponent<T>();
     }
-}
+}*/
 
-public class EndGame : MonoBehaviour
+public class EndGameTEST : MonoBehaviour
 {
     //Keeps track of the number of players in the game
     public int players;
@@ -42,7 +42,7 @@ public class EndGame : MonoBehaviour
     public Sprite[] P3Faces = new Sprite[3];
     public Sprite[] P4Faces = new Sprite[3];
 
-    private bool endGame;
+    public bool endGame;
     private GameObject[] endGameScreen;
 
     void Awake()
@@ -55,10 +55,10 @@ public class EndGame : MonoBehaviour
         CheckPlayerNumbers();
 
         playerPoints = new int[4];
-        playerPoints[0] = PointsStorage.P.P1Points[PointsStorage.P.total];
-        playerPoints[1] = PointsStorage.P.P2Points[PointsStorage.P.total];
-        playerPoints[2] = PointsStorage.P.P3Points[PointsStorage.P.total];
-        playerPoints[3] = PointsStorage.P.P4Points[PointsStorage.P.total];
+        playerPoints[0] = PointsStorageTest.T.P1Points[PointsStorageTest.T.total];
+        playerPoints[1] = PointsStorageTest.T.P2Points[PointsStorageTest.T.total];
+        playerPoints[2] = PointsStorageTest.T.P3Points[PointsStorageTest.T.total];
+        playerPoints[3] = PointsStorageTest.T.P4Points[PointsStorageTest.T.total];
 
         playerImages = new Image[4];
         playerImages[0] = P1Data.GetComponentInChildren<Image>(title);
@@ -66,27 +66,25 @@ public class EndGame : MonoBehaviour
         playerImages[2] = P3Data.GetComponentInChildren<Image>(title);
         playerImages[3] = P4Data.GetComponentInChildren<Image>(title);
 
-        playerFaces = new Sprite[PlayerSelect.S.playerCounter][];
+        playerFaces = new Sprite[4][];
         playerFaces[0] = P1Faces;
         playerFaces[1] = P2Faces;
         playerFaces[2] = P3Faces;
         playerFaces[3] = P4Faces;
 
-        playerName = new string[PlayerSelect.S.playerCounter];
+        playerName = new string[4];
         playerName[0] = "Player 1";
         playerName[1] = "Player 2";
         playerName[2] = "Player 3";
         playerName[3] = "Player 4";
-
-        endGame = false;
-
-        //Checks to see if screen is for the end of a round or the end of the game
-        CheckStatus();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //Checks to see if screen is for the end of a round or the end of the game
+        CheckStatus();
+
         CompareTotals();
         //Displays player points
         DisplayPoints();
@@ -99,7 +97,7 @@ public class EndGame : MonoBehaviour
 
     void CheckPlayerNumbers()
     {
-        players = PlayerSelect.S.playerCounter;
+        players = 4;
         if (players < 4)
         {
             DisablePlayer4();
@@ -134,11 +132,8 @@ public class EndGame : MonoBehaviour
 
     void CheckStatus()
     {
-        if(RoundsManager.R.round >= RoundsManager.R.maxRounds)
-        {
-            endGame = true;
-        }
 
+        endGame = true;
         endGameScreen = GameObject.FindGameObjectsWithTag("EndGame");
         if (!endGame)
         {
@@ -152,70 +147,70 @@ public class EndGame : MonoBehaviour
     void DisplayPoints()
     {
         //Player 1 points
-        P1Data.GetComponentInChildren<Text>(kills).text = PointsStorage.P.P1Points[PointsStorage.P.kills].ToString();
-        P1Data.GetComponentInChildren<Text>(builds).text = PointsStorage.P.P1Points[PointsStorage.P.builds].ToString();
-        P1Data.GetComponentInChildren<Text>(points).text = PointsStorage.P.P1Points[PointsStorage.P.total].ToString();
-        P1Data.GetComponentInChildren<Text>(wins).text = PointsStorage.P.P1Points[PointsStorage.P.wins].ToString();
+        P1Data.GetComponentInChildren<Text>(kills).text = PointsStorageTest.T.P1Points[PointsStorageTest.T.kills].ToString();
+        P1Data.GetComponentInChildren<Text>(builds).text = PointsStorageTest.T.P1Points[PointsStorageTest.T.builds].ToString();
+        P1Data.GetComponentInChildren<Text>(points).text = PointsStorageTest.T.P1Points[PointsStorageTest.T.total].ToString();
+        P1Data.GetComponentInChildren<Text>(wins).text = PointsStorageTest.T.P1Points[PointsStorageTest.T.wins].ToString();
 
         //Player 2 points
-        P2Data.GetComponentInChildren<Text>(kills).text = PointsStorage.P.P2Points[PointsStorage.P.kills].ToString();
-        P2Data.GetComponentInChildren<Text>(builds).text = PointsStorage.P.P2Points[PointsStorage.P.builds].ToString();
-        P2Data.GetComponentInChildren<Text>(points).text = PointsStorage.P.P2Points[PointsStorage.P.total].ToString();
-        P2Data.GetComponentInChildren<Text>(wins).text = PointsStorage.P.P2Points[PointsStorage.P.wins].ToString();
+        P2Data.GetComponentInChildren<Text>(kills).text = PointsStorageTest.T.P2Points[PointsStorageTest.T.kills].ToString();
+        P2Data.GetComponentInChildren<Text>(builds).text = PointsStorageTest.T.P2Points[PointsStorageTest.T.builds].ToString();
+        P2Data.GetComponentInChildren<Text>(points).text = PointsStorageTest.T.P2Points[PointsStorageTest.T.total].ToString();
+        P2Data.GetComponentInChildren<Text>(wins).text = PointsStorageTest.T.P2Points[PointsStorageTest.T.wins].ToString();
 
-        if(P3)
+        if (P3)
         {
             //Player 3 points
-            P3Data.GetComponentInChildren<Text>(kills).text = PointsStorage.P.P3Points[PointsStorage.P.kills].ToString();
-            P3Data.GetComponentInChildren<Text>(builds).text = PointsStorage.P.P3Points[PointsStorage.P.builds].ToString();
-            P3Data.GetComponentInChildren<Text>(points).text = PointsStorage.P.P3Points[PointsStorage.P.total].ToString();
-            P3Data.GetComponentInChildren<Text>(wins).text = PointsStorage.P.P3Points[PointsStorage.P.wins].ToString();
+            P3Data.GetComponentInChildren<Text>(kills).text = PointsStorageTest.T.P3Points[PointsStorageTest.T.kills].ToString();
+            P3Data.GetComponentInChildren<Text>(builds).text = PointsStorageTest.T.P3Points[PointsStorageTest.T.builds].ToString();
+            P3Data.GetComponentInChildren<Text>(points).text = PointsStorageTest.T.P3Points[PointsStorageTest.T.total].ToString();
+            P3Data.GetComponentInChildren<Text>(wins).text = PointsStorageTest.T.P3Points[PointsStorageTest.T.wins].ToString();
 
-            if(P4)
+            if (P4)
             {
                 //Player 4 points
-                P4Data.GetComponentInChildren<Text>(kills).text = PointsStorage.P.P4Points[PointsStorage.P.kills].ToString();
-                P4Data.GetComponentInChildren<Text>(builds).text = PointsStorage.P.P4Points[PointsStorage.P.builds].ToString();
-                P4Data.GetComponentInChildren<Text>(points).text = PointsStorage.P.P4Points[PointsStorage.P.total].ToString();
-                P4Data.GetComponentInChildren<Text>(wins).text = PointsStorage.P.P4Points[PointsStorage.P.wins].ToString();
+                P4Data.GetComponentInChildren<Text>(kills).text = PointsStorageTest.T.P4Points[PointsStorageTest.T.kills].ToString();
+                P4Data.GetComponentInChildren<Text>(builds).text = PointsStorageTest.T.P4Points[PointsStorageTest.T.builds].ToString();
+                P4Data.GetComponentInChildren<Text>(points).text = PointsStorageTest.T.P4Points[PointsStorageTest.T.total].ToString();
+                P4Data.GetComponentInChildren<Text>(wins).text = PointsStorageTest.T.P4Points[PointsStorageTest.T.wins].ToString();
             }
         }
     }
-    
+
     void CompareTotals()
     {
         int[] place = new int[4];
 
-            //Calculate first place
-            for (int f = 0; f < 4; f++)
+        //Calculate first place
+        for (int f = 0; f < 4; f++)
+        {
+
+            if (place[0] < playerPoints[f])
             {
-            
-                if (place[0] < playerPoints[f])
-                {
-                    place[0] = playerPoints[f];
-                    first = playerName[f];
+                place[0] = playerPoints[f];
+                first = playerName[f];
                 playerImages[f].sprite = playerFaces[f][1];
-                }
+            }
         }
 
-            //Calculate second place
-            for (int f = 0; f < 4; f++)
+        //Calculate second place
+        for (int f = 0; f < 4; f++)
+        {
+            if (place[0] > playerPoints[f])
             {
-                if (place[0] > playerPoints[f])
+                if (place[1] < playerPoints[f])
                 {
-                    if (place[1] < playerPoints[f])
+                    place[1] = playerPoints[f];
+                    second = playerName[f];
+                    playerImages[f].sprite = playerFaces[f][0];
+                    if (!P3)
                     {
-                        place[1] = playerPoints[f];
-                        second = playerName[f];
-                        playerImages[f].sprite = playerFaces[f][0];
-                        if (!P3)
-                        {
-                            last = second;
-                            playerImages[f].sprite = playerFaces[f][2];
-                        }
+                        last = second;
+                        playerImages[f].sprite = playerFaces[f][2];
                     }
                 }
             }
+        }
 
         if (P3)
         {
@@ -259,12 +254,12 @@ public class EndGame : MonoBehaviour
 
     public void ContinueButton()
     {
-        if(!endGame)
+        if (!endGame)
         {
-            RoundsManager.R.round++;
+            //RoundsManager.R.round++;
             SceneManager.LoadScene("Player_Select");
         }
-        if(endGame)
+        if (endGame)
         {
             SceneManager.LoadScene("Main_Menu");
         }
