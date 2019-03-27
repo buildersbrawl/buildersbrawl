@@ -588,7 +588,11 @@ public class CameraController : MonoBehaviour
 
     public void GetDistanceBetweenPlayers()
     {
-        if(player1ref != null && player2ref != null)
+        //distanceBetweenPlayers = 0;
+
+        distanceList = new List<float>();
+
+        if (player1ref != null && player2ref != null)
         {
             //gets float of distance between players
             distanceBetweenPlayers = Vector3.Distance(player1ref.transform.position, player2ref.transform.position);
@@ -615,12 +619,15 @@ public class CameraController : MonoBehaviour
                 float p2p4Dist = Vector3.Distance(player2ref.transform.position, player4ref.transform.position);
                 float p3p4Dist = Vector3.Distance(player3ref.transform.position, player4ref.transform.position);
 
+                distanceList.Add(p1p4Dist);
+                distanceList.Add(p2p4Dist);
+                distanceList.Add(p3p4Dist);
             }
         }
 
         
 
-        distanceBetweenPlayers = distanceList[0];
+        //distanceBetweenPlayers = distanceList[0];
 
         for (int index = 0; index < distanceList.Count; index++)
         {

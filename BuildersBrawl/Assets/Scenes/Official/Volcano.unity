@@ -3838,37 +3838,52 @@ PrefabInstance:
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: cameraOptions
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: cameraYHeightFloor
-      value: 10
+      value: 5.5
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: cameraFOVFloor
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraFOVCeiling
-      value: 52
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraYHeightCeiling
       value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
+      propertyPath: cameraFOVCeiling
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraYHeightCeiling
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
       propertyPath: cameraPlayerDistanceFloor
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: cameraPlayerDistanceCeiling
-      value: 69
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraFOVFactor
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraXOffset
+      value: 7.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraZOffset
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f696b49a827a3044882a85a174dccf6, type: 3}
