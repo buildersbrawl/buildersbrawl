@@ -126,6 +126,7 @@ public class PlayerActions : MonoBehaviour
                 break;
         }
 
+        ActionAnimation(pAT);
         playerActionDelegate();
 
     }
@@ -154,6 +155,30 @@ public class PlayerActions : MonoBehaviour
         
     }
 
+    //------------------------------------------------------------------------------------
+
+    private void ActionAnimation(PlayerActionType pAT)
+    {
+        switch (pAT)
+        {
+            case PlayerActionType.push:
+                playerController.playerAnimation.PushAnim();
+                break;
+            case PlayerActionType.charge:
+                break;
+            case PlayerActionType.pickUp:
+                break;
+            case PlayerActionType.drop:
+                break;
+            case PlayerActionType.slam:
+                break;
+            case PlayerActionType.place:
+                break;
+            default:
+                break;
+        }
+    }
+
     //---------------------------------------------------------------------------------------
     //PUSH
 
@@ -165,9 +190,6 @@ public class PlayerActions : MonoBehaviour
         {
             return;
         }
-
-        //push anim
-        playerController.playerAnimation.PushAnim();
 
         print("Push action");
         //make boxcast in front of player

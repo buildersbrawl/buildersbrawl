@@ -26,9 +26,21 @@ public class PlayerAnimation : MonoBehaviour
 
     }
 
+    public void Animate(float waitTime, string animName)
+    {
+        StartCoroutine(WaitToAnim(waitTime, animName));
+    }
+
+    IEnumerator WaitToAnim(float waitTime, string animName)
+    {
+        yield return new WaitForSeconds(waitTime);
+        playerAnimator.Play(animName);
+    }
+
     public void PushAnim()
     {
-        playerAnimator.SetTrigger("ToPush");
+        print("PushAnim");
+        playerAnimator.SetTrigger("Push");
     }
 
 }
