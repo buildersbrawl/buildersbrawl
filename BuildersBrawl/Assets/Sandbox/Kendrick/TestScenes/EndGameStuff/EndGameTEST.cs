@@ -48,6 +48,8 @@ public class EndGameTEST : MonoBehaviour
     public Text continueButton;
     public Text roundDisplay;
 
+    public Image P1Crown, P2Crown, P3Crown, P4Crown;
+
     void Awake()
     {
         //Assigns appropriate player color to panels
@@ -84,18 +86,31 @@ public class EndGameTEST : MonoBehaviour
 
         continueButton.text = "Start round " + (PointsStorageTest.T.round + 1);
         roundDisplay.text = "Round " + (PointsStorageTest.T.round) + " Results";
+
+        P1Crown.gameObject.SetActive(false);
+        P2Crown.gameObject.SetActive(false);
+        P3Crown.gameObject.SetActive(false);
+        P4Crown.gameObject.SetActive(false);
+    }
+
+    void Start()
+    {
+        //Checks to see if screen is for the end of a round or the end of the game
+        CheckStatus();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Checks to see if screen is for the end of a round or the end of the game
-        CheckStatus();
-
         CompareTotals();
         //Displays player points
         DisplayPoints();
         CheckLast();
+
+        if (endGame)
+        {
+            AssignAward();
+        }
 
         /*Debug.Log("First Place: " + first);
         Debug.Log("Second Place: " + second);
@@ -298,5 +313,25 @@ public class EndGameTEST : MonoBehaviour
             {
                 playerImages[3].sprite = playerFaces[3][2];
             }
+    }
+
+    void AssignAward()
+    {
+        if(first == "Player 1")
+        {
+            P1Crown.gameObject.SetActive(true);
+        }
+        if (first == "Player 2")
+        {
+            P2Crown.gameObject.SetActive(true);
+        }
+        if (first == "Player 3")
+        {
+            P3Crown.gameObject.SetActive(true);
+        }
+        if (first == "Player 4")
+        {
+            P4Crown.gameObject.SetActive(true);
+        }
     }
 }

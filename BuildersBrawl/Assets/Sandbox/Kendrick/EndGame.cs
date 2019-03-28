@@ -42,8 +42,10 @@ public class EndGame : MonoBehaviour
     public Sprite[] P3Faces = new Sprite[3];
     public Sprite[] P4Faces = new Sprite[3];
 
-    private bool endGame;
+    private bool endGame = false;
     private GameObject[] endGameScreen;
+
+    public Image P1Crown, P2Crown, P3Crown, P4Crown;
 
     void Awake()
     {
@@ -77,9 +79,10 @@ public class EndGame : MonoBehaviour
         playerName[1] = "Player 2";
         playerName[2] = "Player 3";
         playerName[3] = "Player 4";
+    }
 
-        endGame = false;
-
+    void Start()
+    {
         //Checks to see if screen is for the end of a round or the end of the game
         CheckStatus();
     }
@@ -91,6 +94,11 @@ public class EndGame : MonoBehaviour
         //Displays player points
         DisplayPoints();
         CheckLast();
+
+        if(endGame)
+        {
+            AssignAward();
+        }
 
         /*Debug.Log("First Place: " + first);
         Debug.Log("Second Place: " + second);
@@ -288,6 +296,26 @@ public class EndGame : MonoBehaviour
         if (last == "Player 4")
         {
             playerImages[3].sprite = playerFaces[3][2];
+        }
+    }
+
+    void AssignAward()
+    {
+        if (first == "Player 1")
+        {
+            P1Crown.gameObject.SetActive(true);
+        }
+        if (first == "Player 2")
+        {
+            P2Crown.gameObject.SetActive(true);
+        }
+        if (first == "Player 3")
+        {
+            P3Crown.gameObject.SetActive(true);
+        }
+        if (first == "Player 4")
+        {
+            P4Crown.gameObject.SetActive(true);
         }
     }
 }

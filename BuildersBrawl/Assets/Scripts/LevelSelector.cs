@@ -34,31 +34,35 @@ public class LevelSelector : MonoBehaviour
         Debug.Log(levels.Length);
 
         //Immediately chooses the next level
-        ChooseLevel();
+        //ChooseLevel();
+
+        levelDisplay.sprite = levels[show];
+        chosenLevel = levelNames[show];
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        //If the random level is not shown, then system will cycle through levels that will be displayed
-        if (!chosenShown)
+        if(show == levels.Length)
         {
+            ChooseLevel();
             timer += Time.deltaTime;
-            //Slows down the cycle between levels shown until the chosen level is displayed
+            //Cycles between levels
             if (timer > waitTime)
             {
-             CycleChoices();
+                RandomLevel();
                 timer -= waitTime;
-                //The cycle between levels slows down until the max wait time is reached
-                if(waitTime < maxWaitTime)
-                {
-                    waitTime += waitInterval;
-                }
             }
         }
+
+        if (PlayerSelect.S.bothPlayersReady)
+        {
+            DisplayChosen();
+        }  
     }
 
-    void FixedUpdate()
+    /*void FixedUpdate()
     {
         //stop doing this if leveCHosen/displayed
         if (!levelChosen)
@@ -88,7 +92,7 @@ public class LevelSelector : MonoBehaviour
             }
         }
 
-    }
+    }*/
 
     void ChooseLevel()
     {//Takes a random number from the levels array
@@ -99,13 +103,19 @@ public class LevelSelector : MonoBehaviour
     void CycleChoices()
     {
         //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
-        if(show >= levels.Length-1)
+        if(show > levels.Length)
         {
             show = 0;
         }
         else
         {
             show += 1;
+        }
+
+        if(show < levels.Length)
+        {
+           levelDisplay.sprite = levels[show];
+           chosenLevel = levelNames[show];
         }
     }
 
@@ -122,7 +132,7 @@ public class LevelSelector : MonoBehaviour
         levelChosen = true;
 
         //Displays the chosen level after a certain amount of time. Can be changed to display level after all players are ready.
-        levelDisplay.sprite = levels[levelNumber];
+        //levelDisplay.sprite = levels[levelNumber];
 
         //Stops random level stuff in order to not slow down Unity
         chosenShown = true;
@@ -153,5 +163,24 @@ public class LevelSelector : MonoBehaviour
     public void ReturnToMainMenu(string MainMenu)
     {
         SceneManager.LoadScene(MainMenu);
+    }
+
+    public void nextLevel()
+    {
+        CycleChoices();
+
+    }
+
+    void RandomLevel()
+    {
+        if (show >= levels.Length-1)
+        {
+            show = 0;
+        }
+        else
+        {
+            show += 1;
+        }
+        RotateLevels();
     }
 }
