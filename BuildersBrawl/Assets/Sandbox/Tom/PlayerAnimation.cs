@@ -59,6 +59,7 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
+        //calculate wheter or not pushed from front or back
 
     }
 
@@ -70,6 +71,7 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
+        //calculate wheter or not slammed from front or back
 
     }
 
