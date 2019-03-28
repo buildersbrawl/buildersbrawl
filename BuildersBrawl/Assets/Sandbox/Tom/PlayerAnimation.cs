@@ -23,7 +23,10 @@ public class PlayerAnimation : MonoBehaviour
             playerController = this.gameObject.AddComponent<PlayerController>();
         }
 
-
+        if(playerAnimator == null)
+        {
+            playerAnimator = this.GetComponentInChildren<Animator>();
+        }
     }
 
     public void Animate(float waitTime, string animName)
