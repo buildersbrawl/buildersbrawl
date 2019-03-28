@@ -224,8 +224,15 @@ public class PlankManager : MonoBehaviour
         {
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<Collider>(), true);
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player2.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player3.GetComponent<Collider>(), true);
-            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player4.GetComponent<Collider>(), true);
+            if(GameManager.S.player3 != null)
+            {
+                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player3.GetComponent<Collider>(), true);
+            }
+            if (GameManager.S.player4 != null)
+            {
+                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player4.GetComponent<Collider>(), true);
+            }
+           
 
             //also if in windy level don't let hit wind
             if (GameObject.FindObjectOfType<WindMechanic>() != null)
@@ -245,9 +252,14 @@ public class PlankManager : MonoBehaviour
         {
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<Collider>(), false);
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player2.GetComponent<Collider>(), false);
-            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player3.GetComponent<Collider>(), false);
-            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player4.GetComponent<Collider>(), false);
-
+            if (GameManager.S.player3 != null)
+            {
+                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player3.GetComponent<Collider>(), false);
+            }
+            if (GameManager.S.player4 != null)
+            {
+                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player4.GetComponent<Collider>(), false);
+            }
             //also if in windy level let hit wind
             if (GameObject.FindObjectOfType<WindMechanic>() != null)
             {
