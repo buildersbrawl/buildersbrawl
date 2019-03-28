@@ -13,6 +13,9 @@ TagManager:
   - Player2
   - MainMenu
   - MainScreen
+  - EndGame
+  - Player3
+  - Player4
   layers:
   - Default
   - TransparentFX

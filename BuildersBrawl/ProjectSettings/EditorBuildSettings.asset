@@ -32,4 +32,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Official/Snowy_Mountain.unity
     guid: fe67155368b01ae4bbf4d2305e77991e
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/TestScenes/EndGameStuff/EndGameTest.unity
+    guid: 9573699d5f65eea439818925bd27b169
+  - enabled: 1
+    path: Assets/Sandbox/Kendrick/TestScenes/EndGameStuff/PointsTestScene.unity
+    guid: b4bc69f5381b3704883778119c89b1f1
   m_configObjects: {}

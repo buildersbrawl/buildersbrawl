@@ -45,6 +45,9 @@ public class EndGameTEST : MonoBehaviour
     public bool endGame;
     private GameObject[] endGameScreen;
 
+    public Text continueButton;
+    public Text roundDisplay;
+
     void Awake()
     {
         //Assigns appropriate player color to panels
@@ -55,6 +58,7 @@ public class EndGameTEST : MonoBehaviour
         CheckPlayerNumbers();
 
         playerPoints = new int[4];
+        //Debug.Log(playerPoints.Length);
         playerPoints[0] = PointsStorageTest.T.P1Points[PointsStorageTest.T.total];
         playerPoints[1] = PointsStorageTest.T.P2Points[PointsStorageTest.T.total];
         playerPoints[2] = PointsStorageTest.T.P3Points[PointsStorageTest.T.total];
@@ -77,6 +81,9 @@ public class EndGameTEST : MonoBehaviour
         playerName[1] = "Player 2";
         playerName[2] = "Player 3";
         playerName[3] = "Player 4";
+
+        continueButton.text = "Start round " + (PointsStorageTest.T.round + 1);
+        roundDisplay.text = "Round " + (PointsStorageTest.T.round) + " Results";
     }
 
     // Update is called once per frame
@@ -88,6 +95,7 @@ public class EndGameTEST : MonoBehaviour
         CompareTotals();
         //Displays player points
         DisplayPoints();
+        CheckLast();
 
         /*Debug.Log("First Place: " + first);
         Debug.Log("Second Place: " + second);
@@ -133,7 +141,13 @@ public class EndGameTEST : MonoBehaviour
     void CheckStatus()
     {
 
-        endGame = true;
+        if (PointsStorageTest.T.round >= PointsStorageTest.T.maxRounds)
+        {
+            endGame = true;
+            continueButton.text = "Click here to start over.";
+            roundDisplay.text = "Final Results";
+        }
+
         endGameScreen = GameObject.FindGameObjectsWithTag("EndGame");
         if (!endGame)
         {
@@ -244,6 +258,7 @@ public class EndGameTEST : MonoBehaviour
                         {
                             place[3] = playerPoints[f];
                             last = playerName[f];
+                            Debug.Log(last + " is in last");
                             playerImages[f].sprite = playerFaces[f][2];
                         }
                     }
@@ -256,12 +271,32 @@ public class EndGameTEST : MonoBehaviour
     {
         if (!endGame)
         {
-            //RoundsManager.R.round++;
-            SceneManager.LoadScene("Player_Select");
+            PointsStorageTest.T.round++;
+            SceneManager.LoadScene("PointsTestScene");
         }
         if (endGame)
         {
             SceneManager.LoadScene("Main_Menu");
         }
+    }
+
+    void CheckLast()
+    {
+            if (last == "Player 1")
+            {
+                playerImages[0].sprite = playerFaces[0][2];
+            }
+            if (last == "Player 2")
+            {
+                playerImages[1].sprite = playerFaces[1][2];
+            }
+            if (last == "Player 3")
+            {
+                playerImages[2].sprite = playerFaces[2][2];
+            }
+            if (last == "Player 4")
+            {
+                playerImages[3].sprite = playerFaces[3][2];
+            }
     }
 }

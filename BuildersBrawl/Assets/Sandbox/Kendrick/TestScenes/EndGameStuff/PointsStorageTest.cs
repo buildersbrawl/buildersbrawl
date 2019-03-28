@@ -18,6 +18,9 @@ public class PointsStorageTest : MonoBehaviour
     public int total = 2;
     public int wins = 3;
 
+    public int round;
+    public int maxRounds;
+
     void Awake()
     {
         if(PointsStorageTest.T == null)
@@ -28,5 +31,14 @@ public class PointsStorageTest : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+
+        round = 1;
+        maxRounds = 3;
+    }
+
+    void Start()
+    {
+        //Don't destroy when going to next scene
+        DontDestroyOnLoad(this.gameObject);
     }
 }

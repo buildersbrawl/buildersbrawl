@@ -90,6 +90,7 @@ public class EndGame : MonoBehaviour
         CompareTotals();
         //Displays player points
         DisplayPoints();
+        CheckLast();
 
         /*Debug.Log("First Place: " + first);
         Debug.Log("Second Place: " + second);
@@ -267,6 +268,26 @@ public class EndGame : MonoBehaviour
         if(endGame)
         {
             SceneManager.LoadScene("Main_Menu");
+        }
+    }
+
+    void CheckLast()
+    {
+        if (last == "Player 1")
+        {
+            playerImages[0].sprite = playerFaces[0][2];
+        }
+        if (last == "Player 2")
+        {
+            playerImages[1].sprite = playerFaces[1][2];
+        }
+        if (last == "Player 3")
+        {
+            playerImages[2].sprite = playerFaces[2][2];
+        }
+        if (last == "Player 4")
+        {
+            playerImages[3].sprite = playerFaces[3][2];
         }
     }
 }
