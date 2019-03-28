@@ -37,10 +37,24 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.Play(animName);
     }
 
-    public void PushAnim()
+    public void ActionAnim(string toActionTransitionName)
     {
-        print("PushAnim");
-        playerAnimator.SetTrigger("Push");
+        playerAnimator.SetTrigger(toActionTransitionName);
+    }
+
+    public void PushedAnim()
+    {
+
+    }
+
+    public void StunnedAnim()
+    {
+
+    }
+
+    public void DropAnim()
+    {
+
     }
 
 }

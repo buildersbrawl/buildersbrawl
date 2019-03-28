@@ -162,17 +162,22 @@ public class PlayerActions : MonoBehaviour
         switch (pAT)
         {
             case PlayerActionType.push:
-                playerController.playerAnimation.PushAnim();
+                playerController.playerAnimation.ActionAnim("ToPush");
                 break;
             case PlayerActionType.charge:
+                playerController.playerAnimation.ActionAnim("ToCharge");
                 break;
             case PlayerActionType.pickUp:
+                playerController.playerAnimation.ActionAnim("ToBoardPickUp");
                 break;
             case PlayerActionType.drop:
+                playerController.playerAnimation.DropAnim();
                 break;
             case PlayerActionType.slam:
+                playerController.playerAnimation.ActionAnim("ToSlam");
                 break;
             case PlayerActionType.place:
+                playerController.playerAnimation.ActionAnim("ToPlacingBoard");
                 break;
             default:
                 break;

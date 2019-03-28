@@ -1,0 +1,1023 @@
+fileFormatVersion: 2
+guid: 35d849f3ea5074a4cab5a250bdc46a7f
+ModelImporter:
+  serializedVersion: 23
+  fileIDToRecycleName:
+    100000: New_Builder_Brawl:Body_Ctrl
+    100002: New_Builder_Brawl:CharacterModel_Updated_:Builder_Final
+    100004: New_Builder_Brawl:Chest_Ctrl
+    100006: New_Builder_Brawl:Chest_jnt_01AE
+    100008: New_Builder_Brawl:DO_NOT_TOUCH
+    100010: New_Builder_Brawl:Do_Not_Touch
+    100012: New_Builder_Brawl:Eye_jnt_01_AE
+    100014: New_Builder_Brawl:Head_Spine_jnt_01_DE
+    100016: New_Builder_Brawl:L_Ankle_Ctrl
+    100018: New_Builder_Brawl:L_Ankle_jnt_01_AE
+    100020: New_Builder_Brawl:L_Arm_ikHandle2
+    100022: New_Builder_Brawl:L_Arm_jnt_01_AE
+    100024: New_Builder_Brawl:L_Elbow_jnt_01_AE
+    100026: New_Builder_Brawl:L_Eye_Ctrl
+    100028: New_Builder_Brawl:L_Eye_jnt_01_DE
+    100030: New_Builder_Brawl:L_Fingers_jnt_01_AE
+    100032: New_Builder_Brawl:L_Fingers_jnt_02_AE
+    100034: New_Builder_Brawl:L_Fingers_jnt_03_DE
+    100036: New_Builder_Brawl:L_FK_Arm_Ctrl
+    100038: New_Builder_Brawl:L_FK_Arm_jnt_01_AE
+    100040: New_Builder_Brawl:L_FK_Elbow_Ctrl
+    100042: New_Builder_Brawl:L_FK_Elbow_jnt_01_AE
+    100044: New_Builder_Brawl:L_FK_Wrist_Ctrl
+    100046: New_Builder_Brawl:L_FK_Wrsit_jnt_01_AE
+    100048: New_Builder_Brawl:L_Foot_ikHandle1
+    100050: New_Builder_Brawl:L_Foot_jnt_01_AE
+    100052: New_Builder_Brawl:L_Hand_jnt_01_AE
+    100054: New_Builder_Brawl:L_IK_Arm_jnt_01_AE
+    100056: New_Builder_Brawl:L_IK_Ctrl
+    100058: New_Builder_Brawl:L_IK_Elbow_Ctrl
+    100060: New_Builder_Brawl:L_IK_Elbow_jnt_01_AE
+    100062: New_Builder_Brawl:L_IK_FK_Stwitch
+    100064: New_Builder_Brawl:L_IK_Wrist_jnt_01_AE
+    100066: New_Builder_Brawl:L_Knee_Ctrl
+    100068: New_Builder_Brawl:L_Knee_jnt_01_AE
+    100070: New_Builder_Brawl:L_Leg_Ctrl
+    100072: New_Builder_Brawl:L_Leg_ikHandle1
+    100074: New_Builder_Brawl:L_Shoulder_jnt_01_AE
+    100076: New_Builder_Brawl:L_Thigh_jnt_01_AE
+    100078: New_Builder_Brawl:L_Thumb_jnt_01_AE
+    100080: New_Builder_Brawl:L_Thumb_jnt_02_AE
+    100082: New_Builder_Brawl:L_Thumb_jnt_03_DE
+    100084: New_Builder_Brawl:L_Toe_jnt_01_DE
+    100086: New_Builder_Brawl:L_Wrist_jnt_01_AE
+    100088: New_Builder_Brawl:Lower_Chest_Ctrl
+    100090: New_Builder_Brawl:Main_Ctrl
+    100092: New_Builder_Brawl:Main_jnt_01_AE
+    100094: New_Builder_Brawl:Neck_Ctrl
+    100096: New_Builder_Brawl:Neck_jnt_01_AE
+    100098: New_Builder_Brawl:R_Ankle_Ctrl
+    100100: New_Builder_Brawl:R_Ankle_jnt_01_AE
+    100102: New_Builder_Brawl:R_Arm_ikHandle2
+    100104: New_Builder_Brawl:R_Arm_jnt_01_AE
+    100106: New_Builder_Brawl:R_Elbow_jnt_01_AE
+    100108: New_Builder_Brawl:R_Eye_Ctrl
+    100110: New_Builder_Brawl:R_Eye_jnt_01_DE
+    100112: New_Builder_Brawl:R_Fingers_jnt_01_AE
+    100114: New_Builder_Brawl:R_Fingers_jnt_02_AE
+    100116: New_Builder_Brawl:R_Fingers_jnt_03_DE
+    100118: New_Builder_Brawl:R_FK_Arm_Ctrl
+    100120: New_Builder_Brawl:R_FK_Arm_jnt_01_AE
+    100122: New_Builder_Brawl:R_FK_Elbow_Ctrl
+    100124: New_Builder_Brawl:R_FK_Elbow_jnt_01_AE
+    100126: New_Builder_Brawl:R_FK_Wrist_Ctrl
+    100128: New_Builder_Brawl:R_FK_Wrist_jnt_01_AE
+    100130: New_Builder_Brawl:R_Foot_ikHandle2
+    100132: New_Builder_Brawl:R_Foot_jnt_01_AE
+    100134: New_Builder_Brawl:R_Hand_jnt_01_AE
+    100136: New_Builder_Brawl:R_IK_Arm_jnt_01_AE
+    100138: New_Builder_Brawl:R_IK_Ctrl
+    100140: New_Builder_Brawl:R_IK_Elbow_Ctrl
+    100142: New_Builder_Brawl:R_IK_Elbow_jnt_01_AE
+    100144: New_Builder_Brawl:R_IK_FK_Stwitch
+    100146: New_Builder_Brawl:R_IK_Wrist_jnt_01_AE
+    100148: New_Builder_Brawl:R_Knee_Ctrl
+    100150: New_Builder_Brawl:R_Knee_jnt_01_AE
+    100152: New_Builder_Brawl:R_Leg_Ctrl
+    100154: New_Builder_Brawl:R_Leg_ikHandle1
+    100156: New_Builder_Brawl:R_Shoulder_jnt_01_AE
+    100158: New_Builder_Brawl:R_Thigh_jnt_01_AE
+    100160: New_Builder_Brawl:R_Thumb_jnt_01_AE
+    100162: New_Builder_Brawl:R_Thumb_jnt_02_AE
+    100164: New_Builder_Brawl:R_Thumb_jnt_03_DE
+    100166: New_Builder_Brawl:R_Toe_jnt_01_DE
+    100168: New_Builder_Brawl:R_Wrist_jnt_01_AE
+    100170: New_Builder_Brawl:Spine_jnt_01_AE
+    100172: New_Builder_Brawl:Spine_jnt_02_AE
+    100174: New_Builder_Brawl:Spine_jnt_03_AE
+    100176: New_Builder_Brawl:Squish_Squash_Ctrl
+    100178: New_Builder_Brawl:Upper_Belly_Ctrl
+    100180: New_Builder_Brawl:Waist_Ctrl
+    100182: New_Builder_Brawl:World_Mover
+    100184: //RootNode
+    400000: New_Builder_Brawl:Body_Ctrl
+    400002: New_Builder_Brawl:CharacterModel_Updated_:Builder_Final
+    400004: New_Builder_Brawl:Chest_Ctrl
+    400006: New_Builder_Brawl:Chest_jnt_01AE
+    400008: New_Builder_Brawl:DO_NOT_TOUCH
+    400010: New_Builder_Brawl:Do_Not_Touch
+    400012: New_Builder_Brawl:Eye_jnt_01_AE
+    400014: New_Builder_Brawl:Head_Spine_jnt_01_DE
+    400016: New_Builder_Brawl:L_Ankle_Ctrl
+    400018: New_Builder_Brawl:L_Ankle_jnt_01_AE
+    400020: New_Builder_Brawl:L_Arm_ikHandle2
+    400022: New_Builder_Brawl:L_Arm_jnt_01_AE
+    400024: New_Builder_Brawl:L_Elbow_jnt_01_AE
+    400026: New_Builder_Brawl:L_Eye_Ctrl
+    400028: New_Builder_Brawl:L_Eye_jnt_01_DE
+    400030: New_Builder_Brawl:L_Fingers_jnt_01_AE
+    400032: New_Builder_Brawl:L_Fingers_jnt_02_AE
+    400034: New_Builder_Brawl:L_Fingers_jnt_03_DE
+    400036: New_Builder_Brawl:L_FK_Arm_Ctrl
+    400038: New_Builder_Brawl:L_FK_Arm_jnt_01_AE
+    400040: New_Builder_Brawl:L_FK_Elbow_Ctrl
+    400042: New_Builder_Brawl:L_FK_Elbow_jnt_01_AE
+    400044: New_Builder_Brawl:L_FK_Wrist_Ctrl
+    400046: New_Builder_Brawl:L_FK_Wrsit_jnt_01_AE
+    400048: New_Builder_Brawl:L_Foot_ikHandle1
+    400050: New_Builder_Brawl:L_Foot_jnt_01_AE
+    400052: New_Builder_Brawl:L_Hand_jnt_01_AE
+    400054: New_Builder_Brawl:L_IK_Arm_jnt_01_AE
+    400056: New_Builder_Brawl:L_IK_Ctrl
+    400058: New_Builder_Brawl:L_IK_Elbow_Ctrl
+    400060: New_Builder_Brawl:L_IK_Elbow_jnt_01_AE
+    400062: New_Builder_Brawl:L_IK_FK_Stwitch
+    400064: New_Builder_Brawl:L_IK_Wrist_jnt_01_AE
+    400066: New_Builder_Brawl:L_Knee_Ctrl
+    400068: New_Builder_Brawl:L_Knee_jnt_01_AE
+    400070: New_Builder_Brawl:L_Leg_Ctrl
+    400072: New_Builder_Brawl:L_Leg_ikHandle1
+    400074: New_Builder_Brawl:L_Shoulder_jnt_01_AE
+    400076: New_Builder_Brawl:L_Thigh_jnt_01_AE
+    400078: New_Builder_Brawl:L_Thumb_jnt_01_AE
+    400080: New_Builder_Brawl:L_Thumb_jnt_02_AE
+    400082: New_Builder_Brawl:L_Thumb_jnt_03_DE
+    400084: New_Builder_Brawl:L_Toe_jnt_01_DE
+    400086: New_Builder_Brawl:L_Wrist_jnt_01_AE
+    400088: New_Builder_Brawl:Lower_Chest_Ctrl
+    400090: New_Builder_Brawl:Main_Ctrl
+    400092: New_Builder_Brawl:Main_jnt_01_AE
+    400094: New_Builder_Brawl:Neck_Ctrl
+    400096: New_Builder_Brawl:Neck_jnt_01_AE
+    400098: New_Builder_Brawl:R_Ankle_Ctrl
+    400100: New_Builder_Brawl:R_Ankle_jnt_01_AE
+    400102: New_Builder_Brawl:R_Arm_ikHandle2
+    400104: New_Builder_Brawl:R_Arm_jnt_01_AE
+    400106: New_Builder_Brawl:R_Elbow_jnt_01_AE
+    400108: New_Builder_Brawl:R_Eye_Ctrl
+    400110: New_Builder_Brawl:R_Eye_jnt_01_DE
+    400112: New_Builder_Brawl:R_Fingers_jnt_01_AE
+    400114: New_Builder_Brawl:R_Fingers_jnt_02_AE
+    400116: New_Builder_Brawl:R_Fingers_jnt_03_DE
+    400118: New_Builder_Brawl:R_FK_Arm_Ctrl
+    400120: New_Builder_Brawl:R_FK_Arm_jnt_01_AE
+    400122: New_Builder_Brawl:R_FK_Elbow_Ctrl
+    400124: New_Builder_Brawl:R_FK_Elbow_jnt_01_AE
+    400126: New_Builder_Brawl:R_FK_Wrist_Ctrl
+    400128: New_Builder_Brawl:R_FK_Wrist_jnt_01_AE
+    400130: New_Builder_Brawl:R_Foot_ikHandle2
+    400132: New_Builder_Brawl:R_Foot_jnt_01_AE
+    400134: New_Builder_Brawl:R_Hand_jnt_01_AE
+    400136: New_Builder_Brawl:R_IK_Arm_jnt_01_AE
+    400138: New_Builder_Brawl:R_IK_Ctrl
+    400140: New_Builder_Brawl:R_IK_Elbow_Ctrl
+    400142: New_Builder_Brawl:R_IK_Elbow_jnt_01_AE
+    400144: New_Builder_Brawl:R_IK_FK_Stwitch
+    400146: New_Builder_Brawl:R_IK_Wrist_jnt_01_AE
+    400148: New_Builder_Brawl:R_Knee_Ctrl
+    400150: New_Builder_Brawl:R_Knee_jnt_01_AE
+    400152: New_Builder_Brawl:R_Leg_Ctrl
+    400154: New_Builder_Brawl:R_Leg_ikHandle1
+    400156: New_Builder_Brawl:R_Shoulder_jnt_01_AE
+    400158: New_Builder_Brawl:R_Thigh_jnt_01_AE
+    400160: New_Builder_Brawl:R_Thumb_jnt_01_AE
+    400162: New_Builder_Brawl:R_Thumb_jnt_02_AE
+    400164: New_Builder_Brawl:R_Thumb_jnt_03_DE
+    400166: New_Builder_Brawl:R_Toe_jnt_01_DE
+    400168: New_Builder_Brawl:R_Wrist_jnt_01_AE
+    400170: New_Builder_Brawl:Spine_jnt_01_AE
+    400172: New_Builder_Brawl:Spine_jnt_02_AE
+    400174: New_Builder_Brawl:Spine_jnt_03_AE
+    400176: New_Builder_Brawl:Squish_Squash_Ctrl
+    400178: New_Builder_Brawl:Upper_Belly_Ctrl
+    400180: New_Builder_Brawl:Waist_Ctrl
+    400182: New_Builder_Brawl:World_Mover
+    400184: //RootNode
+    2100000: New_Builder_Brawl_CharacterModel_Updated__lambert7
+    4300000: New_Builder_Brawl:CharacterModel_Updated_:Builder_Final
+    7400000: push_back
+    9500000: //RootNode
+    13700000: New_Builder_Brawl:CharacterModel_Updated_:Builder_Final
+    2186277476908879412: ImportLogs
+  externalObjects: {}
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: "\nClip 'push_back' has import animation warnings that
+      might lower retargeting quality:\nNote: Activate translation DOF on avatar to
+      improve retargeting quality.\n\t'New_Builder_Brawl:Chest_jnt_01AE' is inbetween
+      humanoid transforms and has rotation animation that will be discarded.\n\t'New_Builder_Brawl:L_Ankle_jnt_01_AE'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n\t'New_Builder_Brawl:R_Ankle_jnt_01_AE'
+      is inbetween humanoid transforms and has rotation animation that will be discarded.\n"
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    preserveHierarchy: 0
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+    previousCalculatedGlobalScale: 0.01
+    hasPreviousCalculatedGlobalScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 1
+  humanDescription:
+    serializedVersion: 2
+    human:
+    - boneName: New_Builder_Brawl:Main_jnt_01_AE
+      humanName: Hips
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Thigh_jnt_01_AE
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Thigh_jnt_01_AE
+      humanName: RightUpperLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Knee_jnt_01_AE
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Knee_jnt_01_AE
+      humanName: RightLowerLeg
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Foot_jnt_01_AE
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Foot_jnt_01_AE
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:Spine_jnt_01_AE
+      humanName: Spine
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:Spine_jnt_02_AE
+      humanName: Chest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:Neck_jnt_01_AE
+      humanName: Neck
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:Head_Spine_jnt_01_DE
+      humanName: Head
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Shoulder_jnt_01_AE
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Shoulder_jnt_01_AE
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Arm_jnt_01_AE
+      humanName: LeftUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Arm_jnt_01_AE
+      humanName: RightUpperArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Elbow_jnt_01_AE
+      humanName: LeftLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Elbow_jnt_01_AE
+      humanName: RightLowerArm
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Wrist_jnt_01_AE
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Wrist_jnt_01_AE
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Toe_jnt_01_DE
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Toe_jnt_01_DE
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Thumb_jnt_01_AE
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Thumb_jnt_02_AE
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Thumb_jnt_03_DE
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Fingers_jnt_01_AE
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Fingers_jnt_02_AE
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:L_Fingers_jnt_03_DE
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Thumb_jnt_01_AE
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Thumb_jnt_02_AE
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Thumb_jnt_03_DE
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Fingers_jnt_01_AE
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Fingers_jnt_02_AE
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:R_Fingers_jnt_03_DE
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    - boneName: New_Builder_Brawl:Spine_jnt_03_AE
+      humanName: UpperChest
+      limit:
+        min: {x: 0, y: 0, z: 0}
+        max: {x: 0, y: 0, z: 0}
+        value: {x: 0, y: 0, z: 0}
+        length: 0
+        modified: 0
+    skeleton:
+    - name: builder_rig(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:CharacterModel_Updated_:Builder_Final
+      parentName: builder_rig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Squish_Squash_Ctrl
+      parentName: builder_rig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:World_Mover
+      parentName: builder_rig(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:DO_NOT_TOUCH
+      parentName: New_Builder_Brawl:World_Mover
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Arm_ikHandle2
+      parentName: New_Builder_Brawl:DO_NOT_TOUCH
+      position: {x: -0.55888647, y: 0.7612363, z: -0.013685782}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Foot_ikHandle1
+      parentName: New_Builder_Brawl:DO_NOT_TOUCH
+      position: {x: -0.18925232, y: 0.0017302287, z: 0.08836981}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Leg_ikHandle1
+      parentName: New_Builder_Brawl:DO_NOT_TOUCH
+      position: {x: -0.18925305, y: 0.05997902, z: -0.0024852823}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Arm_ikHandle2
+      parentName: New_Builder_Brawl:DO_NOT_TOUCH
+      position: {x: 0.55888736, y: 0.76123494, z: -0.013685794}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Foot_ikHandle2
+      parentName: New_Builder_Brawl:DO_NOT_TOUCH
+      position: {x: 0.19353141, y: 0.0025608768, z: 0.0887968}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Leg_ikHandle1
+      parentName: New_Builder_Brawl:DO_NOT_TOUCH
+      position: {x: 0.189253, y: 0.059979, z: -0.00248528}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Main_jnt_01_AE
+      parentName: New_Builder_Brawl:DO_NOT_TOUCH
+      position: {x: -0, y: 0.5, z: 0.037825897}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Spine_jnt_01_AE
+      parentName: New_Builder_Brawl:Main_jnt_01_AE
+      position: {x: -0, y: 0.11994709, z: -0.028767744}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Spine_jnt_02_AE
+      parentName: New_Builder_Brawl:Spine_jnt_01_AE
+      position: {x: -0, y: 0.110052906, z: -0.03454743}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Spine_jnt_03_AE
+      parentName: New_Builder_Brawl:Spine_jnt_02_AE
+      position: {x: -0, y: 0.14, z: -0.01811575}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Chest_jnt_01AE
+      parentName: New_Builder_Brawl:Spine_jnt_03_AE
+      position: {x: -0, y: 0.12, z: 0.010217998}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Neck_jnt_01_AE
+      parentName: New_Builder_Brawl:Chest_jnt_01AE
+      position: {x: -0, y: 0.13071725, z: 0.011758179}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Eye_jnt_01_AE
+      parentName: New_Builder_Brawl:Neck_jnt_01_AE
+      position: {x: -0, y: 0.20894817, z: 0.01586182}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Head_Spine_jnt_01_DE
+      parentName: New_Builder_Brawl:Eye_jnt_01_AE
+      position: {x: -0, y: 0.15105182, z: -0.00960388}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Eye_jnt_01_DE
+      parentName: New_Builder_Brawl:Eye_jnt_01_AE
+      position: {x: -0.08638556, y: 0.0038345754, z: 0.19280274}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Eye_jnt_01_DE
+      parentName: New_Builder_Brawl:Eye_jnt_01_AE
+      position: {x: 0.086385496, y: 0.0038345754, z: 0.19280267}
+      rotation: {x: 1, y: -0, z: -0, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Shoulder_jnt_01_AE
+      parentName: New_Builder_Brawl:Chest_jnt_01AE
+      position: {x: -0.08502694, y: 0.039869104, z: 0.0148171615}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Arm_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Shoulder_jnt_01_AE
+      position: {x: -0.076658025, y: -0.02068526, z: -0.0027159285}
+      rotation: {x: 0.0296606, y: 0.034332216, z: -0.24084875, w: 0.9695017}
+      scale: {x: 1, y: 1, z: 1.0000005}
+    - name: New_Builder_Brawl:L_Elbow_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Arm_jnt_01_AE
+      position: {x: -0.17407367, y: -0.1063487, z: -0.011003473}
+      rotation: {x: 0.013623022, y: -0.023706239, z: -0.017045138, w: 0.99948084}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: New_Builder_Brawl:L_Wrist_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Elbow_jnt_01_AE
+      position: {x: -0.22312781, y: -0.14159879, z: 0.018603485}
+      rotation: {x: 0.00072108675, y: 0.0036314, z: 0.036288716, w: 0.9993346}
+      scale: {x: 1, y: 1, z: 1.0000002}
+    - name: New_Builder_Brawl:L_Hand_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Wrist_jnt_01_AE
+      position: {x: -0.023002602, y: -0.007931485, z: 0.0006972438}
+      rotation: {x: 0.020150192, y: 0.023854733, z: -0.30666316, w: 0.9513058}
+      scale: {x: 1.0000001, y: 0.99999976, z: 0.9999999}
+    - name: New_Builder_Brawl:L_Thumb_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Hand_jnt_01_AE
+      position: {x: -0.052045844, y: 0, z: 0}
+      rotation: {x: -0.012380355, y: 0.36204314, z: 0.27357295, w: 0.89102715}
+      scale: {x: 0.9999999, y: 1, z: 0.99999994}
+    - name: New_Builder_Brawl:L_Thumb_jnt_02_AE
+      parentName: New_Builder_Brawl:L_Thumb_jnt_01_AE
+      position: {x: -0.026774138, y: 1.5543122e-17, z: 0}
+      rotation: {x: -0.013719509, y: -0.0968993, z: 0.028052397, w: 0.99480414}
+      scale: {x: 0.99999994, y: 1.0000002, z: 0.9999998}
+    - name: New_Builder_Brawl:L_Thumb_jnt_03_DE
+      parentName: New_Builder_Brawl:L_Thumb_jnt_02_AE
+      position: {x: -0.028143657, y: 1.9984014e-17, z: 0.0068462132}
+      rotation: {x: 0.000000028155561, y: -0.000000016521485, z: 0.13608082, w: 0.9906978}
+      scale: {x: 1, y: 0.9999999, z: 0.99999994}
+    - name: New_Builder_Brawl:L_Fingers_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Hand_jnt_01_AE
+      position: {x: -0.042088263, y: -0.052903865, z: -0.017236948}
+      rotation: {x: 0.040596046, y: -0.07068659, z: 0.43961224, w: 0.8944811}
+      scale: {x: 0.99999994, y: 1.0000001, z: 0.99999994}
+    - name: New_Builder_Brawl:L_Fingers_jnt_02_AE
+      parentName: New_Builder_Brawl:L_Fingers_jnt_01_AE
+      position: {x: -0.04588056, y: 3.025194e-16, z: 0.015771944}
+      rotation: {x: -0.028479682, y: -0.21140581, z: 0.015189952, w: 0.97686523}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1.0000001}
+    - name: New_Builder_Brawl:L_Fingers_jnt_03_DE
+      parentName: New_Builder_Brawl:L_Fingers_jnt_02_AE
+      position: {x: -0.02755939, y: -0.000836697, z: 0.02933237}
+      rotation: {x: 0.000000022351742, y: 0.0000000037252903, z: -0.47784406, w: 0.8784447}
+      scale: {x: 1.0000002, y: 1.0000001, z: 0.99999994}
+    - name: New_Builder_Brawl:R_Shoulder_jnt_01_AE
+      parentName: New_Builder_Brawl:Chest_jnt_01AE
+      position: {x: 0.08502701, y: 0.03987043, z: 0.01481715}
+      rotation: {x: 1, y: -0, z: -0, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Arm_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Shoulder_jnt_01_AE
+      position: {x: 0.07665781, y: 0.020686775, z: 0.0027159203}
+      rotation: {x: 0.029673878, y: 0.03433639, z: -0.24084601, w: 0.9695018}
+      scale: {x: 1, y: 1.0000004, z: 1.0000007}
+    - name: New_Builder_Brawl:R_Elbow_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Arm_jnt_01_AE
+      position: {x: 0.17407371, y: 0.10634777, z: 0.011003492}
+      rotation: {x: 0.013623976, y: -0.023707882, z: -0.01704824, w: 0.9994807}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: New_Builder_Brawl:R_Wrist_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Elbow_jnt_01_AE
+      position: {x: 0.22312883, y: 0.14160094, z: -0.018603498}
+      rotation: {x: 0.0007214425, y: 0.0036369376, z: 0.036335524, w: 0.9993328}
+      scale: {x: 1, y: 0.99999994, z: 1}
+    - name: New_Builder_Brawl:R_Hand_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Wrist_jnt_01_AE
+      position: {x: 0.023003, y: 0.007929396, z: -0.00069753174}
+      rotation: {x: -0.951616, y: -0.3056979, z: 0.0076295123, w: 0.030294305}
+      scale: {x: 0.99999976, y: 1.0000001, z: 1.0000001}
+    - name: New_Builder_Brawl:R_Thumb_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Hand_jnt_01_AE
+      position: {x: 0.016640121, y: 0.049311146, z: 0}
+      rotation: {x: 0.32957086, y: -0.15033688, z: -0.21203329, w: 0.9076474}
+      scale: {x: 1.0000004, y: 1, z: 1.0000002}
+    - name: New_Builder_Brawl:R_Thumb_jnt_02_AE
+      parentName: New_Builder_Brawl:R_Thumb_jnt_01_AE
+      position: {x: 0.011938305, y: 0.02396633, z: 0}
+      rotation: {x: -0.08061961, y: 0.05548656, z: 0.24926108, w: 0.9634784}
+      scale: {x: 0.9999999, y: 0.99999994, z: 1.0000002}
+    - name: New_Builder_Brawl:R_Thumb_jnt_03_DE
+      parentName: New_Builder_Brawl:R_Thumb_jnt_02_AE
+      position: {x: 0.024053497, y: 0.01461323, z: 0.0068462347}
+      rotation: {x: -0.0000000057880447, y: 8.542588e-11, z: 0.13608086, w: 0.9906978}
+      scale: {x: 1.0000001, y: 1.0000002, z: 1.0000002}
+    - name: New_Builder_Brawl:R_Fingers_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Hand_jnt_01_AE
+      position: {x: 0.063582025, y: 0.022962838, z: -0.017237049}
+      rotation: {x: 0.012121016, y: 0.080601044, z: 0.40331644, w: 0.91142327}
+      scale: {x: 1, y: 1.0000001, z: 1.0000002}
+    - name: New_Builder_Brawl:R_Fingers_jnt_02_AE
+      parentName: New_Builder_Brawl:R_Fingers_jnt_01_AE
+      position: {x: 0.04023207, y: -0.02205501, z: 0.015772058}
+      rotation: {x: 0.100488946, y: 0.18814087, z: 0.10478831, w: 0.97135186}
+      scale: {x: 0.9999999, y: 1, z: 1.0000002}
+    - name: New_Builder_Brawl:R_Fingers_jnt_03_DE
+      parentName: New_Builder_Brawl:R_Fingers_jnt_02_AE
+      position: {x: 0.019645026, y: -0.019349525, z: 0.029332368}
+      rotation: {x: -0.0000000043297983, y: -0.000000028325033, z: -0.47784418, w: 0.8784447}
+      scale: {x: 1.0000002, y: 1, z: 0.99999976}
+    - name: New_Builder_Brawl:L_Thigh_jnt_01_AE
+      parentName: New_Builder_Brawl:Main_jnt_01_AE
+      position: {x: -0.099999994, y: 0, z: -0.0017893034}
+      rotation: {x: -0.0045124544, y: -0.022246577, z: -0.0019475883, w: 0.9997405}
+      scale: {x: 1, y: 0.99999976, z: 0.99999976}
+    - name: New_Builder_Brawl:L_Knee_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Thigh_jnt_01_AE
+      position: {x: -0.044430517, y: -0.24246942, z: 0.04349244}
+      rotation: {x: -0, y: -0, z: 1.45519135e-11, w: 1}
+      scale: {x: 1, y: 0.9999999, z: 0.9999999}
+    - name: New_Builder_Brawl:L_Foot_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Knee_jnt_01_AE
+      position: {x: -0.04482252, y: -0.19755153, z: -0.08201431}
+      rotation: {x: 0.0045133415, y: 0.022246582, z: 0.0019536326, w: 0.9997405}
+      scale: {x: 0.99999994, y: 1, z: 1.0000001}
+    - name: New_Builder_Brawl:L_Ankle_jnt_01_AE
+      parentName: New_Builder_Brawl:L_Foot_jnt_01_AE
+      position: {x: -0, y: -0.04955017, z: 0.03245104}
+      rotation: {x: -0, y: -0, z: -7.275957e-11, w: 1}
+      scale: {x: 1.0000001, y: 0.99999994, z: 1}
+    - name: New_Builder_Brawl:L_Toe_jnt_01_DE
+      parentName: New_Builder_Brawl:L_Ankle_jnt_01_AE
+      position: {x: -0, y: -0.008698488, z: 0.05840413}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Thigh_jnt_01_AE
+      parentName: New_Builder_Brawl:Main_jnt_01_AE
+      position: {x: 0.099999994, y: 0, z: -0.0017892963}
+      rotation: {x: 0.9997404, y: 0.0019477695, z: -0.022248639, w: 0.0045128725}
+      scale: {x: 1, y: 1.0000014, z: 1.0000014}
+    - name: New_Builder_Brawl:R_Knee_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Thigh_jnt_01_AE
+      position: {x: 0.04443048, y: 0.24246989, z: -0.043492436}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1.0000007, z: 1.0000007}
+    - name: New_Builder_Brawl:R_Foot_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Knee_jnt_01_AE
+      position: {x: 0.04482252, y: 0.19755109, z: 0.08201431}
+      rotation: {x: -0.000000111991525, y: 0.022524968, z: -0.03513405, w: 0.9991287}
+      scale: {x: 1, y: 1.0000008, z: 1.0000008}
+    - name: New_Builder_Brawl:R_Ankle_jnt_01_AE
+      parentName: New_Builder_Brawl:R_Foot_jnt_01_AE
+      position: {x: 0.00000027221802, y: 0.04955015, z: -0.032451056}
+      rotation: {x: -0, y: -0.0000000018626449, z: -0.0000000012026845, w: 1}
+      scale: {x: 0.99999994, y: 1.0000012, z: 1.0000012}
+    - name: New_Builder_Brawl:R_Toe_jnt_01_DE
+      parentName: New_Builder_Brawl:R_Ankle_jnt_01_AE
+      position: {x: -0.0000005622064, y: 0.008698482, z: -0.05840411}
+      rotation: {x: -0, y: -0, z: -0, w: 1}
+      scale: {x: 1.0000001, y: 1.0000013, z: 1.0000013}
+    - name: New_Builder_Brawl:Main_Ctrl
+      parentName: New_Builder_Brawl:World_Mover
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Body_Ctrl
+      parentName: New_Builder_Brawl:Main_Ctrl
+      position: {x: -0, y: 0.5, z: 0.037825897}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Waist_Ctrl
+      parentName: New_Builder_Brawl:Body_Ctrl
+      position: {x: -0, y: 0.11994709, z: -0.028767744}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Upper_Belly_Ctrl
+      parentName: New_Builder_Brawl:Waist_Ctrl
+      position: {x: -0, y: 0.110052906, z: -0.03454743}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Lower_Chest_Ctrl
+      parentName: New_Builder_Brawl:Upper_Belly_Ctrl
+      position: {x: -0, y: 0.14, z: -0.01811575}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Chest_Ctrl
+      parentName: New_Builder_Brawl:Lower_Chest_Ctrl
+      position: {x: -0, y: 0.12, z: 0.010217998}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Do_Not_Touch
+      parentName: New_Builder_Brawl:Chest_Ctrl
+      position: {x: -0, y: -0.98999995, z: 0.033387028}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_FK_Arm_jnt_01_AE
+      parentName: New_Builder_Brawl:Do_Not_Touch
+      position: {x: -0.16168496, y: 1.0091838, z: -0.021285797}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_FK_Elbow_jnt_01_AE
+      parentName: New_Builder_Brawl:L_FK_Arm_jnt_01_AE
+      position: {x: -0.17407365, y: -0.10634865, z: -0.011003473}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_FK_Wrsit_jnt_01_AE
+      parentName: New_Builder_Brawl:L_FK_Elbow_jnt_01_AE
+      position: {x: -0.22312781, y: -0.1415988, z: 0.018603485}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_IK_Arm_jnt_01_AE
+      parentName: New_Builder_Brawl:Do_Not_Touch
+      position: {x: -0.16168496, y: 1.0091838, z: -0.021285797}
+      rotation: {x: -0.05295193, y: -0.0330545, z: 0.0010131769, w: 0.9980493}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_IK_Elbow_jnt_01_AE
+      parentName: New_Builder_Brawl:L_IK_Arm_jnt_01_AE
+      position: {x: -0.17407365, y: -0.10634865, z: -0.011003473}
+      rotation: {x: -3.5208253e-16, y: 5.668267e-16, z: 9.151981e-17, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_IK_Wrist_jnt_01_AE
+      parentName: New_Builder_Brawl:L_IK_Elbow_jnt_01_AE
+      position: {x: -0.22312781, y: -0.1415988, z: 0.018603485}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_FK_Arm_jnt_01_AE
+      parentName: New_Builder_Brawl:Do_Not_Touch
+      position: {x: 0.16168512, y: 1.0091836, z: -0.021285798}
+      rotation: {x: 1, y: -0, z: 0, w: -6.123234e-17}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_FK_Elbow_jnt_01_AE
+      parentName: New_Builder_Brawl:R_FK_Arm_jnt_01_AE
+      position: {x: 0.17407341, y: 0.10634777, z: 0.011003492}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_FK_Wrist_jnt_01_AE
+      parentName: New_Builder_Brawl:R_FK_Elbow_jnt_01_AE
+      position: {x: 0.22312883, y: 0.14160094, z: -0.018603498}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_IK_Arm_jnt_01_AE
+      parentName: New_Builder_Brawl:Do_Not_Touch
+      position: {x: 0.16168512, y: 1.0091836, z: -0.021285798}
+      rotation: {x: 0.9980476, y: -0.0010136276, z: -0.033069406, w: 0.052975643}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_IK_Elbow_jnt_01_AE
+      parentName: New_Builder_Brawl:R_IK_Arm_jnt_01_AE
+      position: {x: 0.17407341, y: 0.10634777, z: 0.011003492}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_IK_Wrist_jnt_01_AE
+      parentName: New_Builder_Brawl:R_IK_Elbow_jnt_01_AE
+      position: {x: 0.22312883, y: 0.14160094, z: -0.018603498}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_FK_Arm_Ctrl
+      parentName: New_Builder_Brawl:Chest_Ctrl
+      position: {x: -0.16168496, y: 0.019183807, z: 0.012101233}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_FK_Elbow_Ctrl
+      parentName: New_Builder_Brawl:L_FK_Arm_Ctrl
+      position: {x: -0.17407365, y: -0.10634865, z: -0.011003473}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_FK_Wrist_Ctrl
+      parentName: New_Builder_Brawl:L_FK_Elbow_Ctrl
+      position: {x: -0.22312781, y: -0.1415988, z: 0.018603485}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_IK_Ctrl
+      parentName: New_Builder_Brawl:Chest_Ctrl
+      position: {x: -0.55888647, y: -0.22876365, z: 0.019701246}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_IK_Elbow_Ctrl
+      parentName: New_Builder_Brawl:L_IK_Ctrl
+      position: {x: 0.22312781, y: 0.1415988, z: -0.17681421}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:Neck_Ctrl
+      parentName: New_Builder_Brawl:Chest_Ctrl
+      position: {x: -0, y: 0.13071723, z: 0.011758179}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Eye_Ctrl
+      parentName: New_Builder_Brawl:Neck_Ctrl
+      position: {x: -0.08638556, y: 0.21278282, z: 0.20866458}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Eye_Ctrl
+      parentName: New_Builder_Brawl:Neck_Ctrl
+      position: {x: 0.086385496, y: 0.21278282, z: 0.20866449}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_FK_Arm_Ctrl
+      parentName: New_Builder_Brawl:Chest_Ctrl
+      position: {x: 0.16168481, y: 0.019183654, z: 0.01210123}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_FK_Elbow_Ctrl
+      parentName: New_Builder_Brawl:R_FK_Arm_Ctrl
+      position: {x: 0.17407373, y: -0.10634773, z: -0.011003494}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_FK_Wrist_Ctrl
+      parentName: New_Builder_Brawl:R_FK_Elbow_Ctrl
+      position: {x: 0.22312881, y: -0.14160095, z: 0.018603498}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_IK_Ctrl
+      parentName: New_Builder_Brawl:Chest_Ctrl
+      position: {x: 0.55888736, y: -0.22876503, z: 0.019701235}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_IK_Elbow_Ctrl
+      parentName: New_Builder_Brawl:R_IK_Ctrl
+      position: {x: -0.22312881, y: 0.14160095, z: -0.17681421}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_IK_FK_Stwitch
+      parentName: New_Builder_Brawl:Main_Ctrl
+      position: {x: -0.55888647, y: 0.7612363, z: -0.013685782}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Leg_Ctrl
+      parentName: New_Builder_Brawl:Main_Ctrl
+      position: {x: -0.19049999, y: 0, z: 0.027164867}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Ankle_Ctrl
+      parentName: New_Builder_Brawl:L_Leg_Ctrl
+      position: {x: 0.0012469558, y: 0.05997902, z: -0.122414865}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:L_Knee_Ctrl
+      parentName: New_Builder_Brawl:L_Leg_Ctrl
+      position: {x: 0.046069965, y: 0.25753048, z: 0.16333513}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_IK_FK_Stwitch
+      parentName: New_Builder_Brawl:Main_Ctrl
+      position: {x: 0.55888736, y: 0.76123494, z: -0.013685794}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Leg_Ctrl
+      parentName: New_Builder_Brawl:Main_Ctrl
+      position: {x: 0.19049999, y: 0, z: 0.027164867}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Ankle_Ctrl
+      parentName: New_Builder_Brawl:R_Leg_Ctrl
+      position: {x: -0.001246994, y: 0.059979, z: -0.122414865}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: New_Builder_Brawl:R_Knee_Ctrl
+      parentName: New_Builder_Brawl:R_Leg_Ctrl
+      position: {x: -0.046069525, y: 0.25753048, z: 0.16333513}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 1
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: d349c4609a7ebcf4aad1c6273146b012,
+    type: 3}
+  animationType: 3
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
