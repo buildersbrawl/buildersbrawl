@@ -156,6 +156,8 @@ public class CameraController : MonoBehaviour
     public float winCameraHeight = 5f;
     private bool triggerWinRotate = false;
     public int winRotateSpeed = 20;
+    private bool finalCameraPosition = false;
+    private bool firstTime = false;
 
     [SerializeField]
     private float deathStartDistance;
@@ -175,6 +177,7 @@ public class CameraController : MonoBehaviour
         Init();
         winnerDetermined = false;
         triggerWinRotate = false;
+        Time.timeScale = 1f;
     }
 
     public void Init()
@@ -380,7 +383,7 @@ public class CameraController : MonoBehaviour
         else if (winnerDetermined)
         {
             ZoomOnWinner();
-            Debug.Log("We have a winner!!");
+            //Debug.Log("We have a winner!!");
         }
     }
 
@@ -718,12 +721,16 @@ public class CameraController : MonoBehaviour
 
     private void ZoomOnWinner()
     {
-        //change winner gameobject to the actual winner elsewhere in code
+        Vector3 newPos = new Vector3(GameObject.Find("Goal").transform.position.x, GameManager.S.winner.transform.position.y, GameObject.Find("Goal").transform.position.z);
+        GameManager.S.winner.transform.position = newPos;
+
+        Time.timeScale = 0.5f;
+        //Debug.Log("Timescale = " + Time.timeScale);
 
         //turn controls off
         Vector3 winPos = GameManager.S.winner.transform.position + winOffset;
-
-        if (Vector3.Distance(cameraRef.transform.position, winPos) <= .5f)
+        
+        if (Vector3.Distance(cameraRef.transform.position, winPos) <= .6f)
             triggerWinRotate = true;
         if (!triggerWinRotate)
         {
@@ -737,20 +744,25 @@ public class CameraController : MonoBehaviour
         }
         else if (triggerWinRotate)
         {
-            Debug.Log("CAMERA IN RIGHT POSITION");
-            cameraRef.transform.RotateAround(GameManager.S.winner.transform.position, Vector3.up, -1 * winRotateSpeed * Time.deltaTime);
+            //Debug.Log("CAMERA IN RIGHT POSITION");
+            Debug.Log(cameraRef.transform.rotation.y);
+            if (cameraRef.transform.rotation.y >= -.66)
+            {
+                finalCameraPosition = true;
+                //Debug.Log("finalCameraPosition CAMERA POSITION IS TRUE");
+            }
+                
+            if(!finalCameraPosition)
+            {
+                cameraRef.transform.RotateAround(GameManager.S.winner.transform.position, Vector3.up, -1 * winRotateSpeed * Time.deltaTime);
+            }
+            
+
+            
         }
-
-        //mess with winPos in the if/else if functions if it dont work
-
-        //if the camera is where it should be, do the other stuff
-        if(cameraRef.transform.position == winPos)
-        {
-            //initiate slow motion
-            //show flashy point ping 
-            //move the points bar face by adding points here
-        }
-
+        //initiate slow motion
+        //show flashy point ping 
+        //move the points bar face by adding points here
     }
 }
 
