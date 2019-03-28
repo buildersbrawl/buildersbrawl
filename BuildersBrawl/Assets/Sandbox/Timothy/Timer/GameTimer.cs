@@ -7,6 +7,7 @@ public class GameTimer : MonoBehaviour
 {
     public int allowedTime; //This is in seconds 180 seconds or 3 min for now
     public Text timerText;
+    public GameObject drawImage;
 
     private void Update()
     {
@@ -22,6 +23,7 @@ public class GameTimer : MonoBehaviour
         else if (currentTime <= 0)
         {
             //End game in Draw
+            drawImage.SetActive(true);
             //Wipe Points
             Debug.Log("Time Limit Reached");
         }
