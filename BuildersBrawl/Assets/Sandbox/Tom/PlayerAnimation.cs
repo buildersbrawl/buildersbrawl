@@ -42,21 +42,45 @@ public class PlayerAnimation : MonoBehaviour
 
     public void ActionAnim(string toActionTransitionName)
     {
+        if(playerAnimator == null)
+        {
+            print("no animator");
+            return;
+        }
+
         playerAnimator.SetTrigger(toActionTransitionName);
     }
 
     public void PushedAnim()
     {
+        if (playerAnimator == null)
+        {
+            print("no animator");
+            return;
+        }
+
 
     }
 
     public void StunnedAnim()
     {
+        if (playerAnimator == null)
+        {
+            print("no animator");
+            return;
+        }
+
 
     }
 
     public void DropAnim()
     {
+        if (playerAnimator == null)
+        {
+            print("no animator");
+            return;
+        }
+
 
     }
 
