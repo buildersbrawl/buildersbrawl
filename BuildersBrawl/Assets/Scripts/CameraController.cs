@@ -154,6 +154,8 @@ public class CameraController : MonoBehaviour
     public GameObject winner;   //storage of winner GO
     public Vector3 winOffset = new Vector3(-10, 5, 0);   //position of the camera offset from the player
     public float winCameraHeight = 5f;
+    private bool triggerWinRotate = false;
+    public int winRotateSpeed = 20;
 
     [SerializeField]
     private float deathStartDistance;
@@ -172,6 +174,7 @@ public class CameraController : MonoBehaviour
     {
         Init();
         winnerDetermined = false;
+        triggerWinRotate = false;
     }
 
     public void Init()
@@ -718,15 +721,27 @@ public class CameraController : MonoBehaviour
         //change winner gameobject to the actual winner elsewhere in code
 
         //turn controls off
-        
-        //zoom
-        //lerp from current position to position in front of player
         Vector3 winPos = GameManager.S.winner.transform.position + winOffset;
-        cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, winPos, .05f);
-        //set the camera height to a fixed value and pitch to lookat the winners position
-        //AdjustCameraPitchAndHeightNew(winPos.y, GameManager.S.winner.transform.position);
-        cameraRef.transform.LookAt(GameManager.S.winner.transform.position);    //adjust pitch
 
+        if (Vector3.Distance(cameraRef.transform.position, winPos) <= .5f)
+            triggerWinRotate = true;
+        if (!triggerWinRotate)
+        {
+            //zoom
+            //lerp from current position to position in front of player
+            
+            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, winPos, .05f);
+            //set the camera height to a fixed value and pitch to lookat the winners position
+            //AdjustCameraPitchAndHeightNew(winPos.y, GameManager.S.winner.transform.position);
+            cameraRef.transform.LookAt(GameManager.S.winner.transform.position);    //adjust pitch
+        }
+        else if (triggerWinRotate)
+        {
+            Debug.Log("CAMERA IN RIGHT POSITION");
+            cameraRef.transform.RotateAround(GameManager.S.winner.transform.position, Vector3.up, -1 * winRotateSpeed * Time.deltaTime);
+        }
+
+        //mess with winPos in the if/else if functions if it dont work
 
         //if the camera is where it should be, do the other stuff
         if(cameraRef.transform.position == winPos)
