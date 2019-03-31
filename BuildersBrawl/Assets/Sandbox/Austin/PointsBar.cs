@@ -189,7 +189,7 @@ public class PointsBar : MonoBehaviour
 
 
             //position on bar is the player's points as a percentage of the totalgamepoints
-            pointsPercent = ((float)player.GetComponent<Points>().GetPointsTotal() / (float)totalGamePoints);
+            pointsPercent = ((float)player.GetComponent<Points>().GetPointsTotal() / (float)winner);
 
 
             //Debug.Log("playerHeads[index].name = " + playerHeads[index].name);
@@ -255,7 +255,7 @@ public class PointsBar : MonoBehaviour
             }
             else if(p.GetComponent<Points>().GetPointsTotal() > loser && p.GetComponent<Points>().GetPointsTotal() < winner)
             {
-                if(players.Count >= 3 && p.GetComponent<Points>().GetPointsTotal() > middleTwo)
+                if(players.Count >= 3 || p.GetComponent<Points>().GetPointsTotal() > middleTwo)
                 {
                     p.GetComponent<Points>().ChangeFaceNum(1);
                     middleOne = p.GetComponent<Points>().GetPointsTotal();
