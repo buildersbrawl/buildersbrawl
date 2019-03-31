@@ -158,6 +158,7 @@ public class CameraController : MonoBehaviour
     public int winRotateSpeed = 20;
     private bool finalCameraPosition = false;
     private bool firstTime = false;
+    private bool triggerPoints = true;
 
     [SerializeField]
     private float deathStartDistance;
@@ -744,10 +745,18 @@ public class CameraController : MonoBehaviour
         }
         else if (triggerWinRotate)
         {
+            if (triggerPoints)
+            {
+                GameManager.S.winner.GetComponent<FlashyPoints>().ShowPointsGained(GameManager.S.winner.gameObject.transform.position, GameManager.S.winner.gameObject.GetComponent<Points>().pointsForOtherSide);
+                GameManager.S.winner.gameObject.GetComponent<Points>().AddPointsForOtherSide();
+                triggerPoints = false;
+            }
+
             //Debug.Log("CAMERA IN RIGHT POSITION");
             Debug.Log(cameraRef.transform.rotation.y);
             if (cameraRef.transform.rotation.y >= -.66)
             {
+                //stop rotating camera
                 finalCameraPosition = true;
                 //Debug.Log("finalCameraPosition CAMERA POSITION IS TRUE");
             }
