@@ -258,6 +258,9 @@ public class PlayerMovement : MonoBehaviour
         //wait to see if this player dies, if he does then give points to the other other player
         StartCoroutine(this.GetComponent<PlayerDeath>().WaitForDeathToHappen());
 
+        //call animation
+        playerController.playerAnimation.PushedAnim(pushDirection);
+
         print("I got pushed " + this.gameObject.name);
         playerCombatMomentum = pushDirection * pushForce;
 

@@ -7,11 +7,10 @@ public class PlayerAnimation : MonoBehaviour
     public PlayerController playerController;
     public Animator playerAnimator;
 
-    private void Start()
-    {
-        Init();
-    }
+    [SerializeField]
+    private float minimumMovementForRun = .1f;
 
+    //called in playerController init
     public void Init()
     {
         if (this.gameObject.GetComponent<PlayerController>() != null)
@@ -29,6 +28,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    /*
     public void Animate(float waitTime, string animName)
     {
         StartCoroutine(WaitToAnim(waitTime, animName));
@@ -39,7 +39,9 @@ public class PlayerAnimation : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         playerAnimator.Play(animName);
     }
+    */
 
+    //calls appropriate animation based off of action
     public void ActionAnim(string toActionTransitionName)
     {
         if(playerAnimator == null)
@@ -51,6 +53,54 @@ public class PlayerAnimation : MonoBehaviour
         playerAnimator.SetTrigger(toActionTransitionName);
     }
 
+    //determines what run animation to play
+    //called in playerCOntroller
+    public void RunAnim(Vector3 movement)
+    {
+        if(playerAnimator == null)
+        {
+            print("no animator");
+            return;
+        }
+
+        //if going fast enough and not already running
+        if(movement.magnitude >= minimumMovementForRun && (!(playerAnimator.GetNextAnimatorStateInfo(0).IsName("run") || playerAnimator.GetNextAnimatorStateInfo(0).IsName("runBoard"))))
+        {
+            
+            //call appropriate run animation based off of whether holding a plank or not
+            if(playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final"))
+            {
+                //run
+                playerAnimator.SetTrigger("ToRun");
+                print("run anim");
+            }
+            else 
+            {
+                //runBoard
+                playerAnimator.SetTrigger("ToRunBoard");
+                print("runBoard anim");
+            }
+        }
+        else if (movement.magnitude < minimumMovementForRun && (!(playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final") || playerAnimator.GetNextAnimatorStateInfo(0).IsName("idleBoard"))))
+        {
+            
+            //call appropriate idle animation based off of whether holding a plank or not
+            if (playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final"))
+            {
+                //idle
+                playerAnimator.SetTrigger("ToIdle");
+                print("Brawl_Idle_Final anim");
+            }
+            else
+            {
+                //idleBoard
+                playerAnimator.SetTrigger("ToIdleBoard");
+                print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final"));
+            }
+        }
+    }
+
+    //for when player is pushed
     public void PushedAnim(Vector3 pushedFromDirection)
     {
         if (playerAnimator == null)
@@ -69,7 +119,7 @@ public class PlayerAnimation : MonoBehaviour
         else
         {
             //else push from front
-            playerAnimator.SetTrigger("ToPushedBack");
+            playerAnimator.SetTrigger("ToPushedFront");
         }
     }
 
@@ -95,6 +145,7 @@ public class PlayerAnimation : MonoBehaviour
         }
     }
 
+    /*
     public void ChargedAnim()
     {
         if (playerAnimator == null)
@@ -105,6 +156,7 @@ public class PlayerAnimation : MonoBehaviour
 
         playerAnimator.SetTrigger("ToFrontImpact");
     }
+    
 
     public void DropAnim()
     {
@@ -116,5 +168,8 @@ public class PlayerAnimation : MonoBehaviour
 
 
     }
+    */
+
+
 
 }

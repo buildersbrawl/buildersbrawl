@@ -343,7 +343,7 @@ Transform:
   m_GameObject: {fileID: 1600417204}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 3.7347, y: 3.7347, z: 3.7347}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -359,6 +359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: idle
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 7862bfd87d75b584bb9a16ce133bcb3c, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
     - target: {fileID: 400188, guid: 7862bfd87d75b584bb9a16ce133bcb3c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -415,10 +419,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.25
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 7862bfd87d75b584bb9a16ce133bcb3c, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7862bfd87d75b584bb9a16ce133bcb3c, type: 3}
 --- !u!4 &1811016327 stripped
@@ -641,6 +641,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   playerAnimator: {fileID: 1208762994}
+  minimumMovementForRun: 0.1
 --- !u!114 &6416705310449367088
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -157,6 +157,7 @@ public class PlayerActions : MonoBehaviour
 
     //------------------------------------------------------------------------------------
 
+    //calls appropriate animation
     private void ActionAnimation(PlayerActionType pAT)
     {
         switch (pAT)
@@ -168,10 +169,11 @@ public class PlayerActions : MonoBehaviour
                 playerController.playerAnimation.ActionAnim("ToCharge");
                 break;
             case PlayerActionType.pickUp:
+                print("called pickup animation");
                 playerController.playerAnimation.ActionAnim("ToBoardPickUp");
                 break;
             case PlayerActionType.drop:
-                playerController.playerAnimation.DropAnim();
+                //NA drop animations handled in "PushMe" and "StunMe" functions
                 break;
             case PlayerActionType.slam:
                 playerController.playerAnimation.ActionAnim("ToSlam");
@@ -379,12 +381,18 @@ public class PlayerActions : MonoBehaviour
         //turn on player collider detection
         //heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
 
+        /*
         //temp plank animation
         //reset anim things
         boardAnimCont = true;
         boardAnimationTime = 0;
         boardAnimSwitch = true;
         StartCoroutine(TempPlankAnim());
+        */
+
+        //board slam animation called earlier
+        
+
         //after certain amount of time cast forward to see if player in front of me
         StartCoroutine(BoardSlamCoroutine());
         //if that player isn't me
@@ -417,12 +425,13 @@ public class PlayerActions : MonoBehaviour
             if(boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && !(boxHitInfo[index].collider.gameObject.Equals(this.gameObject)))
             {
                 PlayerController slammedPlayer = boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>();
-                slammedPlayer.StunMe(boardSlamStunTime);
+                slammedPlayer.StunMe(playerForward, boardSlamStunTime);
             }
         }
 
     } 
-
+    
+    /*
     private IEnumerator TempPlankAnim()
     {
 
@@ -466,7 +475,8 @@ public class PlayerActions : MonoBehaviour
 
 
 
-}
+    }
+    */
 
     public void TestBoxCast(GameObject startCube, GameObject endCube, float maxDistance)
     {

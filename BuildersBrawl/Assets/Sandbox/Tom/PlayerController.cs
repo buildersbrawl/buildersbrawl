@@ -196,6 +196,7 @@ public class PlayerController : MonoBehaviour
         {
             playerAnimation = this.gameObject.AddComponent<PlayerAnimation>();
         }
+        playerAnimation.Init();
 
         //camera
         if (cameraRef == null)
@@ -257,7 +258,7 @@ public class PlayerController : MonoBehaviour
             {
                 AJump = false;
             }
-            if (Input.GetKey(KeyCode.E))
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 //print("hit e");
                 YPickOrPlace = true;
@@ -266,7 +267,7 @@ public class PlayerController : MonoBehaviour
             {
                 YPickOrPlace = false;
             }
-            if (Input.GetKey(KeyCode.Q))
+            if (Input.GetKeyDown(KeyCode.Q))
             {
                 //print("hit q");
                 dropPlankControl = true;
@@ -275,7 +276,7 @@ public class PlayerController : MonoBehaviour
             {
                 dropPlankControl = false;
             }
-            if (Input.GetKey(KeyCode.F))
+            if (Input.GetKeyDown(KeyCode.F))
             {
                 //print("hit q");
                 XPush = true;
@@ -284,7 +285,7 @@ public class PlayerController : MonoBehaviour
             {
                 XPush = false;
             }
-            if (Input.GetKey(KeyCode.B))
+            if (Input.GetKeyDown(KeyCode.B))
             {
                 //print("hit q");
                 BCharge = true;
@@ -293,7 +294,7 @@ public class PlayerController : MonoBehaviour
             {
                 BCharge = false;
             }
-            if (Input.GetKey(KeyCode.R))
+            if (Input.GetKeyDown(KeyCode.R))
             {
                 //print("hit q");
                 BumpOrTrigSlam = true;
@@ -346,7 +347,7 @@ public class PlayerController : MonoBehaviour
             {
                 AJump = false;
             }
-            if (Input.GetKey(KeyCode.Keypad1) || Input.GetKey(KeyCode.P))
+            if (Input.GetKeyDown(KeyCode.Keypad1) || Input.GetKey(KeyCode.P))
             {
                 YPickOrPlace = true;
             }
@@ -354,7 +355,7 @@ public class PlayerController : MonoBehaviour
             {
                 YPickOrPlace = false;
             }
-            if (Input.GetKey(KeyCode.Keypad2))
+            if (Input.GetKeyDown(KeyCode.Keypad2))
             {
                 BCharge = true;
             }
@@ -362,7 +363,7 @@ public class PlayerController : MonoBehaviour
             {
                 BCharge = false;
             }
-            if (Input.GetKey(KeyCode.Keypad3))
+            if (Input.GetKeyDown(KeyCode.Keypad3))
             {
                 //print("hit q");
                 XPush = true;
@@ -371,7 +372,7 @@ public class PlayerController : MonoBehaviour
             {
                 XPush = false;
             }
-            if (Input.GetKey(KeyCode.Keypad4))
+            if (Input.GetKeyDown(KeyCode.Keypad4))
             {
                 //print("hit q");
                 BumpOrTrigSlam = true;
@@ -658,6 +659,9 @@ public class PlayerController : MonoBehaviour
         charContRef.Move(moveVector * Time.fixedDeltaTime);
         //----------------------------
 
+        //animation
+        playerAnimation.RunAnim(moveVector);
+
 
         //apply rotation
         //make player look where input rotation is
@@ -841,7 +845,7 @@ public class PlayerController : MonoBehaviour
         return reflection;
     }
 
-    public void StunMe(float stunLength)
+    public void StunMe(Vector3 stunDirection, float stunLength)
     {
         if(playerState == PlayerState.stunned)
         {
@@ -854,8 +858,13 @@ public class PlayerController : MonoBehaviour
         {
             playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
+
         //flatten
-        TempFlatten(true);
+        //TempFlatten(true);
+
+        //call flatten animation
+        playerAnimation.StunnedAnim(stunDirection);
+
         StartCoroutine(ReturnPlayerStateToMovingStun(stunLength));
     }
 
