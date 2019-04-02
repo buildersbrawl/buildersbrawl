@@ -63,15 +63,69 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
+        /*
         int runId = Animator.StringToHash("run");
         int idleId = Animator.StringToHash("idle");
         int idleBoardId = Animator.StringToHash("idleBoard");
         int runBoardId = Animator.StringToHash("runBoard");
+        */
+
+        string runId = "run";
+        string idleId = "idle";
+        string idleBoardId = "idleBoard";
+        string runBoardId = "runBoard";
 
         AnimatorStateInfo currAnimStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
 
+        /*
+        print("idle " + currAnimStateInfo.IsName("idle"));
+        print("run " + currAnimStateInfo.IsName("run"));
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            playerAnimator.SetTrigger("ToRun");
+            print("RUN!!!");
+        }
+        */
         //if going fast enough and not already running
-        if (movement.magnitude >= minimumMovementForRun && (!(currAnimStateInfo.fullPathHash == runId) && !(currAnimStateInfo.fullPathHash == runBoardId)))
+        if (movement.magnitude >= minimumMovementForRun && (!(InSpecificStateOrTransition(runId) || (InSpecificStateOrTransition(runBoardId)))))
+        {
+            print("should run");
+
+            //call appropriate run animation based off of whether holding a plank or not
+            if ((currAnimStateInfo.IsName(idleId)))
+            {
+                //run
+                playerAnimator.SetTrigger("ToRun");
+                print("run anim");
+            }
+            else if ((currAnimStateInfo.IsName(idleBoardId)))
+            {
+                //runBoard
+                playerAnimator.SetTrigger("ToRunBoard");
+                print("runBoard anim");
+            }
+        }
+        //if not going fast enough and not already idle
+        else if (movement.magnitude < minimumMovementForRun && (!(InSpecificStateOrTransition(idleId) || (InSpecificStateOrTransition(idleBoardId)))))
+        {
+            print("should idle");
+            //call appropriate idle animation based off of whether holding a plank or not
+            if ((currAnimStateInfo.IsName(runId)))
+            {
+                //idle
+                playerAnimator.SetTrigger("ToIdle");
+                print("idle anim");
+            }
+            else if ((currAnimStateInfo.IsName(runBoardId)))
+            {
+                //idleBoard
+                playerAnimator.SetTrigger("ToIdleBoard");
+                //print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("idle"));
+            }
+        }
+        /*
+        //if going fast enough and not already running
+        if (movement.magnitude >= minimumMovementForRun && !((currAnimStateInfo.fullPathHash == runId) || (currAnimStateInfo.fullPathHash == runBoardId)))
         {
             print("should run");
 
@@ -89,9 +143,11 @@ public class PlayerAnimation : MonoBehaviour
                 print("runBoard anim");
             }
         }
-        else if (movement.magnitude < minimumMovementForRun && (!(currAnimStateInfo.fullPathHash == idleId) && !(currAnimStateInfo.fullPathHash == idleBoardId)))
+        //less than speed threshold and not already doing an idle animation
+        else if (movement.magnitude < minimumMovementForRun && (!(currAnimStateInfo.fullPathHash == idleId)))
         {
             print("should idle");
+
 
             //call appropriate idle animation based off of whether holding a plank or not
             if (currAnimStateInfo.fullPathHash == runId)
@@ -107,6 +163,26 @@ public class PlayerAnimation : MonoBehaviour
                 //print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("idle"));
             }
         }
+        */
+
+    }
+
+    private bool InSpecificStateOrTransition(string stateName)
+    {
+        bool inState = false;
+
+        AnimatorStateInfo currAnimStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
+
+        //true if in transition
+        inState = playerAnimator.IsInTransition(0);
+
+        //true if in appropriate state
+        if (currAnimStateInfo.IsName(stateName))
+        {
+            inState = true;
+        }
+
+        return inState;
     }
 
     //for when player is pushed
@@ -120,8 +196,8 @@ public class PlayerAnimation : MonoBehaviour
 
         //calculate wheter or not pushed from front or back
 
-        //see if players current looking direction is greater than 90 (oblique) then push from back
-        if(Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward, pushedFromDirection)) > 90)
+        //see if players current looking direction is less than 90 (oblique) then push from back
+        if(Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward, pushedFromDirection)) < 90)
         {
             playerAnimator.SetTrigger("ToPushedBack");
         }
@@ -142,8 +218,8 @@ public class PlayerAnimation : MonoBehaviour
 
         //calculate wheter or not slammed from front or back
 
-        //see if players current looking direction is greater than 90 (oblique) then push from back
-        if (Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward, stunnedFromDirection)) > 90)
+        //see if players current looking direction is less than 90 (oblique) then push from back
+        if (Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward, stunnedFromDirection)) < 90)
         {
             playerAnimator.SetTrigger("ToSquashBack");
         }
