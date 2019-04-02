@@ -5083,12 +5083,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4154333681177768567, guid: e47230838d2df6145bf584f5f0377f22,
-        type: 3}
-      propertyPath: faces.Array.data[2]
-      value: 
-      objectReference: {fileID: 21300000, guid: 2694a54c95284db43b9257af0b7b51ef,
-        type: 3}
     - target: {fileID: 1802618590925848296, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
       propertyPath: spawnPoint
@@ -6963,6 +6957,10 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1667855908, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
