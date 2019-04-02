@@ -1,0 +1,3692 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4205513807017318967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4205513807017318954}
+  - component: {fileID: 4205513807017318955}
+  - component: {fileID: 4205513807017318964}
+  - component: {fileID: 4205513807017318965}
+  - component: {fileID: 4205513807017318966}
+  - component: {fileID: 4205513807017318959}
+  - component: {fileID: 4205513807017318952}
+  - component: {fileID: 4205513807017318953}
+  - component: {fileID: 925820138}
+  - component: {fileID: 925820139}
+  - component: {fileID: 2351750325762926708}
+  - component: {fileID: 1191528802872432584}
+  - component: {fileID: 7524494183945927546}
+  m_Layer: 0
+  m_Name: PlayerPrefab_P1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4205513807017318954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.34, z: 0}
+  m_LocalScale: {x: 0.85, y: 0.85, z: 0.85}
+  m_Children:
+  - {fileID: 321129468570420614}
+  - {fileID: 7322492835256197311}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!33 &4205513807017318955
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4205513807017318964
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 98daa752210d3b948bbeba524cfc1801, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!136 &4205513807017318965
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!143 &4205513807017318966
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Height: 2
+  m_Radius: 0.5
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4205513807017318959
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 637ddae7709b15f448a3d501e9198e50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameInputManager: {fileID: 0}
+  inputType: 0
+  playerNumber: 0
+  cameraRef: {fileID: 0}
+  playerState: 0
+  playerActions: {fileID: 0}
+  playerMovement: {fileID: 0}
+  playerDeath: {fileID: 0}
+  playerPoints: {fileID: 0}
+  playerAnimation: {fileID: 0}
+  bounciness: 1
+  collisonCheckLength: 0.6
+  groundCheckDistance: 1.1
+  groundCheckSize: 0.3
+  playerGrounded: 0
+  flattenPercent: 0.2
+  flattenDownAmount: 0.4
+--- !u!114 &4205513807017318952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81ea6415e564bcc43b3ff9c6d75a3302, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionCooldown: 1
+  whereBoardHeld: {x: 0, y: 1.5, z: 0}
+  throwBoardOnDrop: 0
+  boardSlamWaitTime: 0.1
+  boardSlamStunTime: 2
+  boxCastOffset: {x: 0, y: 0, z: 0}
+  boxCasthalfSize: {x: 0.7, y: 1.5, z: 0.1}
+  boxCastMaxDistancePlankPickUp: 1
+  boxCastMaxDistancePush: 1
+  boxCastMaxDistanceSlam: 2
+  testCubes: 0
+  startCube: {fileID: 0}
+  endCube: {fileID: 0}
+  heldPlank: {fileID: 0}
+  pushForce: 13
+--- !u!114 &4205513807017318953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 971c64850ae8bfa499dba371d4cf9510, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerSpeed: 3.5
+  slowDownJumpSpeedPercentage: 0.9
+  slowDownHoldingPlankSpeedPercentage: 0.2
+  postJumpCooldown: 0
+  jumpHeight: 7
+  holdingBoardJumpHeight: 3
+  gravity: -0.5
+  groundDrag: 0.1
+  airDrag: 0
+  addWackyMovement: 0
+  rangeTillChangeInDegrees: 15
+  leanFactor: 1.05
+  leanCeiling: 180
+  leanAddOnceHitCeiling: 5
+  addWobble: 1
+  wobbleSpeed: 0.01
+  maxWobbleAngleInDegrees: 30
+--- !u!114 &925820138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13a2e1a06fa98c54ba7eba3e158e392e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  triggerSensitivity: 0.5
+  gamePlayerId: 0
+  joystickInput: {x: 0, y: 0, z: 0}
+  joystickIsInputing: 0
+  pressedJumpButton: 0
+  pressedChargeButton: 0
+  pressedPushButton: 0
+  pressedBoardPickUpOrDropButton: 0
+  pressedSlamButton: 0
+  moveUIUp: 0
+  moveUILeft: 0
+  moveUIRight: 0
+  moveUIDown: 0
+  isMovingUI: 0
+  controllerSelected: 0
+--- !u!114 &925820139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab21c4f28d3722b40bfab5788d28accf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPoint: {fileID: 0}
+  respawnTime: 5
+  timeToWaitAfterPushed: 1
+  playerDead: 0
+--- !u!114 &2351750325762926708
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab7ea07c63f8bb4588d1423d7b11465, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsTotal: 0
+  pointsForKill: 30
+  pointsForBoardPlace: 10
+  pointsForOtherSide: 200
+  faces:
+  - {fileID: 21300000, guid: cd2a215ec1c805241856f68ddd0e5766, type: 3}
+  - {fileID: 21300000, guid: 96506e5a8462b3847ab969555d5710b3, type: 3}
+  - {fileID: 21300000, guid: 3ca4925122dc11b42a902fc2c911a322, type: 3}
+  activeFaceNum: 1
+--- !u!114 &1191528802872432584
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0638de8d676aad8468c14beee61abe35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointsTextPrefab: {fileID: 1447707977, guid: fb936dc01984f0642937ba0b127ace1a, type: 3}
+  textActiveTime: 3
+  uptravelDistance: 5
+<<<<<<< HEAD
+--- !u!1 &7322492835256499329
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100030, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197281}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Eye_jnt_01_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197281
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400030, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499329}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.08638556, y: 0.0038345754, z: 0.19280274}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197297}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499331
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100028, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197283}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Eye_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197283
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400028, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499331}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.08638556, y: 0.21278282, z: 0.20866458}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197343}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499333
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100026, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197285}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Elbow_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400026, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499333}
+  m_LocalRotation: {x: -0.000029514744, y: 0.2148628, z: -0.011397, w: 0.97657776}
+  m_LocalPosition: {x: -0.17407367, y: -0.1063487, z: -0.011003473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197351}
+  m_Father: {fileID: 7322492835256197287}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499335
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100024, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197287}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Arm_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197287
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400024, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499335}
+  m_LocalRotation: {x: 0.11765648, y: 0.30947614, z: 0.26782256, w: 0.9047942}
+  m_LocalPosition: {x: -0.076658025, y: -0.02068526, z: -0.0027159285}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197285}
+  m_Father: {fileID: 7322492835256197363}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499337
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100022, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197289}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Arm_ikHandle2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197289
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400022, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499337}
+  m_LocalRotation: {x: 0.036369327, y: -0.05801762, z: 0.0030480998, w: 0.99764824}
+  m_LocalPosition: {x: -0.5532564, y: 0.72460943, z: -0.07762941}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197301}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499339
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100020, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197291}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Anlke_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197291
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400020, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499339}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.0012472419, y: 0.092756845, z: -0.21022928}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197367}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499341
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100018, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197293}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Ankle_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197293
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400018, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499341}
+  m_LocalRotation: {x: 0.00001548923, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.04955017, z: 0.03245104}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197353}
+  m_Father: {fileID: 7322492835256197259}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499343
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100016, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197295}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Head_Spine_jnt_01_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197295
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400016, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499343}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.15105182, z: -0.00960388}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197297}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100014, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197297}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Eye_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400014, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499345}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.20894817, z: 0.01586182}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197295}
+  - {fileID: 7322492835256197281}
+  - {fileID: 7322492835256197327}
+  m_Father: {fileID: 7322492835256197341}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499347
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100012, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197299}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Do_Not_Touch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197299
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400012, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499347}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.98999995, z: 0.033387028}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197271}
+  - {fileID: 7322492835256197255}
+  - {fileID: 7322492835256197317}
+  - {fileID: 7322492835256197431}
+  m_Father: {fileID: 7322492835256197305}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100010, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197301}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:DO_NOT_TOUCH
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197301
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400010, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499349}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197289}
+  - {fileID: 7322492835256197261}
+  - {fileID: 7322492835256197365}
+  - {fileID: 7322492835256197345}
+  - {fileID: 7322492835256197335}
+  - {fileID: 7322492835256197437}
+  - {fileID: 7322492835256197413}
+  m_Father: {fileID: 7322492835256197385}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100008, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197303}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Chest_jnt_01AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197303
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400008, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499351}
+  m_LocalRotation: {x: 0, y: 0.025424076, z: -0, w: 0.99967676}
+  m_LocalPosition: {x: -0, y: 0.12, z: 0.010217998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197363}
+  - {fileID: 7322492835256197341}
+  - {fileID: 7322492835256197411}
+  m_Father: {fileID: 7322492835256197393}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499353
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100006, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197305}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Chest_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197305
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400006, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499353}
+  m_LocalRotation: {x: 0, y: 0.025424076, z: -0, w: 0.99967676}
+  m_LocalPosition: {x: -0, y: 0.12, z: 0.010217998}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197299}
+  - {fileID: 7322492835256197273}
+  - {fileID: 7322492835256197253}
+  - {fileID: 7322492835256197343}
+  - {fileID: 7322492835256197319}
+  - {fileID: 7322492835256197429}
+  m_Father: {fileID: 7322492835256197349}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499355
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100004, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197307}
+  - component: {fileID: 7322492835244994975}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:CharacterModel_Updated_:Builder_Final
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197307
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400004, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499355}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197311}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!137 &7322492835244994975
+SkinnedMeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 13700000, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499355}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 0
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  serializedVersion: 2
+  m_Quality: 0
+  m_UpdateWhenOffscreen: 0
+  m_SkinnedMotionVectors: 1
+  m_Mesh: {fileID: 4300000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+  m_Bones:
+  - {fileID: 7322492835256197345}
+  - {fileID: 7322492835256197397}
+  - {fileID: 7322492835256197395}
+  - {fileID: 7322492835256197393}
+  - {fileID: 7322492835256197303}
+  - {fileID: 7322492835256197341}
+  - {fileID: 7322492835256197297}
+  - {fileID: 7322492835256197295}
+  - {fileID: 7322492835256197281}
+  - {fileID: 7322492835256197327}
+  - {fileID: 7322492835256197363}
+  - {fileID: 7322492835256197287}
+  - {fileID: 7322492835256197285}
+  - {fileID: 7322492835256197351}
+  - {fileID: 7322492835256197257}
+  - {fileID: 7322492835256197359}
+  - {fileID: 7322492835256197357}
+  - {fileID: 7322492835256197355}
+  - {fileID: 7322492835256197279}
+  - {fileID: 7322492835256197277}
+  - {fileID: 7322492835256197275}
+  - {fileID: 7322492835256197411}
+  - {fileID: 7322492835256197333}
+  - {fileID: 7322492835256197331}
+  - {fileID: 7322492835256197399}
+  - {fileID: 7322492835256197433}
+  - {fileID: 7322492835256197407}
+  - {fileID: 7322492835256197405}
+  - {fileID: 7322492835256197403}
+  - {fileID: 7322492835256197325}
+  - {fileID: 7322492835256197323}
+  - {fileID: 7322492835256197321}
+  - {fileID: 7322492835256197361}
+  - {fileID: 7322492835256197369}
+  - {fileID: 7322492835256197259}
+  - {fileID: 7322492835256197293}
+  - {fileID: 7322492835256197353}
+  - {fileID: 7322492835256197409}
+  - {fileID: 7322492835256197417}
+  - {fileID: 7322492835256197435}
+  - {fileID: 7322492835256197339}
+  - {fileID: 7322492835256197401}
+  m_BlendShapeWeights: []
+  m_RootBone: {fileID: 7322492835256197345}
+  m_AABB:
+    m_Center: {x: -0.009140223, y: 0.22764412, z: 0.021100461}
+    m_Extent: {x: 0.4709004, y: 0.7565863, z: 0.28649923}
+  m_DirtyAABB: 0
+--- !u!1 &7322492835256499357
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100002, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197309}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Body_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197309
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400002, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499357}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.465, z: 0.037825897}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197387}
+  m_Father: {fileID: 7322492835256197347}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499359
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197311}
+  - component: {fileID: 7322492835249196895}
+  m_Layer: 0
+  m_Name: Brawl_Idle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &7322492835256197311
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499359}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.991, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197307}
+  - {fileID: 7322492835256197385}
+  m_Father: {fileID: 4205513807017318954}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7322492835249196895
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499359}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+  m_Controller: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
+  m_CullingMode: 1
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &7322492835256499393
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100094, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197345}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Main_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197345
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400094, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499393}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.465, z: 0.037825897}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197361}
+  - {fileID: 7322492835256197409}
+  - {fileID: 7322492835256197397}
+  m_Father: {fileID: 7322492835256197301}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100092, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197347}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Main_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197347
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400092, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499395}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197309}
+  - {fileID: 7322492835256197375}
+  - {fileID: 7322492835256197367}
+  - {fileID: 7322492835256197423}
+  - {fileID: 7322492835256197415}
+  m_Father: {fileID: 7322492835256197385}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499397
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100090, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197349}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Lower_Chest_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197349
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400090, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499397}
+  m_LocalRotation: {x: 0.011994049, y: -0.0072416943, z: 0.00008686576, w: 0.9999019}
+  m_LocalPosition: {x: -0, y: 0.14, z: -0.01811575}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197305}
+  m_Father: {fileID: 7322492835256197389}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499399
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100088, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197351}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Wrist_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197351
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400088, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499399}
+  m_LocalRotation: {x: 0.301731, y: 0.03706779, z: 0.21083257, w: 0.9290501}
+  m_LocalPosition: {x: -0.22312781, y: -0.14159879, z: 0.018603485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197257}
+  m_Father: {fileID: 7322492835256197285}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499401
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100086, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197353}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Toe_jnt_01_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197353
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400086, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499401}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: -0.008698488, z: 0.05840413}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197293}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499403
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100084, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197355}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Thumb_jnt_03_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400084, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499403}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13608082, w: 0.99069774}
+  m_LocalPosition: {x: -0.028143657, y: 1.9984014e-17, z: 0.0068462132}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197357}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499405
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100082, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197357}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Thumb_jnt_02_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197357
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400082, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499405}
+  m_LocalRotation: {x: 0, y: 0, z: 0.14018613, w: 0.9901252}
+  m_LocalPosition: {x: -0.026774138, y: 1.5543122e-17, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197355}
+  m_Father: {fileID: 7322492835256197359}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100080, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197359}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Thumb_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197359
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400080, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499407}
+  m_LocalRotation: {x: 0, y: 0, z: 0.03417499, w: 0.9994159}
+  m_LocalPosition: {x: -0.052045844, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197357}
+  m_Father: {fileID: 7322492835256197257}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100078, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197361}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Thigh_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197361
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400078, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499409}
+  m_LocalRotation: {x: -0.09220591, y: -0.012997071, z: -0.011533142, w: 0.99558836}
+  m_LocalPosition: {x: -0.099999994, y: 0, z: -0.0017893034}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197369}
+  m_Father: {fileID: 7322492835256197345}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499411
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100076, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197363}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Shoulder_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197363
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400076, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499411}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.08502694, y: 0.039869104, z: 0.0148171615}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197287}
+  m_Father: {fileID: 7322492835256197303}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499413
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100074, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197365}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Leg_ikHandle1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197365
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400074, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499413}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.18925305, y: 0.05997902, z: -0.0024852823}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197301}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499415
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100072, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197367}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Leg_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197367
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400072, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499415}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.19049999, y: 0, z: 0.027164867}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197291}
+  - {fileID: 7322492835256197371}
+  m_Father: {fileID: 7322492835256197347}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499417
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100070, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197369}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Knee_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197369
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400070, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499417}
+  m_LocalRotation: {x: 0.19232215, y: -0.04016991, z: -0.0066203927, w: 0.98048705}
+  m_LocalPosition: {x: -0.044430517, y: -0.24246942, z: 0.04349244}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197259}
+  m_Father: {fileID: 7322492835256197361}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499419
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100068, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197371}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Knee_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197371
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400068, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499419}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.046069965, y: 0.25753048, z: 0.16333513}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197367}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499421
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100066, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197373}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_IK_Wrist_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197373
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400066, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499421}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.22312781, y: -0.1415988, z: 0.018603485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197249}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100064, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197375}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_IK_FK_Stwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197375
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400064, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499423}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.55888647, y: 0.7612363, z: -0.013685782}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197347}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499425
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100062, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197249}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_IK_Elbow_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197249
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400062, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499425}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.17407365, y: -0.10634865, z: -0.011003473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197373}
+  m_Father: {fileID: 7322492835256197255}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100060, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197251}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_IK_Elbow_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197251
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400060, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499427}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.32155553, y: 0.11703207, z: 0.08475985}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197429}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499429
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100058, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197253}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_IK_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197253
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400058, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499429}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.55888647, y: -0.22876365, z: 0.019701246}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197427}
+  m_Father: {fileID: 7322492835256197305}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499431
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100056, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197255}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_IK_Arm_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197255
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400056, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499431}
+  m_LocalRotation: {x: -0.052951932, y: -0.0330545, z: 0.0010131769, w: 0.9980493}
+  m_LocalPosition: {x: -0.16168496, y: 1.0091838, z: -0.021285797}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197249}
+  m_Father: {fileID: 7322492835256197299}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499433
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100054, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197257}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Hand_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197257
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400054, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499433}
+  m_LocalRotation: {x: 0.020150177, y: 0.023854729, z: -0.30666316, w: 0.95130575}
+  m_LocalPosition: {x: -0.023002602, y: -0.007931485, z: 0.0006972438}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197279}
+  - {fileID: 7322492835256197359}
+  m_Father: {fileID: 7322492835256197351}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499435
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100052, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197259}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Foot_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197259
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400052, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499435}
+  m_LocalRotation: {x: -0.10069274, y: 0.055563845, z: 0.011702821, w: 0.9932959}
+  m_LocalPosition: {x: -0.04482252, y: -0.19755153, z: -0.08201431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197293}
+  m_Father: {fileID: 7322492835256197369}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499437
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100050, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197261}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Foot_ikHandle1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197261
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400050, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499437}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.18925232, y: 0.0017302287, z: 0.08836981}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197301}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499439
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100048, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197263}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_FK_Wrsit_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400048, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499439}
+  m_LocalRotation: {x: 0.4779978, y: 0.53925854, z: 0.5650645, w: 0.40177158}
+  m_LocalPosition: {x: -0.22312781, y: -0.1415988, z: 0.018603485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197267}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499441
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100046, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197265}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_FK_Wrist_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197265
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400046, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499441}
+  m_LocalRotation: {x: 0.4779978, y: 0.53925854, z: 0.5650645, w: 0.40177158}
+  m_LocalPosition: {x: -0.22312781, y: -0.1415988, z: 0.018603485}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197269}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499443
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100044, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197267}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_FK_Elbow_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400044, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499443}
+  m_LocalRotation: {x: 0, y: 0.21516484, z: -0, w: 0.97657776}
+  m_LocalPosition: {x: -0.17407365, y: -0.10634865, z: -0.011003473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197263}
+  m_Father: {fileID: 7322492835256197271}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499445
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100042, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197269}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_FK_Elbow_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197269
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400042, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499445}
+  m_LocalRotation: {x: 0, y: 0.21516484, z: -0, w: 0.97657776}
+  m_LocalPosition: {x: -0.17407365, y: -0.10634865, z: -0.011003473}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197265}
+  m_Father: {fileID: 7322492835256197273}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100040, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197271}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_FK_Arm_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197271
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400040, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499447}
+  m_LocalRotation: {x: 0.09821748, y: 0.2872102, z: 0.27440268, w: 0.912451}
+  m_LocalPosition: {x: -0.16168496, y: 1.0091838, z: -0.021285797}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197267}
+  m_Father: {fileID: 7322492835256197299}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100038, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197273}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_FK_Arm_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197273
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400038, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499449}
+  m_LocalRotation: {x: 0.09821748, y: 0.2872102, z: 0.27440268, w: 0.912451}
+  m_LocalPosition: {x: -0.16168496, y: 0.019183807, z: 0.012101233}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197269}
+  m_Father: {fileID: 7322492835256197305}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499451
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100036, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197275}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Fingers_jnt_03_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197275
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400036, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499451}
+  m_LocalRotation: {x: 0, y: -0, z: -0.47784406, w: 0.8784447}
+  m_LocalPosition: {x: -0.02755939, y: -0.000836697, z: 0.02933237}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197277}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499453
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100034, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197277}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Fingers_jnt_02_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197277
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400034, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499453}
+  m_LocalRotation: {x: -0.011309862, y: 0.183642, z: 0.0604206, w: 0.9810694}
+  m_LocalPosition: {x: -0.04588056, y: 3.025194e-16, z: 0.015771944}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197275}
+  m_Father: {fileID: 7322492835256197279}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499455
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100032, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197279}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:L_Fingers_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197279
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400032, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499455}
+  m_LocalRotation: {x: -0.055264466, y: 0.11840443, z: 0.4193163, w: 0.89838755}
+  m_LocalPosition: {x: -0.042088263, y: -0.052903865, z: -0.017236948}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197277}
+  m_Father: {fileID: 7322492835256197257}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499457
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100158, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197409}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Thigh_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197409
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400158, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499457}
+  m_LocalRotation: {x: 0.9955883, y: 0.011533383, z: -0.012999185, w: 0.09220614}
+  m_LocalPosition: {x: 0.099999994, y: 0, z: -0.0017892963}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197417}
+  m_Father: {fileID: 7322492835256197345}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100156, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197411}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Shoulder_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197411
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400156, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499459}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
+  m_LocalPosition: {x: 0.08502701, y: 0.03987043, z: 0.01481715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197333}
+  m_Father: {fileID: 7322492835256197303}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499461
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100154, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197413}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Leg_ikHandle1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197413
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400154, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499461}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.189253, y: 0.059979, z: -0.00248528}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197301}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499463
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100152, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197415}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Leg_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400152, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499463}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.19049999, y: 0, z: 0.027164867}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197337}
+  - {fileID: 7322492835256197419}
+  m_Father: {fileID: 7322492835256197347}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100150, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197417}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Knee_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197417
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400150, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499465}
+  m_LocalRotation: {x: 0.19232209, y: -0.040169906, z: -0.0066207238, w: 0.98048705}
+  m_LocalPosition: {x: 0.04443048, y: 0.24246989, z: -0.043492436}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197435}
+  m_Father: {fileID: 7322492835256197409}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499467
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100148, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197419}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Knee_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197419
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400148, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499467}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.046069525, y: 0.25753048, z: 0.16333513}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197415}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499469
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100146, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197421}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_IK_Wrist_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197421
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400146, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499469}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.22312883, y: 0.14160094, z: -0.018603498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197425}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499471
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100144, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197423}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_IK_FK_Stwitch
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197423
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400144, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499471}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.55888736, y: 0.76123494, z: -0.013685794}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197347}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499473
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100142, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197425}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_IK_Elbow_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197425
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400142, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499473}
+  m_LocalRotation: {x: -0.09761875, y: 0.14951925, z: 0.03883132, w: 0.9831616}
+  m_LocalPosition: {x: 0.17407341, y: 0.10634777, z: 0.011003492}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197421}
+  m_Father: {fileID: 7322492835256197431}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499475
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100140, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197427}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_IK_Elbow_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197427
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400140, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499475}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.22312781, y: 0.1415988, z: -0.17681421}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197253}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499477
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100138, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197429}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_IK_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197429
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400138, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499477}
+  m_LocalRotation: {x: -0.22168176, y: 0.91725224, z: 0.064173356, w: -0.32463425}
+  m_LocalPosition: {x: 0.26678956, y: -0.4191715, z: 0.07605122}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197251}
+  m_Father: {fileID: 7322492835256197305}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499479
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100136, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197431}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_IK_Arm_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197431
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400136, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499479}
+  m_LocalRotation: {x: 0.90714324, y: -0.2893072, z: 0.2287224, w: -0.20267853}
+  m_LocalPosition: {x: 0.16168512, y: 1.0091836, z: -0.021285798}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197425}
+  m_Father: {fileID: 7322492835256197299}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499481
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100134, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197433}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Hand_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197433
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400134, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499481}
+  m_LocalRotation: {x: 0.9516159, y: 0.30569786, z: -0.00762951, w: -0.030294295}
+  m_LocalPosition: {x: 0.023003, y: 0.007929396, z: -0.00069753174}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197325}
+  - {fileID: 7322492835256197407}
+  m_Father: {fileID: 7322492835256197399}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499483
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100132, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197435}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Foot_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197435
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400132, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499483}
+  m_LocalRotation: {x: -0.10681786, y: 0.05900233, z: -0.03932405, w: 0.9917471}
+  m_LocalPosition: {x: 0.04482252, y: 0.19755109, z: 0.08201431}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197339}
+  m_Father: {fileID: 7322492835256197417}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499485
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100130, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197437}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Foot_ikHandle2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400130, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499485}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.19353141, y: 0.0025608768, z: 0.0887968}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197301}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100128, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197439}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_FK_Wrist_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197439
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400128, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499487}
+  m_LocalRotation: {x: 0.6489619, y: 0.07053777, z: -0.31898397, w: 0.68711144}
+  m_LocalPosition: {x: 0.22312881, y: -0.14160095, z: 0.018603498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197315}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100126, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197313}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_FK_Elbow_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197313
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400126, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499489}
+  m_LocalRotation: {x: 0, y: 0.088456236, z: -0, w: 0.9960801}
+  m_LocalPosition: {x: 0.17407341, y: 0.10634777, z: 0.011003492}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197317}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499491
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100124, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197315}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_FK_Elbow_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400124, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499491}
+  m_LocalRotation: {x: 0, y: -0.088456236, z: -0, w: 0.9960801}
+  m_LocalPosition: {x: 0.17407373, y: -0.10634773, z: -0.011003494}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197439}
+  m_Father: {fileID: 7322492835256197319}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499493
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100122, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197317}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_FK_Arm_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400122, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499493}
+  m_LocalRotation: {x: 0.915821, y: -0.3053642, z: 0.23952949, w: -0.10320032}
+  m_LocalPosition: {x: 0.16168512, y: 1.0091836, z: -0.021285798}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197313}
+  m_Father: {fileID: 7322492835256197299}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499495
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100120, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197319}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_FK_Arm_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197319
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400120, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499495}
+  m_LocalRotation: {x: 0.10320034, y: -0.23952945, z: -0.3053642, w: 0.915821}
+  m_LocalPosition: {x: 0.16168481, y: 0.019183654, z: 0.01210123}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197315}
+  m_Father: {fileID: 7322492835256197305}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499497
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100118, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197321}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Fingers_jnt_03_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400118, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499497}
+  m_LocalRotation: {x: 0.000000013089846, y: -0.000000019453381, z: -0.47784406, w: 0.8784447}
+  m_LocalPosition: {x: 0.019645026, y: -0.019349525, z: 0.029332368}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197323}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499499
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100116, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197323}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Fingers_jnt_02_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400116, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499499}
+  m_LocalRotation: {x: -0.10935886, y: -0.14266606, z: 0.023760848, w: 0.9834238}
+  m_LocalPosition: {x: 0.04023207, y: -0.02205501, z: 0.015772058}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197321}
+  m_Father: {fileID: 7322492835256197325}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100114, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197325}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Fingers_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400114, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499501}
+  m_LocalRotation: {x: -0.055085696, y: -0.16140364, z: 0.4552962, w: 0.87385345}
+  m_LocalPosition: {x: 0.063582025, y: 0.022962838, z: -0.017237049}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197323}
+  m_Father: {fileID: 7322492835256197433}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100112, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197327}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Eye_jnt_01_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197327
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400112, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499503}
+  m_LocalRotation: {x: 1, y: 0, z: 0, w: -6.123234e-17}
+  m_LocalPosition: {x: 0.086385496, y: 0.0038345754, z: 0.19280267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197297}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100110, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197329}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Eye_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197329
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400110, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499505}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.086385496, y: 0.21278282, z: 0.20866449}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197343}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100108, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197331}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Elbow_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400108, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499507}
+  m_LocalRotation: {x: -0.000012103958, y: 0.088331945, z: -0.00468751, w: 0.9960801}
+  m_LocalPosition: {x: 0.17407371, y: 0.10634777, z: 0.011003492}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197399}
+  m_Father: {fileID: 7322492835256197333}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499509
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100106, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197333}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Arm_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197333
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400106, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499509}
+  m_LocalRotation: {x: 0.1222469, y: 0.2627074, z: 0.3001102, w: 0.90883136}
+  m_LocalPosition: {x: 0.07665781, y: 0.020686775, z: 0.0027159203}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197331}
+  m_Father: {fileID: 7322492835256197411}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499511
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100104, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197335}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Arm_ikHandle2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197335
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400104, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499511}
+  m_LocalRotation: {x: -0.23948622, y: 0.9309199, z: 0.08353129, w: -0.26278725}
+  m_LocalPosition: {x: 0.2622966, y: 0.53213686, z: 0.0602073}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197301}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100102, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197337}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Anlke_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197337
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400102, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499513}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0014859594, y: 0.092756845, z: -0.21022928}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197415}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499515
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100100, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197339}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Ankle_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197339
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400100, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499515}
+  m_LocalRotation: {x: 0.000015509133, y: -1.9821145e-10, z: -1.8000973e-10, w: 1}
+  m_LocalPosition: {x: 0.00000027221802, y: 0.04955015, z: -0.032451056}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197401}
+  m_Father: {fileID: 7322492835256197435}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499517
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100098, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197341}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Neck_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197341
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400098, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499517}
+  m_LocalRotation: {x: 0, y: 0.068367235, z: -0, w: 0.9976602}
+  m_LocalPosition: {x: -0, y: 0.13071725, z: 0.011758179}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197297}
+  m_Father: {fileID: 7322492835256197303}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499519
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100096, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197343}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Neck_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197343
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400096, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499519}
+  m_LocalRotation: {x: 0, y: 0.068367235, z: -0, w: 0.9976602}
+  m_LocalPosition: {x: -0, y: 0.13071723, z: 0.011758179}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197283}
+  - {fileID: 7322492835256197329}
+  m_Father: {fileID: 7322492835256197305}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499561
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100182, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197385}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:World_Mover
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400182, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499561}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197301}
+  - {fileID: 7322492835256197347}
+  - {fileID: 7322492835256197391}
+  m_Father: {fileID: 7322492835256197311}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499563
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100180, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197387}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Waist_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197387
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400180, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499563}
+  m_LocalRotation: {x: 0.00871823, y: -0.043617725, z: 0.00038064615, w: 0.9990102}
+  m_LocalPosition: {x: -0, y: 0.11994709, z: -0.028767744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197389}
+  m_Father: {fileID: 7322492835256197309}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499565
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100178, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197389}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Upper_Belly_Ctrl
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197389
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400178, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499565}
+  m_LocalRotation: {x: 0.015792273, y: -0.032610327, z: 0.0005153296, w: 0.9993433}
+  m_LocalPosition: {x: -0, y: 0.110052906, z: -0.03454743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197349}
+  m_Father: {fileID: 7322492835256197387}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499567
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100176, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197391}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Squish_Squash
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400176, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499567}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197385}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499569
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100174, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197393}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Spine_jnt_03_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197393
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400174, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499569}
+  m_LocalRotation: {x: 0.011994049, y: -0.007241695, z: 0.00008686576, w: 0.9999019}
+  m_LocalPosition: {x: -0, y: 0.14, z: -0.01811575}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197303}
+  m_Father: {fileID: 7322492835256197395}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499571
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100172, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197395}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Spine_jnt_02_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400172, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499571}
+  m_LocalRotation: {x: 0.015792273, y: -0.032610327, z: 0.0005153296, w: 0.9993433}
+  m_LocalPosition: {x: -0, y: 0.110052906, z: -0.03454743}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197393}
+  m_Father: {fileID: 7322492835256197397}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499573
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100170, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197397}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:Spine_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197397
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400170, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499573}
+  m_LocalRotation: {x: 0.00871823, y: -0.043617725, z: 0.00038064615, w: 0.9990102}
+  m_LocalPosition: {x: -0, y: 0.11994709, z: -0.028767744}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197395}
+  m_Father: {fileID: 7322492835256197345}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100168, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197399}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Wrist_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197399
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400168, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499575}
+  m_LocalRotation: {x: 0.1647799, y: 0.2520832, z: 0.26589945, w: 0.9157506}
+  m_LocalPosition: {x: 0.22312883, y: 0.14160094, z: -0.018603498}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197433}
+  m_Father: {fileID: 7322492835256197331}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499577
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100166, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197401}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Toe_jnt_01_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197401
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400166, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499577}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.0000005622064, y: 0.008698482, z: -0.05840411}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197339}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499579
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100164, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197403}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Thumb_jnt_03_DE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197403
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400164, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499579}
+  m_LocalRotation: {x: 0, y: 0, z: 0.13608082, w: 0.99069774}
+  m_LocalPosition: {x: 0.024053497, y: 0.01461323, z: 0.0068462347}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 7322492835256197405}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499581
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100162, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197405}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Thumb_jnt_02_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197405
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400162, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499581}
+  m_LocalRotation: {x: 0, y: 0, z: 0.14018613, w: 0.9901252}
+  m_LocalPosition: {x: 0.011938305, y: 0.02396633, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197403}
+  m_Father: {fileID: 7322492835256197407}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7322492835256499583
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 100160, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7322492835256197407}
+  m_Layer: 0
+  m_Name: Builder_Brawl_Character_Rig_Finish:R_Thumb_jnt_01_AE
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7322492835256197407
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 400160, guid: ed0d421f80fbcef418ecc9f6a85ebbec,
+    type: 3}
+  m_PrefabInstance: {fileID: 7322492835256597055}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7322492835256499583}
+  m_LocalRotation: {x: 0, y: 0, z: 0.03417499, w: 0.9994159}
+  m_LocalPosition: {x: 0.016640121, y: 0.049311146, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 7322492835256197405}
+  m_Father: {fileID: 7322492835256197433}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+=======
+--- !u!82 &7524494183945927546
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+>>>>>>> d98f3bf72b509f0e5108d40fc0e8311920bfcbdc
+--- !u!1001 &321129468570296118
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4205513807017318954}
+    m_Modifications:
+    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_Name
+      value: Player_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1.007
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
+    - target: {fileID: 13700000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: baa8f4a3e18f1144b8924f3c21917262, type: 2}
+    m_RemovedComponents:
+    - {fileID: 9500000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+--- !u!4 &321129468570420614 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1,
+    type: 3}
+  m_PrefabInstance: {fileID: 321129468570296118}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &7322492835256597055
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 4205513807017318954}
+    m_Modifications:
+    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_Name
+      value: Brawl_Idle
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.991
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: ed0d421f80fbcef418ecc9f6a85ebbec, type: 3}
