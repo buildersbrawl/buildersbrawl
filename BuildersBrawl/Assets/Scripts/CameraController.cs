@@ -160,6 +160,8 @@ public class CameraController : MonoBehaviour
     private bool firstTime = false;
     private bool triggerPoints = true;
 
+    private bool isStart = true;
+
     [SerializeField]
     private float deathStartDistance;
     [SerializeField]
@@ -237,8 +239,13 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if (isStart)
+        {
+            //change isStart after the last one
+        }
 
-        if (setCameraBasedOnPlayers && !winnerDetermined)
+
+        else if (setCameraBasedOnPlayers && !winnerDetermined)
         {
             GetAveragePositionBetweenPlayers();
             GetDistanceBetweenPlayers();
