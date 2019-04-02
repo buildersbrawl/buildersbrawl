@@ -37,7 +37,7 @@ public class PlayerDeath : MonoBehaviour
         }
     }
 
-    private Vector3 deathPos;
+    //private Vector3 deathPos;
 
     [HideInInspector]
     public bool playerDead;
@@ -108,7 +108,7 @@ public class PlayerDeath : MonoBehaviour
         
         
         
-        deathPos = transform.position;
+        //deathPos = transform.position;
         //move player
         this.gameObject.transform.position = spawnPoint.transform.position;
 
@@ -150,7 +150,7 @@ public class PlayerDeath : MonoBehaviour
         {
             Debug.Log("Player was pushed and killed");
             otherPlayer.GetComponent<Points>().AddPointsForKill();
-            GetComponent<FlashyPoints>().ShowPointsGained(deathPos, GetComponent<Points>().pointsForKill);
+            otherPlayer.GetComponent<FlashyPoints>().ShowPointsGained(otherPlayer.transform.position, GetComponent<Points>().pointsForKill);
         }
         
     }

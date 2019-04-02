@@ -5,7 +5,8 @@ using UnityEngine;
 
 public class IcyMechanic : MonoBehaviour
 {
-    public GameObject[] iceCubePrefab;
+    //public GameObject[] iceCubePrefab;
+    public PlayerIceCubes[] playerIceCubePrefabs;
     private Vector3 deathPos;
 
     private void OnTriggerEnter(Collider other)
@@ -23,12 +24,30 @@ public class IcyMechanic : MonoBehaviour
     private void InstantiateIceCube(GameObject player, Vector3 deathPos)
     {
         if (player == GameManager.S.player1)//Blue
-            Instantiate(iceCubePrefab[0], deathPos, Quaternion.identity);
+        {
+            Instantiate(playerIceCubePrefabs[0].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+        }
+        //Instantiate(iceCubePrefab[0], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player2)//Red
-            Instantiate(iceCubePrefab[1], deathPos, Quaternion.identity);
+        {
+            Instantiate(playerIceCubePrefabs[1].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+        }
+        //Instantiate(iceCubePrefab[1], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player3)//Yellow
-            Instantiate(iceCubePrefab[2], deathPos, Quaternion.identity);
+        {
+            Instantiate(playerIceCubePrefabs[2].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+        }
+        //Instantiate(iceCubePrefab[2], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player4)//Purple
-            Instantiate(iceCubePrefab[3], deathPos, Quaternion.identity);
+        {
+            Instantiate(playerIceCubePrefabs[3].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+        }
+            //Instantiate(iceCubePrefab[3], deathPos, Quaternion.identity);
     }
+}
+
+[System.Serializable]
+public class PlayerIceCubes
+{
+    public GameObject[] iceCubePrefabs;
 }
