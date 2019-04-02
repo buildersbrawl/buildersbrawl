@@ -160,6 +160,15 @@ public class CameraController : MonoBehaviour
     private bool firstTime = false;
     private bool triggerPoints = true;
 
+    private bool isStart = true;
+    public GameObject startGameStart;
+    public GameObject startGameEnd;
+    public float startLerpRate = .005f;
+    public bool isRightToLeft = false;
+
+    public AudioSource audio;
+    public AudioClip[] clips;
+
     [SerializeField]
     private float deathStartDistance;
     [SerializeField]
@@ -179,6 +188,14 @@ public class CameraController : MonoBehaviour
         winnerDetermined = false;
         triggerWinRotate = false;
         Time.timeScale = 1f;
+        
+        //trigger the camera sweep before the game starts
+        cameraRef.transform.position = startGameStart.transform.position;
+        //set the audio source to the camera's audio source
+        audio = cameraRef.GetComponent<AudioSource>();
+        //set the first audio clip to be played as the start round noise
+        audio.clip = clips[0];
+        
     }
 
     public void Init()
@@ -237,8 +254,33 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if (isStart)
+        {
+            if (!isRightToLeft)
+            {
+                cameraRef.transform.LookAt(new Vector3(cameraRef.transform.position.x, startGameStart.transform.position.y, -20));
+            }
+            else
+            {
+                cameraRef.transform.LookAt(new Vector3(cameraRef.transform.position.x, startGameStart.transform.position.y, 20));
+            }
+            //cameraRef.transform.Rotate(new Vector3(0, -90, 0), Space.World);
+            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, startGameEnd.transform.position, startLerpRate);
+            startLerpRate = Mathf.Lerp(startLerpRate, .004f, .02f);
+            Debug.Log("Start lerp rate = " + startLerpRate);
+            //change isStart once it is close enough
+            if (Vector3.Distance(cameraRef.transform.position, startGameEnd.transform.position) < 1f)
+            {
+                isStart = false;
+                //play audio clip
+                audio.Play(0);
+                //change audio clip to the end of game sound
+                audio.clip = clips[1];
+            }
+        }
 
-        if (setCameraBasedOnPlayers && !winnerDetermined)
+
+        else if (setCameraBasedOnPlayers && !winnerDetermined)
         {
             GetAveragePositionBetweenPlayers();
             GetDistanceBetweenPlayers();
