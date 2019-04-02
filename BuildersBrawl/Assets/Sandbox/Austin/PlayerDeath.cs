@@ -42,6 +42,8 @@ public class PlayerDeath : MonoBehaviour
     [HideInInspector]
     public bool playerDead;
 
+    private AudioSource audio;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,6 +59,9 @@ public class PlayerDeath : MonoBehaviour
         playerRenderer = this.gameObject.GetComponentInChildren<SkinnedMeshRenderer>();
 
         playerDead = false;
+
+        //set audio source
+        audio = this.GetComponent<AudioSource>();
 
         //instead when a player pushes me that player tells me they pushed me
 
@@ -126,6 +131,11 @@ public class PlayerDeath : MonoBehaviour
         
         //cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;      //remove comment when the camera works
         cc.GetComponent<CameraController>().setCameraBasedOnPlayers = false;
+
+        //play death noise
+        //determine death noise based on level
+        //change audio.clip to the correct noise based on level
+        audio.Play(0);
 
         //reset player's momentum
         //playerController.playerMovement.ResetMovement();
