@@ -7,8 +7,8 @@ public class PlayerAnimation : MonoBehaviour
     public PlayerController playerController;
     public Animator playerAnimator;
 
-    [SerializeField]
-    private float minimumMovementForRun = .1f;
+    //[SerializeField]
+    private float minimumMovementForRun = .6f;
 
     //called in playerController init
     public void Init()
@@ -63,39 +63,48 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
+        int runId = Animator.StringToHash("run");
+        int idleId = Animator.StringToHash("idle");
+        int idleBoardId = Animator.StringToHash("idleBoard");
+        int runBoardId = Animator.StringToHash("runBoard");
+
+        AnimatorStateInfo currAnimStateInfo = playerAnimator.GetCurrentAnimatorStateInfo(0);
+
         //if going fast enough and not already running
-        if(movement.magnitude >= minimumMovementForRun && (!(playerAnimator.GetNextAnimatorStateInfo(0).IsName("run") || playerAnimator.GetNextAnimatorStateInfo(0).IsName("runBoard"))))
+        if (movement.magnitude >= minimumMovementForRun && (!(currAnimStateInfo.fullPathHash == runId) && !(currAnimStateInfo.fullPathHash == runBoardId)))
         {
-            
+            print("should run");
+
             //call appropriate run animation based off of whether holding a plank or not
-            if(playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final"))
+            if(currAnimStateInfo.fullPathHash == idleId)
             {
                 //run
                 playerAnimator.SetTrigger("ToRun");
                 print("run anim");
             }
-            else 
+            else if (currAnimStateInfo.fullPathHash == idleBoardId)
             {
                 //runBoard
                 playerAnimator.SetTrigger("ToRunBoard");
                 print("runBoard anim");
             }
         }
-        else if (movement.magnitude < minimumMovementForRun && (!(playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final") || playerAnimator.GetNextAnimatorStateInfo(0).IsName("idleBoard"))))
+        else if (movement.magnitude < minimumMovementForRun && (!(currAnimStateInfo.fullPathHash == idleId) && !(currAnimStateInfo.fullPathHash == idleBoardId)))
         {
-            
+            print("should idle");
+
             //call appropriate idle animation based off of whether holding a plank or not
-            if (playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final"))
+            if (currAnimStateInfo.fullPathHash == runId)
             {
                 //idle
                 playerAnimator.SetTrigger("ToIdle");
-                print("Brawl_Idle_Final anim");
+                print("idle anim");
             }
-            else
+            else if (currAnimStateInfo.fullPathHash == runBoardId)
             {
                 //idleBoard
                 playerAnimator.SetTrigger("ToIdleBoard");
-                print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("Brawl_Idle_Final"));
+                //print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("idle"));
             }
         }
     }
