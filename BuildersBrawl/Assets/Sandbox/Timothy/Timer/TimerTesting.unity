@@ -2337,7 +2337,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &329889523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9813,11 +9813,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a019b9ee8736e4148945f9cabe3dfe71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  iceCubePrefab:
-  - {fileID: 6370765417243052335, guid: dab8cc94761c9724689bbc58f8195421, type: 3}
-  - {fileID: 5740673372705784816, guid: 4b8f13c27610985489711d0d3b10a4b0, type: 3}
-  - {fileID: 5592891457120562988, guid: 99812fc766317534cb7489f02ce6d55c, type: 3}
-  - {fileID: 1777056765470219973, guid: ef894bcffab8b664683b51376ed7e428, type: 3}
+  playerIceCubePrefabs:
+  - iceCubePrefabs:
+    - {fileID: 1632988681659053750, guid: b604c0723a809724292f5b84b16f9d8f, type: 3}
+    - {fileID: 5212361325181070721, guid: 9b6e68256d1b3bd4683ff47d7a51c1a6, type: 3}
+  - iceCubePrefabs:
+    - {fileID: 1746654180372111146, guid: 9bc65edc6027600449c0d8114f17dfc2, type: 3}
+    - {fileID: 8724231510926993946, guid: 96b86f834763ca44c86c4a749bc507f0, type: 3}
+  - iceCubePrefabs:
+    - {fileID: 8118122842288835289, guid: 680b5bccbc6fb734aafcd00356ecd41f, type: 3}
+    - {fileID: 5398949202330896550, guid: 91249b4df530ad14195a4c7a2a795800, type: 3}
+  - iceCubePrefabs:
+    - {fileID: 2279826416873716707, guid: 6229e64d8c0f7fa4ea2b8ce31f039366, type: 3}
+    - {fileID: 6446414909599020136, guid: 976a1c1553adc4940ae5a9b7623c483d, type: 3}
 --- !u!1 &1587561881
 GameObject:
   m_ObjectHideFlags: 0
