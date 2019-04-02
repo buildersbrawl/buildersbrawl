@@ -6,22 +6,29 @@ using UnityEngine.UI;
 public class Countdown : MonoBehaviour
 {
 
-    private int count = 5;
+    private int count = 3;
 
     public float delay;
     private float delayStart;
 
     public Text cd;
     public GameObject cd_panel;
+    public Image cd_icon;
     // Start is called before the first frame update
     void Start()
     {
+        delay = 1;
+
         delayStart = delay;
         cd.text = count.ToString();
 
         //disables player controller
         GameManager.S.player1.GetComponent<PlayerController>().enabled = false;
         GameManager.S.player2.GetComponent<PlayerController>().enabled = false;
+        GameManager.S.player3.GetComponent<PlayerController>().enabled = false;
+        GameManager.S.player4.GetComponent<PlayerController>().enabled = false;
+
+        cd_icon.enabled = false;
     }
 
     // Update is called once per frame
@@ -37,8 +44,8 @@ public class Countdown : MonoBehaviour
             }
             else
             {
-                cd.color = Color.green;
-                cd.text = "BEGIN!";
+                cd.enabled = false;
+                cd_icon.enabled = true;
                 count--;
             }
 
@@ -46,10 +53,13 @@ public class Countdown : MonoBehaviour
             {
                 cd.enabled = false;
                 cd_panel.SetActive(false);
+                cd_icon.enabled = false;
 
                 //re-enables player controller
                 GameManager.S.player1.GetComponent<PlayerController>().enabled = true;
                 GameManager.S.player2.GetComponent<PlayerController>().enabled = true;
+                GameManager.S.player3.GetComponent<PlayerController>().enabled = true;
+                GameManager.S.player4.GetComponent<PlayerController>().enabled = true;
             }
             delay = delayStart;
         }

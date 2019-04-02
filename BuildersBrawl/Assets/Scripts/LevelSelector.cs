@@ -10,13 +10,14 @@ public class LevelSelector : MonoBehaviour
     public Sprite[] levels;
     public int levelNumber;
     public int show = 0;
+    public int RandomShow = 0;
     public bool chosenShown = false;
 
     public string[] levelNames;
     public string chosenLevel;
 
     //used to adjust time between showing each image
-    public float waitTime = 0.1f;
+    public float waitTime = 0.5f;
     private float timer = 0.0f;
     public float maxWaitTime;
     public float minWaitTime;
@@ -34,7 +35,7 @@ public class LevelSelector : MonoBehaviour
         Debug.Log(levels.Length);
 
         //Immediately chooses the next level
-        //ChooseLevel();
+        ChooseLevel();
 
         levelDisplay.sprite = levels[show];
         chosenLevel = levelNames[show];
@@ -46,7 +47,7 @@ public class LevelSelector : MonoBehaviour
     {
         if(show == levels.Length)
         {
-            ChooseLevel();
+            //ChooseLevel();
             timer += Time.deltaTime;
             //Cycles between levels
             if (timer > waitTime)
@@ -103,7 +104,7 @@ public class LevelSelector : MonoBehaviour
     void CycleChoices()
     {
         //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
-        if(show > levels.Length)
+        if(show > levels.Length-1)
         {
             show = 0;
         }
@@ -122,7 +123,7 @@ public class LevelSelector : MonoBehaviour
     void RotateLevels()
     {
         //displays level based on the order in the array
-        levelDisplay.sprite = levels[show];
+        levelDisplay.sprite = levels[RandomShow];
     }
 
     void DisplayChosen()
@@ -173,13 +174,13 @@ public class LevelSelector : MonoBehaviour
 
     void RandomLevel()
     {
-        if (show >= levels.Length-1)
+        if (RandomShow >= levels.Length-1)
         {
-            show = 0;
+            RandomShow = 0;
         }
         else
         {
-            show += 1;
+            RandomShow += 1;
         }
         RotateLevels();
     }
