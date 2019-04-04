@@ -791,7 +791,7 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(waitTime);
         //reset state
-        TempFlatten(false);
+        //TempFlatten(false);
         playerState = PlayerState.defaultMovement;
     }
 
@@ -871,7 +871,7 @@ public class PlayerController : MonoBehaviour
 
         StartCoroutine(ReturnPlayerStateToMovingStun(stunLength));
     }
-
+    /*
     private void TempFlatten(bool flattenMe)
     {
         Vector3 temp;
@@ -906,6 +906,7 @@ public class PlayerController : MonoBehaviour
             
         }
     }
+    */
 
     /*
     private void OnCollisionEnter(Collision collision)
