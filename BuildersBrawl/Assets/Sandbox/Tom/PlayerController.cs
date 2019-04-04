@@ -627,6 +627,8 @@ public class PlayerController : MonoBehaviour
             //call player movement based off of joystick movement
             moveVector += playerMovement.PlayerSideMovement(joyInput, playerState);
             //moveVector += playerMovement.AddPlayerMomentum(joyInput);
+
+            playerAnimation.RunAnim(moveVector);
         }
         else
         {
@@ -662,7 +664,7 @@ public class PlayerController : MonoBehaviour
         //----------------------------
 
         //animation
-        playerAnimation.RunAnim(moveVector);
+        
 
 
         //apply rotation

@@ -719,7 +719,7 @@ MonoBehaviour:
   leanFactor: 1.05
   leanCeiling: 180
   leanAddOnceHitCeiling: 5
-  addWobble: 1
+  addWobble: 0
   wobbleSpeed: 0.01
   maxWobbleAngleInDegrees: 30
 --- !u!114 &6416705310449367095
