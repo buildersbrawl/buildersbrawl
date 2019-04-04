@@ -86,7 +86,7 @@ public class PlayerDeath : MonoBehaviour
             playerController.playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
 
-        GameObject cc = GameObject.Find("Main Camera");
+        GameObject cc = GameManager.S.cameraRef;
 
         playerRenderer.enabled = false;
 

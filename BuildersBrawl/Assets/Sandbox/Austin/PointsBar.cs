@@ -94,7 +94,7 @@ public class PointsBar : MonoBehaviour
         {
             player4 = GameManager.S.player4;
             players.Add(player4);
-            player4.GetComponent<Points>().ChangeFaceNum(3); //Tom: set face image
+            player4.GetComponent<Points>().ChangeFaceNum(2); //Tom: set face image
             //player4Head.sprite = player4.GetComponent<Points>().GetFace();
             //players[3] = player4;
             if (player4.activeInHierarchy)
@@ -128,15 +128,16 @@ public class PointsBar : MonoBehaviour
         //reset totalGamePoints
         totalGamePoints = 1;
 
+        //OLD
         //iterate through the players and add up their points
-        foreach (GameObject player in players)
+        /*foreach (GameObject player in players)
         {
             if(player != null)
             {
                 //Points pointsScript = player.GetComponent<Points>();
                 totalGamePoints += player.GetComponent<Points>().pointsTotal;
             }
-        }
+        }*/
 
         foreach (GameObject player in players)
         {
@@ -203,6 +204,8 @@ public class PointsBar : MonoBehaviour
 
                 //playerHeads[index].transform.position = Vector3.Lerp(startPosition.position, endPosition.position, Mathf.Lerp(0, pointsPercent, .05f));
                 //print(pointsPercent);
+
+                //error stops after a player has scored points
                 empty.transform.position = Vector3.Lerp(startPosition.transform.position, endPosition.transform.position, pointsPercent);
                 playerHeads[index].transform.position = Vector3.Lerp(playerHeads[index].transform.position, empty.transform.position, 0.05f);
             }
