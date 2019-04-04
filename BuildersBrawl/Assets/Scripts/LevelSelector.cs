@@ -57,10 +57,10 @@ public class LevelSelector : MonoBehaviour
             }
         }
 
-        if (PlayerSelect.S.bothPlayersReady)
+        if (PlayerSelect.S.TwoPlayersReady)
         {
             DisplayChosen();
-        }  
+        }
     }
 
     /*void FixedUpdate()

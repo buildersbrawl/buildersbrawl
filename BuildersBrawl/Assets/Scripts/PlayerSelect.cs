@@ -20,6 +20,8 @@ public class PlayerSelect : MonoBehaviour
     //Text before the players are selected
     public Text B4_P1_select;
     public Text B4_P2_select;
+    public Text B4_P3_select;
+    public Text B4_P4_select;
 
     /*//Text after players are selected
     public Text P1_selected;
@@ -28,17 +30,26 @@ public class PlayerSelect : MonoBehaviour
     //Character Models
     private GameObject player1;
     private GameObject player2;
+    private GameObject player3;
+    private GameObject player4;
 
     public Button LevelStartBtn;
     public Text LevelStartBtnText;
 
-    //checks if players one and player two is selected
+    //checks if players are selected
     public bool playerOneSelected;
     public bool playerTwoSelected;
-    public bool bothPlayersReady;
+    public bool playerThreeSelected;
+    public bool playerFourSelected;
+
+    public bool TwoPlayersReady;
+    public bool ThreePlayersReady;
+    public bool FourPlayersReady;
+
 
     //variables for assigning controller
-    public int maxPlayers = 2;
+    public int minPlayers = 2;
+    public int maxPlayers = 4;
     private List<PlayerMap> playerMap;
     private int gamePlayerIdCounter = 0;
     public InputManager inputManagerInstance;
@@ -85,7 +96,7 @@ public class PlayerSelect : MonoBehaviour
 
         playerMap = new List<PlayerMap>();
 
-        //InitializeScene();
+        InitializeScene();
     }
 
     // Start is called before the first frame update
@@ -99,14 +110,22 @@ public class PlayerSelect : MonoBehaviour
         //Shows that none of the players are selected
         playerOneSelected = false;
         playerTwoSelected = false;
-        bothPlayersReady = false;
+        playerThreeSelected = false;
+        playerFourSelected = false;
+        TwoPlayersReady = false;
+        ThreePlayersReady = false;
+        FourPlayersReady = false;
 
         //Displays the text that shows up before the players are selected
-        if(inPlayerSelect)
+        if (inPlayerSelect)
         {
             B4_P1_select.enabled = true;
             B4_P2_select.enabled = true;
+            B4_P3_select.enabled = true;
+            B4_P4_select.enabled = true;
             B4_P2_select.text = "Waiting for Player 1";
+            B4_P3_select.text = "Waiting for Player 1";
+            B4_P4_select.text = "Waiting for Player 1";
 
 
             /*//Hides the text
@@ -142,12 +161,17 @@ public class PlayerSelect : MonoBehaviour
                         SelectPlayerOne();
                     else if (playerCounter == 2)
                         SelectPlayerTwo();
+                    else if (playerCounter == 3)
+                        SelectPlayerThree();
+                    else if (playerCounter == 4)
+                        SelectPlayerFour();
 
                     //Debug.Log(playerCounter);
                     AssignNextPlayer(i);
                 }
             }
         }
+
     }
 
     public void SelectPlayerOne()
@@ -172,6 +196,28 @@ public class PlayerSelect : MonoBehaviour
         }
     }
 
+    public void SelectPlayerThree()
+    {
+        //Selects player two if not previously done and if player one was already selected
+        if (!playerThreeSelected && playerTwoSelected)
+        {
+            playerThreeSelected = true;
+            Debug.Log("Player Three selected");
+            CheckSelectedPlayers();
+        }
+    }
+
+    public void SelectPlayerFour()
+    {
+        //Selects player two if not previously done and if player one was already selected
+        if (!playerFourSelected && playerThreeSelected)
+        {
+            playerFourSelected = true;
+            Debug.Log("Player Two selected");
+            CheckSelectedPlayers();
+        }
+    }
+
     public void CheckSelectedPlayers()
     {
         //Checks if players one and two have been selected
@@ -183,6 +229,8 @@ public class PlayerSelect : MonoBehaviour
                 //P1_selected.enabled = true;
                 player1.SetActive(true);
                 B4_P2_select.text = "Press A to be Player 2";
+                B4_P3_select.text = "Waiting for Player 2";
+                B4_P4_select.text = "Waiting for Player 2";
             }
         }
 
@@ -193,18 +241,49 @@ public class PlayerSelect : MonoBehaviour
                 B4_P2_select.enabled = false;
                 //P2_selected.enabled = true;
                 player2.SetActive(true);
+                B4_P3_select.text = "Press A to be Player 3";
+                B4_P4_select.text = "Waiting for Player 3";
+            }
+        }
+
+        if (playerThreeSelected)
+        {
+            if (inPlayerSelect)
+            {
+                B4_P3_select.enabled = false;
+                //P2_selected.enabled = true;
+                player3.SetActive(true);
+                B4_P4_select.text = "Press A to be Player 4";
+            }
+        }
+
+        if (playerFourSelected)
+        {
+            if (inPlayerSelect)
+            {
+                B4_P4_select.enabled = false;
+                //P2_selected.enabled = true;
+                player4.SetActive(true);
             }
         }
 
         //If players one and two were selected, then the bool becomes true
         if (playerOneSelected && playerTwoSelected)
         {
-            bothPlayersReady = true;
-            if (inPlayerSelect)
-            {
-                LevelStartBtnText.text = "Selecting Level...";
-            }
-            Debug.Log("Both players selected");
+            TwoPlayersReady = true;
+            Debug.Log("Two players selected");
+        }
+
+        if(TwoPlayersReady && playerThreeSelected)
+        {
+            ThreePlayersReady = true;
+            Debug.Log("Three players selected");
+        }
+
+        if (ThreePlayersReady && playerFourSelected)
+        {
+            FourPlayersReady = true;
+            Debug.Log("Four players selected");
         }
     }
 
@@ -283,18 +362,26 @@ public class PlayerSelect : MonoBehaviour
     void CheckLevel()
     {
         if (SceneManager.GetActiveScene().name == "Player_Select")
-        {
+        {      
             InitializeScene();
             inPlayerSelect = true;
         }
         else
         {
-            initialized = false;
-            inPlayerSelect = false;
+            
+                initialized = false;
+                inPlayerSelect = false;
 
-            playerOneSelected = false;
-            playerTwoSelected = false;
-            bothPlayersReady = false;
+            if (RoundsManager.R.round == 1)
+            {
+                playerOneSelected = false;
+                playerTwoSelected = false;
+                playerThreeSelected = false;
+                playerFourSelected = false;
+                TwoPlayersReady = false;
+                ThreePlayersReady = false;
+                FourPlayersReady = false;
+            }
         }
     }
 
@@ -306,42 +393,60 @@ public class PlayerSelect : MonoBehaviour
             //Assigns object to appropriate spaces
             B4_P1_select = GameObject.Find("SelectP1").GetComponent<Text>();
             B4_P2_select = GameObject.Find("SelectP2").GetComponent<Text>();
+            B4_P3_select = GameObject.Find("SelectP3").GetComponent<Text>();
+            B4_P4_select = GameObject.Find("SelectP4").GetComponent<Text>();
 
             /*P1_selected = GameObject.Find("Selected_P1").GetComponent<Text>();
             P2_selected = GameObject.Find("Selected_P2").GetComponent<Text>();*/
 
             player1 = GameObject.Find("P1_Model");
             player2 = GameObject.Find("P2_Model");
+            player3 = GameObject.Find("P3_Model");
+            player4 = GameObject.Find("P4_Model");
 
             LevelStartBtn = GameObject.Find("StartGameBtn").GetComponent<Button>();
             LevelStartBtnText = GameObject.Find("StartGameBtnText").GetComponent<Text>();
 
-            //Shows that none of the players are selected
-            playerOneSelected = false;
-            playerTwoSelected = false;
-            bothPlayersReady = false;
+            if (RoundsManager.R.round == 1)
+            {
+                //Shows that none of the players are selected
+                playerOneSelected = false;
+                playerTwoSelected = false;
+                playerThreeSelected = false;
+                playerFourSelected = false;
+                TwoPlayersReady = false;
+                ThreePlayersReady = false;
+                FourPlayersReady = false;
 
-            B4_P1_select.enabled = true;
-            B4_P2_select.enabled = true;
-            B4_P2_select.text = "Waiting for Player 1";
+                B4_P1_select.enabled = true;
+                B4_P2_select.enabled = true;
+                B4_P3_select.enabled = true;
+                B4_P4_select.enabled = true;
+
+                B4_P2_select.text = "Waiting for Player 1";
+                B4_P3_select.text = "Waiting for Player 1";
+                B4_P4_select.text = "Waiting for Player 1";
 
 
-            /*//Hides the text
-            P1_selected.enabled = false;
-            P2_selected.enabled = false;*/
+                /*//Hides the text
+                P1_selected.enabled = false;
+                P2_selected.enabled = false;*/
 
-            //Hides the player models
-            player1.SetActive(false);
-            player2.SetActive(false);
+                //Hides the player models
+                player1.SetActive(false);
+                player2.SetActive(false);
+                player3.SetActive(false);
+                player4.SetActive(false);
 
-            LevelStartBtn.interactable = false;
-            LevelStartBtnText.text = "Waiting for Players...";
+                LevelStartBtn.interactable = false;
+                LevelStartBtnText.text = "Waiting for Players...";
+
+                //reset player count
+                playerCounter = 0;
+            }
 
             initialized = true;
             Debug.Log("Scene Initialized!");
-
-            //reset player count
-            playerCounter = 0;
         }
     }
 }
