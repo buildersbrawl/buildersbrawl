@@ -25,22 +25,22 @@ public class IcyMechanic : MonoBehaviour
     {
         if (player == GameManager.S.player1)//Blue
         {
-            Instantiate(playerIceCubePrefabs[0].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+            Instantiate(playerIceCubePrefabs[0].iceCubePrefabs[UnityEngine.Random.Range(0, 2)], deathPos, Quaternion.identity);
         }
         //Instantiate(iceCubePrefab[0], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player2)//Red
         {
-            Instantiate(playerIceCubePrefabs[1].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+            Instantiate(playerIceCubePrefabs[1].iceCubePrefabs[UnityEngine.Random.Range(0, 2)], deathPos, Quaternion.identity);
         }
         //Instantiate(iceCubePrefab[1], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player3)//Yellow
         {
-            Instantiate(playerIceCubePrefabs[2].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+            Instantiate(playerIceCubePrefabs[2].iceCubePrefabs[UnityEngine.Random.Range(0, 2)], deathPos, Quaternion.identity);
         }
         //Instantiate(iceCubePrefab[2], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player4)//Purple
         {
-            Instantiate(playerIceCubePrefabs[3].iceCubePrefabs[UnityEngine.Random.Range(0, 1)], deathPos, Quaternion.identity);
+            Instantiate(playerIceCubePrefabs[3].iceCubePrefabs[UnityEngine.Random.Range(0, 2)], deathPos, Quaternion.identity);
         }
             //Instantiate(iceCubePrefab[3], deathPos, Quaternion.identity);
     }
