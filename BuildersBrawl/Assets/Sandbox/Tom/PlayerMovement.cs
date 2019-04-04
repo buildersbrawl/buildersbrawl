@@ -268,6 +268,24 @@ public class PlayerMovement : MonoBehaviour
         {
             playerController.playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);
         }
+
+        playerController.playerState = PlayerController.PlayerState.pushed;
+
+        StartCoroutine(EndPushed());
+    }
+
+    IEnumerator EndPushed()
+    {
+        yield return new WaitForSeconds(.01f);
+        if(playerCombatMomentum.magnitude < .01f)
+        {
+            playerController.playerState = PlayerController.PlayerState.defaultMovement;
+        }
+        else
+        {
+            //print("Player pushed");
+            StartCoroutine(EndPushed());
+        }
     }
 
     public void JumpEnd()
