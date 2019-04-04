@@ -17,6 +17,8 @@ public class IceCubeDestroy : MonoBehaviour
     }
     private void Update()
     {
+        Debug.Log(moveSpeed);
+        Debug.Log(moveAmount);
         float timePassed = Time.time - startTimer;
         float movementPassed = 0;
         if (timePassed >= timeTilDestruction)
