@@ -27,7 +27,8 @@ public class PlayerController : MonoBehaviour
         action,
         holdingPlank,
         cooldown,
-        stunned
+        stunned,
+        pushed
     }
 
     private bool stunSoDontStopFromCooldown;
@@ -570,7 +571,7 @@ public class PlayerController : MonoBehaviour
         //print("frame " + joyInput);
 
         //IF JUMPING OVERRIDE ACTION or if doing other action
-        if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown)
+        if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown && playerState != PlayerState.pushed)
         {
             //y pick up
             //y drop board

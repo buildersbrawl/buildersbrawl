@@ -231,8 +231,8 @@ ModelImporter:
     - serializedVersion: 16
       name: run
       takeName: run
-      firstFrame: 1
-      lastFrame: 20
+      firstFrame: 0
+      lastFrame: 24
       wrapMode: 0
       orientationOffsetY: -20
       level: 0
@@ -255,7 +255,7 @@ ModelImporter:
       transformMask: []
       maskType: 3
       maskSource: {instanceID: 0}
-      additiveReferencePoseFrame: 0
+      additiveReferencePoseFrame: 0.96
     isReadable: 1
   meshes:
     lODScreenPercentages: []
