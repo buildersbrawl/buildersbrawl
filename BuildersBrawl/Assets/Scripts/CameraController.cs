@@ -165,6 +165,7 @@ public class CameraController : MonoBehaviour
     public GameObject startGameEnd;
     public float startLerpRate = .005f;
     public bool isRightToLeft = false;
+    public bool shouldDoStartPan = true;
 
     public AudioSource audio;
     public AudioClip[] clips;
@@ -254,6 +255,11 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if (!shouldDoStartPan)
+        {
+            isStart = false;
+        }
+
         if (isStart)
         {
             if (!isRightToLeft)
