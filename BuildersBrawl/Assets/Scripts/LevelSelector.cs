@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Rewired;
 using UnityEngine.SceneManagement;
 
 public class LevelSelector : MonoBehaviour
@@ -60,6 +61,23 @@ public class LevelSelector : MonoBehaviour
         if (PlayerSelect.S.TwoPlayersReady)
         {
             DisplayChosen();
+
+            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Submit"))
+            {
+                ActuallyStartLevel();
+            }
+            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UIRight"))
+            {
+                CycleChoices();
+            }
+            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UILeft"))
+            {
+                CycleBackChoices();
+            }
+            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Back"))
+            {
+                ReturnToMainMenu("Main_Menu");
+            }
         }
     }
 
@@ -101,6 +119,7 @@ public class LevelSelector : MonoBehaviour
         //Stores level name
         chosenLevel = levelNames[levelNumber];
     }
+
     void CycleChoices()
     {
         //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
@@ -110,13 +129,32 @@ public class LevelSelector : MonoBehaviour
         }
         else
         {
-            show += 1;
+            show ++;
         }
 
         if(show < levels.Length)
         {
            levelDisplay.sprite = levels[show];
            chosenLevel = levelNames[show];
+        }
+    }
+
+    void CycleBackChoices()
+    {
+        //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
+        if (show < 1)
+        {
+            show = levels.Length;
+        }
+        else
+        {
+            show--;
+        }
+
+        if (show < levels.Length)
+        {
+            levelDisplay.sprite = levels[show];
+            chosenLevel = levelNames[show];
         }
     }
 
@@ -139,7 +177,7 @@ public class LevelSelector : MonoBehaviour
         chosenShown = true;
 
         PlayerSelect.S.LevelStartBtn.interactable = true;
-        PlayerSelect.S.LevelStartBtnText.text = "Press A to Start Game";
+        PlayerSelect.S.LevelStartBtnText.text = "Player 1: Press A to Start";
     }
 
     public void ActuallyStartLevel()
