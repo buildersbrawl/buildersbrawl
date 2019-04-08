@@ -17,21 +17,24 @@ public class IceCubeDestroy : MonoBehaviour
     }
     private void Update()
     {
-        Debug.Log(moveSpeed);
-        Debug.Log(moveAmount);
         float timePassed = Time.time - startTimer;
-        float movementPassed = 0;
+        float movementPassed = transform.position.y - startPos.y;
+
         if (timePassed >= timeTilDestruction)
         {
             Destroy(this.gameObject);
         }
-        else
+        else if(movementPassed <= moveAmount)
         {
+            /*
             if (movementPassed <= moveAmount)
             {
                 transform.position += Vector3.up * moveSpeed * Time.deltaTime;
                 movementPassed = transform.position.y - startPos.y;
-            }
+            }*/
+            transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+            Debug.Log("MovementPassed: " + movementPassed);
+            Debug.Log("MovementAmount: " + moveAmount);
         }
     }
 }
