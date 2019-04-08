@@ -255,7 +255,7 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (!shouldDoStartPan)
+        /*if (!shouldDoStartPan)
         {
             isStart = false;
         }
@@ -286,7 +286,7 @@ public class CameraController : MonoBehaviour
         }
 
 
-        else if (setCameraBasedOnPlayers && !winnerDetermined)
+        else */if (setCameraBasedOnPlayers && !winnerDetermined)
         {
             GetAveragePositionBetweenPlayers();
             GetDistanceBetweenPlayers();
@@ -429,11 +429,12 @@ public class CameraController : MonoBehaviour
             }
         }
         //if a winner has been determined, do stuff
-        else if (winnerDetermined)
+        //delete comments after build
+        /*else if (winnerDetermined)
         {
             ZoomOnWinner();
             //Debug.Log("We have a winner!!");
-        }
+        }*/
     }
 
     public void SetCameraPosition(Vector3 centerPoint)

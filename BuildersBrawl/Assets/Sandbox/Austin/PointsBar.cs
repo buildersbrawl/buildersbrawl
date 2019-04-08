@@ -205,8 +205,14 @@ public class PointsBar : MonoBehaviour
                 //playerHeads[index].transform.position = Vector3.Lerp(startPosition.position, endPosition.position, Mathf.Lerp(0, pointsPercent, .05f));
                 //print(pointsPercent);
 
-                //error stops after a player has scored points
-                empty.transform.position = Vector3.Lerp(startPosition.transform.position, endPosition.transform.position, pointsPercent);
+                //error stops after a player has scored points, so if statement to check for that
+                if(winner != 0)
+                {
+                    //move head to right position
+                    empty.transform.position = Vector3.Lerp(startPosition.transform.position, endPosition.transform.position, pointsPercent);
+                }
+                
+                //gradual movement
                 playerHeads[index].transform.position = Vector3.Lerp(playerHeads[index].transform.position, empty.transform.position, 0.05f);
             }
 
