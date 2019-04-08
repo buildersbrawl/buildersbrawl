@@ -372,7 +372,7 @@ public class PlayerSelect : MonoBehaviour
                 initialized = false;
                 inPlayerSelect = false;
 
-            if (RoundsManager.R.round == 1)
+            /*if (RoundsManager.R.round == 3)
             {
                 playerOneSelected = false;
                 playerTwoSelected = false;
@@ -381,7 +381,7 @@ public class PlayerSelect : MonoBehaviour
                 TwoPlayersReady = false;
                 ThreePlayersReady = false;
                 FourPlayersReady = false;
-            }
+            }*/
         }
     }
 
@@ -443,6 +443,39 @@ public class PlayerSelect : MonoBehaviour
 
                 //reset player count
                 playerCounter = 0;
+            }
+
+            if(RoundsManager.R.round > 1)
+            {
+                if(!ThreePlayersReady)
+                {
+                    B4_P1_select.enabled = false;
+                    player1.SetActive(true);
+
+                    B4_P2_select.enabled = false;
+                    player2.SetActive(true);
+
+                    player3.SetActive(false);
+                    B4_P3_select.enabled = false;
+
+                    player4.SetActive(false);
+                    B4_P4_select.enabled = false;
+                }
+
+                if (!FourPlayersReady)
+                {
+                    B4_P1_select.enabled = false;
+                    player1.SetActive(true);
+
+                    B4_P2_select.enabled = false;
+                    player2.SetActive(true);
+
+                    player3.SetActive(true);
+                    B4_P3_select.enabled = false;
+
+                    player4.SetActive(false);
+                    B4_P4_select.enabled = false;
+                }
             }
 
             initialized = true;
