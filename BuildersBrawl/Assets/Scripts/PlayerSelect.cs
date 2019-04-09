@@ -154,10 +154,37 @@ public class PlayerSelect : MonoBehaviour
                 //if someone hits "Submit" button (A)
                 if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
                 {
-                    //TODO: if controller isnt already attached to player 
+                    //TODO: if controller isnt already attached to player add player
                     
+                    //if controller 1
+                    if(ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(0))
+                    {
+                        SelectPlayerOne();
+                    }
+                    //if controller 2
+                    else if(ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(1))
+                    {
+                        SelectPlayerTwo();
+                    }
+                    //if controller 3
+                    else if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(2))
+                    {
+                        SelectPlayerThree();
+                    }
+                    //if controller 4
+                    else if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(3))
+                    {
+                        SelectPlayerFour();
+                    }
 
                     playerCounter++;
+
+                    /*
+                    //if player one selected and controller that hit submit is player 1
+                    if(playerOneSelected && ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(0))
+                    { }
+
+                    
 
                     //change ui to reflect a controller being selected
                     if (playerCounter == 1)
@@ -168,6 +195,7 @@ public class PlayerSelect : MonoBehaviour
                         SelectPlayerThree();
                     else if (playerCounter == 4)
                         SelectPlayerFour();
+                    */
 
                     //Debug.Log(playerCounter);
                     AssignNextPlayer(i);
