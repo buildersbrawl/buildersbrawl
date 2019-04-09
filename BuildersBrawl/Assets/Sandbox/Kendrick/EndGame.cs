@@ -68,28 +68,23 @@ public class EndGame : MonoBehaviour
         playerFaces[0] = P1Faces;
         playerFaces[1] = P2Faces;
 
+        playerName = new string[players];
+        playerName[0] = "Player 1";
+        playerName[1] = "Player 2";
+
         if (P3)
         {
             playerFaces[2] = P3Faces;
             playerPoints[2] = PointsStorage.P.P3Points[PointsStorage.P.total];
             playerImages[2] = P3Data.GetComponentInChildren<Image>(title);
+            playerName[2] = "Player 3";
         }
+
         if (P4)
         {
             playerFaces[3] = P4Faces;
             playerPoints[3] = PointsStorage.P.P4Points[PointsStorage.P.total];
             playerImages[3] = P4Data.GetComponentInChildren<Image>(title);
-        }
-        
-        playerName = new string[players];
-        playerName[0] = "Player 1";
-        playerName[1] = "Player 2";
-        if (P3)
-        {
-            playerName[2] = "Player 3";
-        }
-        if (P4)
-        {
             playerName[3] = "Player 4";
         }
     }
