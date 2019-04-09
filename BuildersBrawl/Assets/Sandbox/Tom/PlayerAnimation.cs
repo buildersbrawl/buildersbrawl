@@ -50,6 +50,9 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
+        //reset triggers
+        ResetAnimationTriggers();
+
         playerAnimator.SetTrigger(animTriggerName);
     }
 
@@ -103,13 +106,13 @@ public class PlayerAnimation : MonoBehaviour
             if ((currAnimStateInfo.IsName(idleId)))
             {
                 //run
-                playerAnimator.SetTrigger("ToRun");
+                CallAnimTrigger("ToRun");
                 print("run anim");
             }
             else if ((currAnimStateInfo.IsName(idleBoardId)))
             {
                 //runBoard
-                playerAnimator.SetTrigger("ToRunBoard");
+                CallAnimTrigger("ToRunBoard");
                 print("runBoard anim");
             }
         }
@@ -121,13 +124,13 @@ public class PlayerAnimation : MonoBehaviour
             if ((currAnimStateInfo.IsName(runId)))
             {
                 //idle
-                playerAnimator.SetTrigger("ToIdle");
+                CallAnimTrigger("ToIdle");
                 print("idle anim");
             }
             else if ((currAnimStateInfo.IsName(runBoardId)))
             {
                 //idleBoard
-                playerAnimator.SetTrigger("ToIdleBoard");
+                CallAnimTrigger("ToIdleBoard");
                 //print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("idle"));
             }
         }
@@ -167,12 +170,12 @@ public class PlayerAnimation : MonoBehaviour
         //see if players current looking direction is less than 90 (oblique) then push from back
         if(Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward, pushedFromDirection)) < 90)
         {
-            playerAnimator.SetTrigger("ToPushedBack");
+            CallAnimTrigger("ToPushedBack");
         }
         else
         {
             //else push from front
-            playerAnimator.SetTrigger("ToPushedFront");
+            CallAnimTrigger("ToPushedFront");
         }
     }
 
@@ -189,12 +192,12 @@ public class PlayerAnimation : MonoBehaviour
         //see if players current looking direction is less than 90 (oblique) then push from back
         if (Mathf.Abs(Vector3.Angle(this.gameObject.transform.forward, stunnedFromDirection)) < 90)
         {
-            playerAnimator.SetTrigger("ToSquashBack");
+            CallAnimTrigger("ToSquashFront");
         }
         else
         {
             //else push from front
-            playerAnimator.SetTrigger("ToSquashFront");
+            CallAnimTrigger("ToSquashBack");
         }
     }
 
