@@ -729,13 +729,13 @@ public class PlayerController : MonoBehaviour
         RaycastHit groundInfo;
 
         //raycast down short distance, if hits anything grounded
-        Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, groundCheckDistance);
+        ///Debug.DrawRay(this.gameObject.transform.position, Vector3.down, Color.red, groundCheckDistance);
         //Debug.DrawRay(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * groundCheckSize, 0, this.gameObject.transform.localScale.z * groundCheckSize), Vector3.down, Color.red, groundCheckDistance);
         //Debug.DrawRay(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * groundCheckSize, 0, this.gameObject.transform.localScale.z * groundCheckSize), Vector3.down, Color.red, groundCheckDistance);
         //Debug.DrawRay(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * groundCheckSize, 0, -this.gameObject.transform.localScale.z * groundCheckSize), Vector3.down, Color.red, groundCheckDistance);
         //Debug.DrawRay(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * groundCheckSize, 0, -this.gameObject.transform.localScale.z * groundCheckSize), Vector3.down, Color.red, groundCheckDistance);
-        Debug.DrawRay(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * groundCheckSize, 0, 0), Vector3.down, Color.red, groundCheckDistance);
-        Debug.DrawRay(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * groundCheckSize, 0, 0), Vector3.down, Color.red, groundCheckDistance);
+        ///Debug.DrawRay(this.gameObject.transform.position + new Vector3(this.gameObject.transform.localScale.x * groundCheckSize, 0, 0), Vector3.down, Color.red, groundCheckDistance);
+        ///Debug.DrawRay(this.gameObject.transform.position + new Vector3(-this.gameObject.transform.localScale.x * groundCheckSize, 0, 0), Vector3.down, Color.red, groundCheckDistance);
         //Debug.DrawRay(this.gameObject.transform.position + new Vector3(0, 0, this.gameObject.transform.localScale.z * groundCheckSize), Vector3.down, Color.red, groundCheckDistance);
         //Debug.DrawRay(this.gameObject.transform.position + new Vector3(0, 0, -this.gameObject.transform.localScale.z * groundCheckSize), Vector3.down, Color.red, groundCheckDistance);
 
@@ -783,6 +783,8 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
         //reset state
         //TempFlatten(false);
+        //unflatten by calling to idle
+        playerAnimation.CallAnimTrigger("ToIdle");
         playerState = PlayerState.defaultMovement;
     }
 

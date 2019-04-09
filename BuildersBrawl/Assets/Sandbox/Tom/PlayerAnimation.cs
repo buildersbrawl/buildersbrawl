@@ -42,7 +42,7 @@ public class PlayerAnimation : MonoBehaviour
     */
 
     //calls appropriate animation based off of action
-    public void ActionAnim(string toActionTransitionName)
+    public void CallAnimTrigger(string animTriggerName)
     {
         if(playerAnimator == null)
         {
@@ -50,7 +50,7 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
-        playerAnimator.SetTrigger(toActionTransitionName);
+        playerAnimator.SetTrigger(animTriggerName);
     }
 
     //determines what run animation to play
@@ -247,6 +247,16 @@ public class PlayerAnimation : MonoBehaviour
         return otherTriggersActive;
     }
 
+    //TODO: reset triggers whenever you enter a new state (or maybe when you leav one?)
 
+
+    public void ResetAnimationTriggers()
+    {
+        for (int index = 0; index < playerAnimator.parameterCount; index++)
+        {
+            //if other trigger active add one to activeparameters
+            playerAnimator.ResetTrigger(playerAnimator.GetParameter(index).name); 
+        }
+    }
 
 }
