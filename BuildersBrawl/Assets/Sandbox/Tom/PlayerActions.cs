@@ -165,23 +165,23 @@ public class PlayerActions : MonoBehaviour
         switch (pAT)
         {
             case PlayerActionType.push:
-                playerController.playerAnimation.ActionAnim("ToPush");
+                playerController.playerAnimation.CallAnimTrigger("ToPush");
                 break;
             case PlayerActionType.charge:
-                playerController.playerAnimation.ActionAnim("ToCharge");
+                playerController.playerAnimation.CallAnimTrigger("ToCharge");
                 break;
             case PlayerActionType.pickUp:
                 print("called pickup animation");
-                playerController.playerAnimation.ActionAnim("ToBoardPickUp");
+                playerController.playerAnimation.CallAnimTrigger("ToBoardPickUp");
                 break;
             case PlayerActionType.drop:
                 //NA drop animations handled in "PushMe" and "StunMe" functions
                 break;
             case PlayerActionType.slam:
-                playerController.playerAnimation.ActionAnim("ToSlam");
+                playerController.playerAnimation.CallAnimTrigger("ToSlam");
                 break;
             case PlayerActionType.place:
-                playerController.playerAnimation.ActionAnim("ToIdle");
+                playerController.playerAnimation.CallAnimTrigger("ToPlacingBoard");
                 break;
             default:
                 break;
@@ -290,7 +290,7 @@ public class PlayerActions : MonoBehaviour
 
         if (didNotFindPlank)
         {
-            playerController.playerAnimation.ActionAnim("ToIdle");
+            playerController.playerAnimation.CallAnimTrigger("ToIdle");
         }
 
         //make cubes to visualize boxcast
