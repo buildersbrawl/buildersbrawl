@@ -64,10 +64,12 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
-        if (SeeIfOtherTriggersActive())
+        /*
+         * if (SeeIfOtherTriggersActive())
         {
             return;
         }
+        */
 
         /*
         int runId = Animator.StringToHash("run");

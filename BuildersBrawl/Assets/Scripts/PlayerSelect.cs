@@ -15,6 +15,7 @@ public class PlayerSelect : MonoBehaviour
     public int p3Controller;
     public int p4Controller;
 
+    private Controller controller1, controller2, controller3, controller4;
     //public static PlayerSelect PS;
 
     //Text before the players are selected
@@ -150,9 +151,12 @@ public class PlayerSelect : MonoBehaviour
         {
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
-                //Debug.Log(i);
+                //if someone hits "Submit" button (A)
                 if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
                 {
+                    //TODO: if controller isnt already attached to player 
+                    
+
                     playerCounter++;
 
                     //change ui to reflect a controller being selected

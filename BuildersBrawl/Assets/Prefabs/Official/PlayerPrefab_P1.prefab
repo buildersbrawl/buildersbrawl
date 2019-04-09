@@ -145,7 +145,7 @@ MonoBehaviour:
   playerPoints: {fileID: 0}
   playerAnimation: {fileID: 0}
   bounciness: 1
-  collisonCheckLength: 0.6
+  collisonCheckLength: 0.3
   groundCheckDistance: 1.1
   groundCheckSize: 0.3
   playerGrounded: 0
@@ -164,11 +164,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ea6415e564bcc43b3ff9c6d75a3302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actionCooldown: 1
+  actionCooldown: 2
   whereBoardHeld: {x: 0, y: 1.5, z: 0}
   throwBoardOnDrop: 0
   boardSlamWaitTime: 0.1
-  boardSlamStunTime: 2
+  boardSlamStunTime: 1.5
   boxCastOffset: {x: 0, y: 0, z: 0}
   boxCasthalfSize: {x: 0.7, y: 1.5, z: 0.1}
   boxCastMaxDistancePlankPickUp: 1

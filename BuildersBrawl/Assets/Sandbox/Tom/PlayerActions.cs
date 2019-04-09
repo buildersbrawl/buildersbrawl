@@ -74,6 +74,8 @@ public class PlayerActions : MonoBehaviour
 
     [Header("Push")]
     public float pushForce = 1f;
+    private float pushCooldown = 1f;
+    private float pushedCooldown = 1f;
 
     //------------------------------------------------------------------------------------------------------
 
