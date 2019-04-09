@@ -57,9 +57,15 @@ public class PlayerAnimation : MonoBehaviour
     //called in playerCOntroller
     public void RunAnim(Vector3 movement)
     {
+
         if(playerAnimator == null)
         {
             print("no animator");
+            return;
+        }
+
+        if (SeeIfOtherTriggersActive())
+        {
             return;
         }
 
@@ -123,47 +129,7 @@ public class PlayerAnimation : MonoBehaviour
                 //print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("idle"));
             }
         }
-        /*
-        //if going fast enough and not already running
-        if (movement.magnitude >= minimumMovementForRun && !((currAnimStateInfo.fullPathHash == runId) || (currAnimStateInfo.fullPathHash == runBoardId)))
-        {
-            print("should run");
-
-            //call appropriate run animation based off of whether holding a plank or not
-            if(currAnimStateInfo.fullPathHash == idleId)
-            {
-                //run
-                playerAnimator.SetTrigger("ToRun");
-                print("run anim");
-            }
-            else if (currAnimStateInfo.fullPathHash == idleBoardId)
-            {
-                //runBoard
-                playerAnimator.SetTrigger("ToRunBoard");
-                print("runBoard anim");
-            }
-        }
-        //less than speed threshold and not already doing an idle animation
-        else if (movement.magnitude < minimumMovementForRun && (!(currAnimStateInfo.fullPathHash == idleId)))
-        {
-            print("should idle");
-
-
-            //call appropriate idle animation based off of whether holding a plank or not
-            if (currAnimStateInfo.fullPathHash == runId)
-            {
-                //idle
-                playerAnimator.SetTrigger("ToIdle");
-                print("idle anim");
-            }
-            else if (currAnimStateInfo.fullPathHash == runBoardId)
-            {
-                //idleBoard
-                playerAnimator.SetTrigger("ToIdleBoard");
-                //print("idleBoard anim: " + playerAnimator.GetNextAnimatorStateInfo(0).IsName("idle"));
-            }
-        }
-        */
+        
 
     }
 
@@ -254,6 +220,30 @@ public class PlayerAnimation : MonoBehaviour
 
     }
     */
+
+    //see if any other triggers active
+    public bool SeeIfOtherTriggersActive()
+    {
+        bool otherTriggersActive = false;
+
+        int activeParameters = 0;
+
+        for (int index = 0; index < playerAnimator.parameterCount; index++)
+        {
+            //if other trigger active add one to activeparameters
+            if (playerAnimator.GetBool(playerAnimator.GetParameter(index).name) == true)
+            {
+                activeParameters++;
+            }
+        }
+
+        if(activeParameters > 0)
+        {
+            otherTriggersActive = true;
+        }
+
+        return otherTriggersActive;
+    }
 
 
 

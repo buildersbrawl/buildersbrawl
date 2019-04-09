@@ -179,7 +179,7 @@ public class PlayerActions : MonoBehaviour
                 playerController.playerAnimation.ActionAnim("ToSlam");
                 break;
             case PlayerActionType.place:
-                playerController.playerAnimation.ActionAnim("ToPlacingBoard");
+                playerController.playerAnimation.ActionAnim("ToIdle");
                 break;
             default:
                 break;
@@ -248,6 +248,9 @@ public class PlayerActions : MonoBehaviour
         //boxcast (makes an array)
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePlankPickUp);
 
+        //bool to determine whether animation goes back to idle
+        bool didNotFindPlank = true;
+
         //cooldown not happening until proven otherwise
         omitCooldown = true;
 
@@ -259,6 +262,7 @@ public class PlayerActions : MonoBehaviour
             if (boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>() != null && boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>().plankState == PlankManager.PlankState.dropped) 
             {
                 PickUpPlank(boxHitInfo[index].collider.gameObject);
+                didNotFindPlank = false;
 
                 //stop looking for other hit boards (stop for loop)
                 index = boxHitInfo.Length;
@@ -273,13 +277,18 @@ public class PlayerActions : MonoBehaviour
 
                 //pivk it up
                 PickUpPlank(newPlank);
-
+                didNotFindPlank = false;
                 //stop looking (stop for loop)
                 index = boxHitInfo.Length;
             }
 
             //----------------------------------
 
+        }
+
+        if (didNotFindPlank)
+        {
+            playerController.playerAnimation.ActionAnim("ToIdle");
         }
 
         //make cubes to visualize boxcast
