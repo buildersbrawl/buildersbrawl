@@ -59,35 +59,36 @@ public class EndGame : MonoBehaviour
         playerPoints = new int[players];
         playerPoints[0] = PointsStorage.P.P1Points[PointsStorage.P.total];
         playerPoints[1] = PointsStorage.P.P2Points[PointsStorage.P.total];
-        playerPoints[2] = PointsStorage.P.P3Points[PointsStorage.P.total];
-        playerPoints[3] = PointsStorage.P.P4Points[PointsStorage.P.total];
 
         playerImages = new Image[players];
         playerImages[0] = P1Data.GetComponentInChildren<Image>(title);
         playerImages[1] = P2Data.GetComponentInChildren<Image>(title);
-        playerImages[2] = P3Data.GetComponentInChildren<Image>(title);
-        playerImages[3] = P4Data.GetComponentInChildren<Image>(title);
-
+        
         playerFaces = new Sprite[players][];
         playerFaces[0] = P1Faces;
         playerFaces[1] = P2Faces;
-        if (players > 2)
+
+        if (P3)
         {
             playerFaces[2] = P3Faces;
+            playerPoints[2] = PointsStorage.P.P3Points[PointsStorage.P.total];
+            playerImages[2] = P3Data.GetComponentInChildren<Image>(title);
         }
-        if (players > 3)
+        if (P4)
         {
             playerFaces[3] = P4Faces;
+            playerPoints[3] = PointsStorage.P.P4Points[PointsStorage.P.total];
+            playerImages[3] = P4Data.GetComponentInChildren<Image>(title);
         }
         
         playerName = new string[players];
         playerName[0] = "Player 1";
         playerName[1] = "Player 2";
-        if (players > 2)
+        if (P3)
         {
             playerName[2] = "Player 3";
         }
-        if (players > 3)
+        if (P4)
         {
             playerName[3] = "Player 4";
         }
