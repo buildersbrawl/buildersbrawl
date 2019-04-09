@@ -58,6 +58,19 @@ public class LevelSelector : MonoBehaviour
             }
         }
 
+        if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UIRight"))
+        {
+            CycleChoices();
+        }
+        if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UILeft"))
+        {
+            CycleBackChoices();
+        }
+        if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Back"))
+        {
+            ReturnToMainMenu("Main_Menu");
+        }
+
         if (PlayerSelect.S.TwoPlayersReady)
         {
             DisplayChosen();
@@ -65,18 +78,6 @@ public class LevelSelector : MonoBehaviour
             if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Submit"))
             {
                 ActuallyStartLevel();
-            }
-            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UIRight"))
-            {
-                CycleChoices();
-            }
-            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UILeft"))
-            {
-                CycleBackChoices();
-            }
-            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Back"))
-            {
-                ReturnToMainMenu("Main_Menu");
             }
         }
     }

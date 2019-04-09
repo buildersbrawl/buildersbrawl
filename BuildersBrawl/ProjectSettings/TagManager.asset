@@ -16,6 +16,8 @@ TagManager:
   - EndGame
   - Player3
   - Player4
+  - Controls
+  - Options
   layers:
   - Default
   - TransparentFX
