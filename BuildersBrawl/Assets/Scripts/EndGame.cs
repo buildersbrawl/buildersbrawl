@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using Rewired;
 
 public static class ExtensionFunction
 {
@@ -103,7 +104,7 @@ public class EndGame : MonoBehaviour
         DisplayPoints();
         CheckLast();
 
-        if(endGame)
+        if (endGame)
         {
             AssignAward();
         }
@@ -112,6 +113,14 @@ public class EndGame : MonoBehaviour
         Debug.Log("Second Place: " + second);
         Debug.Log("Third Place: " + third);
         Debug.Log("Last Place: " + last);*/
+
+        for (int i = 0; i < ReInput.players.playerCount; i++)
+        {
+            if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
+            {
+                ContinueButton();
+            }
+        }
     }
 
     void CheckPlayerNumbers()
@@ -201,10 +210,10 @@ public class EndGame : MonoBehaviour
     
     void CompareTotals()
     {
-        int[] place = new int[4];
+        int[] place = new int[players];
 
             //Calculate first place
-            for (int f = 0; f < 4; f++)
+            for (int f = 0; f < players; f++)
             {
             
                 if (place[0] < playerPoints[f])
@@ -216,7 +225,7 @@ public class EndGame : MonoBehaviour
         }
 
             //Calculate second place
-            for (int f = 0; f < 4; f++)
+            for (int f = 0; f < players; f++)
             {
                 if (place[0] > playerPoints[f])
                 {
@@ -237,7 +246,7 @@ public class EndGame : MonoBehaviour
         if (P3)
         {
             //Calculate third place
-            for (int f = 0; f < 4; f++)
+            for (int f = 0; f < players; f++)
             {
                 if (place[0] > playerPoints[f] && place[1] > playerPoints[f])
                 {
@@ -258,7 +267,7 @@ public class EndGame : MonoBehaviour
             if (P4)
             {
                 //Calculate forth place
-                for (int f = 0; f < 4; f++)
+                for (int f = 0; f < players; f++)
                 {
                     if (place[0] > playerPoints[f] && place[1] > playerPoints[f] && place[2] > playerPoints[f])
                     {
