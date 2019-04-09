@@ -84,6 +84,7 @@ public class PlayerMovement : MonoBehaviour
     public float maxWobbleAngleInDegrees = 30f;
     bool swaySwitch;
     private Vector3 lastKnownJoyDirection;
+    public bool noWobbleOnMove;
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -443,6 +444,11 @@ public class PlayerMovement : MonoBehaviour
             lastKnownJoyDirection = joystickInput;
             lastKnownJoyDirection.Normalize();
             lastKnownJoyDirection *= .001f;
+
+            if (noWobbleOnMove)
+            {
+                wobbleAmount = 0;
+            }
         }
         else
         {

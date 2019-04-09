@@ -119,6 +119,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public bool jumpEnabled = false;
+
     //around cos(pi/4) or sin (pi/4) (they're the same number)
     private const float TURN_INPUT_45_DEGREES_CONSTANT = 0.70710678118f;
 
@@ -543,8 +545,13 @@ public class PlayerController : MonoBehaviour
         //if not doing something else and grounded a will activate jump
         if (playerState != PlayerState.action && playerState != PlayerState.jumping && playerGrounded)
         {
-            //a jump                                        //true if holding plank
-            moveVector += playerMovement.Jump(AJump, playerActions.HeldPlank != null);
+            //a jump
+
+            if (jumpEnabled)
+            {
+                //true if holding plank
+                moveVector += playerMovement.Jump(AJump, playerActions.HeldPlank != null);
+            }
         }
 
         //print("After jump state is " + playerState);
@@ -571,15 +578,16 @@ public class PlayerController : MonoBehaviour
                 }
 
             }
-            //x is push
+            //bumpers are board slam or push
             else if (BumpOrTrigSlamOrPush && playerActions.HeldPlank == null)
             {
+                print("pressed push");
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.push);
             }
             //bumpers are board slam or push
             else if (BumpOrTrigSlamOrPush && playerActions.HeldPlank != null)
             {
-                //print("pressed slam");
+                print("pressed slam");
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.slam);
             }
             //b is charge

@@ -5,15 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
-  - enabled: 0
-    path: 
-    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Official/Main_Menu.unity
     guid: e868bc57f0740df479a714242fa694c9
@@ -23,15 +14,18 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Official/River.unity
     guid: 4230cb6bf2e61cd4aa2a8f9a2727f8c8
-  - enabled: 0
-    path: Assets/Scenes/Official/Volcano.unity
-    guid: efda4da7be0f6e84998d978d080ed35e
   - enabled: 1
     path: Assets/Scenes/Official/RailRoad.unity
     guid: c2c9b1c79b75ecb4c9c0ce4e900c8b66
-  - enabled: 0
-    path: Assets/Scenes/Official/Snowy_Mountain.unity
-    guid: fe67155368b01ae4bbf4d2305e77991e
+  - enabled: 1
+    path: Assets/Scenes/Official/SnowyMountain_V2.unity
+    guid: fb415582fdb6585459559f317e7dfa5c
+  - enabled: 1
+    path: Assets/Scenes/Official/Volcano_Current.unity
+    guid: 7bc53f38faf68494a886dfeed98526f8
+  - enabled: 1
+    path: Assets/Scenes/EndScreen.unity
+    guid: 96418ff5ea3d0a042a04897379a1a48a
   - enabled: 1
     path: Assets/Sandbox/Kendrick/TestScenes/EndGameStuff/EndGameTest.unity
     guid: 9573699d5f65eea439818925bd27b169

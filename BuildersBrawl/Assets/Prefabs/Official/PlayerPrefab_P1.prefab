@@ -206,6 +206,7 @@ MonoBehaviour:
   addWobble: 1
   wobbleSpeed: 0.01
   maxWobbleAngleInDegrees: 30
+  noWobbleOnMove: 1
 --- !u!114 &925820138
 MonoBehaviour:
   m_ObjectHideFlags: 0
