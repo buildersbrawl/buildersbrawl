@@ -49,15 +49,22 @@ MonoBehaviour:
   p4Controller: 0
   B4_P1_select: {fileID: 0}
   B4_P2_select: {fileID: 0}
+  B4_P3_select: {fileID: 0}
+  B4_P4_select: {fileID: 0}
   LevelStartBtn: {fileID: 0}
   LevelStartBtnText: {fileID: 0}
   playerOneSelected: 0
   playerTwoSelected: 0
-  bothPlayersReady: 0
+  playerThreeSelected: 0
+  playerFourSelected: 0
+  TwoPlayersReady: 0
+  ThreePlayersReady: 0
+  FourPlayersReady: 0
+  minPlayers: 2
   maxPlayers: 4
   inputManagerInstance: {fileID: 0}
   controllerSelected: 0
   playerCounter: 0
   ls: {fileID: 0}
   inPlayerSelect: 0
-  allowControllerSelection: 1
+  allowControllerSelection: 0

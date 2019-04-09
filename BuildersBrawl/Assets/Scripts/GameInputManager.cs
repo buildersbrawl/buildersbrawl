@@ -120,14 +120,14 @@ public class GameInputManager : MonoBehaviour
             }
 
             pressedChargeButton = player.GetButtonDown("Charge");
-            pressedPushButton = player.GetButtonDown("Push");
+            pressedPushButton = player.GetButtonDown("Slam/Push");
             pressedBoardPickUpOrDropButton = player.GetButtonDown("Use Board");
 
             //input for bumpbers
-            pressedSlamButton = player.GetButtonDown("Board Slam");
+            pressedSlamButton = player.GetButtonDown("Slam/Push");
 
             //if trigger is pressed beyond triggerSensitivity it will trigger the slam
-            if (player.GetAxis("Board Slam") >= triggerSensitivity)
+            if (player.GetAxis("Slam/Push") >= triggerSensitivity)
                 pressedSlamButton = true;
 
         }

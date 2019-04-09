@@ -195,7 +195,7 @@ public class CameraController : MonoBehaviour
         //set the audio source to the camera's audio source
         audio = cameraRef.GetComponent<AudioSource>();
         //set the first audio clip to be played as the start round noise
-        audio.clip = clips[0];
+        //audio.clip = clips[0];
         
     }
 

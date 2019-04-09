@@ -88,10 +88,10 @@ public class PlayerController : MonoBehaviour
     private bool backwards;
     private bool AJump;
     private bool BCharge;
-    private bool XPush;
+    private bool XPickOrPlace;
     private bool YPickOrPlace;
     private bool dropPlankControl;
-    private bool BumpOrTrigSlam;
+    private bool BumpOrTrigSlamOrPush;
 
     private Vector3 joyInput;
 
@@ -282,11 +282,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.F))
             {
                 //print("hit q");
-                XPush = true;
+                BumpOrTrigSlamOrPush = true;
             }
             else
             {
-                XPush = false;
+                BumpOrTrigSlamOrPush = false;
             }
             if (Input.GetKeyDown(KeyCode.B))
             {
@@ -297,16 +297,6 @@ public class PlayerController : MonoBehaviour
             {
                 BCharge = false;
             }
-            if (Input.GetKeyDown(KeyCode.R))
-            {
-                //print("hit q");
-                BumpOrTrigSlam = true;
-            }
-            else
-            {
-                BumpOrTrigSlam = false;
-            }
-
         }
         else if (playerNumber == PlayerNumber.p2)
         {
@@ -369,20 +359,11 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Keypad3))
             {
                 //print("hit q");
-                XPush = true;
+                BumpOrTrigSlamOrPush = true;
             }
             else
             {
-                XPush = false;
-            }
-            if (Input.GetKeyDown(KeyCode.Keypad4))
-            {
-                //print("hit q");
-                BumpOrTrigSlam = true;
-            }
-            else
-            {
-                BumpOrTrigSlam = false;
+                BumpOrTrigSlamOrPush = false;
             }
         }
 
@@ -492,9 +473,9 @@ public class PlayerController : MonoBehaviour
         joyInput = gameInputManager.joystickInput;
         AJump = gameInputManager.pressedJumpButton;
         BCharge = gameInputManager.pressedChargeButton;
-        XPush = gameInputManager.pressedPushButton;
+        BumpOrTrigSlamOrPush = gameInputManager.pressedPushButton;
         YPickOrPlace = gameInputManager.pressedBoardPickUpOrDropButton;
-        BumpOrTrigSlam = gameInputManager.pressedSlamButton;
+        BumpOrTrigSlamOrPush = gameInputManager.pressedSlamButton;
 
     }
 
@@ -591,20 +572,20 @@ public class PlayerController : MonoBehaviour
 
             }
             //x is push
-            else if (XPush)
+            else if (BumpOrTrigSlamOrPush && playerActions.HeldPlank == null)
             {
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.push);
+            }
+            //bumpers are board slam or push
+            else if (BumpOrTrigSlamOrPush && playerActions.HeldPlank != null)
+            {
+                //print("pressed slam");
+                playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.slam);
             }
             //b is charge
             else if (BCharge)
             {
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.charge);
-            }
-            //bumpers are board slam
-            else if (BumpOrTrigSlam)
-            {
-                //print("pressed slam");
-                playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.slam);
             }
             else if (dropPlankControl)
             {
