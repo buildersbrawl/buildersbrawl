@@ -163,9 +163,11 @@ public class CameraController : MonoBehaviour
     private bool isStart = true;
     public GameObject startGameStart;
     public GameObject startGameEnd;
-    public float startLerpRate = .005f;
+    public float sweepStartLerpRate = .001f;
+    public float sweepEndLerpRate = .01f;
     public bool isRightToLeft = false;
     public bool shouldDoStartPan = true;
+    public GameObject UICanvas;
 
     public AudioSource audio;
     public AudioClip[] clips;
@@ -196,7 +198,8 @@ public class CameraController : MonoBehaviour
         audio = cameraRef.GetComponent<AudioSource>();
         //set the first audio clip to be played as the start round noise
         //audio.clip = clips[0];
-        
+
+        UICanvas.SetActive(false);
     }
 
     public void Init()
@@ -258,7 +261,11 @@ public class CameraController : MonoBehaviour
         /*if (!shouldDoStartPan)
         {
             isStart = false;
-        }
+            UICanvas.GetComponent<Countdown>().startTimer = true;
+            Debug.Log("startTime = " + UICanvas.GetComponent<Countdown>().startTimer);
+        }*/
+
+        Debug.Log("should do start pan = " + shouldDoStartPan);
 
         if (isStart)
         {
@@ -271,13 +278,27 @@ public class CameraController : MonoBehaviour
                 cameraRef.transform.LookAt(new Vector3(cameraRef.transform.position.x, startGameStart.transform.position.y, 20));
             }
             //cameraRef.transform.Rotate(new Vector3(0, -90, 0), Space.World);
-            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, startGameEnd.transform.position, startLerpRate);
-            startLerpRate = Mathf.Lerp(startLerpRate, .004f, .02f);
-            Debug.Log("Start lerp rate = " + startLerpRate);
+            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, startGameEnd.transform.position, sweepStartLerpRate);
+            sweepStartLerpRate = Mathf.Lerp(sweepStartLerpRate, sweepEndLerpRate, .02f);
+            //Debug.Log("Start lerp rate = " + startLerpRate);
             //change isStart once it is close enough
             if (Vector3.Distance(cameraRef.transform.position, startGameEnd.transform.position) < 1f)
             {
                 isStart = false;
+
+                UICanvas.SetActive(true);
+                UICanvas.GetComponent<Countdown>().startTimer = true;
+
+                //reset their positions to their spawn points
+                player1ref.transform.position = player1ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
+                player2ref.transform.position = player2ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
+                if(player3ref != null)
+                    player1ref.transform.position = player1ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
+                if(player4ref != null)
+                    player1ref.transform.position = player1ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
+
+                //Debug.Log("startTime = " + UICanvas.GetComponent<Countdown>().startTimer);
+
                 //play audio clip
                 audio.Play(0);
                 //change audio clip to the end of game sound
@@ -286,7 +307,7 @@ public class CameraController : MonoBehaviour
         }
 
 
-        else */if (setCameraBasedOnPlayers && !winnerDetermined)
+        else if (setCameraBasedOnPlayers && !winnerDetermined)
         {
             GetAveragePositionBetweenPlayers();
             GetDistanceBetweenPlayers();
