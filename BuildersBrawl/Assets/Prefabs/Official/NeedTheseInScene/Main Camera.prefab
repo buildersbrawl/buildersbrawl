@@ -97,18 +97,43 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player1ref: {fileID: 0}
   player2ref: {fileID: 0}
+  player3ref: {fileID: 0}
+  player4ref: {fileID: 0}
   cameraRef: {fileID: 1219435167560681279}
   averagePositionBetweenPlayers: {x: 0, y: 0, z: 0}
+  distanceBetweenPlayers: 0
   cameraOptions: 3
   cameraXOffset: 12
   cameraZOffset: 12
   cameraYOffset: 3
   cameraZoomSpeed: 0.02
-  cameraFOVFactor: 10
-  cameraFOVFloor: 40
-  cameraFOVCeiling: 50
+  cameraFOVFactor: 3
+  cameraFOVFloor: 20
+  cameraFOVCeiling: 55
   cameraYHeightFloor: 10
   cameraYHeightCeiling: 27
   cameraPlayerDistanceFloor: 3
-  cameraPlayerDistanceCeiling: 20
+  cameraPlayerDistanceCeiling: 30
   setCameraBasedOnPlayers: 1
+  startMarker: {fileID: 0}
+  endMarker: {fileID: 0}
+  timeStartedLerping: 0
+  deathTimer: 0
+  winnerDetermined: 0
+  winner: {fileID: 0}
+  winOffset: {x: -10, y: 5, z: 0}
+  winCameraHeight: 5
+  winRotateSpeed: 20
+  startGameStart: {fileID: 0}
+  startGameEnd: {fileID: 0}
+  sweepStartLerpRate: 0.001
+  sweepEndLerpRate: 0.01
+  isRightToLeft: 0
+  shouldDoStartPan: 1
+  UICanvas: {fileID: 0}
+  audio: {fileID: 0}
+  clips: []
+  deathStartDistance: 0
+  deathEndDistance: 0
+  deathStartAvgPos: {x: 0, y: 0, z: 0}
+  deathEndAvgPos: {x: 0, y: 0, z: 0}

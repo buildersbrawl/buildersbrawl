@@ -57835,6 +57835,12 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1857920930}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1857920932 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6936618611032787981, guid: 9b893c3ea2777d2459d2b69de320ae7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 1857920930}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1858539217
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69559,41 +69565,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
-      propertyPath: player1ref
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: player2ref
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraOptions
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraPlayerDistanceCeiling
-      value: 30
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraFOVFloor
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraFOVFactor
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: cameraFOVCeiling
-      value: 55
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
       propertyPath: startGameStart
       value: 
       objectReference: {fileID: 1732781281}
@@ -69602,6 +69573,11 @@ PrefabInstance:
       propertyPath: startGameEnd
       value: 
       objectReference: {fileID: 101386503}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: UICanvas
+      value: 
+      objectReference: {fileID: 1857920932}
     - target: {fileID: 1219435167560681249, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: field of view
