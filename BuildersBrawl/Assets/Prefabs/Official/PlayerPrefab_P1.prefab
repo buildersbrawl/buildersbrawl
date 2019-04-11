@@ -146,14 +146,8 @@ MonoBehaviour:
   playerDeath: {fileID: 0}
   playerPoints: {fileID: 0}
   playerAnimation: {fileID: 0}
-  bounciness: 1
-  collisonCheckLength: 0.3
-  groundCheckDistance: 1.1
-  groundCheckSize: 0.3
-  playerGrounded: 0
   jumpEnabled: 0
-  flattenPercent: 0.2
-  flattenDownAmount: 0.4
+  tempStopMovement: 0
 --- !u!114 &4205513807017318952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,18 +163,18 @@ MonoBehaviour:
   actionCooldown: 2
   whereBoardHeld: {x: 0, y: 1.5, z: 0}
   throwBoardOnDrop: 0
-  boardSlamWaitTime: 0.1
-  boardSlamStunTime: 1.5
-  boxCastOffset: {x: 0, y: 0, z: 0}
-  boxCasthalfSize: {x: 0.7, y: 1.5, z: 0.1}
-  boxCastMaxDistancePlankPickUp: 1
-  boxCastMaxDistancePush: 1
-  boxCastMaxDistanceSlam: 2
-  testCubes: 0
-  startCube: {fileID: 0}
-  endCube: {fileID: 0}
   heldPlank: {fileID: 0}
+  boardSlamAnimWaitTime: 0.1
   pushForce: 13
+  didNotFindPlank: 0
+  pushCooldown: 2
+  pushedCooldown: 1
+  slamCooldown: 2
+  pickUpPlaceCooldown: 0.9
+  slamStunTime: 3
+  pushStopTime: 1
+  slamStopTime: 0.9
+  PickUpPlaceStopTime: 0.9
 --- !u!114 &4205513807017318953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -193,23 +187,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971c64850ae8bfa499dba371d4cf9510, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 3.5
-  slowDownJumpSpeedPercentage: 0.9
-  slowDownHoldingPlankSpeedPercentage: 0.2
-  postJumpCooldown: 0
-  jumpHeight: 7
-  holdingBoardJumpHeight: 3
   gravity: -0.5
-  groundDrag: 0.1
-  airDrag: 0
   addWackyMovement: 0
-  rangeTillChangeInDegrees: 15
-  leanFactor: 1.05
-  leanCeiling: 180
-  leanAddOnceHitCeiling: 5
   addWobble: 1
   wobbleSpeed: 0.01
-  maxWobbleAngleInDegrees: 30
   noWobbleOnMove: 1
 --- !u!114 &925820138
 MonoBehaviour:
@@ -593,10 +574,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: builder_rig
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
     - target: {fileID: 400000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -653,6 +630,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.25
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
     - target: {fileID: 13700000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

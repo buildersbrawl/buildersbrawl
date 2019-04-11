@@ -133,7 +133,8 @@ public class PlayerController : MonoBehaviour
     //[SerializeField]
     //private float flattenDownAmount = .4f;
 
-
+   // [HideInInspector]
+    public bool tempStopMovement;
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -531,7 +532,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //temp
-        //if someone won then if "a" hit restart
+        //if someone won then if "b" hit restart
         if (GameManager.S != null && GameManager.S.someoneWon && BCharge)
         {
             GameManager.S.EndLevel();
@@ -564,8 +565,8 @@ public class PlayerController : MonoBehaviour
 
         //print("frame " + joyInput);
 
-        //IF JUMPING OVERRIDE ACTION or if doing other action
-        if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown && playerState != PlayerState.pushed)
+        //IF JUMPING OVERRIDE ACTION or if doing other action or if anim stop
+        if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown && playerState != PlayerState.pushed && !tempStopMovement)
         {
             //y pick up
             //y drop board
@@ -609,8 +610,8 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //move based off of joystick, if performing action don't do this
-        if (playerState != PlayerState.action)
+        //move based off of joystick
+        if (!tempStopMovement)
         {
             if (playerMovement.addWackyMovement)
             {
