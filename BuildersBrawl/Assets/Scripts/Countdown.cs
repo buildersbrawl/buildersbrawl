@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Countdown : MonoBehaviour
 {
 
-    private int count = 3;
+    private int count = 5;
 
     public float delay;
     private float delayStart;
