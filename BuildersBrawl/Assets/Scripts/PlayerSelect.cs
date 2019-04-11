@@ -151,54 +151,57 @@ public class PlayerSelect : MonoBehaviour
         {
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
-                //if someone hits "Submit" button (A)
-                if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
+                if (RoundsManager.R.round == 1)
                 {
-                    //TODO: if controller isnt already attached to player add player
-                    
-                    //if controller 1
-                    if(ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(0))
+                    //if someone hits "Submit" button (A)
+                    if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
                     {
-                        SelectPlayerOne();
+                        //TODO: if controller isnt already attached to player add player
+
+                        //if controller 1
+                        if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(0))
+                        {
+                            SelectPlayerOne();
+                        }
+                        //if controller 2
+                        else if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(1))
+                        {
+                            SelectPlayerTwo();
+                        }
+                        //if controller 3
+                        else if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(2))
+                        {
+                            SelectPlayerThree();
+                        }
+                        //if controller 4
+                        else if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(3))
+                        {
+                            SelectPlayerFour();
+                        }
+
+                        playerCounter++;
+
+                        /*
+                        //if player one selected and controller that hit submit is player 1
+                        if(playerOneSelected && ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(0))
+                        { }
+
+
+
+                        //change ui to reflect a controller being selected
+                        if (playerCounter == 1)
+                            SelectPlayerOne();
+                        else if (playerCounter == 2)
+                            SelectPlayerTwo();
+                        else if (playerCounter == 3)
+                            SelectPlayerThree();
+                        else if (playerCounter == 4)
+                            SelectPlayerFour();
+                        */
+
+                        //Debug.Log(playerCounter);
+                        AssignNextPlayer(i);
                     }
-                    //if controller 2
-                    else if(ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(1))
-                    {
-                        SelectPlayerTwo();
-                    }
-                    //if controller 3
-                    else if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(2))
-                    {
-                        SelectPlayerThree();
-                    }
-                    //if controller 4
-                    else if (ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(3))
-                    {
-                        SelectPlayerFour();
-                    }
-
-                    playerCounter++;
-
-                    /*
-                    //if player one selected and controller that hit submit is player 1
-                    if(playerOneSelected && ReInput.players.GetPlayer(i) == ReInput.players.GetPlayer(0))
-                    { }
-
-                    
-
-                    //change ui to reflect a controller being selected
-                    if (playerCounter == 1)
-                        SelectPlayerOne();
-                    else if (playerCounter == 2)
-                        SelectPlayerTwo();
-                    else if (playerCounter == 3)
-                        SelectPlayerThree();
-                    else if (playerCounter == 4)
-                        SelectPlayerFour();
-                    */
-
-                    //Debug.Log(playerCounter);
-                    AssignNextPlayer(i);
                 }
             }
         }
@@ -368,7 +371,6 @@ public class PlayerSelect : MonoBehaviour
         Debug.Log("Added Rewired Player id " + rewiredPlayerId + " to game player " + gamePlayerId);
 
         //Debug.Log("rewiredPlayerId" + rewiredPlayerId);
-
     }
 
     //increment the playercounter
@@ -487,34 +489,25 @@ public class PlayerSelect : MonoBehaviour
     {
         if (RoundsManager.R.round > 1)
         {
+            B4_P1_select.enabled = false;
+            B4_P2_select.enabled = false;
+            B4_P3_select.enabled = false;
+            B4_P4_select.enabled = false;
+
             if (!ThreePlayersReady)
             {
-                B4_P1_select.enabled = false;
                 player1.SetActive(true);
-
-                B4_P2_select.enabled = false;
                 player2.SetActive(true);
-
                 player3.SetActive(false);
-                B4_P3_select.enabled = false;
-
-                player4.SetActive(false);
-                B4_P4_select.enabled = false;
+                player4.SetActive(false); 
             }
 
             if (!FourPlayersReady)
             {
-                B4_P1_select.enabled = false;
                 player1.SetActive(true);
-
-                B4_P2_select.enabled = false;
                 player2.SetActive(true);
-
                 player3.SetActive(true);
-                B4_P3_select.enabled = false;
-
                 player4.SetActive(false);
-                B4_P4_select.enabled = false;
             }
         }
     }
