@@ -35,6 +35,7 @@ public class Points : MonoBehaviour
         //Debug.Log("Points given for a win");
         pointsTotal += pointsForOtherSide;
         PrintPointsTotal();
+        //Debug.Log("Points printed");
         AddPlayerWin();
     }
 
@@ -64,22 +65,22 @@ public class Points : MonoBehaviour
     //Save Kill Points
     void AddPlayerKill()
     {
-        if(this.gameObject.name.Equals(GameManager.S.player1))
+        if(this.gameObject.name.Equals(GameManager.S.player1.name))
         {
             PointsStorage.P.P1Points[PointsStorage.P.kills] ++;
             PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForKill;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player2))
+        if (this.gameObject.name.Equals(GameManager.S.player2.name))
         {
             PointsStorage.P.P2Points[PointsStorage.P.kills] ++;
             PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForKill;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player3))
+        if (this.gameObject.name.Equals(GameManager.S.player3.name))
         {
             PointsStorage.P.P3Points[PointsStorage.P.kills]++;
             PointsStorage.P.P3Points[PointsStorage.P.total] += pointsForKill;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player4))
+        if (this.gameObject.name.Equals(GameManager.S.player4.name))
         {
             PointsStorage.P.P4Points[PointsStorage.P.kills]++;
             PointsStorage.P.P4Points[PointsStorage.P.total] += pointsForKill;
@@ -89,22 +90,22 @@ public class Points : MonoBehaviour
     //Save Build Points
     void AddPlayerBuild()
     {
-        if (this.gameObject.name.Equals(GameManager.S.player1))
+        if (this.gameObject.name.Equals(GameManager.S.player1.name))
         {
             PointsStorage.P.P1Points[PointsStorage.P.builds]++;
             PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForBoardPlace;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player2))
+        if (this.gameObject.name.Equals(GameManager.S.player2.name))
         {
             PointsStorage.P.P2Points[PointsStorage.P.builds] ++;
             PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForBoardPlace;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player3))
+        if (this.gameObject.name.Equals(GameManager.S.player3.name))
         {
             PointsStorage.P.P3Points[PointsStorage.P.builds]++;
             PointsStorage.P.P3Points[PointsStorage.P.total] += pointsForBoardPlace;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player4))
+        if (this.gameObject.name.Equals(GameManager.S.player4.name))
         {
             PointsStorage.P.P4Points[PointsStorage.P.builds]++;
             PointsStorage.P.P4Points[PointsStorage.P.total] += pointsForBoardPlace;
@@ -114,22 +115,26 @@ public class Points : MonoBehaviour
     //Save Win Points and total Wins
     void AddPlayerWin()
     {
-        if (this.gameObject.name.Equals(GameManager.S.player1))
+        Debug.Log("STORE POINTS");
+        Debug.Log(GameManager.S.player1.name);
+        Debug.Log(this.gameObject.name);
+        if (this.gameObject.name.Equals(GameManager.S.player1.name))
         {
+            Debug.Log("Store Player 1 points");
             PointsStorage.P.P1Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P1Points[PointsStorage.P.wins] ++;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player2))
+        if (this.gameObject.name.Equals(GameManager.S.player2.name))
         {
             PointsStorage.P.P2Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P2Points[PointsStorage.P.wins]++;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player3))
+        if (this.gameObject.name.Equals(GameManager.S.player3.name))
         {
             PointsStorage.P.P3Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P3Points[PointsStorage.P.wins]++;
         }
-        if (this.gameObject.name.Equals(GameManager.S.player4))
+        if (this.gameObject.name.Equals(GameManager.S.player4.name))
         {
             PointsStorage.P.P4Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P4Points[PointsStorage.P.wins]++;
