@@ -88,6 +88,15 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private float slamStunTime = 3f;
 
+    //anim stop time                NOTE: SHOULD BE SHORTER THAN ASSOSSIATIED COOLDOWN
+    [Header("AnimStopTimes")]
+    [SerializeField]
+    private float pushStopTime = 1f;
+    [SerializeField]
+    private float slamStopTime = 1f;
+    [SerializeField]
+    private float PickUpPlaceStopTime = 1f;
+
     //------------------------------------------------------------------------------------------------------
 
     public void InitAct(PlayerController pC)
@@ -170,6 +179,7 @@ public class PlayerActions : MonoBehaviour
         {
             case PlayerActionType.push:
                 playerController.playerAnimation.CallAnimTrigger("ToPush");
+                StartCoroutine(playerController.playerAnimation.TempPlayerStopForAnim(pushStopTime));
                 break;
             case PlayerActionType.charge:
                 playerController.playerAnimation.CallAnimTrigger("ToCharge");
@@ -177,15 +187,18 @@ public class PlayerActions : MonoBehaviour
             case PlayerActionType.pickUp:
                 print("called pickup animation");
                 playerController.playerAnimation.CallAnimTrigger("ToBoardPickUp");
+                StartCoroutine(playerController.playerAnimation.TempPlayerStopForAnim(PickUpPlaceStopTime));
                 break;
             case PlayerActionType.drop:
                 //NA drop animations handled in "PushMe" and "StunMe" functions
                 break;
             case PlayerActionType.slam:
                 playerController.playerAnimation.CallAnimTrigger("ToSlam");
+                StartCoroutine(playerController.playerAnimation.TempPlayerStopForAnim(slamStopTime));
                 break;
             case PlayerActionType.place:
                 playerController.playerAnimation.CallAnimTrigger("ToPlacingBoard");
+                StartCoroutine(playerController.playerAnimation.TempPlayerStopForAnim(PickUpPlaceStopTime));
                 break;
             default:
                 break;
@@ -330,9 +343,18 @@ public class PlayerActions : MonoBehaviour
 
     }
 
+    
     IEnumerator PickUpAnimDeterminer()
     {
-        yield return new WaitForSeconds(pickUpPlaceCooldown);
+        float determinerTime = pickUpPlaceCooldown;
+
+        //if already in picked up state don't take time to determine outcome
+        if (playerController.playerAnimation.InAnimState("boardPickUp"))
+        {
+            determinerTime = 0;
+        }
+
+        yield return new WaitForSeconds(determinerTime);
         //if trying to pick up plank and failed go back to idle animation
         if (didNotFindPlank)
         {
@@ -343,6 +365,7 @@ public class PlayerActions : MonoBehaviour
             playerController.playerAnimation.CallAnimTrigger("ToIdleBoard");
         }
     }
+    
 
     private void PlacingPlankAction()
     {
@@ -463,8 +486,8 @@ public class PlayerActions : MonoBehaviour
             }
         }
 
-    } 
-    
+    }
+
     /*
     private IEnumerator TempPlankAnim()
     {

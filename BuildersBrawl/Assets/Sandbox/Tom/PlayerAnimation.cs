@@ -50,10 +50,23 @@ public class PlayerAnimation : MonoBehaviour
             return;
         }
 
+        //make sure that trigger being called right now has animation it can go to
+        //if it does than reset animation triggers
+        //if it doesn't don't call it
+
+
+
         //reset triggers
         ResetAnimationTriggers();
 
         playerAnimator.SetTrigger(animTriggerName);
+    }
+
+    public bool InAnimState(string stateName)
+    {
+        bool inState = playerAnimator.GetCurrentAnimatorStateInfo(0).IsName(stateName);
+
+        return inState;
     }
 
     //determines what run animation to play
@@ -250,16 +263,28 @@ public class PlayerAnimation : MonoBehaviour
         return otherTriggersActive;
     }
 
-    //TODO: reset triggers whenever you enter a new state (or maybe when you leav one?)
+    
 
-
+    //resets triggers
     public void ResetAnimationTriggers()
     {
+
         for (int index = 0; index < playerAnimator.parameterCount; index++)
         {
             //if other trigger active add one to activeparameters
             playerAnimator.ResetTrigger(playerAnimator.GetParameter(index).name); 
         }
+    }
+
+    //temporaroily stops player for animation
+    public IEnumerator TempPlayerStopForAnim(float timeStopped)
+    {
+        print("time" + timeStopped);
+
+        playerController.tempStopMovement = true;
+        yield return new WaitForSeconds(timeStopped);
+        playerController.tempStopMovement = false;
+
     }
 
 }
