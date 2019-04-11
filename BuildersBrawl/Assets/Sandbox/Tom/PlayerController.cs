@@ -96,19 +96,18 @@ public class PlayerController : MonoBehaviour
     private Vector3 joyInput;
 
     [Header("Bounce (Deprecated)")]
-    public float bounciness = 1f;
-    [SerializeField]
+    //[SerializeField]
+    private float bounciness = 1f;
+    //[SerializeField]
     private float collisonCheckLength;
-    [Tooltip("The more drag the faster the players excess momentum is stopped. Value between 0-1.")]
     
 
     [Header("Grounding")]
-
-    [SerializeField]
-    private float groundCheckDistance = 2f;
-    [SerializeField]
+    //[SerializeField]
+    private float groundCheckDistance = 1.1f;
+    //[SerializeField]
     private float groundCheckSize = .3f;
-    [SerializeField]
+    //[SerializeField]
     private bool playerGrounded;
 
     public bool PlayerGrounded
@@ -119,6 +118,8 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    [Header("Jump")]
+    [HideInInspector]
     public bool jumpEnabled = false;
 
     //around cos(pi/4) or sin (pi/4) (they're the same number)
@@ -126,11 +127,16 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 directionPlayerFacing; //same as x and z of direction moving
 
-    [Header("Other")]
-    [SerializeField]
-    private float flattenPercent = .2f;
-    [SerializeField]
-    private float flattenDownAmount = .4f;
+    //[Header("Other")]
+    //[SerializeField]
+    //private float flattenPercent = .2f;
+    //[SerializeField]
+    //private float flattenDownAmount = .4f;
+
+
+
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
     private void Start()
     {
@@ -565,6 +571,7 @@ public class PlayerController : MonoBehaviour
             //y drop board
             if (YPickOrPlace)
             {
+                //print("PickOrPlace pressed");
                 //print("action");
                 if (playerActions.HeldPlank != null) //holding board
                 {
@@ -581,13 +588,13 @@ public class PlayerController : MonoBehaviour
             //bumpers are board slam or push
             else if (BumpOrTrigSlamOrPush && playerActions.HeldPlank == null)
             {
-                print("pressed push");
+                //print("pressed push");
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.push);
             }
             //bumpers are board slam or push
             else if (BumpOrTrigSlamOrPush && playerActions.HeldPlank != null)
             {
-                print("pressed slam");
+                //print("pressed slam");
                 playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.slam);
             }
             //b is charge
@@ -776,6 +783,7 @@ public class PlayerController : MonoBehaviour
             //reset state
             playerState = PlayerState.defaultMovement;
         }
+
     }
 
     public IEnumerator ReturnPlayerStateToMovingStun(float waitTime)

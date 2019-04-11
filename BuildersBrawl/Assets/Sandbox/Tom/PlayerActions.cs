@@ -28,25 +28,16 @@ public class PlayerActions : MonoBehaviour
 
     public bool throwBoardOnDrop = false;
 
-    [Tooltip("How long to wait after board slam called to check to see if there is a player infront of me")]
-    [SerializeField]
-    private float boardSlamWaitTime = .1f;
-    [SerializeField]
-    private float boardSlamStunTime = 2f;
-    private float boardAnimationTime = 0;
-    private bool boardAnimSwitch = true;
-    private bool boardAnimCont = true;
-
     [Header("BoxCast")]
-    [SerializeField]
+    //[SerializeField]
     private Vector3 boxCastOffset = new Vector3(0,0,0);
-    [SerializeField]
-    private Vector3 boxCasthalfSize = new Vector3(.5f, .5f, .1f);
-    [SerializeField]
+    //[SerializeField]
+    private Vector3 boxCasthalfSize = new Vector3(.7f, 1.5f, .1f);
+    //[SerializeField]
     private float boxCastMaxDistancePlankPickUp = 1;
-    [SerializeField]
+    //[SerializeField]
     private float boxCastMaxDistancePush = 1;
-    [SerializeField]
+    //[SerializeField]
     private float boxCastMaxDistanceSlam = 2;
     private Quaternion playerRotation;
     private Vector3 playerForward;
@@ -56,9 +47,9 @@ public class PlayerActions : MonoBehaviour
     //public bool holdingBoard = false;
 
     [Header("TestCubes")]
-    public bool testCubes;
-    public GameObject startCube;
-    public GameObject endCube;
+    private bool testCubes;
+    private GameObject startCube;
+    private GameObject endCube;
 
     [SerializeField]
     private GameObject heldPlank;
@@ -70,12 +61,32 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
-    private bool omitCooldown = false;
+    [Header("Board Slam")]
+    [Tooltip("How long to wait after board slam called to check to see if there is a player infront of me")]
+    [SerializeField]
+    private float boardSlamAnimWaitTime = .1f;
 
     [Header("Push")]
     public float pushForce = 1f;
-    private float pushCooldown = 1f;
+    
+    [Header("PickUpPlace")]
+    [HideInInspector]
+    public bool didNotFindPlank = false;
+
+    //cooldowns
+    private float coolDownLength;
+    private float defaultCooldown = .1f;
+    [Header("Cooldowns")]
+    [SerializeField]
+    private float pushCooldown = 2f;
+    [SerializeField]
     private float pushedCooldown = 1f;
+    [SerializeField]
+    private float slamCooldown = 2f;
+    [SerializeField]
+    private float pickUpPlaceCooldown = .1f; 
+    [SerializeField]
+    private float slamStunTime = 3f;
 
     //------------------------------------------------------------------------------------------------------
 
@@ -137,24 +148,17 @@ public class PlayerActions : MonoBehaviour
     {
         //print("PreAction");
         playerController.playerState = PlayerController.PlayerState.action;
-        omitCooldown = false;
-        //stop outside movement? Weird movement caused by it subtracting last frames movement constatntly?
+        //cooldown set to default cooldown
+        coolDownLength = defaultCooldown;
+        
+        //for picking up
+        didNotFindPlank = false;
     }
 
     private void PostAction()
     {
-        if (omitCooldown)
-        {
-            playerController.playerState = PlayerController.PlayerState.defaultMovement;
-            //reset
-            omitCooldown = false;
-        }
-        else
-        {
-            StartCoroutine(playerController.ReturnPlayerStateToMoving(actionCooldown));
-        }
+        StartCoroutine(playerController.ReturnPlayerStateToMoving(coolDownLength));
         //print("PostAction");
-        
     }
 
     //------------------------------------------------------------------------------------
@@ -195,7 +199,7 @@ public class PlayerActions : MonoBehaviour
     private void PushAction()
     {
         //cant do if holding plank
-        if(heldPlank != null)
+        if (heldPlank != null)
         {
             return;
         }
@@ -225,6 +229,9 @@ public class PlayerActions : MonoBehaviour
                 //tell the other player it was I who pushed you
                 boxHitInfo[index].collider.GetComponent<PlayerDeath>().OtherPlayer = this.gameObject;
 
+                //make sure this player goes on cooldown
+                coolDownLength = pushCooldown;
+
                 //end loop
                 index = boxHitInfo.Length;
             }
@@ -242,6 +249,10 @@ public class PlayerActions : MonoBehaviour
 
     private void PickUpPlankAction()
     {
+
+        //pick cooldown
+        coolDownLength = pickUpPlaceCooldown;
+
         //print("Try PickUpBoard action");
 
         //check to see if board is in front of player
@@ -251,10 +262,7 @@ public class PlayerActions : MonoBehaviour
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePlankPickUp);
 
         //bool to determine whether animation goes back to idle
-        bool didNotFindPlank = true;
-
-        //cooldown not happening until proven otherwise
-        omitCooldown = true;
+        didNotFindPlank = true;
 
         //go through array looking for plank
         for (int index = 0; index < boxHitInfo.Length; index++)
@@ -288,23 +296,18 @@ public class PlayerActions : MonoBehaviour
 
         }
 
-        if (didNotFindPlank)
-        {
-            playerController.playerAnimation.CallAnimTrigger("ToIdle");
-        }
-
         //make cubes to visualize boxcast
         if (testCubes)
         {
             TestBoxCast(startCube, endCube, boxCastMaxDistancePlankPickUp);
         }
 
+        StartCoroutine(PickUpAnimDeterminer());
+
     }
 
     private void PickUpPlank(GameObject plank)
     {
-        //cooldown is occuring
-        omitCooldown = false;
 
         heldPlank = plank;
 
@@ -327,12 +330,29 @@ public class PlayerActions : MonoBehaviour
 
     }
 
+    IEnumerator PickUpAnimDeterminer()
+    {
+        yield return new WaitForSeconds(pickUpPlaceCooldown);
+        //if trying to pick up plank and failed go back to idle animation
+        if (didNotFindPlank)
+        {
+            playerController.playerAnimation.CallAnimTrigger("ToIdle");
+        }
+        else
+        {
+            playerController.playerAnimation.CallAnimTrigger("ToIdleBoard");
+        }
+    }
+
     private void PlacingPlankAction()
     {
+        //place cooldown
+        coolDownLength = pickUpPlaceCooldown;
+
         //print("placing board action");
 
         //if player holding a board
-        if(heldPlank != null)
+        if (heldPlank != null)
         {
             //unchild it
             heldPlank.transform.parent = null;
@@ -376,8 +396,7 @@ public class PlayerActions : MonoBehaviour
             //holdingBoard = false;
         }
 
-        //omit cooldown cause not players fault
-        omitCooldown = true;
+        //cooldown should be default cooldown (0)
 
     }
 
@@ -419,12 +438,12 @@ public class PlayerActions : MonoBehaviour
 
     private IEnumerator BoardSlamCoroutine()
     {
-        //after certain amount of time cast forward to see if player in front of me
+        //after certain amount of time cast forward to see if player in front of me (because slam animation has to happen)
         //if that player isn't me
         //stun them
         //flatten them
         //cooldown
-        yield return new WaitForSeconds(boardSlamWaitTime);
+        yield return new WaitForSeconds(boardSlamAnimWaitTime);
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistanceSlam);
         if (testCubes)
         {
@@ -435,8 +454,12 @@ public class PlayerActions : MonoBehaviour
             //if that player isn't me
             if(boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && !(boxHitInfo[index].collider.gameObject.Equals(this.gameObject)))
             {
+                //stun that player
                 PlayerController slammedPlayer = boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>();
-                slammedPlayer.StunMe(playerForward, boardSlamStunTime);
+                slammedPlayer.StunMe(playerForward, slamStunTime);
+
+                //make slam go on cooldown cause successfully hit someone
+                coolDownLength = slamCooldown;
             }
         }
 
@@ -502,11 +525,6 @@ public class PlayerActions : MonoBehaviour
         endCube.transform.position = this.gameObject.transform.position + boxCastOffset + (playerForward * maxDistance);
         endCube.transform.rotation = playerRotation;
         endCube.transform.localScale = boxCasthalfSize * 2;
-    }
-
-    public void PlayActionAnimation()
-    {
-        //too put in delegate
     }
 
     //boxcast

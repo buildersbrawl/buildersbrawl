@@ -20,15 +20,25 @@ public class GameInputManager : MonoBehaviour
     //joystick input
     public Vector3 joystickInput;
 
+    [HideInInspector]
     public bool joystickIsInputing = false;
+    [HideInInspector]
     public bool pressedJumpButton = false;
+    [HideInInspector]
     public bool pressedChargeButton = false;
+    [HideInInspector]
     public bool pressedPushButton = false;
+    [HideInInspector]
     public bool pressedBoardPickUpOrDropButton = false;
+    [HideInInspector]
     public bool pressedSlamButton = false;
+    [HideInInspector]
     public bool moveUIUp = false;
+    [HideInInspector]
     public bool moveUILeft = false;
+    [HideInInspector]
     public bool moveUIRight = false;
+    [HideInInspector]
     public bool moveUIDown = false;
 
     public static bool isUsingUI = true;

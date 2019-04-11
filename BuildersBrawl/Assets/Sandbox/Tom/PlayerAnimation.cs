@@ -100,32 +100,32 @@ public class PlayerAnimation : MonoBehaviour
         //if going fast enough and not already running
         if (movement.magnitude >= minimumMovementForRun && (!(InSpecificStateOrTransition(runId) || (InSpecificStateOrTransition(runBoardId)))))
         {
-            print("should run");
+            //print("should run");
 
             //call appropriate run animation based off of whether holding a plank or not
             if ((currAnimStateInfo.IsName(idleId)))
             {
                 //run
                 CallAnimTrigger("ToRun");
-                print("run anim");
+                //print("run anim");
             }
             else if ((currAnimStateInfo.IsName(idleBoardId)))
             {
                 //runBoard
                 CallAnimTrigger("ToRunBoard");
-                print("runBoard anim");
+                //print("runBoard anim");
             }
         }
         //if not going fast enough and not already idle
         else if (movement.magnitude < minimumMovementForRun && (!(InSpecificStateOrTransition(idleId) || (InSpecificStateOrTransition(idleBoardId)))))
         {
-            print("should idle");
+            //print("should idle");
             //call appropriate idle animation based off of whether holding a plank or not
             if ((currAnimStateInfo.IsName(runId)))
             {
                 //idle
                 CallAnimTrigger("ToIdle");
-                print("idle anim");
+                //eprint("idle anim");
             }
             else if ((currAnimStateInfo.IsName(runBoardId)))
             {

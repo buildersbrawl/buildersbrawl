@@ -7,25 +7,25 @@ public class PlayerMovement : MonoBehaviour
     //player controller ref
     PlayerController playerController;
 
-    public float playerSpeed = 1f;
+    private float playerSpeed = 3.5f;
     [Tooltip("What percentage the player slows down when jumping")]
     [Range(0,1)]
-    public float slowDownJumpSpeedPercentage = .1f;
+    private float slowDownJumpSpeedPercentage = .9f;
     [Tooltip("What percentage the player slows down when holdingplank")]
     [Range(0, 1)]
-    public float slowDownHoldingPlankSpeedPercentage = .1f;
+    private float slowDownHoldingPlankSpeedPercentage = .2f;
 
     Vector3 playerFinalDirection;
 
     [Header("Jumping Variables")]
     [Tooltip("Starts when player returns to ground (OBSELETE)")]
-    public float postJumpCooldown = 0f; //OBSELETE?
-    public float jumpHeight = 7f;
-    public float holdingBoardJumpHeight = 3f;
+    private float postJumpCooldown = 0f; //OBSELETE?
+    private float jumpHeight = 7f;
+    private float holdingBoardJumpHeight = 3f;
     private Vector3 jumpVector;
 
     [Header("Physics")]
-    public float gravity = -8f;
+    public float gravity = -.5f;
     private Vector3 gravityVector;
 
     private Vector3 playerMomentum;
@@ -48,9 +48,9 @@ public class PlayerMovement : MonoBehaviour
     
 
 
-    [SerializeField]
+    //[SerializeField]
     private float groundDrag = .1f;
-    [SerializeField]
+    //[SerializeField]
     private float airDrag = 0f;
 
     //can use to get player momentum
@@ -58,33 +58,33 @@ public class PlayerMovement : MonoBehaviour
 
 
     [Header("WackMovement")]
-    public bool addWackyMovement;
-    public float rangeTillChangeInDegrees;
+    public bool addWackyMovement = false;
+    private float rangeTillChangeInDegrees = 15f;
     [Tooltip("How extreme the lean is. 1 = lean constant")]
-    public float leanFactor = 1f;
+    private float leanFactor = 1.05f;
     //[SerializeField]
     //public float leanStartTest; //obselete
     private float leanAmount; //starts as somewhere between Vector3(1, 0, 0) and Vector3(-1, 0, 0)
-    [SerializeField]
-    private float leanCeiling = 45f; //to stop player from spinning so fast it just looks weird
-    [SerializeField]
-    private float leanAddOnceHitCeiling = 45f; //to stop player from spinning so fast it just looks weird
+    //[SerializeField]
+    private float leanCeiling = 180f; //to stop player from spinning so fast it just looks weird
+    //[SerializeField]
+    private float leanAddOnceHitCeiling = 5f; //to stop player from spinning so fast it just looks weird
     private Vector3 joyInputOriginalDirection;
     private Vector3 joyInputRangeLeft, joyInputRangeRight;
     //if player only minimally using joystick give them full control
     private float lowInputNumberSoNoWackyMovement = .5f;
 
     [Header("WobbleMovement")]
-    public bool addWobble;
+    public bool addWobble = true;
     [Range(0, 1)]
     [Tooltip("Must be between 0 and 1")]
     public float wobbleSpeed = .01f;
     private float wobbleAmount;
     private float sway = .5f;
-    public float maxWobbleAngleInDegrees = 30f;
-    bool swaySwitch;
+    private float maxWobbleAngleInDegrees = 30f;
+    private bool swaySwitch;
     private Vector3 lastKnownJoyDirection;
-    public bool noWobbleOnMove;
+    public bool noWobbleOnMove = true;
 
     //-------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -275,6 +275,7 @@ public class PlayerMovement : MonoBehaviour
         StartCoroutine(EndPushed());
     }
 
+    //stops player cooldown when their combat momentum gets very low
     IEnumerator EndPushed()
     {
         yield return new WaitForSeconds(.01f);
