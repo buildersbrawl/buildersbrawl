@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 1191528802872432584}
   - component: {fileID: 1103175363587522359}
   - component: {fileID: 7196884431236915782}
+  - component: {fileID: 7821306075743231878}
   m_Layer: 0
   m_Name: PlayerPrefab_P1
   m_TagString: Untagged
@@ -399,6 +400,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerController: {fileID: 0}
   playerAnimator: {fileID: 7898238259490599920}
+--- !u!114 &7821306075743231878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4205513807017318967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a7def27d91f21048849e4ea4dcfd718, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnArrow: {fileID: 8864427781295069434}
 --- !u!1001 &1361522648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -411,6 +425,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: P1RespawnArrow_02
       objectReference: {fileID: 0}
+    - target: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5339601446248461923, guid: c29fd40348723a84f9c27aff04dc52db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -419,7 +438,7 @@ PrefabInstance:
     - target: {fileID: 5339601446248461923, guid: c29fd40348723a84f9c27aff04dc52db,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.7448661
+      value: 2.58
       objectReference: {fileID: 0}
     - target: {fileID: 5339601446248461923, guid: c29fd40348723a84f9c27aff04dc52db,
         type: 3}
@@ -468,6 +487,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c29fd40348723a84f9c27aff04dc52db, type: 3}
+--- !u!1 &8864427781295069434 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
+    type: 3}
+  m_PrefabInstance: {fileID: 1361522648}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5339601447038884283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5339601446248461923, guid: c29fd40348723a84f9c27aff04dc52db,
@@ -568,6 +593,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: builder_rig
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
     - target: {fileID: 400000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -624,10 +653,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.25
       objectReference: {fileID: 0}
-    - target: {fileID: 9500000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 7e4ba744e0af25c4c8d712a2ac950f62, type: 2}
     - target: {fileID: 13700000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 

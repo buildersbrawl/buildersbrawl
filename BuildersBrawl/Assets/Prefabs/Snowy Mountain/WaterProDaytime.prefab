@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 9016914354847093324}
   - component: {fileID: 4881940128295169215}
   - component: {fileID: 3501320533475008085}
-  - component: {fileID: 7647625949053093462}
   - component: {fileID: 4405917266748422967}
+  - component: {fileID: 6553101306169733324}
   m_Layer: 4
   m_Name: WaterProDaytime
   m_TagString: Untagged
@@ -102,18 +102,6 @@ MonoBehaviour:
   refractLayers:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7647625949053093462
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4405917266748422966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7e20a0a5f5ff4f64da7f153bed218f13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &4405917266748422967
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -127,3 +115,28 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10.000002, y: 2.220446e-16, z: 10.000001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &6553101306169733324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4405917266748422966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a019b9ee8736e4148945f9cabe3dfe71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerIceCubePrefabs:
+  - iceCubePrefabs:
+    - {fileID: 1632988681659053750, guid: b604c0723a809724292f5b84b16f9d8f, type: 3}
+    - {fileID: 5212361325181070721, guid: 9b6e68256d1b3bd4683ff47d7a51c1a6, type: 3}
+  - iceCubePrefabs:
+    - {fileID: 1746654180372111146, guid: 9bc65edc6027600449c0d8114f17dfc2, type: 3}
+    - {fileID: 8724231510926993946, guid: 96b86f834763ca44c86c4a749bc507f0, type: 3}
+  - iceCubePrefabs:
+    - {fileID: 8118122842288835289, guid: 680b5bccbc6fb734aafcd00356ecd41f, type: 3}
+    - {fileID: 5398949202330896550, guid: 91249b4df530ad14195a4c7a2a795800, type: 3}
+  - iceCubePrefabs:
+    - {fileID: 2279826416873716707, guid: 6229e64d8c0f7fa4ea2b8ce31f039366, type: 3}
+    - {fileID: 6446414909599020136, guid: 976a1c1553adc4940ae5a9b7623c483d, type: 3}
