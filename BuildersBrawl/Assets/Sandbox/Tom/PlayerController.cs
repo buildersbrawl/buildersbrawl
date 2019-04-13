@@ -672,7 +672,8 @@ public class PlayerController : MonoBehaviour
         //moveVectorLimitY.y = 0;
 
         //if (moveVectorLimitY != Vector3.zero)
-        if (joyInput != Vector3.zero)
+        //player rotation
+        if (joyInput != Vector3.zero && !tempStopMovement)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(joyInput, Vector3.up), 0.15f);
         }

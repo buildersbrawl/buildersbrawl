@@ -183,6 +183,9 @@ public class CameraController : MonoBehaviour
 
     private List<float> distanceList;
 
+    //used to store 2 furthest players
+    private GameObject furthestPlayer1, furthestPlayer2;
+
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private void Start()
@@ -315,8 +318,9 @@ public class CameraController : MonoBehaviour
 
         else if (setCameraBasedOnPlayers && !winnerDetermined)
         {
-            GetAveragePositionBetweenPlayers();
+            //distance must be called before average pos
             GetDistanceBetweenPlayers();
+            GetAveragePositionBetweenPlayers();
 
             //reset bool for death lerping
             shouldGetLerpStartTime = true;
@@ -589,85 +593,7 @@ public class CameraController : MonoBehaviour
 
     }
 
-    //OBSELETE
-    /*
-    //essentially the zoom in or out with floor/ceiling
-    public void SetCameraSizeOpt1(float distanceBetweenPlayers)
-    {
-        //set size
-        cameraFinalSize = distanceBetweenPlayers * cameraSizeFactorOpt1;
 
-        //stop camera from getting too big or small
-        if (cameraFinalSize >= cameraSizeCeiling)
-        {
-            cameraFinalSize = cameraSizeCeiling;
-        }
-        else if (cameraFinalSize <= cameraSizeFloor)
-        {
-            cameraFinalSize = cameraSizeFloor;
-        }
-
-        cameraRef.GetComponent<Camera>().orthographicSize = Mathf.Lerp(cameraRef.GetComponent<Camera>().orthographicSize, cameraFinalSize, cameraZoomSpeed);
-
-    }
-
-    //essentially the zoom in or out but dont do it unless hit a certain threshold
-    public void SetCameraSizeOpt2(float distanceBetweenPlayers)
-    {
-        if(distanceBetweenPlayers > howClosePlayersNeedToBeForZoomOpt2)
-        {
-            //zoom out
-            cameraFinalSize = cameraSizeCeiling;
-        }
-        else
-        {
-            //zoom in
-            cameraFinalSize = cameraSizeFloor;
-        }
-
-        //interpolate to desired point
-        cameraRef.GetComponent<Camera>().orthographicSize = Mathf.Lerp(cameraRef.GetComponent<Camera>().orthographicSize, cameraFinalSize, cameraZoomSpeed);
-
-    }
-
-    //OPT3
-
-    //essentially the zoom in or out but does it to an extreme when hits certain threshold
-    public void SetCameraSizeOpt3(float distanceBetweenPlayers)
-    {
-        if (distanceBetweenPlayers > howClosePlayersNeedToBeForZoomOpt2)
-        {
-            //zoom out
-            cameraFinalSize = cameraSizeCeiling + (distanceBetweenPlayers * cameraSizeFactorOpt3);
-            if (cameraFinalSize > cameraSizeCeiling + cameraZoomVariationLimitOut)
-            {
-                cameraFinalSize = cameraSizeCeiling + cameraZoomVariationLimitOut;
-            }
-            else if (cameraFinalSize < cameraSizeCeiling - cameraZoomVariationLimitOut)
-            {
-                cameraFinalSize = cameraSizeCeiling - cameraZoomVariationLimitOut;
-            }
-
-        }
-        else
-        {
-            //zoom in
-            cameraFinalSize = cameraSizeFloor + (distanceBetweenPlayers * cameraSizeFactorOpt3);
-            if (cameraFinalSize > cameraSizeFloor + cameraZoomVariationLimitCloseUp)
-            {
-                cameraFinalSize = cameraSizeFloor + cameraZoomVariationLimitCloseUp;
-            }
-            else if (cameraFinalSize < cameraSizeFloor - cameraZoomVariationLimitCloseUp)
-            {
-                cameraFinalSize = cameraSizeFloor - cameraZoomVariationLimitCloseUp;
-            }
-        }
-
-        //interpolate to desired point
-        cameraRef.GetComponent<Camera>().orthographicSize = Mathf.Lerp(cameraRef.GetComponent<Camera>().orthographicSize, cameraFinalSize, cameraZoomSpeed);
-
-    }
-    */
 
     public void GetDistanceBetweenPlayers()
     {
@@ -675,11 +601,15 @@ public class CameraController : MonoBehaviour
 
         distanceList = new List<float>();
 
+        float furthestDistance = 0;
+
         if (player1ref != null && player2ref != null)
         {
             //gets float of distance between players
             distanceBetweenPlayers = Vector3.Distance(player1ref.transform.position, player2ref.transform.position);
-            distanceList.Add(distanceBetweenPlayers);
+            //distanceList.Add(distanceBetweenPlayers);
+            furthestPlayer1 = player1ref;
+            furthestPlayer2 = player2ref;
         }
         else
         {
@@ -692,9 +622,24 @@ public class CameraController : MonoBehaviour
             float p1p3Dist = Vector3.Distance(player1ref.transform.position, player3ref.transform.position);
             float p2p3Dist = Vector3.Distance(player2ref.transform.position, player3ref.transform.position);
 
-            distanceList.Add(p1p2Dist);
-            distanceList.Add(p1p3Dist);
-            distanceList.Add(p2p3Dist);
+            furthestDistance = p1p2Dist;
+
+            if (p1p3Dist > furthestDistance)
+            {
+                furthestDistance = p1p3Dist;
+                furthestPlayer1 = player1ref;
+                furthestPlayer2 = player3ref;
+            }
+            if (p2p3Dist > furthestDistance)
+            {
+                furthestDistance = p2p3Dist;
+                furthestPlayer1 = player2ref;
+                furthestPlayer2 = player3ref;
+            }
+
+            //distanceList.Add(p1p2Dist);
+            // distanceList.Add(p1p3Dist);
+            //distanceList.Add(p2p3Dist);
 
             if (player4ref != null)
             {
@@ -702,14 +647,34 @@ public class CameraController : MonoBehaviour
                 float p2p4Dist = Vector3.Distance(player2ref.transform.position, player4ref.transform.position);
                 float p3p4Dist = Vector3.Distance(player3ref.transform.position, player4ref.transform.position);
 
-                distanceList.Add(p1p4Dist);
-                distanceList.Add(p2p4Dist);
-                distanceList.Add(p3p4Dist);
+                if (p1p4Dist > furthestDistance)
+                {
+                    furthestDistance = p1p4Dist;
+                    furthestPlayer1 = player1ref;
+                    furthestPlayer2 = player4ref;
+                }
+                if (p2p4Dist > furthestDistance)
+                {
+                    furthestDistance = p2p4Dist;
+                    furthestPlayer1 = player2ref;
+                    furthestPlayer2 = player4ref;
+                }
+                if (p3p4Dist > furthestDistance)
+                {
+                    furthestDistance = p3p4Dist;
+                    furthestPlayer1 = player3ref;
+                    furthestPlayer2 = player4ref;
+                }
+
+                //distanceList.Add(p1p4Dist);
+                //distanceList.Add(p2p4Dist);
+                //distanceList.Add(p3p4Dist);
             }
         }
 
-        
+        distanceBetweenPlayers = furthestDistance;
 
+        /*
         //distanceBetweenPlayers = distanceList[0];
 
         for (int index = 0; index < distanceList.Count; index++)
@@ -719,11 +684,15 @@ public class CameraController : MonoBehaviour
                 distanceBetweenPlayers = distanceList[index];
             }
         }
-
+        */
     }
 
     private void GetAveragePositionBetweenPlayers()
     {
+        //for just doing average between 2 furthest players (doesn't work because jump between old and new average
+        //averagePositionBetweenPlayers = Vector3.Lerp(furthestPlayer1.transform.position, furthestPlayer2.transform.position, 0.5f);
+
+        
         if (player1ref != null && player2ref != null)
         {
             //gets point in the center of these two
@@ -757,8 +726,9 @@ public class CameraController : MonoBehaviour
 
             }
         }
-
         
+        
+
 
     }
 
@@ -789,8 +759,9 @@ public class CameraController : MonoBehaviour
 
     public void SetDeathEndValues()
     {
-        GetAveragePositionBetweenPlayers();
+        //distance must be called before average pos
         GetDistanceBetweenPlayers();
+        GetAveragePositionBetweenPlayers();
 
         deathEndDistance = distanceBetweenPlayers;
         deathEndAvgPos = averagePositionBetweenPlayers;

@@ -146,6 +146,7 @@ public class PlayerSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //if testing and no roundmanager make one
         if (allowControllerSelection && RoundsManager.R == null)
         {
             this.gameObject.AddComponent<RoundsManager>();

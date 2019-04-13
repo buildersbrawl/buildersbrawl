@@ -97,6 +97,11 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private float PickUpPlaceStopTime = 1f;
 
+
+    private bool boardAnimCont = true;
+    private float boardAnimationTime = 0;
+    private bool boardAnimSwitch = true;
+
     //------------------------------------------------------------------------------------------------------
 
     public void InitAct(PlayerController pC)
@@ -434,14 +439,14 @@ public class PlayerActions : MonoBehaviour
         //turn on player collider detection
         //heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
 
-        /*
+        
         //temp plank animation
         //reset anim things
         boardAnimCont = true;
         boardAnimationTime = 0;
         boardAnimSwitch = true;
         StartCoroutine(TempPlankAnim());
-        */
+        
 
         //board slam animation called earlier
         
@@ -488,7 +493,7 @@ public class PlayerActions : MonoBehaviour
 
     }
 
-    /*
+    
     private IEnumerator TempPlankAnim()
     {
 
@@ -533,7 +538,7 @@ public class PlayerActions : MonoBehaviour
 
 
     }
-    */
+    
 
     public void TestBoxCast(GameObject startCube, GameObject endCube, float maxDistance)
     {
