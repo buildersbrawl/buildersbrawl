@@ -198,7 +198,10 @@ public class CameraController : MonoBehaviour
         audio = cameraRef.GetComponent<AudioSource>();
         //set the first audio clip to be played as the start round noise
         //audio.clip = clips[0];
-
+        if(UICanvas == null)
+        {
+            UICanvas = FindObjectOfType<Countdown>().gameObject;
+        }
         UICanvas.SetActive(false);
     }
 
@@ -286,8 +289,11 @@ public class CameraController : MonoBehaviour
             {
                 isStart = false;
 
-                UICanvas.SetActive(true);
-                UICanvas.GetComponent<Countdown>().startTimer = true;
+                if(UICanvas != null)
+                {
+                    UICanvas.SetActive(true);
+                    UICanvas.GetComponent<Countdown>().startTimer = true;
+                }
 
                 //reset their positions to their spawn points
                 player1ref.transform.position = player1ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
@@ -300,9 +306,9 @@ public class CameraController : MonoBehaviour
                 //Debug.Log("startTime = " + UICanvas.GetComponent<Countdown>().startTimer);
 
                 //play audio clip
-                audio.Play(0);
+                //audio.Play(0);  //TOM CUT THIS OUT CAUSE IT BREAKS THE GAME
                 //change audio clip to the end of game sound
-                audio.clip = clips[1];
+                //audio.clip = clips[1];  //TOM CUT THIS OUT CAUSE IT BREAKS THE GAME
             }
         }
 

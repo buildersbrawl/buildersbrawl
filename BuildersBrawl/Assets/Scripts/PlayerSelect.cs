@@ -146,6 +146,11 @@ public class PlayerSelect : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (allowControllerSelection && RoundsManager.R == null)
+        {
+            this.gameObject.AddComponent<RoundsManager>();
+        }
+
         CheckLevel();
         if (inPlayerSelect || allowControllerSelection)
         {
