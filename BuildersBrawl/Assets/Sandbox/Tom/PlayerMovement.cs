@@ -256,6 +256,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void PushMe(Vector3 pushDirection, float pushForce)
     { 
+        //if stunned don't let them get pushed
+        if(playerController.playerState == PlayerController.PlayerState.stunned)
+        {
+            return;
+        }
+
         //wait to see if this player dies, if he does then give points to the other other player
         StartCoroutine(this.GetComponent<PlayerDeath>().WaitForDeathToHappen());
 
