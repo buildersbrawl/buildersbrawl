@@ -153,7 +153,7 @@ public class PlayerDeath : MonoBehaviour
 
     public IEnumerator WaitForDeathToHappen()
     {
-        Debug.Log(playerDead);
+        //Debug.Log(playerDead);
         yield return new WaitForSeconds(timeToWaitAfterPushed);
         //if player dies after a push (which would trigger this function), give points to other player
         if (playerDead)

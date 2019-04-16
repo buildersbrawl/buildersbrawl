@@ -264,17 +264,23 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        /*if (!shouldDoStartPan)
+        if (!shouldDoStartPan)
         {
             isStart = false;
             UICanvas.GetComponent<Countdown>().startTimer = true;
             Debug.Log("startTime = " + UICanvas.GetComponent<Countdown>().startTimer);
-        }*/
+        }
 
-        Debug.Log("should do start pan = " + shouldDoStartPan);
+        //Debug.Log("should do start pan = " + shouldDoStartPan);
 
         if (isStart)
         {
+            //disable the players from moving
+            GameManager.S.player1.GetComponent<PlayerController>().enabled = false;
+            GameManager.S.player2.GetComponent<PlayerController>().enabled = false;
+            GameManager.S.player3.GetComponent<PlayerController>().enabled = false;
+            GameManager.S.player4.GetComponent<PlayerController>().enabled = false;
+
             if (!isRightToLeft)
             {
                 cameraRef.transform.LookAt(new Vector3(cameraRef.transform.position.x, startGameStart.transform.position.y, -20));
@@ -302,9 +308,9 @@ public class CameraController : MonoBehaviour
                 player1ref.transform.position = player1ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
                 player2ref.transform.position = player2ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
                 if(player3ref != null)
-                    player1ref.transform.position = player1ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
+                    player3ref.transform.position = player3ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
                 if(player4ref != null)
-                    player1ref.transform.position = player1ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
+                    player4ref.transform.position = player4ref.GetComponent<PlayerDeath>().spawnPoint.transform.position;
 
                 //Debug.Log("startTime = " + UICanvas.GetComponent<Countdown>().startTimer);
 
