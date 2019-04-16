@@ -9,6 +9,8 @@ public class VolcanoMechanic : MonoBehaviour
     public float moveSpeed; //Lava Movement Speed
     public float lavaEndYPos; //Position to Halt Lava Movement
     public bool eruptCooldown = true;
+    public float shakeDuration;
+    public float shakeMagnitude;
 
     private Vector3 lavaStartingPos;
     private float startTimer;
@@ -20,6 +22,7 @@ public class VolcanoMechanic : MonoBehaviour
         lavaStartingPos = transform.position;
         startTimer = Time.time;
         cameraTransform = GameManager.S.cameraRef.transform;
+        GameManager.S.cameraRef.GetComponent<CameraController>().volcRef = this;
     }
 
     private void Update()
@@ -28,8 +31,10 @@ public class VolcanoMechanic : MonoBehaviour
 
         if (!eruptCooldown)
         {
-            Debug.Log("Eruption In Progress!");
-            //StartCoroutine(ScreenShake(0.15f, 0.4f));
+            if (timePassed >= timeUntilErupt)
+            {
+                GameManager.S.cameraRef.GetComponent<CameraController>().cameraShake = true;
+            }
             if (transform.localPosition.y <= lavaEndYPos)
             {
                 Debug.Log("Lava is Emerging!");
@@ -48,22 +53,49 @@ public class VolcanoMechanic : MonoBehaviour
         }
     }
 
-    private IEnumerator ScreenShake(float duration, float magnitude)
+    public IEnumerator ScreenShake()
+    {
+        float elapsed = 0.0f;
+
+        Vector3 originalCamPos = cameraTransform.position;
+
+        while (elapsed < shakeDuration)
+        {
+            elapsed += Time.deltaTime;
+
+            float percentComplete = elapsed / shakeDuration;
+            float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
+
+            float x = Random.value * 2.0f - 1.0f;
+            float y = Random.value * 2.0f - 1.0f;
+
+            x *= shakeMagnitude * damper;
+            y *= shakeMagnitude * damper;
+
+            cameraTransform.position = new Vector3(x, y, originalCamPos.z);
+
+            yield return null;
+        }
+        cameraTransform.position = originalCamPos;
+    }
+    /*
+    public IEnumerator ScreenShake()
     {
         yield return new WaitForSeconds(timeUntilExplosion);
         Debug.Log("Shaking Screen");
-        Vector3 originalPos = cameraTransform.position;
+        //Vector3 originalPos = cameraTransform.position;
         float elapsed = 0f;
 
-        while (elapsed < duration)
+        while (elapsed < shakeDuration)
         {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
+            float x = Random.Range(-1f, 1f) * shakeMagnitude;
+            float z = Random.Range(-1f, 1f) * shakeMagnitude;
 
-            cameraTransform.position = new Vector3(x, y, -10f);
+            cameraTransform.position = new Vector3(x, cameraTransform.position.y, z);
+            Debug.Log("Elapsed Time: " + elapsed);
             elapsed += Time.deltaTime;
             yield return 0;
         }
-        cameraTransform.position = originalPos;
-    }
+        //cameraTransform.position = originalPos;
+    }*/
 }

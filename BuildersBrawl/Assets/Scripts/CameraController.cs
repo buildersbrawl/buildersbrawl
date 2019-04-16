@@ -185,7 +185,9 @@ public class CameraController : MonoBehaviour
 
     //used to store 2 furthest players
     private GameObject furthestPlayer1, furthestPlayer2;
-
+    [HideInInspector]
+    public VolcanoMechanic volcRef;
+    public bool cameraShake = false;
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private void Start()
@@ -466,6 +468,12 @@ public class CameraController : MonoBehaviour
             ZoomOnWinner();
             //Debug.Log("We have a winner!!");
         }*/
+        if (cameraShake)
+        {
+            Debug.Log("Screen Shaking In Progress!");
+            StartCoroutine(volcRef.ScreenShake());
+            cameraShake = false;
+        }
     }
 
     public void SetCameraPosition(Vector3 centerPoint)

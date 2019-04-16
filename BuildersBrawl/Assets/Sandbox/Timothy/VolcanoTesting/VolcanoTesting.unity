@@ -11065,6 +11065,8 @@ MonoBehaviour:
   moveSpeed: 0.5
   lavaEndYPos: 0.219
   eruptCooldown: 1
+  shakeDuration: 0.3
+  shakeMagnitude: 1
 --- !u!1001 &1310578312
 PrefabInstance:
   m_ObjectHideFlags: 0
