@@ -57,7 +57,7 @@ public class Points : MonoBehaviour
     public void ChangeFaceNum(int newNum)
     {
         activeFaceNum = newNum;
-        Debug.Log("Face for " + this.gameObject.name + " is changed to " + newNum);
+        //Debug.Log("Face for " + this.gameObject.name + " is changed to " + newNum);
     }
 
     //SAVE POINTS TO PointsStorage

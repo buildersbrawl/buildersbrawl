@@ -121,7 +121,7 @@ public class LevelSelector : MonoBehaviour
         chosenLevel = levelNames[levelNumber];
     }
 
-    void CycleChoices()
+    public void CycleChoices()
     {
         //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
         if(show > levels.Length-1)
@@ -140,7 +140,7 @@ public class LevelSelector : MonoBehaviour
         }
     }
 
-    void CycleBackChoices()
+    public void CycleBackChoices()
     {
         //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
         if (show < 1)
