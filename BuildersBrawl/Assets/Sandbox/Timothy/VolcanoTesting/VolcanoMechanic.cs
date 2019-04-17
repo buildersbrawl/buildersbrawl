@@ -55,28 +55,39 @@ public class VolcanoMechanic : MonoBehaviour
 
     public IEnumerator ScreenShake()
     {
+        print("screen shake");
+
         float elapsed = 0.0f;
 
-        Vector3 originalCamPos = cameraTransform.position;
+        //Vector3 originalCamPos = cameraTransform.position;
 
         while (elapsed < shakeDuration)
         {
+            Vector3 originalCamPos = cameraTransform.position;
+
             elapsed += Time.deltaTime;
 
             float percentComplete = elapsed / shakeDuration;
             float damper = 1.0f - Mathf.Clamp(4.0f * percentComplete - 3.0f, 0.0f, 1.0f);
 
             float x = Random.value * 2.0f - 1.0f;
-            float y = Random.value * 2.0f - 1.0f;
+            float z = Random.value * 2.0f - 1.0f;
 
             x *= shakeMagnitude * damper;
-            y *= shakeMagnitude * damper;
+            z *= shakeMagnitude * damper;
 
-            cameraTransform.position = new Vector3(x, y, originalCamPos.z);
+            cameraTransform.position = new Vector3(originalCamPos.x + x, originalCamPos.y, originalCamPos.z + z);
 
             yield return null;
         }
-        cameraTransform.position = originalCamPos;
+
+        if (elapsed >= shakeDuration)
+        {
+            eruptCooldown = true;
+            startTimer = Time.time;
+            transform.position = lavaStartingPos;
+        }
+        //cameraTransform.position = originalCamPos;
     }
     /*
     public IEnumerator ScreenShake()
