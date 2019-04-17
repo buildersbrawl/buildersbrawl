@@ -4,16 +4,22 @@ using UnityEngine;
 
 public class RespawnArrows : MonoBehaviour
 {
-    public GameObject respawnArrow;
+    private GameObject respawnArrow;
+
+    private void Start()
+    {
+        respawnArrow = GetComponentInChildren<ArrowIdentifier>().gameObject;
+    }
+
     private void Update()
     {
         if (!(this.GetComponent<PlayerDeath>().playerDead))
         {
-            respawnArrow.GetComponent<MeshRenderer>().enabled = false;
+            respawnArrow.SetActive(false);
         }
         else
         {
-            respawnArrow.GetComponent<MeshRenderer>().enabled = true;
+            respawnArrow.SetActive(true);
         }
     }
 }
