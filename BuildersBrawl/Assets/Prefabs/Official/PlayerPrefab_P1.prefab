@@ -163,18 +163,20 @@ MonoBehaviour:
   actionCooldown: 2
   whereBoardHeld: {x: 0, y: 1.5, z: 0}
   throwBoardOnDrop: 0
+  boxCastMaxDistancePush: 0.5
   heldPlank: {fileID: 0}
-  boardSlamAnimWaitTime: 0.1
-  pushForce: 13
-  didNotFindPlank: 0
-  pushCooldown: 2
-  pushedCooldown: 1
+  boardSlamDelayForAnim: 0.1
   slamCooldown: 2
-  pickUpPlaceCooldown: 0.9
-  slamStunTime: 3
-  pushStopTime: 1
   slamStopTime: 0.9
+  pushForce: 13
+  pushDelayForAnim: 0.15
+  pushCooldown: 1
+  pushedCooldown: 1
+  pushStopTime: 0.5
+  didNotFindPlank: 0
+  pickUpPlaceCooldown: 0.9
   PickUpPlaceStopTime: 0.9
+  slamStunTime: 3
 --- !u!114 &4205513807017318953
 MonoBehaviour:
   m_ObjectHideFlags: 0

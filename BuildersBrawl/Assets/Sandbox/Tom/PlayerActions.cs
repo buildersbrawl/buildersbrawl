@@ -35,8 +35,8 @@ public class PlayerActions : MonoBehaviour
     private Vector3 boxCasthalfSize = new Vector3(.7f, 1.5f, .1f);
     //[SerializeField]
     private float boxCastMaxDistancePlankPickUp = 1;
-    //[SerializeField]
-    private float boxCastMaxDistancePush = 1;
+    [SerializeField]
+    private float boxCastMaxDistancePush = .5f;
     //[SerializeField]
     private float boxCastMaxDistanceSlam = 2;
     private Quaternion playerRotation;
@@ -64,39 +64,38 @@ public class PlayerActions : MonoBehaviour
     [Header("Board Slam")]
     [Tooltip("How long to wait after board slam called to check to see if there is a player infront of me")]
     [SerializeField]
-    private float boardSlamAnimWaitTime = .1f;
+    private float boardSlamDelayForAnim = .1f;
+    [SerializeField]
+    private float slamCooldown = 2f;
+    [SerializeField]
+    private float slamStopTime = .9f; //NOTE: SHOULD BE SHORTER THAN ASSOSSIATIED COOLDOWN
 
     [Header("Push")]
-    public float pushForce = 1f;
-    
+    [SerializeField]
+    private float pushForce = 13f;
+    [SerializeField]
+    private float pushDelayForAnim = .15f;
+    [SerializeField]
+    private float pushCooldown = 1f;
+    [SerializeField]
+    private float pushedCooldown = 1f;
+    [SerializeField]
+    private float pushStopTime = .5f; //NOTE: SHOULD BE SHORTER THAN ASSOSSIATIED COOLDOWN
+
     [Header("PickUpPlace")]
     [HideInInspector]
     public bool didNotFindPlank = false;
+    [SerializeField]
+    private float pickUpPlaceCooldown = .9f;
+    [SerializeField]
+    private float PickUpPlaceStopTime = .9f; //NOTE: SHOULD BE SHORTER THAN ASSOSSIATIED COOLDOWN
 
     //cooldowns
     private float coolDownLength;
     private float defaultCooldown = .1f;
-    [Header("Cooldowns")]
-    [SerializeField]
-    private float pushCooldown = 2f;
-    [SerializeField]
-    private float pushedCooldown = 1f;
-    [SerializeField]
-    private float slamCooldown = 2f;
-    [SerializeField]
-    private float pickUpPlaceCooldown = .1f; 
+    [Header("Stun")]
     [SerializeField]
     private float slamStunTime = 3f;
-
-    //anim stop time                NOTE: SHOULD BE SHORTER THAN ASSOSSIATIED COOLDOWN
-    [Header("AnimStopTimes")]
-    [SerializeField]
-    private float pushStopTime = 1f;
-    [SerializeField]
-    private float slamStopTime = 1f;
-    [SerializeField]
-    private float PickUpPlaceStopTime = 1f;
-
 
     private bool boardAnimCont = true;
     private float boardAnimationTime = 0;
@@ -222,13 +221,20 @@ public class PlayerActions : MonoBehaviour
             return;
         }
 
+        //call coroutine
+        StartCoroutine(PushCoroutine());
+        
+
+    }
+
+    //add slight delay to push so that looks right with animation
+    IEnumerator PushCoroutine()
+    {
+        yield return new WaitForSeconds(pushDelayForAnim);
+
         print("Push action");
         //make boxcast in front of player
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePush);
-        if (testCubes)
-        {
-            TestBoxCast(startCube, endCube, boxCastMaxDistancePush);
-        }
 
         //if hits opponent knock back opponent
         for (int index = 0; index < boxHitInfo.Length; index++)
@@ -236,7 +242,7 @@ public class PlayerActions : MonoBehaviour
             print("Push hit " + boxHitInfo[index]);
 
             //look to see if hit player other than self
-            if(boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && boxHitInfo[index].collider.gameObject != this.gameObject)
+            if (boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && boxHitInfo[index].collider.gameObject != this.gameObject)
             {
                 //"push" that player
                 //get the vector this player is facing      //boxcasting sets player forward
@@ -254,7 +260,17 @@ public class PlayerActions : MonoBehaviour
                 index = boxHitInfo.Length;
             }
         }
+
+        if (testCubes)
+        {
+            TestBoxCast(startCube, endCube, boxCastMaxDistancePush);
+        }
+
     }
+
+    //-------------------------------------------------------
+
+
 
     private void ChargeAction()
     {
@@ -276,6 +292,7 @@ public class PlayerActions : MonoBehaviour
         //check to see if board is in front of player
         //boxcast in front of player
 
+
         //boxcast (makes an array)
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePlankPickUp);
 
@@ -287,7 +304,7 @@ public class PlayerActions : MonoBehaviour
         {
             //if hits board that is dropped, pick up board
             //if hit plank, and plank is dropped
-            if (boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>() != null && boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>().plankState == PlankManager.PlankState.dropped) 
+            if (boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>() != null && boxHitInfo[index].collider.gameObject.GetComponent<PlankManager>().plankState == PlankManager.PlankState.dropped)
             {
                 PickUpPlank(boxHitInfo[index].collider.gameObject);
                 didNotFindPlank = false;
@@ -298,7 +315,7 @@ public class PlayerActions : MonoBehaviour
 
             //if hits board maker, make board, pick up board
 
-            else if(boxHitInfo[index].collider.gameObject.GetComponent<PlankPile>() != null)
+            else if (boxHitInfo[index].collider.gameObject.GetComponent<PlankPile>() != null)
             {
                 //make plank
                 GameObject newPlank = boxHitInfo[index].collider.gameObject.GetComponent<PlankPile>().GeneratePlank(this.gameObject.transform.position, this.gameObject.transform.rotation);
@@ -323,6 +340,8 @@ public class PlayerActions : MonoBehaviour
         StartCoroutine(PickUpAnimDeterminer());
 
     }
+
+    
 
     private void PickUpPlank(GameObject plank)
     {
@@ -471,7 +490,7 @@ public class PlayerActions : MonoBehaviour
         //stun them
         //flatten them
         //cooldown
-        yield return new WaitForSeconds(boardSlamAnimWaitTime);
+        yield return new WaitForSeconds(boardSlamDelayForAnim);
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistanceSlam);
         if (testCubes)
         {

@@ -239,6 +239,21 @@ public class PlankManager : MonoBehaviour
             {
                 Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameObject.FindObjectOfType<WindMechanic>().GetComponent<Collider>(), true);
             }
+
+            
+            //also ignore anything with ignore plank when being placed
+            if (GameObject.FindObjectOfType<IgnoreMeWhenPlacingPlank>() != null)
+            {
+                //get list of all
+                IgnoreMeWhenPlacingPlank[] ignoreStuff = FindObjectsOfType<IgnoreMeWhenPlacingPlank>();
+
+                //ignore them all
+                for (int index = 0; index < ignoreStuff.Length; index++)
+                {
+                    Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), ignoreStuff[index].gameObject.GetComponent<Collider>(), true);
+                }
+            }
+            
         }
         else
         {
@@ -264,6 +279,19 @@ public class PlankManager : MonoBehaviour
             if (GameObject.FindObjectOfType<WindMechanic>() != null)
             {
                 Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameObject.FindObjectOfType<WindMechanic>().GetComponent<Collider>(), false);
+            }
+
+            //also ignore anything with ignore plank when being placed
+            if (GameObject.FindObjectOfType<IgnoreMeWhenPlacingPlank>() != null)
+            {
+                //get list of all
+                IgnoreMeWhenPlacingPlank[] ignoreStuff = FindObjectsOfType<IgnoreMeWhenPlacingPlank>();
+
+                //ignore them all
+                for (int index = 0; index < ignoreStuff.Length; index++)
+                {
+                    Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), ignoreStuff[index].gameObject.GetComponent<Collider>(), false);
+                }
             }
 
         }
