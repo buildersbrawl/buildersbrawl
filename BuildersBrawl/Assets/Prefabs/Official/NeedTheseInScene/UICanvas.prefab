@@ -1136,6 +1136,7 @@ MonoBehaviour:
   cd: {fileID: 2830357514217980413}
   cd_panel: {fileID: 3413544018381708780}
   cd_icon: {fileID: 7305704601225186889}
+  startTimer: 0
 --- !u!1 &7255282660245887017
 GameObject:
   m_ObjectHideFlags: 0

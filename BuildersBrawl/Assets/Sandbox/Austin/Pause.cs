@@ -10,12 +10,22 @@ public class Pause : MonoBehaviour
     //public Button pause;
     //public Button exitToMenu;
 
+    public static Pause S;
     public GameObject pauseMenu;
+    private GameObject eventSystem;
+
+    private void Awake()
+    {
+        S = this;
+    }
 
     private void Start()
     {
-        pauseMenu = this.gameObject;
-        pauseMenu.SetActive(false);
+        //S = this;
+
+
+        S.pauseMenu = this.gameObject;
+        S.pauseMenu.SetActive(false);
     }
 
     private void Update()
@@ -27,23 +37,27 @@ public class Pause : MonoBehaviour
     //change input from Default to UI in the same spot
     public void PauseGame()
     {
-        InputManager.isUsingUI =true;
-        //change time scale
-        Time.timeScale = 0;
+        //Debug.Log("Pause - PauseGame");
 
         //turn on pause menu
-        pauseMenu.SetActive(true);
+        S.pauseMenu.SetActive(true);
+        InputManager.isUsingUI = true;
+
+        //change time scale
+        Time.timeScale = 0;
 
     }
 
     public void Resume()
     {
-        pauseMenu.SetActive(false);
-
         //change timescale back to 100%
         Time.timeScale = 1;
-        InputManager.isUsingUI = false;
+
+        S.pauseMenu.SetActive(false);
+        
         //set the controller maps to default
+        InputManager.isUsingUI = false;
+        
 
     }
 

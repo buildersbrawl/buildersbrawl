@@ -40,6 +40,8 @@ public class GameInputManager : MonoBehaviour
     public bool moveUIRight = false;
     [HideInInspector]
     public bool moveUIDown = false;
+    [HideInInspector]
+    public bool pressedStart = false;
 
     public static bool isUsingUI = true;
     public bool isMovingUI = false;
@@ -135,6 +137,9 @@ public class GameInputManager : MonoBehaviour
 
             //input for bumpbers
             pressedSlamButton = player.GetButtonDown("Slam/Push");
+
+            //input for start button
+            pressedStart = player.GetButtonDown("Submit");
 
             //if trigger is pressed beyond triggerSensitivity it will trigger the slam
             if (player.GetAxis("Slam/Push") >= triggerSensitivity)

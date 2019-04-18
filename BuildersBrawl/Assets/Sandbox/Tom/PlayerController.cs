@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
     private bool YPickOrPlace;
     private bool dropPlankControl;
     private bool BumpOrTrigSlamOrPush;
+    private bool StartPause;
 
     private Vector3 joyInput;
 
@@ -485,6 +486,7 @@ public class PlayerController : MonoBehaviour
         BumpOrTrigSlamOrPush = gameInputManager.pressedPushButton;
         YPickOrPlace = gameInputManager.pressedBoardPickUpOrDropButton;
         BumpOrTrigSlamOrPush = gameInputManager.pressedSlamButton;
+        StartPause = gameInputManager.pressedStart;
 
     }
 
@@ -520,6 +522,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //------------------------------------------------------------------------------------------
+
+        //if they press start, bring up pause menu
+        if (StartPause)
+        {
+            //Debug.Log("Paused - PlayerController");
+            Pause.S.PauseGame();
+        }
 
 
         //if player dead or stunned stop control
