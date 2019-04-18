@@ -69676,6 +69676,11 @@ PrefabInstance:
       propertyPath: startGameEnd
       value: 
       objectReference: {fileID: 101386503}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: shouldDoStartPan
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681249, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: field of view

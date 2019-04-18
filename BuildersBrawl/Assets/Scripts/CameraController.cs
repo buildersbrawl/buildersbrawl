@@ -188,6 +188,19 @@ public class CameraController : MonoBehaviour
     [HideInInspector]
     public VolcanoMechanic volcRef;
     public bool cameraShake = false;
+
+
+    //for slightly better camera
+    float furthestDistanceX = 0;
+    float distanceBetweenPlayersX = 0;
+    GameObject furthestPlayer1X;
+    GameObject furthestPlayer2X;
+    float furthestDistanceZ = 0;
+    float distanceBetweenPlayersZ = 0;
+    GameObject furthestPlayer1Z;
+    GameObject furthestPlayer2Z;
+
+
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
     private void Start()
@@ -701,6 +714,8 @@ public class CameraController : MonoBehaviour
         */
     }
 
+
+
     private void GetAveragePositionBetweenPlayers()
     {
         //for just doing average between 2 furthest players (doesn't work because jump between old and new average
@@ -717,8 +732,11 @@ public class CameraController : MonoBehaviour
             print("Error: missing player reference");
         }
 
+
+
         if (player3ref != null)
         {
+            
             Vector3 p1p2 = averagePositionBetweenPlayers;
             Vector3 p1p3 = Vector3.Lerp(player1ref.transform.position, player3ref.transform.position, 0.5f);
             Vector3 p2p3 = Vector3.Lerp(player2ref.transform.position, player3ref.transform.position, 0.5f);
@@ -726,8 +744,10 @@ public class CameraController : MonoBehaviour
             Vector3 avg_p1p2_p1p3 = Vector3.Lerp(p1p2, p1p3, 0.5f);
             averagePositionBetweenPlayers = Vector3.Lerp(avg_p1p2_p1p3, p2p3, 0.5f);
 
+
             if (player4ref != null)
             {
+                
                 Vector3 p1p4 = Vector3.Lerp(player1ref.transform.position, player4ref.transform.position, 0.5f);
                 Vector3 p2p4 = Vector3.Lerp(player2ref.transform.position, player4ref.transform.position, 0.5f);
                 Vector3 p3p4 = Vector3.Lerp(player3ref.transform.position, player4ref.transform.position, 0.5f);
@@ -738,13 +758,177 @@ public class CameraController : MonoBehaviour
                 Vector3 avg_p1p2_p1p3_p2p3_p1p4 = Vector3.Lerp(avg_p1p2_p1p3, avg_p2p3_p1p4, 0.5f);
                 averagePositionBetweenPlayers = Vector3.Lerp(avg_p1p2_p1p3_p2p3_p1p4, avg_p2p4_p3p4, 0.5f);
 
+
             }
         }
-        
-        
+
+        //makes it so only the furthest players affect the camera
+        //--------------------------------
+        GetFurthestDistanceX();
+        GetFurthestDistanceZ();
+
+        averagePositionBetweenPlayers.x = Vector3.Lerp(furthestPlayer1X.transform.position, furthestPlayer2X.transform.position, 0.5f).x;
+        averagePositionBetweenPlayers.z = Vector3.Lerp(furthestPlayer1Z.transform.position, furthestPlayer2Z.transform.position, 0.5f).z;
+
+        //----------------------------------
+
 
 
     }
+
+    //Yes, I know this is horrendous programming but it's the fastest solution rn
+
+    private void GetFurthestDistanceX()
+    {
+
+        if (player1ref != null && player2ref != null)
+        {
+            //gets float of distance between players
+            distanceBetweenPlayersX = Mathf.Abs(player1ref.transform.position.x - player2ref.transform.position.x);
+            //distanceList.Add(distanceBetweenPlayers);
+            furthestPlayer1X = player1ref;
+            furthestPlayer2X = player2ref;
+        }
+        else
+        {
+            print("Error: missing player reference");
+        }
+
+        if (player3ref != null)
+        {
+            float p1p2Dist = distanceBetweenPlayersX;
+            float p1p3Dist = Mathf.Abs(player1ref.transform.position.x - player3ref.transform.position.x);
+            float p2p3Dist = Mathf.Abs(player2ref.transform.position.x - player3ref.transform.position.x);
+
+            furthestDistanceX = p1p2Dist;
+
+            if (p1p3Dist > furthestDistanceX)
+            {
+                furthestDistanceX = p1p3Dist;
+                furthestPlayer1X = player1ref;
+                furthestPlayer2X = player3ref;
+            }
+            if (p2p3Dist > furthestDistanceX)
+            {
+                furthestDistanceX = p2p3Dist;
+                furthestPlayer1X = player2ref;
+                furthestPlayer2X = player3ref;
+            }
+
+            //distanceList.Add(p1p2Dist);
+            // distanceList.Add(p1p3Dist);
+            //distanceList.Add(p2p3Dist);
+
+            if (player4ref != null)
+            {
+                float p1p4Dist = Mathf.Abs(player1ref.transform.position.x - player4ref.transform.position.x);
+                float p2p4Dist = Mathf.Abs(player2ref.transform.position.x - player4ref.transform.position.x);
+                float p3p4Dist = Mathf.Abs(player3ref.transform.position.x - player4ref.transform.position.x);
+
+                if (p1p4Dist > furthestDistanceX)
+                {
+                    furthestDistanceX = p1p4Dist;
+                    furthestPlayer1X = player1ref;
+                    furthestPlayer2X = player4ref;
+                }
+                if (p2p4Dist > furthestDistanceX)
+                {
+                    furthestDistanceX = p2p4Dist;
+                    furthestPlayer1X = player2ref;
+                    furthestPlayer2X = player4ref;
+                }
+                if (p3p4Dist > furthestDistanceX)
+                {
+                    furthestDistanceX = p3p4Dist;
+                    furthestPlayer1X = player3ref;
+                    furthestPlayer2X = player4ref;
+                }
+
+                //distanceList.Add(p1p4Dist);
+                //distanceList.Add(p2p4Dist);
+                //distanceList.Add(p3p4Dist);
+            }
+        }
+
+        distanceBetweenPlayersX = furthestDistanceX;
+    }
+
+    //Yes, I know this is horrendous programming but it's the fastest solution rn
+    private void GetFurthestDistanceZ()
+    {
+
+        if (player1ref != null && player2ref != null)
+        {
+            //gets float of distance between players
+            distanceBetweenPlayersZ = Mathf.Abs(player1ref.transform.position.z - player2ref.transform.position.z);
+            //distanceList.Add(distanceBetweenPlayers);
+            furthestPlayer1Z = player1ref;
+            furthestPlayer2Z = player2ref;
+        }
+        else
+        {
+            print("Error: missing player reference");
+        }
+
+        if (player3ref != null)
+        {
+            float p1p2Dist = distanceBetweenPlayersZ;
+            float p1p3Dist = Mathf.Abs(player1ref.transform.position.z - player3ref.transform.position.z);
+            float p2p3Dist = Mathf.Abs(player2ref.transform.position.z - player3ref.transform.position.z);
+
+            furthestDistanceZ = p1p2Dist;
+
+            if (p1p3Dist > furthestDistanceZ)
+            {
+                furthestDistanceZ = p1p3Dist;
+                furthestPlayer1Z = player1ref;
+                furthestPlayer2Z = player3ref;
+            }
+            if (p2p3Dist > furthestDistanceZ)
+            {
+                furthestDistanceZ = p2p3Dist;
+                furthestPlayer1Z = player2ref;
+                furthestPlayer2Z = player3ref;
+            }
+
+            //distanceList.Add(p1p2Dist);
+            // distanceList.Add(p1p3Dist);
+            //distanceList.Add(p2p3Dist);
+
+            if (player4ref != null)
+            {
+                float p1p4Dist = Mathf.Abs(player1ref.transform.position.z - player4ref.transform.position.z);
+                float p2p4Dist = Mathf.Abs(player2ref.transform.position.z - player4ref.transform.position.z);
+                float p3p4Dist = Mathf.Abs(player3ref.transform.position.z - player4ref.transform.position.z);
+
+                if (p1p4Dist > furthestDistanceZ)
+                {
+                    furthestDistanceZ = p1p4Dist;
+                    furthestPlayer1Z = player1ref;
+                    furthestPlayer2Z = player4ref;
+                }
+                if (p2p4Dist > furthestDistanceZ)
+                {
+                    furthestDistanceZ = p2p4Dist;
+                    furthestPlayer1Z = player2ref;
+                    furthestPlayer2Z = player4ref;
+                }
+                if (p3p4Dist > furthestDistanceZ)
+                {
+                    furthestDistanceZ = p3p4Dist;
+                    furthestPlayer1Z = player3ref;
+                    furthestPlayer2Z = player4ref;
+                }
+
+                //distanceList.Add(p1p4Dist);
+                //distanceList.Add(p2p4Dist);
+                //distanceList.Add(p3p4Dist);
+            }
+        }
+
+        distanceBetweenPlayersZ = furthestDistanceZ;
+    }
+    
 
     public void SetDeathStartValues()
     {
