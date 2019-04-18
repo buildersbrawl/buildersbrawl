@@ -8219,7 +8219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d941181651aa6649862276efb3eb7d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  windDirection: 0
+  windDirection: 1
   windInProgress: 0
   windStartTimer: 15
   windDurationTImer: 5
