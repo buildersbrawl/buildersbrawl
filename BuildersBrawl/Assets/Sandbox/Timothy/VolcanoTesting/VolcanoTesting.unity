@@ -10998,12 +10998,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timeUntilErupt: 20
-  timeUntilExplosion: 5
+  timeUntilExplosion: 2
   moveSpeed: 0.5
   lavaEndYPos: 0.219
   eruptCooldown: 1
   shakeDuration: 1
-  shakeMagnitude: 0.5
+  shakeMagnitude: 1
 --- !u!1001 &1310578312
 PrefabInstance:
   m_ObjectHideFlags: 0
