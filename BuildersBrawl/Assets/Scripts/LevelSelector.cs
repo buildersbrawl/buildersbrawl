@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Rewired;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 
 public class LevelSelector : MonoBehaviour
 {
@@ -25,6 +26,10 @@ public class LevelSelector : MonoBehaviour
     public float waitInterval;
 
     public bool levelChosen = false;
+    private bool set = true;
+
+    public Button nextLevel;
+    public Button prevLevel;
 
     // Start is called before the first frame update
     void Start()
@@ -41,6 +46,8 @@ public class LevelSelector : MonoBehaviour
         levelDisplay.sprite = levels[show];
         chosenLevel = levelNames[show];
 
+        nextLevel.interactable = false;
+        prevLevel.interactable = false;
     }
 
     // Update is called once per frame
@@ -75,10 +82,10 @@ public class LevelSelector : MonoBehaviour
         {
             DisplayChosen();
 
-            if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Submit"))
+            /*if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Submit"))
             {
                 ActuallyStartLevel();
-            }
+            }*/
         }
     }
 
@@ -133,11 +140,17 @@ public class LevelSelector : MonoBehaviour
             show ++;
         }
 
+
         if(show < levels.Length)
         {
            levelDisplay.sprite = levels[show];
            chosenLevel = levelNames[show];
         }
+
+        /*if (show == 0)
+        {
+            chosenLevel = levelNames[levelNumber];
+        }*/
     }
 
     public void CycleBackChoices()
@@ -169,6 +182,7 @@ public class LevelSelector : MonoBehaviour
     {
         print("Level chosen");
 
+
         levelChosen = true;
 
         //Displays the chosen level after a certain amount of time. Can be changed to display level after all players are ready.
@@ -177,8 +191,17 @@ public class LevelSelector : MonoBehaviour
         //Stops random level stuff in order to not slow down Unity
         chosenShown = true;
 
-        PlayerSelect.S.LevelStartBtn.interactable = true;
-        PlayerSelect.S.LevelStartBtnText.text = "Player 1: Press A to Start";
+        if(!PlayerSelect.S.LevelStartBtn.interactable)
+        {
+            PlayerSelect.S.LevelStartBtn.interactable = set;
+            if(PlayerSelect.S.LevelStartBtn.interactable)
+            {
+                EventSystem.current.SetSelectedGameObject(PlayerSelect.S.LevelStartBtn.gameObject, null);
+                nextLevel.interactable = true;
+                prevLevel.interactable = true;
+            }
+        }
+        PlayerSelect.S.LevelStartBtnText.text = "Start Game";
     }
 
     public void ActuallyStartLevel()
@@ -205,11 +228,11 @@ public class LevelSelector : MonoBehaviour
         SceneManager.LoadScene(MainMenu);
     }
 
-    public void nextLevel()
+    /*public void nextLevel()
     {
         CycleChoices();
 
-    }
+    }*/
 
     void RandomLevel()
     {
