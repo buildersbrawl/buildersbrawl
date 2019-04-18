@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc82410f5bd0c514090486077c80edef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pauseMenu: {fileID: 0}
+  pauseMenu: {fileID: 44831665}
 --- !u!1 &55175474 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 34944575546813303, guid: 343849e8772006e45b6c64399bf66674,
@@ -922,7 +922,7 @@ PrefabInstance:
     - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: inputType
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 925820139, guid: a976d66702bbc334d9a158045b06242f, type: 3}
       propertyPath: spawnPoint
@@ -4776,6 +4776,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6541098295299690130, guid: e204eb6f9f82c89478df5abcc468ea15,
+        type: 3}
+      propertyPath: inPlayerSelect
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541098295299690130, guid: e204eb6f9f82c89478df5abcc468ea15,
+        type: 3}
+      propertyPath: TwoPlayersReady
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541098295299690130, guid: e204eb6f9f82c89478df5abcc468ea15,
+        type: 3}
+      propertyPath: FourPlayersReady
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6541098295299690130, guid: e204eb6f9f82c89478df5abcc468ea15,
+        type: 3}
+      propertyPath: allowControllerSelection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e204eb6f9f82c89478df5abcc468ea15, type: 3}
 --- !u!1 &1191186013
@@ -5494,7 +5514,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10efa70eea88e69459c632aac286892d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewiredInputManager: {fileID: 0}
+  rewiredInputManager: {fileID: 1613541741}
   useAllRewiredGamePlayers: 0
   useRewiredSystemPlayer: 0
   rewiredPlayerIds: 00000000
@@ -6561,6 +6581,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c784ec26b087b6646adf2a2965162bc1, type: 3}
+--- !u!114 &1613541741 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5797852830783007928, guid: c784ec26b087b6646adf2a2965162bc1,
+    type: 3}
+  m_PrefabInstance: {fileID: 1613541740}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 581b3e3c96df0ef42aef16b63b27b87f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1618175289
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9125,7 +9157,7 @@ PrefabInstance:
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
       propertyPath: shouldDoStartPan
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
