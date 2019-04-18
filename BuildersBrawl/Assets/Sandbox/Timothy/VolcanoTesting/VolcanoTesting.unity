@@ -11000,10 +11000,10 @@ MonoBehaviour:
   timeUntilErupt: 20
   timeUntilExplosion: 2
   moveSpeed: 0.5
-  lavaEndYPos: 0.219
+  lavaEndYPos: 0.2138
   eruptCooldown: 1
-  shakeDuration: 1
-  shakeMagnitude: 1
+  shakeDuration: 4
+  shakeMagnitude: 0.5
 --- !u!1001 &1310578312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15823,16 +15823,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2547010475574165548, guid: e47230838d2df6145bf584f5f0377f22,
-        type: 3}
-      propertyPath: inputType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1802618590925848296, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 872300737}
+    - target: {fileID: 2547010475574165548, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: inputType
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6420598282248969211, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
       propertyPath: m_Enabled
@@ -16094,16 +16094,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3413213229674929614, guid: a122de2bbb5da164b872459a52abdec9,
-        type: 3}
-      propertyPath: inputType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1514009779995566858, guid: a122de2bbb5da164b872459a52abdec9,
         type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1468375232}
+    - target: {fileID: 3413213229674929614, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: inputType
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a122de2bbb5da164b872459a52abdec9, type: 3}
 --- !u!1001 &1969163174
