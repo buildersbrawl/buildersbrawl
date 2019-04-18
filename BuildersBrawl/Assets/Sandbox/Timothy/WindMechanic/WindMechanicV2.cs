@@ -22,11 +22,21 @@ public class WindMechanicV2 : MonoBehaviour
     private GameObject[] players;
     private float startTimer;
     private Vector3 windFlow;
+    private Vector3 windDir;
+
+    [Header("Always set to 1")]
+    [Tooltip("Used to see how this percentage is interacting")]
+    public float windPercentage = 1;
+    public float windReductionStartDistance;
+    public float windReductionMaxDistance;
+    LayerMask mask;
 
     private void Awake()
     {
         playerLocator = FindObjectsOfType(typeof(PlayerController)) as PlayerController[];
         players = new GameObject[playerLocator.Length];
+
+        mask = LayerMask.GetMask("Default");
     }
 
     private void Start()
@@ -37,12 +47,12 @@ public class WindMechanicV2 : MonoBehaviour
         }
         startTimer = Time.time;
         windFlow = GetWindFlowDirectiond(windDirection);
+
     }
 
     private void Update()
     {
         float timePassed = Time.time - startTimer;
-        RaycastHit hit;
         if (!windCooldown)
         {
             Debug.Log("The Wind is aBlowing!");
@@ -53,14 +63,19 @@ public class WindMechanicV2 : MonoBehaviour
             }
             for (int i = 0; i < players.Length; i++)
             {
-                if (Physics.Raycast(players[i].transform.position + (2.3f * windFlow), -windFlow, out hit, Mathf.Infinity))
+                Debug.DrawRay(players[i].transform.position, -windDir * windReductionStartDistance, Color.red);
+                if (!Physics.Raycast(players[i].transform.position, -windDir, out RaycastHit hit, windReductionStartDistance, mask))
                 {
-                    if (hit.collider.gameObject.GetComponent<PlayerController>())
+                    
+                    players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
+                }
+                else
+                {
+                    if (hit.distance > windReductionMaxDistance && hit.distance <= windReductionStartDistance)
                     {
-                        players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
+                        windPercentage = (hit.distance - windReductionMaxDistance) / (windReductionStartDistance - windReductionMaxDistance);
+                        players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow * windPercentage);
                     }
-                    //Debug.Log("What was hit?: " + hit.collider.gameObject);
-                    //Debug.DrawRay(players[i].transform.position + windFlow, -windFlow, Color.red);
                 }
                 //players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
 
@@ -84,15 +99,19 @@ public class WindMechanicV2 : MonoBehaviour
         switch (direction)
         {
             case WindDirection.North:
+                windDir = Vector3.forward;
                 windDirection = Vector3.forward * Time.deltaTime * windSpeed;
                 break;
             case WindDirection.East:
+                windDir = Vector3.right;
                 windDirection = Vector3.right * Time.deltaTime * windSpeed;
                 break;
             case WindDirection.South:
+                windDir = Vector3.back;
                 windDirection = Vector3.back * Time.deltaTime * windSpeed;
                 break;
             case WindDirection.West:
+                windDir = Vector3.left;
                 windDirection = Vector3.left * Time.deltaTime * windSpeed;
                 break;
             default:
