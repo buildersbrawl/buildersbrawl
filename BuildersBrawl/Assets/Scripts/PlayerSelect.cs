@@ -21,8 +21,11 @@ public class PlayerSelect : MonoBehaviour
     //Button & Text before the players are selected
     public Button P1_select;
     public Text B4_P1_select;
+    public Button P2_select;
     public Text B4_P2_select;
+    public Button P3_select;
     public Text B4_P3_select;
+    public Button P4_select;
     public Text B4_P4_select;
 
     /*//Text after players are selected
@@ -120,12 +123,21 @@ public class PlayerSelect : MonoBehaviour
         //Displays the text that shows up before the players are selected
         if (inPlayerSelect)
         {
-            P1_select.interactable = true;
-            B4_P1_select.enabled = true;
+            P1_select.gameObject.SetActive(true);
+            P2_select.gameObject.SetActive(true);
+            P3_select.gameObject.SetActive(true);
+            P4_select.gameObject.SetActive(true);
 
+            P1_select.interactable = true;
+            P2_select.interactable = true;
+            P3_select.interactable = true;
+            P4_select.interactable = true;
+
+            B4_P1_select.enabled = true;
             B4_P2_select.enabled = true;
             B4_P3_select.enabled = true;
             B4_P4_select.enabled = true;
+
             B4_P2_select.text = "Waiting for Player 1";
             B4_P3_select.text = "Waiting for Player 1";
             B4_P4_select.text = "Waiting for Player 1";
@@ -256,7 +268,7 @@ public class PlayerSelect : MonoBehaviour
         if (!playerFourSelected && playerThreeSelected)
         {
             playerFourSelected = true;
-            Debug.Log("Player Two selected");
+            Debug.Log("Player Four selected");
             CheckSelectedPlayers();
         }
     }
@@ -272,7 +284,7 @@ public class PlayerSelect : MonoBehaviour
                 P1_select.gameObject.SetActive(false);
                 //P1_selected.enabled = true;
                 player1.SetActive(true);
-                B4_P2_select.text = "Press A";
+                B4_P2_select.text = "Press Start";
                 B4_P3_select.text = "Waiting for Player 2";
                 B4_P4_select.text = "Waiting for Player 2";
             }
@@ -283,9 +295,10 @@ public class PlayerSelect : MonoBehaviour
             if (inPlayerSelect)
             {
                 B4_P2_select.enabled = false;
+                P2_select.gameObject.SetActive(false);
                 //P2_selected.enabled = true;
                 player2.SetActive(true);
-                B4_P3_select.text = "Press A";
+                B4_P3_select.text = "Press Start";
                 B4_P4_select.text = "Waiting for Player 3";
             }
         }
@@ -295,9 +308,10 @@ public class PlayerSelect : MonoBehaviour
             if (inPlayerSelect)
             {
                 B4_P3_select.enabled = false;
+                P3_select.gameObject.SetActive(false);
                 //P2_selected.enabled = true;
                 player3.SetActive(true);
-                B4_P4_select.text = "Press A";
+                B4_P4_select.text = "Press Start";
             }
         }
 
@@ -306,6 +320,7 @@ public class PlayerSelect : MonoBehaviour
             if (inPlayerSelect)
             {
                 B4_P4_select.enabled = false;
+                P4_select.gameObject.SetActive(false);
                 //P2_selected.enabled = true;
                 player4.SetActive(true);
             }
@@ -437,11 +452,14 @@ public class PlayerSelect : MonoBehaviour
             Debug.Log("Initializing Scene");
             //Assigns object to appropriate spaces
             P1_select = GameObject.Find("SelectP1").GetComponent<Button>();
-            B4_P1_select = GameObject.Find("Select1").GetComponent<Text>();
+            P2_select = GameObject.Find("SelectP2").GetComponent<Button>();
+            P3_select = GameObject.Find("SelectP3").GetComponent<Button>();
+            P4_select = GameObject.Find("SelectP4").GetComponent<Button>();
 
-            B4_P2_select = GameObject.Find("SelectP2").GetComponent<Text>();
-            B4_P3_select = GameObject.Find("SelectP3").GetComponent<Text>();
-            B4_P4_select = GameObject.Find("SelectP4").GetComponent<Text>();
+            B4_P1_select = GameObject.Find("Select1").GetComponent<Text>();
+            B4_P2_select = GameObject.Find("Select2").GetComponent<Text>();
+            B4_P3_select = GameObject.Find("Select3").GetComponent<Text>();
+            B4_P4_select = GameObject.Find("Select4").GetComponent<Text>();
 
             /*P1_selected = GameObject.Find("Selected_P1").GetComponent<Text>();
             P2_selected = GameObject.Find("Selected_P2").GetComponent<Text>();*/
@@ -469,6 +487,11 @@ public class PlayerSelect : MonoBehaviour
                 B4_P2_select.enabled = true;
                 B4_P3_select.enabled = true;
                 B4_P4_select.enabled = true;
+
+                P1_select.gameObject.SetActive(true);
+                P2_select.gameObject.SetActive(true);
+                P3_select.gameObject.SetActive(true);
+                P4_select.gameObject.SetActive(true);
 
                 B4_P2_select.text = "Waiting for Player 1";
                 B4_P3_select.text = "Waiting for Player 1";
@@ -505,6 +528,11 @@ public class PlayerSelect : MonoBehaviour
             B4_P2_select.enabled = false;
             B4_P3_select.enabled = false;
             B4_P4_select.enabled = false;
+
+            P1_select.gameObject.SetActive(false);
+            P2_select.gameObject.SetActive(false);
+            P3_select.gameObject.SetActive(false);
+            P4_select.gameObject.SetActive(false);
 
             if (!ThreePlayersReady)
             {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 using Rewired;
 
 public class Pause : MonoBehaviour
@@ -13,6 +14,7 @@ public class Pause : MonoBehaviour
     public static Pause S;
     public GameObject pauseMenu;
     private GameObject eventSystem;
+    private GameObject resumeButton;
 
     private void Awake()
     {
@@ -22,7 +24,8 @@ public class Pause : MonoBehaviour
     private void Start()
     {
         //S = this;
-
+        //eventSystem = GameObject.Find("EventSystem");
+        resumeButton = GameObject.Find("ResumeButton");
 
         S.pauseMenu = this.gameObject;
         S.pauseMenu.SetActive(false);
@@ -41,6 +44,7 @@ public class Pause : MonoBehaviour
 
         //turn on pause menu
         S.pauseMenu.SetActive(true);
+        EventSystem.current.SetSelectedGameObject(resumeButton, null);
         InputManager.isUsingUI = true;
 
         //change time scale

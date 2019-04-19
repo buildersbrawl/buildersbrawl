@@ -139,7 +139,16 @@ public class PlayerDeath : MonoBehaviour
 
         //reset player's momentum
         //playerController.playerMovement.ResetMovement();
-        
+
+        //turn off collider
+        this.gameObject.GetComponent<Collider>().enabled = false;
+        //turn off char cont
+        this.gameObject.GetComponent<CharacterController>().enabled = false;
+
+        //reset animator
+        playerController.playerAnimation.playerAnimator.Rebind();
+
+
     }
 
     IEnumerator WaitForRenderer()
@@ -147,6 +156,13 @@ public class PlayerDeath : MonoBehaviour
         yield return new WaitForSeconds(respawnTime);
         this.gameObject.transform.eulerAngles = Vector3.zero;
         playerRenderer.enabled = true;
+
+        //turn on collider
+        this.gameObject.GetComponent<Collider>().enabled = true;
+        //turn on char cont
+        this.gameObject.GetComponent<CharacterController>().enabled = true;
+
+
         playerDead = false;
         print(this.gameObject.transform.position + " " + this.gameObject.name);
     }

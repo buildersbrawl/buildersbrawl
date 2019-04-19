@@ -285,7 +285,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &282675160
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3320,7 +3320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1852857126
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3390,7 +3390,7 @@ MonoBehaviour:
   cancelActionId: -1
   m_HorizontalAxis: UIHorizontal
   m_VerticalAxis: UIVertical
-  m_SubmitButton: Submit
+  m_SubmitButton: Select
   m_CancelButton: Back
   m_InputActionsPerSecond: 10
   m_RepeatDelay: 0
