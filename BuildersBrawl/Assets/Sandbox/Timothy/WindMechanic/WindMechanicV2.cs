@@ -17,6 +17,7 @@ public class WindMechanicV2 : MonoBehaviour
     public float timeUntilWind;
     public float windDuration;
     public bool windCooldown = true;
+    public GameObject dangerSign;
 
     private PlayerController[] playerLocator;
     private GameObject[] players;
@@ -86,8 +87,10 @@ public class WindMechanicV2 : MonoBehaviour
             Debug.Log("The Land Remains Silent!");
             if (timePassed >= timeUntilWind)
             {
+                StartCoroutine("ShowDangerSign");
                 windCooldown = false;
                 startTimer = Time.time;
+
             }
         }
     }
@@ -119,5 +122,12 @@ public class WindMechanicV2 : MonoBehaviour
                 break;
         }
         return windDirection;
+    }
+
+    private IEnumerator ShowDangerSign()
+    {
+        dangerSign.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        dangerSign.SetActive(false);
     }
 }

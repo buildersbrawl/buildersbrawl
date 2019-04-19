@@ -835,6 +835,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+--- !u!224 &105186711 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6936618611032788465, guid: 9b893c3ea2777d2459d2b69de320ae7b,
+    type: 3}
+  m_PrefabInstance: {fileID: 105186710}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &170775524
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1563,11 +1569,6 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1074687016}
-    - target: {fileID: 4847274759241547813, guid: e47230838d2df6145bf584f5f0377f22,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2121425781363295205, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
       propertyPath: m_Layer
@@ -1597,6 +1598,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847274759241547813, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8401497915428690487, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
@@ -9724,10 +9730,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windDirection: 3
-  windSpeed: 200
+  windSpeed: 50
   timeUntilWind: 5
   windDuration: 8
   windCooldown: 1
+  dangerSign: {fileID: 1284966281}
   windPercentage: 1
   windReductionStartDistance: 5
   windReductionMaxDistance: 3
@@ -9869,6 +9876,80 @@ Transform:
   m_Father: {fileID: 1527746931}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1284966281
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1284966284}
+  - component: {fileID: 1284966283}
+  - component: {fileID: 1284966282}
+  m_Layer: 5
+  m_Name: WindDangerSign
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1284966282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284966281}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 21300000, guid: 39554d060806ccf40b8bbf64223888d5, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+--- !u!222 &1284966283
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284966281}
+  m_CullTransparentMesh: 0
+--- !u!224 &1284966284
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1284966281}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 3.0609257, y: 2.9146123, z: 2.9146123}
+  m_Children: []
+  m_Father: {fileID: 105186711}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -2.1998, y: 0}
+  m_SizeDelta: {x: 121.73, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &1287889395
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11023,11 +11104,6 @@ PrefabInstance:
       propertyPath: inputType
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 8864427781295069434, guid: a976d66702bbc334d9a158045b06242f,
-        type: 3}
-      propertyPath: m_Layer
-      value: 10
-      objectReference: {fileID: 0}
     - target: {fileID: 321129468570327526, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: m_Layer
@@ -11718,6 +11794,11 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7898238259498009046, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864427781295069434, guid: a976d66702bbc334d9a158045b06242f,
         type: 3}
       propertyPath: m_Layer
       value: 10
