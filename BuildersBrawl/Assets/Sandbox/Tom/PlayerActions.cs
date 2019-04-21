@@ -24,7 +24,8 @@ public class PlayerActions : MonoBehaviour
 
     public float actionCooldown = 1f;
 
-    public Vector3 whereBoardHeld = new Vector3(0, 1.5f, 0);
+    private Vector3 whereBoardHeld = new Vector3(1.5f, 1f, 0);
+    private float zRotationEnd = -160f;
 
     public bool throwBoardOnDrop = false;
 
@@ -100,6 +101,9 @@ public class PlayerActions : MonoBehaviour
     private bool boardAnimCont = true;
     private float boardAnimationTime = 0;
     private bool boardAnimSwitch = true;
+
+    //
+    private float boardAnimSpeed = 10f;
 
     //------------------------------------------------------------------------------------------------------
 
@@ -360,7 +364,7 @@ public class PlayerActions : MonoBehaviour
         //rotate it so facing correct direction
         heldPlank.transform.rotation = this.gameObject.transform.rotation;
         //add 90 degrees to rotation
-        heldPlank.transform.Rotate(new Vector3(0, 90, -5));
+        heldPlank.transform.Rotate(new Vector3(0, 90, zRotationEnd));
 
         //move up a bit so over players head
         heldPlank.transform.position = this.gameObject.transform.position + whereBoardHeld + this.gameObject.transform.forward;
@@ -518,6 +522,8 @@ public class PlayerActions : MonoBehaviour
 
         //up 3 down 1
 
+        float divideFactor = 50f;
+
         while (boardAnimCont)
         {
             yield return new WaitForSeconds(.01f);
@@ -525,14 +531,16 @@ public class PlayerActions : MonoBehaviour
             if (boardAnimSwitch)
             {
                 //go up
-                HeldPlank.gameObject.transform.localEulerAngles += Vector3.forward * 10;
+                HeldPlank.transform.position += new Vector3(0, (-boardAnimSpeed * 2) / divideFactor, boardAnimSpeed / divideFactor);
+                HeldPlank.gameObject.transform.localEulerAngles += Vector3.forward * boardAnimSpeed;
                 //HeldPlank.gameObject.transform.localPosition += new Vector3(0, .1f, 0);
                 //print("up");
             }
             else
             {
                 //go down
-                HeldPlank.gameObject.transform.localEulerAngles -= Vector3.forward * 10;
+                HeldPlank.transform.position += new Vector3(0, (boardAnimSpeed * 2) / divideFactor, -boardAnimSpeed / divideFactor);
+                HeldPlank.gameObject.transform.localEulerAngles -= Vector3.forward * boardAnimSpeed;
                 //HeldPlank.gameObject.transform.localPosition -= new Vector3(0,.1f,0);
 
             }
@@ -551,13 +559,54 @@ public class PlayerActions : MonoBehaviour
                 print("cont");
                 //StartCoroutine(TempPlankAnim());
             }
-            
+        }
+    }
+
+    //rotate 160 degrees
+    //move down 3 forward 1
+    //in 1 second
+
+    //then rotate -160 degrees
+    //move up 3 back 1
+    //in 2 seconds
+
+    IEnumerator TempPlankAnim2()
+    {
+        float boardDownTime = 1f;
+        float boardUpTime = boardDownTime * 2; //board slam
+        float interpolationPercent = 0;
+        float interpolationIncrement = .1f;
+
+        Vector3 startPosition;
+        Vector3 startRotation;
+
+
+        while (boardAnimCont)
+        {
+            yield return new WaitForSeconds(.01f);
+            //rotate plank on z
+            if (boardAnimSwitch)
+            {
+
+            }
+            else
+            {
+
+            }
         }
 
+        //determines switch and end
+        if (boardAnimationTime >= boardDownTime)
+        {
+            boardAnimSwitch = false;
+        }
 
-
+        if (boardAnimationTime >= boardUpTime)
+        {
+            boardAnimCont = false;
+        }
     }
-    
+
 
     public void TestBoxCast(GameObject startCube, GameObject endCube, float maxDistance)
     {

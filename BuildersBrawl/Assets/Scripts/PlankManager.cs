@@ -91,12 +91,19 @@ public class PlankManager : MonoBehaviour
 
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
 
+        //make rotation -5 on z axis
+        Vector3 tempEuler = this.gameObject.transform.localEulerAngles;
+        tempEuler.z = -5f;
+        this.gameObject.transform.localEulerAngles = tempEuler;
+
         //unparent
         if (this.gameObject.transform.parent != null)
         {
             //unparent
             this.gameObject.transform.parent = null;
         }
+
+        
 
         plankState = PlankState.beingplaced;
     }
