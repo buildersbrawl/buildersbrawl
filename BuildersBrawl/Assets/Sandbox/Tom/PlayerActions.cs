@@ -9,22 +9,25 @@ public class PlayerActions : MonoBehaviour
     public enum PlayerActionType
     {
         push,
-        charge,
+        charge,    
         pickUp,
         drop,
         slam,
         place
     }
 
+    public float shit;
+
     public delegate void PlayerActionDelegate();
     PlayerActionDelegate playerActionDelegate;
+
 
     //player controller ref
     PlayerController playerController;
 
     public float actionCooldown = 1f;
 
-    private Vector3 whereBoardHeld = new Vector3(1.5f, 1f, 0);
+    private Vector3 whereBoardHeld = new Vector3(0, 1.1f, -.5f);
     private float zRotationEnd = -160f;
 
     public bool throwBoardOnDrop = false;
@@ -367,7 +370,8 @@ public class PlayerActions : MonoBehaviour
         heldPlank.transform.Rotate(new Vector3(0, 90, zRotationEnd));
 
         //move up a bit so over players head
-        heldPlank.transform.position = this.gameObject.transform.position + whereBoardHeld + this.gameObject.transform.forward;
+        heldPlank.transform.position = this.gameObject.transform.position;
+        heldPlank.transform.localPosition += whereBoardHeld;
 
     }
 
@@ -468,11 +472,9 @@ public class PlayerActions : MonoBehaviour
         boardAnimCont = true;
         boardAnimationTime = 0;
         boardAnimSwitch = true;
-        StartCoroutine(TempPlankAnim());
-        
-
+        StartCoroutine(TempPlankAnim2());
+     
         //board slam animation called earlier
-        
 
         //after certain amount of time cast forward to see if player in front of me
         StartCoroutine(BoardSlamCoroutine());
@@ -572,40 +574,61 @@ public class PlayerActions : MonoBehaviour
 
     IEnumerator TempPlankAnim2()
     {
+        print("TempAnim2");
+
         float boardDownTime = 1f;
-        float boardUpTime = boardDownTime * 2; //board slam
+        float boardUpTime = boardDownTime * 2f; //board slam
         float interpolationPercent = 0;
-        float interpolationIncrement = .1f;
+        float interpolationIncrementDown = .1f;
+        float interpolationIncrementUp = .02f; //how much each hundreth of a second counts for
 
-        Vector3 startPosition;
-        Vector3 startRotation;
+        Vector3 startPosition = heldPlank.transform.localPosition;
+        Vector3 startRotation = heldPlank.transform.localEulerAngles;
 
+        Vector3 endPosition = startPosition + new Vector3(0, -2f, 2.7f);
+        Vector3 endRotation = heldPlank.transform.localEulerAngles + new Vector3(0, 0, 160);
+
+        boardAnimCont = true;
+        boardAnimSwitch = true;
 
         while (boardAnimCont)
         {
             yield return new WaitForSeconds(.01f);
+
             //rotate plank on z
             if (boardAnimSwitch)
             {
+                interpolationPercent += interpolationIncrementDown;
 
+                heldPlank.transform.localPosition = Vector3.Lerp(startPosition, endPosition, interpolationPercent);
+                heldPlank.transform.localEulerAngles = Vector3.Lerp(startRotation, endRotation, interpolationPercent);
             }
             else
             {
+                interpolationPercent += interpolationIncrementUp;
 
+                heldPlank.transform.localPosition = Vector3.Lerp(endPosition, startPosition, interpolationPercent);
+                heldPlank.transform.localEulerAngles = Vector3.Lerp(endRotation, startRotation, interpolationPercent);
+            }
+
+            //boardAnimationTime += .01f;
+
+            //determines switch and end
+            if (boardAnimSwitch && (interpolationPercent >= 1f))
+            {
+                boardAnimSwitch = false;
+                interpolationPercent = 0;
+                print("switch");
+            }
+            else if (!boardAnimSwitch && (interpolationPercent >= 1f))
+            {
+                boardAnimCont = false;
+                print("end");
             }
         }
-
-        //determines switch and end
-        if (boardAnimationTime >= boardDownTime)
-        {
-            boardAnimSwitch = false;
-        }
-
-        if (boardAnimationTime >= boardUpTime)
-        {
-            boardAnimCont = false;
-        }
     }
+
+
 
 
     public void TestBoxCast(GameObject startCube, GameObject endCube, float maxDistance)
