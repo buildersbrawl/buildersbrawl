@@ -27,12 +27,21 @@ public class WinState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        print("Win trigger " + other.gameObject.name);
+
+        print(other.gameObject.GetComponent<PlayerController>() != null);
+        print(!GameManager.S.someoneWon);
+
         //if player touching and no one has won yet
         if (other.gameObject.GetComponent<PlayerController>() != null && (!GameManager.S.someoneWon))
         {
             //set the winner
             GameManager.S.winner = other.gameObject;
+
             GameObject.Find("Main Camera").GetComponent<CameraController>().winnerDetermined = true;
+
+            //call win animation
+            GameManager.S.winner.GetComponent<PlayerAnimation>().CallVictoryAnimation();
 
             playerWhoWon = other.gameObject.name;
             playerWhoWon = playerWhoWon.Replace("Prefab_P", "");

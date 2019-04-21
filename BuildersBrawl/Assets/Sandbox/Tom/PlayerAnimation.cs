@@ -287,4 +287,14 @@ public class PlayerAnimation : MonoBehaviour
 
     }
 
+    public void CallVictoryAnimation()
+    {
+        CallAnimTrigger("ToVictory_" + playerController.playerNumber.ToString());
+    }
+
+    public void CallIntroAnimation()
+    {
+        CallAnimTrigger("ToIntro_" + playerController.playerNumber.ToString());
+    }
+
 }

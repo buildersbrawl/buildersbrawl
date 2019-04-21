@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
 
     public PlayerController[] playerList;
 
+
     public GameObject winner;
+    [HideInInspector]
     public bool someoneWon = false;
 
     public GameObject cameraRef;
@@ -46,16 +48,16 @@ public class GameManager : MonoBehaviour
                 {
                     switch (player.playerNumber)
                     {
-                        case PlayerController.PlayerNumber.p1:
+                        case PlayerController.PlayerNumber.p1Clumsy:
                             player1 = player.gameObject;
                             break;
-                        case PlayerController.PlayerNumber.p2:
+                        case PlayerController.PlayerNumber.p2Tough:
                             player2 = player.gameObject;
                             break;
-                        case PlayerController.PlayerNumber.p3:
+                        case PlayerController.PlayerNumber.p3Joker:
                             player3 = player.gameObject;
                             break;
-                        case PlayerController.PlayerNumber.p4:
+                        case PlayerController.PlayerNumber.p4Crazy:
                             player4 = player.gameObject;
                             break;
                         default:
@@ -69,6 +71,8 @@ public class GameManager : MonoBehaviour
         {
             cameraRef = GameObject.FindObjectOfType<CameraController>().gameObject;
         }
+
+        someoneWon = false;
 
     }
 

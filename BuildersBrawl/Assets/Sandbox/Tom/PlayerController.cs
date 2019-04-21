@@ -12,10 +12,10 @@ public class PlayerController : MonoBehaviour
 
     public enum PlayerNumber
     {
-        p1,
-        p2,
-        p3,
-        p4
+        p1Clumsy,
+        p2Tough,
+        p3Joker,
+        p4Crazy
     }
     
     //TODO: Add rotation to char controller so facing direction moving
@@ -222,6 +222,9 @@ public class PlayerController : MonoBehaviour
         //test
         joyInput = Vector3.zero;
 
+        //do vitory animations
+        playerAnimation.CallIntroAnimation();
+
     }
 
     //keyboard input
@@ -229,7 +232,7 @@ public class PlayerController : MonoBehaviour
     {
         //temp
 
-        if (playerNumber == PlayerNumber.p1)
+        if (playerNumber == PlayerNumber.p1Clumsy)
         {
             if (Input.GetKey(KeyCode.D))
             {
@@ -308,7 +311,7 @@ public class PlayerController : MonoBehaviour
                 BCharge = false;
             }
         }
-        else if (playerNumber == PlayerNumber.p2)
+        else if (playerNumber == PlayerNumber.p2Tough)
         {
             if (Input.GetKey(KeyCode.RightArrow))
             {
@@ -377,7 +380,7 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        else if (playerNumber == PlayerNumber.p3)
+        else if (playerNumber == PlayerNumber.p3Joker)
         {
             if (Input.GetKey(KeyCode.L))
             {
@@ -413,7 +416,7 @@ public class PlayerController : MonoBehaviour
             }
 
         }
-        else if (playerNumber == PlayerNumber.p4)
+        else if (playerNumber == PlayerNumber.p4Crazy)
         {
             if (Input.GetKey(KeyCode.H))
             {
@@ -931,6 +934,8 @@ public class PlayerController : MonoBehaviour
         moveVector += reflection;
     }
     */
+
+    
 
 }
 

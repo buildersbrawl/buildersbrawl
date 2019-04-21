@@ -75,7 +75,7 @@ public class GameInputManager : MonoBehaviour
 
     public void Init(PlayerController.PlayerNumber pNum)
     {
-        if(pNum == PlayerController.PlayerNumber.p1)
+        if(pNum == PlayerController.PlayerNumber.p1Clumsy)
         {
             gamePlayerId = PlayerSelect.S.p1Controller;
         }
