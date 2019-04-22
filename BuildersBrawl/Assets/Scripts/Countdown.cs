@@ -16,6 +16,8 @@ public class Countdown : MonoBehaviour
     public Image cd_icon;
 
     public bool startTimer = false;
+    [HideInInspector]
+    public bool countDown = true;
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +69,7 @@ public class Countdown : MonoBehaviour
                     GameManager.S.player2.GetComponent<PlayerController>().enabled = true;
                     GameManager.S.player3.GetComponent<PlayerController>().enabled = true;
                     GameManager.S.player4.GetComponent<PlayerController>().enabled = true;
+                    countDown = false;
                 }
                 delay = delayStart;
             }
