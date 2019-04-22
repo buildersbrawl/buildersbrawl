@@ -38,7 +38,7 @@ public class PlayerActions : MonoBehaviour
     //[SerializeField]
     private Vector3 boxCasthalfSize = new Vector3(.7f, 1.5f, .1f);
     //[SerializeField]
-    private float boxCastMaxDistancePlankPickUp = 1;
+    private float boxCastMaxDistancePlankPickUp = 1.5f;
     [SerializeField]
     private float boxCastMaxDistancePush = .5f;
     //[SerializeField]
