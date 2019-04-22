@@ -20,7 +20,9 @@ public class WindMechanicV2 : MonoBehaviour
     public GameObject dangerSign;
 
     private PlayerController[] playerLocator;
+    private Countdown levelCountdown;
     private GameObject[] players;
+    private GameObject countdownRef;
     private float startTimer;
     private Vector3 windFlow;
     private Vector3 windDir;
@@ -35,6 +37,7 @@ public class WindMechanicV2 : MonoBehaviour
     private void Awake()
     {
         playerLocator = FindObjectsOfType(typeof(PlayerController)) as PlayerController[];
+        levelCountdown = FindObjectOfType(typeof(Countdown)) as Countdown;
         players = new GameObject[playerLocator.Length];
 
         mask = LayerMask.GetMask("Default");
@@ -46,52 +49,60 @@ public class WindMechanicV2 : MonoBehaviour
         {
             players[i] = playerLocator[i].gameObject;
         }
-        startTimer = Time.time;
+        countdownRef = levelCountdown.gameObject;
+        //startTimer = Time.time;
         windFlow = GetWindFlowDirectiond(windDirection);
 
     }
 
     private void Update()
     {
-        float timePassed = Time.time - startTimer;
-        if (!windCooldown)
+        if (!countdownRef.GetComponent<Countdown>().countDown)
         {
-            Debug.Log("The Wind is aBlowing!");
-            if (timePassed >= windDuration)
+            float timePassed = Time.time - startTimer;
+            if (!windCooldown)
             {
-                windCooldown = true;
-                startTimer = Time.time;
-            }
-            for (int i = 0; i < players.Length; i++)
-            {
-                Debug.DrawRay(players[i].transform.position, -windDir * windReductionStartDistance, Color.red);
-                if (!Physics.Raycast(players[i].transform.position, -windDir, out RaycastHit hit, windReductionStartDistance, mask))
+                Debug.Log("The Wind is aBlowing!");
+                if (timePassed >= windDuration)
                 {
-                    
-                    players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
+                    windCooldown = true;
+                    startTimer = Time.time;
                 }
-                else
+                for (int i = 0; i < players.Length; i++)
                 {
-                    if (hit.distance > windReductionMaxDistance && hit.distance <= windReductionStartDistance)
+                    Debug.DrawRay(players[i].transform.position, -windDir * windReductionStartDistance, Color.red);
+                    if (!Physics.Raycast(players[i].transform.position, -windDir, out RaycastHit hit, windReductionStartDistance, mask))
                     {
-                        windPercentage = (hit.distance - windReductionMaxDistance) / (windReductionStartDistance - windReductionMaxDistance);
-                        players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow * windPercentage);
-                    }
-                }
-                //players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
 
+                        players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
+                    }
+                    else
+                    {
+                        if (hit.distance > windReductionMaxDistance && hit.distance <= windReductionStartDistance)
+                        {
+                            windPercentage = (hit.distance - windReductionMaxDistance) / (windReductionStartDistance - windReductionMaxDistance);
+                            players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow * windPercentage);
+                        }
+                    }
+                    //players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
+
+                }
+            }
+            else
+            {
+                Debug.Log("The Land Remains Silent!");
+                if (timePassed >= timeUntilWind)
+                {
+                    StartCoroutine("ShowDangerSign");
+                    windCooldown = false;
+                    startTimer = Time.time;
+
+                }
             }
         }
         else
         {
-            Debug.Log("The Land Remains Silent!");
-            if (timePassed >= timeUntilWind)
-            {
-                StartCoroutine("ShowDangerSign");
-                windCooldown = false;
-                startTimer = Time.time;
-
-            }
+            startTimer = Time.time;
         }
     }
 
