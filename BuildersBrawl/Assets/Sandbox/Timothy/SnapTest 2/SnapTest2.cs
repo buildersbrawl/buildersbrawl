@@ -42,8 +42,8 @@ public class SnapTest2 : MonoBehaviour
         {
             //ignore players, player children and if this is a placed plank
             print("ignoring");
-        }
-        else if (other.gameObject.GetComponent<PlankManager>() != null && other.gameObject.GetComponent<PlankManager>().plankState.Equals(PlankManager.PlankState.placed))
+        }                                                                                                                                                                                                            //this plank not dropped                                                           
+        else if (other.gameObject.GetComponent<PlankManager>() != null && other.gameObject.GetComponent<PlankManager>().plankState.Equals(PlankManager.PlankState.placed) && this.gameObject.GetComponent<PlankManager>().plankState != PlankManager.PlankState.dropped)
         {
             print("I am " + this.gameObject.name);
             print("triggered by " + other.gameObject.name);

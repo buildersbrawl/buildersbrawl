@@ -17,7 +17,8 @@ public class PlankManager : MonoBehaviour
         dropped,
         beingplaced,
         held,
-        placed
+        placed,
+        spawned
     }
 
     public PlankState plankState;
@@ -26,12 +27,25 @@ public class PlankManager : MonoBehaviour
 
     private PlayerController playerWhoPlacedMe;
 
+    private PlankAnim plankAnim;
+
+    bool initialized;
+
     private void Start()
     {
+        if (plankState == PlankState.dropped)
+        {
+            Init();
+        }
+    }
+
+    public void PickUpSpawn()
+    {
+        plankState = PlankState.spawned;
         Init();
     }
 
-    private void Init()
+    public void Init()
     {
         //get snap
         if(this.gameObject.GetComponent<SnapTest2>() != null)
@@ -43,17 +57,28 @@ public class PlankManager : MonoBehaviour
             snapRef = this.gameObject.AddComponent<SnapTest2>();
         }
 
+        //get anim
+        if (this.gameObject.GetComponent<PlankAnim>() != null)
+        {
+            plankAnim = this.gameObject.GetComponent<PlankAnim>();
+        }
+        else
+        {
+            plankAnim = this.gameObject.AddComponent<PlankAnim>();
+        }
+        plankAnim.SetPlankManager(this);
+
         //not trigger
         this.gameObject.GetComponent<Collider>().isTrigger = false;
 
         //default is dropping
         if (plankState == PlankState.beingplaced)
         {
-            PlacingPlank();
+            PlacingPlankCall();
         }
         else if (plankState == PlankState.held)
         {
-            //PickUpPlank();
+            //PickUpPlankCall(playerWhoPlacedMe.gameObject);
             print("somethign wroong: initialized as held");
         }
         else if (plankState == PlankState.dropped)
@@ -68,15 +93,23 @@ public class PlankManager : MonoBehaviour
     }
 
 
-    public void PlacingPlank()
+    public void PlacingPlankCall()
     {
         print(this.gameObject + " Placing");
 
         //don't let plank hit players
         SetToNotHitPlayers();
 
-        //turn on artificial gravity
-        snapRef.GravitySwitch(true);
+        //reduce size of collider
+        this.gameObject.GetComponent<BoxCollider>().size = new Vector3(0.308f, 1, 1);
+        this.gameObject.GetComponent<BoxCollider>().center = new Vector3(0.345f, 0, 0);
+
+        //animation
+        StartCoroutine(plankAnim.PutDownPlankAnim());
+    }
+
+    public void PlacingPlank()
+    {
 
         //turn on collider
         this.gameObject.GetComponent<Collider>().enabled = true;
@@ -84,12 +117,10 @@ public class PlankManager : MonoBehaviour
         //make trigger
         this.gameObject.GetComponent<Collider>().isTrigger = true;
 
-        //reduce size of collider
-        //make collider full sized
-        this.gameObject.GetComponent<BoxCollider>().size = new Vector3(0.308f, 1, 1);
-        this.gameObject.GetComponent<BoxCollider>().center = new Vector3(0.345f, 0, 0);
-
         this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        //turn on artificial gravity
+        snapRef.GravitySwitch(true);
 
         //make rotation -5 on z axis
         Vector3 tempEuler = this.gameObject.transform.localEulerAngles;
@@ -108,9 +139,28 @@ public class PlankManager : MonoBehaviour
         plankState = PlankState.beingplaced;
     }
 
-    public void PickUpPlank(GameObject playerRef)
+    public void PickUpPlankCall(GameObject playerRef)
     {
         print(this.gameObject + " Picked Up");
+
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
+
+        //turn off collider
+        this.gameObject.GetComponent<Collider>().enabled = false;
+
+        //print("rigid off and kinematic");
+
+        //set to not hit players
+        SetToNotHitPlayers(); //turn on then off when board slamming
+
+        print(plankAnim != null);
+
+        //animation
+        StartCoroutine(plankAnim.PickUpPlankAnim(playerRef));
+    }
+
+    public void PickUpPlank(GameObject playerRef)
+    { 
         //pick it up (done by player)
 
         //tell plank what player to look at
@@ -119,8 +169,9 @@ public class PlankManager : MonoBehaviour
         //get player who placed me
         playerWhoPlacedMe = playerRef.GetComponent<PlayerController>();
 
-        //set to not hit players
-        SetToNotHitPlayers(); //turn on then off when board slamming
+        
+
+       //StartCoroutine(plankAnim.PickUpPlankAnim());
 
         /*
         //destroy rigidbody
@@ -129,11 +180,6 @@ public class PlankManager : MonoBehaviour
             Destroy(this.gameObject.GetComponent<Rigidbody>());
         }
         */
-        this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
-
-        //turn off collider
-        this.gameObject.GetComponent<Collider>().enabled = false;
-
 
         //held
         plankState = PlankState.held;

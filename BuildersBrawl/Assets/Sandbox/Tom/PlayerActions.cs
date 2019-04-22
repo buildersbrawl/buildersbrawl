@@ -86,9 +86,12 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private float pushStopTime = .5f; //NOTE: SHOULD BE SHORTER THAN ASSOSSIATIED COOLDOWN
 
-    [Header("PickUpPlace")]
+    
     [HideInInspector]
     public bool didNotFindPlank = false;
+    [Header("PickUpPlace")]
+    [SerializeField]
+    private float pickPlaceDelayForAnim = .15f;
     [SerializeField]
     private float pickUpPlaceCooldown = .9f;
     [SerializeField]
@@ -290,6 +293,13 @@ public class PlayerActions : MonoBehaviour
 
     private void PickUpPlankAction()
     {
+        StartCoroutine(PickUpPlankCoroutine());
+
+    }
+
+    private IEnumerator PickUpPlankCoroutine()
+    {
+        yield return new WaitForSeconds(pickPlaceDelayForAnim);
 
         //pick cooldown
         coolDownLength = pickUpPlaceCooldown;
@@ -352,14 +362,10 @@ public class PlayerActions : MonoBehaviour
 
     private void PickUpPlank(GameObject plank)
     {
-
         heldPlank = plank;
 
         //set state of plank
         //heldPlank.GetComponent<PlankManager>().plankState = PlankManager.PlankState.held;
-
-        //PICK UP
-        heldPlank.GetComponent<PlankManager>().PickUpPlank(this.gameObject);
 
         //make parent
         heldPlank.transform.parent = this.gameObject.transform;
@@ -367,12 +373,13 @@ public class PlayerActions : MonoBehaviour
         //rotate it so facing correct direction
         heldPlank.transform.rotation = this.gameObject.transform.rotation;
         //add 90 degrees to rotation
-        heldPlank.transform.Rotate(new Vector3(0, 90, zRotationEnd));
+        heldPlank.transform.Rotate(new Vector3(0, 90, 0));
 
         //move up a bit so over players head
-        heldPlank.transform.position = this.gameObject.transform.position;
-        heldPlank.transform.localPosition += whereBoardHeld;
+        heldPlank.transform.position = this.gameObject.transform.position + (this.transform.forward * 2) + new Vector3(0, -.4f, 0);
 
+        //PICK UP
+        heldPlank.GetComponent<PlankManager>().PickUpPlankCall(this.gameObject);
     }
 
     
@@ -396,6 +403,7 @@ public class PlayerActions : MonoBehaviour
         {
             playerController.playerAnimation.CallAnimTrigger("ToIdleBoard");
         }
+
     }
     
 
@@ -410,10 +418,10 @@ public class PlayerActions : MonoBehaviour
         if (heldPlank != null)
         {
             //unchild it
-            heldPlank.transform.parent = null;
+            //heldPlank.transform.parent = null;
 
             //set to placing
-            heldPlank.GetComponent<PlankManager>().PlacingPlank();
+            heldPlank.GetComponent<PlankManager>().PlacingPlankCall();
 
             //null heldplank
             heldPlank = null;
@@ -467,12 +475,8 @@ public class PlayerActions : MonoBehaviour
         //heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
 
         
-        //temp plank animation
-        //reset anim things
-        boardAnimCont = true;
-        boardAnimationTime = 0;
-        boardAnimSwitch = true;
-        StartCoroutine(TempPlankAnim2());
+        //plank animation
+        StartCoroutine(BoardSlamPlankAnim());
      
         //board slam animation called earlier
 
@@ -518,10 +522,12 @@ public class PlayerActions : MonoBehaviour
 
     }
 
-    
+    /*
     private IEnumerator TempPlankAnim()
     {
-
+        boardAnimCont = true;
+        boardAnimationTime = 0;
+        boardAnimSwitch = true;
         //up 3 down 1
 
         float divideFactor = 50f;
@@ -564,6 +570,8 @@ public class PlayerActions : MonoBehaviour
         }
     }
 
+    */
+
     //rotate 160 degrees
     //move down 3 forward 1
     //in 1 second
@@ -572,7 +580,7 @@ public class PlayerActions : MonoBehaviour
     //move up 3 back 1
     //in 2 seconds
 
-    IEnumerator TempPlankAnim2()
+    IEnumerator BoardSlamPlankAnim()
     {
         print("TempAnim2");
 
@@ -580,12 +588,12 @@ public class PlayerActions : MonoBehaviour
         float boardUpTime = boardDownTime * 2f; //board slam
         float interpolationPercent = 0;
         float interpolationIncrementDown = .1f;
-        float interpolationIncrementUp = .02f; //how much each hundreth of a second counts for
+        float interpolationIncrementUp = .025f; //how much each hundreth of a second counts for
 
         Vector3 startPosition = heldPlank.transform.localPosition;
         Vector3 startRotation = heldPlank.transform.localEulerAngles;
 
-        Vector3 endPosition = startPosition + new Vector3(0, -2f, 2.7f);
+        Vector3 endPosition = startPosition + new Vector3(0, -1.4f, 2.4f);
         Vector3 endRotation = heldPlank.transform.localEulerAngles + new Vector3(0, 0, 160);
 
         boardAnimCont = true;

@@ -18,6 +18,8 @@ public class PlankPile : MonoBehaviour
 
         newlyBirthedPlank = Instantiate(plankPrefab[Random.Range(0, plankPrefab.Length)], newPlankSpawnPosition, newPlankSpawnRotation);
 
+        newlyBirthedPlank.GetComponent<PlankManager>().PickUpSpawn();
+
         return newlyBirthedPlank;
     }
 
