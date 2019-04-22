@@ -5,12 +5,13 @@ using UnityEngine;
 public class VolcanoMechanic : MonoBehaviour
 {
     public float timeUntilErupt;
-    public float timeUntilExplosion;
+    //public float timeUntilExplosion;
     public float moveSpeed; //Lava Movement Speed
     public float lavaEndYPos; //Position to Halt Lava Movement
     public bool eruptCooldown = true;
     public float shakeDuration;
     public float shakeMagnitude;
+    public GameObject dangerSign;
 
     private Vector3 lavaStartingPos;
     private float startTimer;
@@ -18,56 +19,76 @@ public class VolcanoMechanic : MonoBehaviour
     //private float timePassedUntilExplosion = 0f;
     private bool doCameraShake = true;
     private Transform cameraTransform;
+    private Countdown levelCountdown;
+    private GameObject countdownRef;
 
+    private void Awake()
+    {
+        levelCountdown = FindObjectOfType(typeof(Countdown)) as Countdown;
+    }
 
     private void Start()
     {
         lavaStartingPos = transform.position;
-        startTimer = Time.time;
+        //startTimer = Time.time;
         explosionTimer = 0f;
         cameraTransform = GameManager.S.cameraRef.transform;
         GameManager.S.cameraRef.GetComponent<CameraController>().volcRef = this;
+        countdownRef = levelCountdown.gameObject;
     }
 
     private void Update()
     {
-        float timePassed = Time.time - startTimer;
-
-        if (!eruptCooldown)
+        if (!countdownRef.GetComponent<Countdown>().countDown)
         {
-            if (transform.localPosition.y <= lavaEndYPos)
-            {
-                //timePassedUntilExplosion += 1f;
+            float timePassed = Time.time - startTimer;
 
-                Debug.Log("Lava is Emerging!");
-                transform.position += Vector3.up * moveSpeed * Time.deltaTime;
-                if (doCameraShake)
+            if (!eruptCooldown)
+            {
+                if (transform.localPosition.y <= lavaEndYPos)
+                {
+                    //timePassedUntilExplosion += 1f;
+
+                    Debug.Log("Lava is Emerging!");
+                    transform.position += Vector3.up * moveSpeed * Time.deltaTime;
+                    if (doCameraShake)
+                    {
+                        GameManager.S.cameraRef.GetComponent<CameraController>().cameraShake = true;
+                        doCameraShake = false;
+                    }
+                }
+                if (transform.localPosition.y >= lavaEndYPos)
+                {
+                    ExplodeVolcano();
+                }
+                /*
+                if (timePassed >= timeUntilExplosion)
                 {
                     GameManager.S.cameraRef.GetComponent<CameraController>().cameraShake = true;
-                    doCameraShake = false;
+                }*/
+
+            }
+            else
+            {
+                Debug.Log("The Volcano Lies Dormant.");
+                if (timePassed >= timeUntilErupt)
+                {
+                    
+                    eruptCooldown = false; //End the Cooldown (Volcano is now active!)
+                    startTimer = Time.time;
+                    //timePassedUntilExplosion = 0f;
+                    doCameraShake = true;
+
+                }
+                else if (timePassed >= timeUntilErupt - 2f)
+                {
+                    StartCoroutine("ShowDangerSign");
                 }
             }
-            if (transform.localPosition.y >= lavaEndYPos)
-            {
-                ExplodeVolcano();
-            }
-            /*
-            if (timePassed >= timeUntilExplosion)
-            {
-                GameManager.S.cameraRef.GetComponent<CameraController>().cameraShake = true;
-            }*/
-
         }
         else
         {
-            Debug.Log("The Volcano Lies Dormant.");
-            if (timePassed >= timeUntilErupt)
-            {
-                eruptCooldown = false; //End the Cooldown (Volcano is now active!)
-                startTimer = Time.time;
-                //timePassedUntilExplosion = 0f;
-                doCameraShake = true;
-            }
+            startTimer = Time.time;
         }
     }
 
@@ -115,6 +136,13 @@ public class VolcanoMechanic : MonoBehaviour
         transform.position = lavaStartingPos;
         eruptCooldown = true;
         //explosionStartTimer = Time.time;
+    }
+
+    private IEnumerator ShowDangerSign()
+    {
+        dangerSign.SetActive(true);
+        yield return new WaitForSeconds(1.5f);
+        dangerSign.SetActive(false);
     }
     /*
     public IEnumerator ScreenShake()
