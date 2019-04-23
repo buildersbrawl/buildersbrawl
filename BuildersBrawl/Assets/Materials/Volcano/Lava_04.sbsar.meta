@@ -1,0 +1,128 @@
+fileFormatVersion: 2
+guid: 36a371f38bba6354aa2cbe9db11ec50b
+ScriptedImporter:
+  fileIDToRecycleName:
+    2100002: Lava
+    2800012: Lava - normal
+    2800014: Lava - metallic
+    2800016: Lava - baseColor
+    2800018: Lava - emissive
+    2800020: Lava - ambientOcclusion
+    2800022: Lava - height
+    11400000: sbsar
+    11400002: graph0
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+  script: {fileID: 232528478, guid: 43a8bbf65be290d44ba52b94476242b9, type: 3}
+  version: 17
+  mGraphInstanceData:
+  - graphLabel: Lava
+    prototypeName: Lava
+    graphDescIndex: 0
+    generateAllOutputs: 0
+    generateMipMaps: 1
+    preset: " <sbspreset pkgurl=\"pkg://Lava\" label=\"\" >\n  <presetinput identifier=\"Lava_Height\"
+      uid=\"599128729\" type=\"0\" value=\"0.45\" />\n  <presetinput identifier=\"flow_speed\"
+      uid=\"599354860\" type=\"0\" value=\"0.87\" />\n  <presetinput identifier=\"Rock_Height\"
+      uid=\"597470298\" type=\"0\" value=\"0.3\" />\n </sbspreset>\n"
+    shaderName: Standard
+    outputNames: normal,metallic,baseColor,emissive,ambientOcclusion,height
+    texturePackingList:
+    - outputName: normal
+      alphaSource: normal
+    - outputName: metallic
+      alphaSource: smoothness
+    - outputName: roughness
+      alphaSource: roughness
+    - outputName: baseColor
+      alphaSource: baseColor
+    - outputName: emissive
+      alphaSource: emissive
+    - outputName: ambientOcclusion
+      alphaSource: ambientOcclusion
+    - outputName: height
+      alphaSource: height
+    textureParameters:
+    - textureName: Lava_normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava_height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - normal
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - metallic
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - roughness
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - baseColor
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - emissive
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - ambientOcclusion
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    - textureName: Lava - height
+      wrapMode: 0
+      filterMode: 1
+      aniso: 1
+    colorSpaceList:
+    - outputName: normal
+      bLinear: 1
+    - outputName: metallic
+      bLinear: 1
+    - outputName: roughness
+      bLinear: 1
+    - outputName: baseColor
+      bLinear: 0
+    - outputName: emissive
+      bLinear: 0
+    - outputName: ambientOcclusion
+      bLinear: 1
+    - outputName: height
+      bLinear: 1
+    inputTextureMap: []
+    targetSettingList:
+    - label: 
+      bLockRatio: 1
+      textureWidth: 0
+      textureHeight: 0
+      textureFormat: 0
+      bGenerateOnLoad: 1
+    material: {fileID: 2100002, guid: 36a371f38bba6354aa2cbe9db11ec50b, type: 3}
+    generatedTextures: []
