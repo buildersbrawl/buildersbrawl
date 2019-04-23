@@ -224,9 +224,6 @@ public class PlayerController : MonoBehaviour
         //test
         joyInput = Vector3.zero;
 
-        //do vitory animations
-        playerAnimation.CallIntroAnimation();
-
     }
 
     //keyboard input
