@@ -11,8 +11,9 @@ public class WinUI : MonoBehaviour
     public string sceneToRestart;
     public Text winText;
     public Image winImage;
+    public int winImageNum = -1;
 
-
+    public Sprite[] winImagesArr;
 
     private void SetWinText(string playerName)
     {
@@ -26,6 +27,10 @@ public class WinUI : MonoBehaviour
 
     private void Update()
     {
-        winImage
+        if(winImageNum > 0)
+        {
+            winImage.sprite = winImagesArr[];
+        }
+        
     }*/
 }
