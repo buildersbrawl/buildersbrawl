@@ -10,6 +10,8 @@ public class LevelSelector : MonoBehaviour
 {
     public Image levelDisplay;
     public Sprite[] levels;
+    public Sprite random;
+
     public int levelNumber;
     public int show = 0;
     public int RandomShow = 0;
@@ -31,6 +33,8 @@ public class LevelSelector : MonoBehaviour
     public Button nextLevel;
     public Button prevLevel;
 
+    public Text instructions;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,16 +48,17 @@ public class LevelSelector : MonoBehaviour
         ChooseLevel();
 
         levelDisplay.sprite = levels[show];
-        chosenLevel = levelNames[show];
 
         nextLevel.interactable = false;
         prevLevel.interactable = false;
+
+        instructions.text = "";
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(show == levels.Length)
+        /*if(show == levels.Length)
         {
             //ChooseLevel();
             timer += Time.deltaTime;
@@ -63,19 +68,21 @@ public class LevelSelector : MonoBehaviour
                 RandomLevel();
                 timer -= waitTime;
             }
-        }
-
-        if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UIRight"))
+        }*/
+        for (int i = 0; i < ReInput.players.playerCount; i++)
         {
-            CycleChoices();
-        }
-        if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("UILeft"))
-        {
-            CycleBackChoices();
-        }
-        if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Back"))
-        {
-            ReturnToMainMenu("Main_Menu");
+            if (Rewired.ReInput.players.GetPlayer(i).GetButtonDown("UIRight"))
+            {
+                CycleChoices();
+            }
+            if (Rewired.ReInput.players.GetPlayer(i).GetButtonDown("UILeft"))
+            {
+                CycleBackChoices();
+            }
+            if (Rewired.ReInput.players.GetPlayer(i).GetButtonDown("Back"))
+            {
+                ReturnToMainMenu("Main_Menu");
+            }
         }
 
         if (PlayerSelect.S.TwoPlayersReady)
@@ -123,7 +130,7 @@ public class LevelSelector : MonoBehaviour
 
     void ChooseLevel()
     {//Takes a random number from the levels array
-        levelNumber = Random.Range(0, levels.Length);
+        levelNumber = Random.Range(1, levels.Length);
         //Stores level name
         chosenLevel = levelNames[levelNumber];
     }
@@ -131,7 +138,7 @@ public class LevelSelector : MonoBehaviour
     public void CycleChoices()
     {
         //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
-        if(show > levels.Length-1)
+        if(show >= levels.Length-1)
         {
             show = 0;
         }
@@ -144,21 +151,24 @@ public class LevelSelector : MonoBehaviour
         if(show < levels.Length)
         {
            levelDisplay.sprite = levels[show];
-           chosenLevel = levelNames[show];
-        }
 
-        /*if (show == 0)
-        {
-            chosenLevel = levelNames[levelNumber];
-        }*/
+            if (show > 0)
+            {
+                chosenLevel = levelNames[show];
+            }
+            if (show == 0)
+            {
+                ChooseLevel();
+            }
+        }
     }
 
     public void CycleBackChoices()
     {
         //Cycles through levels in the array to be shown. Resets to show top level (0) once the display hits the bottom of the list
-        if (show < 1)
+        if (show <= 0)
         {
-            show = levels.Length;
+            show = levels.Length-1;
         }
         else
         {
@@ -168,7 +178,15 @@ public class LevelSelector : MonoBehaviour
         if (show < levels.Length)
         {
             levelDisplay.sprite = levels[show];
-            chosenLevel = levelNames[show];
+
+            if (show > 0)
+            {
+                chosenLevel = levelNames[show];
+            }
+            if (show == 0)
+            {
+                ChooseLevel();
+            }
         }
     }
 
@@ -182,6 +200,7 @@ public class LevelSelector : MonoBehaviour
     {
         print("Level chosen");
 
+        instructions.text = "*Click on the left and right arrows or use the left and right d-pad to select a level";
 
         levelChosen = true;
 
@@ -234,7 +253,7 @@ public class LevelSelector : MonoBehaviour
 
     }*/
 
-    void RandomLevel()
+   /* void RandomLevel()
     {
         if (RandomShow >= levels.Length-1)
         {
@@ -245,5 +264,5 @@ public class LevelSelector : MonoBehaviour
             RandomShow += 1;
         }
         RotateLevels();
-    }
+    }*/
 }

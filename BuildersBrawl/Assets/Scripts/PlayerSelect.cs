@@ -464,10 +464,10 @@ public class PlayerSelect : MonoBehaviour
             /*P1_selected = GameObject.Find("Selected_P1").GetComponent<Text>();
             P2_selected = GameObject.Find("Selected_P2").GetComponent<Text>();*/
 
-            player1 = GameObject.Find("PlayerPrefab_P1");
-            player2 = GameObject.Find("PlayerPrefab_P2");
-            player3 = GameObject.Find("PlayerPrefab_P3");
-            player4 = GameObject.Find("PlayerPrefab_P4");
+            player1 = GameObject.Find("P1_PS");
+            player2 = GameObject.Find("P2_PS");
+            player3 = GameObject.Find("P3_PS");
+            player4 = GameObject.Find("P4_PS");
 
             LevelStartBtn = GameObject.Find("StartGameBtn").GetComponent<Button>();
             LevelStartBtnText = GameObject.Find("StartGameBtnText").GetComponent<Text>();
