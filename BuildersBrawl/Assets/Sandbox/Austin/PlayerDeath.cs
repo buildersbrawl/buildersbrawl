@@ -135,6 +135,7 @@ public class PlayerDeath : MonoBehaviour
         //play death noise
         //determine death noise based on level
         //change audio.clip to the correct noise based on level
+        if (audio != null)
         audio.Play(0);
 
         //reset player's momentum

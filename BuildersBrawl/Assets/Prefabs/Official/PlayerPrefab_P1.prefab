@@ -160,8 +160,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ea6415e564bcc43b3ff9c6d75a3302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shit: 0
   actionCooldown: 2
-  whereBoardHeld: {x: 0, y: 1.5, z: 0}
   throwBoardOnDrop: 0
   boxCastMaxDistancePush: 0.5
   heldPlank: {fileID: 0}
@@ -174,6 +174,7 @@ MonoBehaviour:
   pushedCooldown: 1
   pushStopTime: 0.5
   didNotFindPlank: 0
+  pickPlaceDelayForAnim: 0.15
   pickUpPlaceCooldown: 0.9
   PickUpPlaceStopTime: 0.9
   slamStunTime: 3
@@ -219,6 +220,7 @@ MonoBehaviour:
   moveUILeft: 0
   moveUIRight: 0
   moveUIDown: 0
+  pressedStart: 0
   isMovingUI: 0
   controllerSelected: 0
 --- !u!114 &925820139
@@ -395,7 +397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4a7def27d91f21048849e4ea4dcfd718, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  respawnArrow: {fileID: 8864427781295069434}
 --- !u!1001 &1361522648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -406,7 +407,7 @@ PrefabInstance:
     - target: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
         type: 3}
       propertyPath: m_Name
-      value: P1RespawnArrow_02
+      value: RespawnArrow
       objectReference: {fileID: 0}
     - target: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
         type: 3}
@@ -470,12 +471,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c29fd40348723a84f9c27aff04dc52db, type: 3}
---- !u!1 &8864427781295069434 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
-    type: 3}
-  m_PrefabInstance: {fileID: 1361522648}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5339601447038884283 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5339601446248461923, guid: c29fd40348723a84f9c27aff04dc52db,

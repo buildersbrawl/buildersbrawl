@@ -96,9 +96,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   windDirection: 3
-  windSpeed: 85
-  timeUntilWind: 10
-  windDuration: 10
+  windSpeed: 125
+  timeUntilWind: 7
+  windDuration: 7
   windCooldown: 1
   dangerSign: {fileID: 0}
   windPercentage: 1

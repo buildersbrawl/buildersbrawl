@@ -33,7 +33,7 @@ public class PlankManager : MonoBehaviour
 
     private void Start()
     {
-        if (plankState == PlankState.dropped)
+        if (plankState == PlankState.dropped || plankState == PlankState.placed)
         {
             Init();
         }
@@ -41,6 +41,7 @@ public class PlankManager : MonoBehaviour
 
     public void PickUpSpawn()
     {
+        //print("pick up");
         plankState = PlankState.spawned;
         Init();
     }

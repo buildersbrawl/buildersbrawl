@@ -1427,8 +1427,9 @@ MonoBehaviour:
   levels:
   - {fileID: 21300000, guid: 90f66340c8063544e84631cd1adf7c0b, type: 3}
   - {fileID: 21300000, guid: d49db4bbbdce90a41bdf90c0c900d804, type: 3}
-  - {fileID: 21300000, guid: 357567d8ced331047b525e41ac66ef7c, type: 3}
+  - {fileID: 21300000, guid: 972196d8230637548a739e5780034a29, type: 3}
   - {fileID: 21300000, guid: 5ed11dfcc6db8824781e209cad37c55d, type: 3}
+  - {fileID: 21300000, guid: ad10a4f3344c20744b072384d9fccc9d, type: 3}
   levelNumber: 0
   show: 0
   RandomShow: 0
@@ -1438,6 +1439,7 @@ MonoBehaviour:
   - Volcano_Current
   - RailRoad
   - SnowyMountain_V2
+  - Windy_Mesa
   chosenLevel: 
   waitTime: 0.15
   maxWaitTime: 1
