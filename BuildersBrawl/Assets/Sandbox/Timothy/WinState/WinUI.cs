@@ -6,8 +6,13 @@ using UnityEngine.UI;
 
 public class WinUI : MonoBehaviour
 {
+    /*public static WinUI S;
+
     public string sceneToRestart;
     public Text winText;
+    public Image winImage;
+
+
 
     private void SetWinText(string playerName)
     {
@@ -18,4 +23,9 @@ public class WinUI : MonoBehaviour
     {
         SceneManager.LoadScene(sceneToRestart);
     }
+
+    private void Update()
+    {
+        winImage
+    }*/
 }

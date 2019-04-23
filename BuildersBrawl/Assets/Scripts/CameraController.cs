@@ -279,12 +279,13 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
-        if (!shouldDoStartPan)
+        //OLD
+        /*if (!shouldDoStartPan)
         {
             isStart = false;
             UICanvas.GetComponent<Countdown>().startTimer = true;
-            Debug.Log("startTime = " + UICanvas.GetComponent<Countdown>().startTimer);
-        }
+            //Debug.Log("startTime = " + UICanvas.GetComponent<Countdown>().startTimer);
+        }*/
 
         //Debug.Log("should do start pan = " + shouldDoStartPan);
 
