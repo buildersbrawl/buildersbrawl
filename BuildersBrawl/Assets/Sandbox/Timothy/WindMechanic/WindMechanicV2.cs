@@ -17,7 +17,6 @@ public class WindMechanicV2 : MonoBehaviour
     public float timeUntilWind;
     public float windDuration;
     public bool windCooldown = true;
-    public GameObject dangerSign;
 
     private PlayerController[] playerLocator;
     private Countdown levelCountdown;
@@ -26,6 +25,9 @@ public class WindMechanicV2 : MonoBehaviour
     private float startTimer;
     private Vector3 windFlow;
     private Vector3 windDir;
+    private DangerIdentifier dangerSignRef;
+    private GameObject dangerSign;
+    private bool allowFlash = true;
 
     [Header("Always set to 1")]
     [Tooltip("Used to see how this percentage is interacting")]
@@ -38,6 +40,8 @@ public class WindMechanicV2 : MonoBehaviour
     {
         playerLocator = FindObjectsOfType(typeof(PlayerController)) as PlayerController[];
         levelCountdown = FindObjectOfType(typeof(Countdown)) as Countdown;
+        dangerSignRef = FindObjectOfType(typeof(DangerIdentifier)) as DangerIdentifier;
+        Debug.Log("DangerSign Ref: " + dangerSignRef);
         players = new GameObject[playerLocator.Length];
 
         mask = LayerMask.GetMask("Default");
@@ -50,6 +54,8 @@ public class WindMechanicV2 : MonoBehaviour
             players[i] = playerLocator[i].gameObject;
         }
         countdownRef = levelCountdown.gameObject;
+        dangerSign = dangerSignRef.gameObject;
+        dangerSign.SetActive(false);
         //startTimer = Time.time;
         windFlow = GetWindFlowDirectiond(windDirection);
 
@@ -67,6 +73,7 @@ public class WindMechanicV2 : MonoBehaviour
                 {
                     windCooldown = true;
                     startTimer = Time.time;
+                    allowFlash = true;
                 }
                 for (int i = 0; i < players.Length; i++)
                 {
@@ -93,10 +100,17 @@ public class WindMechanicV2 : MonoBehaviour
                 Debug.Log("The Land Remains Silent!");
                 if (timePassed >= timeUntilWind)
                 {
-                    StartCoroutine("ShowDangerSign");
                     windCooldown = false;
                     startTimer = Time.time;
 
+                }
+                else if (timePassed >= timeUntilWind - 2.5)
+                {
+                    if (allowFlash)
+                    {
+                        allowFlash = false;
+                        StartCoroutine("ShowDangerSign");
+                    }
                 }
             }
         }
@@ -138,7 +152,16 @@ public class WindMechanicV2 : MonoBehaviour
     private IEnumerator ShowDangerSign()
     {
         dangerSign.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
         dangerSign.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(false);
+
     }
 }
