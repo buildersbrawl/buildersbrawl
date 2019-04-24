@@ -12,6 +12,27 @@ public class Points : MonoBehaviour
     public int pointsForOtherSide = 200;
     public Sprite[] faces = new Sprite[3];
     public int activeFaceNum = 1;
+    private int winNum = -1;
+
+    private void Start()
+    {
+        if(this.gameObject.name == "PlayerPrefab_P1")
+        {
+            winNum = 0;
+        }
+        else if (this.gameObject.name == "PlayerPrefab_P2")
+        {
+            winNum = 1;
+        }
+        else if (this.gameObject.name == "PlayerPrefab_P3")
+        {
+            winNum = 2;
+        }
+        else if (this.gameObject.name == "PlayerPrefab_P4")
+        {
+            winNum = 3;
+        }
+    }
 
     //if they are pushed and they die, based on time?
     public void AddPointsForKill()
@@ -58,6 +79,11 @@ public class Points : MonoBehaviour
     {
         activeFaceNum = newNum;
         //Debug.Log("Face for " + this.gameObject.name + " is changed to " + newNum);
+    }
+
+    public void MakeWinner()
+    {
+        WinUI.S.winImageNum = winNum;
     }
 
     //SAVE POINTS TO PointsStorage

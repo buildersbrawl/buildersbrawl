@@ -288,6 +288,7 @@ public class PointsBar : MonoBehaviour
             if (p.GetComponent<Points>().GetPointsTotal() >= winner)
             {
                 p.GetComponent<Points>().ChangeFaceNum(2);
+            p.GetComponent<Points>().MakeWinner();
                 winner = p.GetComponent<Points>().GetPointsTotal();
                 //Debug.Log("NEW WINNER FACE = " + p.GetComponent<Points>().activeFaceNum);
                 //Debug.Log("WINNER HAS " + winner + " name = " + p.name);

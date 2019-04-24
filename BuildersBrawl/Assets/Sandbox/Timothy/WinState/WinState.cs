@@ -45,17 +45,20 @@ public class WinState : MonoBehaviour
 
             playerWhoWon = other.gameObject.name;
             playerWhoWon = playerWhoWon.Replace("Prefab_P", "");
+            //GameObject.Find("Main Camera").GetComponent<CameraController>().ZoomOnWinner();
 
             //add points to the winner
             //other.gameObject.GetComponent<FlashyPoints>().ShowPointsGained(other.gameObject.transform.position, other.gameObject.GetComponent<Points>().pointsForOtherSide);
             //other.gameObject.GetComponent<Points>().AddPointsForOtherSide();
 
             //turn on win UI
-            winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit B to Continue";
+            //winUI.GetComponent<Text>().text = playerWhoWon + " Won! \n \n Hit B to Continue";
             winUI.SetActive(true);
+            
 
             //make ability to move to MM available
             GameManager.S.someoneWon = true;
+            Debug.Log("someone won = " + GameManager.S.someoneWon);
         }
     }
 }

@@ -40,7 +40,7 @@ public class Countdown : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("startTime = " + startTimer);
+        //Debug.Log("startTime = " + startTimer);
         if (startTimer)
         {
             delay -= Time.deltaTime;

@@ -220,7 +220,7 @@ public class PlankManager : MonoBehaviour
 
     public void PlacePlank()
     {
-        print(this.gameObject + "Placed");
+        //print(this.gameObject + "Placed");
 
         /*
         //get rid of rigidbody
