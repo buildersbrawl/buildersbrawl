@@ -483,11 +483,11 @@ public class CameraController : MonoBehaviour
         }
         //if a winner has been determined, do stuff
         //delete comments after build
-        /*else if (winnerDetermined)
+        else if (winnerDetermined)
         {
             ZoomOnWinner();
             //Debug.Log("We have a winner!!");
-        }*/
+        }
         if (cameraShake)
         {
             Debug.Log("Screen Shaking In Progress!");
@@ -966,8 +966,10 @@ public class CameraController : MonoBehaviour
         deathEndAvgPos = averagePositionBetweenPlayers;
     }
 
-    private void ZoomOnWinner()
+    public void ZoomOnWinner()
     {
+        Debug.Log("IN ZOOM ON WINNER");
+
         Vector3 newPos = new Vector3(GameObject.Find("Goal").transform.position.x, GameManager.S.winner.transform.position.y, GameObject.Find("Goal").transform.position.z);
         GameManager.S.winner.transform.position = newPos;
 
@@ -976,20 +978,22 @@ public class CameraController : MonoBehaviour
 
         //turn controls off
         Vector3 winPos = GameManager.S.winner.transform.position + winOffset;
-        
+        Debug.Log("trigger points = " + triggerPoints);
+        Debug.Log("trigger win rotate = " + triggerWinRotate);
         if (Vector3.Distance(cameraRef.transform.position, winPos) <= .6f)
             triggerWinRotate = true;
+        
         if (!triggerWinRotate)
         {
             //zoom
             //lerp from current position to position in front of player
             
-            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, winPos, .05f);
+            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, winPos, .01f);
             //set the camera height to a fixed value and pitch to lookat the winners position
             //AdjustCameraPitchAndHeightNew(winPos.y, GameManager.S.winner.transform.position);
             cameraRef.transform.LookAt(GameManager.S.winner.transform.position);    //adjust pitch
         }
-        else if (triggerWinRotate)
+        else
         {
             if (triggerPoints)
             {
@@ -997,7 +1001,7 @@ public class CameraController : MonoBehaviour
                 GameManager.S.winner.gameObject.GetComponent<Points>().AddPointsForOtherSide();
                 triggerPoints = false;
             }
-
+            
             //Debug.Log("CAMERA IN RIGHT POSITION");
             Debug.Log(cameraRef.transform.rotation.y);
             if (cameraRef.transform.rotation.y >= -.66)
@@ -1005,6 +1009,12 @@ public class CameraController : MonoBehaviour
                 //stop rotating camera
                 finalCameraPosition = true;
                 //Debug.Log("finalCameraPosition CAMERA POSITION IS TRUE");
+            }
+
+            if (finalCameraPosition)
+            {
+                //trigger the win UI
+                WinUI.S.gameObject.SetActive(true);
             }
                 
             if(!finalCameraPosition)

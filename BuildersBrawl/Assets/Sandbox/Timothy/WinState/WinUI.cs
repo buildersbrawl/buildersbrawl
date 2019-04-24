@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class WinUI : MonoBehaviour
 {
-    /*public static WinUI S;
+    public static WinUI S;
 
     public string sceneToRestart;
     public Text winText;
@@ -14,6 +14,11 @@ public class WinUI : MonoBehaviour
     public int winImageNum = -1;
 
     public Sprite[] winImagesArr;
+
+    private void Start()
+    {
+        this.gameObject.SetActive(false);
+    }
 
     private void SetWinText(string playerName)
     {
@@ -29,8 +34,8 @@ public class WinUI : MonoBehaviour
     {
         if(winImageNum > 0)
         {
-            winImage.sprite = winImagesArr[];
+            winImage.sprite = winImagesArr[winImageNum];
         }
         
-    }*/
+    }
 }
