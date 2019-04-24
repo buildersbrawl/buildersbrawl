@@ -11,7 +11,6 @@ public class VolcanoMechanic : MonoBehaviour
     public bool eruptCooldown = true;
     public float shakeDuration;
     public float shakeMagnitude;
-    public GameObject dangerSign;
 
     private Vector3 lavaStartingPos;
     private float startTimer;
@@ -19,12 +18,16 @@ public class VolcanoMechanic : MonoBehaviour
     //private float timePassedUntilExplosion = 0f;
     private bool doCameraShake = true;
     private Transform cameraTransform;
-    private Countdown levelCountdown;
-    private GameObject countdownRef;
+    private Countdown countdownRef;
+    private DangerIdentifier dangerSignRef;
+    private GameObject countdown;
+    private GameObject dangerSign;
+    private bool allowFlash = true;
 
     private void Awake()
     {
-        levelCountdown = FindObjectOfType(typeof(Countdown)) as Countdown;
+        countdownRef = FindObjectOfType(typeof(Countdown)) as Countdown;
+        dangerSignRef = FindObjectOfType(typeof(DangerIdentifier)) as DangerIdentifier;
     }
 
     private void Start()
@@ -34,7 +37,9 @@ public class VolcanoMechanic : MonoBehaviour
         explosionTimer = 0f;
         cameraTransform = GameManager.S.cameraRef.transform;
         GameManager.S.cameraRef.GetComponent<CameraController>().volcRef = this;
-        countdownRef = levelCountdown.gameObject;
+        countdown = countdownRef.gameObject;
+        dangerSign = dangerSignRef.gameObject;
+        dangerSign.SetActive(false);
     }
 
     private void Update()
@@ -80,9 +85,13 @@ public class VolcanoMechanic : MonoBehaviour
                     doCameraShake = true;
 
                 }
-                else if (timePassed >= timeUntilErupt - 2f)
+                else if (timePassed >= timeUntilErupt - 2.5f)
                 {
-                    StartCoroutine("ShowDangerSign");
+                    if (allowFlash)
+                    {
+                        allowFlash = false;
+                        StartCoroutine("ShowDangerSign");
+                    }
                 }
             }
         }
@@ -135,13 +144,22 @@ public class VolcanoMechanic : MonoBehaviour
         Debug.Log("Explosion!!");
         transform.position = lavaStartingPos;
         eruptCooldown = true;
+        allowFlash = true;
         //explosionStartTimer = Time.time;
     }
 
     private IEnumerator ShowDangerSign()
     {
         dangerSign.SetActive(true);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(true);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(false);
+        yield return new WaitForSeconds(.5f);
+        dangerSign.SetActive(true);
+        yield return new WaitForSeconds(.5f);
         dangerSign.SetActive(false);
     }
     /*
