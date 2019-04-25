@@ -798,8 +798,8 @@ public class PlayerController : MonoBehaviour
         {
             //reset state
             playerState = PlayerState.defaultMovement;
+            playerActions.currentPAT = PlayerActions.PlayerActionType.none;
         }
-
     }
 
     public IEnumerator ReturnPlayerStateToMovingStun(float waitTime)
@@ -811,6 +811,7 @@ public class PlayerController : MonoBehaviour
         playerAnimation.CallAnimTrigger("ToIdle");
         StartCoroutine(MakePlayerTemporarilyInvulnerable(playerActions.postSlammedInvTime));
         playerState = PlayerState.defaultMovement;
+        playerActions.currentPAT = PlayerActions.PlayerActionType.none;
     }
 
     private IEnumerator MakePlayerTemporarilyInvulnerable(float invTime)

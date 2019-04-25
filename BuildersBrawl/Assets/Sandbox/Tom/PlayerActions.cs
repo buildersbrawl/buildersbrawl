@@ -8,6 +8,7 @@ public class PlayerActions : MonoBehaviour
 
     public enum PlayerActionType
     {
+        none,
         push,
         charge,    
         pickUp,
@@ -16,11 +17,11 @@ public class PlayerActions : MonoBehaviour
         place
     }
 
-    public float shit;
-
     public delegate void PlayerActionDelegate();
     PlayerActionDelegate playerActionDelegate;
 
+    [HideInInspector]
+    public PlayerActionType currentPAT;
 
     //player controller ref
     PlayerController playerController;
@@ -121,6 +122,7 @@ public class PlayerActions : MonoBehaviour
 
     public void SetUpAndExecuteAction(PlayerActionType pAT)
     {
+
         switch (pAT)
         {
             case PlayerActionType.push:
@@ -246,6 +248,9 @@ public class PlayerActions : MonoBehaviour
     {
         yield return new WaitForSeconds(pushDelayForAnim);
 
+        //set current PAT
+        currentPAT = PlayerActionType.push;
+
         print("Push action");
         //make boxcast in front of player
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistancePush);
@@ -255,8 +260,10 @@ public class PlayerActions : MonoBehaviour
         {
             print("Push hit " + boxHitInfo[index]);
 
-            //look to see if hit player other than self
-            if (boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && boxHitInfo[index].collider.gameObject != this.gameObject)
+            //look to see if hit player other than self and other player not already pushing or slamming
+            if (boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>() != null && boxHitInfo[index].collider.gameObject != this.gameObject
+                && boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>().playerActions.currentPAT != PlayerActionType.push
+                && boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>().playerActions.currentPAT != PlayerActionType.slam)
             {
                 //"push" that player
                 //get the vector this player is facing      //boxcasting sets player forward
@@ -506,6 +513,10 @@ public class PlayerActions : MonoBehaviour
         //flatten them
         //cooldown
         yield return new WaitForSeconds(boardSlamDelayForAnim);
+
+        //set current PAT
+        currentPAT = PlayerActionType.slam;
+
         SeeWhatIsInFrontOfPlayer(boxCastMaxDistanceSlam);
         if (testCubes)
         {
