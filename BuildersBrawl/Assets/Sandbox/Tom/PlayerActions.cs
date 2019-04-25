@@ -43,7 +43,7 @@ public class PlayerActions : MonoBehaviour
     [SerializeField]
     private float boxCastMaxDistancePush = .5f;
     [SerializeField]
-    private float boxCastMaxDistanceSlam = 2;
+    private float boxCastMaxDistanceSlam = 2.5f;
     private Quaternion playerRotation;
     private Vector3 playerForward;
 
