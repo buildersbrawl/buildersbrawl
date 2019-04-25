@@ -9,7 +9,7 @@ public class WinUI : MonoBehaviour
     public static WinUI S;
 
     public string sceneToRestart;
-    public Text winText;
+    //public Text winText;
     public Image winImage;
     public int winImageNum = -1;
 
@@ -20,7 +20,7 @@ public class WinUI : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    private void SetWinText(string playerName)
+    /*private void SetWinText(string playerName)
     {
         winText.text = playerName + " Wins!";
     }
@@ -28,14 +28,15 @@ public class WinUI : MonoBehaviour
     public void Restart()
     {
         SceneManager.LoadScene(sceneToRestart);
-    }
+    }*/
 
     private void Update()
     {
-        if(winImageNum > 0)
+        if(winImageNum >= 0)
         {
             winImage.sprite = winImagesArr[winImageNum];
         }
+        
         
     }
 }

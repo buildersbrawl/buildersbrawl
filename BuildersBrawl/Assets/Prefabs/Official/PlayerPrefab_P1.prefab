@@ -161,7 +161,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81ea6415e564bcc43b3ff9c6d75a3302, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shit: 0
+  currentPAT: 0
   actionCooldown: 2
   throwBoardOnDrop: 0
   boxCastMaxDistancePush: 0.5
@@ -258,9 +258,9 @@ MonoBehaviour:
   pointsForBoardPlace: 10
   pointsForOtherSide: 200
   faces:
-  - {fileID: 21300000, guid: cd2a215ec1c805241856f68ddd0e5766, type: 3}
-  - {fileID: 21300000, guid: 96506e5a8462b3847ab969555d5710b3, type: 3}
-  - {fileID: 21300000, guid: 3ca4925122dc11b42a902fc2c911a322, type: 3}
+  - {fileID: 21300000, guid: ed961069dc576ec4cb4433198f9a0704, type: 3}
+  - {fileID: 21300000, guid: df254a9e3d857824a9a1aff1b84881e8, type: 3}
+  - {fileID: 21300000, guid: 721603867e4070a42bfad0a8bf9ab24a, type: 3}
   activeFaceNum: 1
 --- !u!114 &1191528802872432584
 MonoBehaviour:
@@ -486,6 +486,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205513807017318954}
     m_Modifications:
+    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_Name
+      value: Player_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -542,14 +550,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.3
       objectReference: {fileID: 0}
-    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
-      propertyPath: m_Name
-      value: Player_Model
-      objectReference: {fileID: 0}
-    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -569,6 +569,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205513807017318954}
     m_Modifications:
+    - target: {fileID: 100000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
+      propertyPath: m_Name
+      value: builder_rig
+      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -624,10 +628,6 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
-      propertyPath: m_Name
-      value: builder_rig
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_Controller

@@ -83,7 +83,10 @@ public class Points : MonoBehaviour
 
     public void MakeWinner()
     {
+        /*Debug.Log(winNum);
         WinUI.S.winImageNum = winNum;
+        Debug.Log("winImageNum = " + WinUI.S.winImageNum);
+        */
     }
 
     //SAVE POINTS TO PointsStorage

@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class WinState : MonoBehaviour
 {
     string playerWhoWon;
+    
 
     public GameObject winUI;
 
