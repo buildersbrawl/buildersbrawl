@@ -23,7 +23,7 @@ public class PlankAnim : MonoBehaviour
         Vector3 startPosition = this.gameObject.transform.localPosition;
         Vector3 startRotation = this.gameObject.transform.localEulerAngles;
 
-        Vector3 endPosition = startPosition + new Vector3(0, -1.4f, 2.4f);
+        Vector3 endPosition = startPosition + new Vector3(0, -1.4f, 2f);
         Vector3 endRotation = this.gameObject.transform.localEulerAngles + new Vector3(0, 0, 160);
 
         bool boardAnimCont = true;
