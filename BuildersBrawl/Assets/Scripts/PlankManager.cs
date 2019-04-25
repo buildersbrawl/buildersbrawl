@@ -135,9 +135,9 @@ public class PlankManager : MonoBehaviour
             this.gameObject.transform.parent = null;
         }
 
+        plankState = PlankState.beingplaced;
         
 
-        plankState = PlankState.beingplaced;
     }
 
     public void PickUpPlankCall(GameObject playerRef)

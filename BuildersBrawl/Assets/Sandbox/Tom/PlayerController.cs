@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
         holdingPlank,
         cooldown,
         stunned,
-        pushed
+        pushed,
     }
 
     private bool stunSoDontStopFromCooldown;
@@ -136,6 +136,9 @@ public class PlayerController : MonoBehaviour
 
    // [HideInInspector]
     public bool tempStopMovement;
+
+    [HideInInspector]
+    public bool playerInvulnerable;
 
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -806,7 +809,15 @@ public class PlayerController : MonoBehaviour
         //TempFlatten(false);
         //unflatten by calling to idle
         playerAnimation.CallAnimTrigger("ToIdle");
+        StartCoroutine(MakePlayerTemporarilyInvulnerable(playerActions.postSlammedInvTime));
         playerState = PlayerState.defaultMovement;
+    }
+
+    private IEnumerator MakePlayerTemporarilyInvulnerable(float invTime)
+    {
+        playerInvulnerable = true;
+        yield return new WaitForSeconds(invTime);
+        playerInvulnerable = false;
     }
 
     //takes input and rotates it 45 degrees to match the 
@@ -865,7 +876,7 @@ public class PlayerController : MonoBehaviour
 
     public void StunMe(Vector3 stunDirection, float stunLength)
     {
-        if(playerState == PlayerState.stunned)
+        if(playerState == PlayerState.stunned || playerInvulnerable)
         {
             return;
         }

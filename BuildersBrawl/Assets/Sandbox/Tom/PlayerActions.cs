@@ -102,7 +102,8 @@ public class PlayerActions : MonoBehaviour
     private float defaultCooldown = .1f;
     [Header("Stun")]
     [SerializeField]
-    private float slamStunTime = 3f;
+    private float slamStunTime = 3f;  
+    public float postSlammedInvTime = 1f;
 
     private bool boardAnimCont = true;
     private float boardAnimationTime = 0;
@@ -231,6 +232,9 @@ public class PlayerActions : MonoBehaviour
             return;
         }
 
+        //make sure this player goes on cooldown
+        coolDownLength = pushCooldown + pushDelayForAnim;
+
         //call coroutine
         StartCoroutine(PushCoroutine());
         
@@ -263,9 +267,6 @@ public class PlayerActions : MonoBehaviour
                 //tell the other player it was I who pushed you
                 boxHitInfo[index].collider.GetComponent<PlayerDeath>().OtherPlayer = this.gameObject;
 
-                //make sure this player goes on cooldown
-                coolDownLength = pushCooldown;
-
                 //end loop
                 index = boxHitInfo.Length;
             }
@@ -293,6 +294,9 @@ public class PlayerActions : MonoBehaviour
 
     private void PickUpPlankAction()
     {
+        //pick cooldown
+        coolDownLength = pickUpPlaceCooldown + pickPlaceDelayForAnim;
+
         StartCoroutine(PickUpPlankCoroutine());
 
     }
@@ -300,9 +304,6 @@ public class PlayerActions : MonoBehaviour
     private IEnumerator PickUpPlankCoroutine()
     {
         yield return new WaitForSeconds(pickPlaceDelayForAnim);
-
-        //pick cooldown
-        coolDownLength = pickUpPlaceCooldown;
 
         //print("Try PickUpBoard action");
 
@@ -370,6 +371,8 @@ public class PlayerActions : MonoBehaviour
         //make parent
         heldPlank.transform.parent = this.gameObject.transform;
 
+        
+
         //rotate it so facing correct direction
         heldPlank.transform.rotation = this.gameObject.transform.rotation;
         //add 90 degrees to rotation
@@ -377,6 +380,8 @@ public class PlayerActions : MonoBehaviour
 
         //move up a bit so over players head
         heldPlank.transform.position = this.gameObject.transform.position + (this.transform.forward * 2) + new Vector3(0, -.4f, 0);
+
+        //print("LOCAL POS " + heldPlank.transform.localPosition);
 
         //PICK UP
         heldPlank.GetComponent<PlankManager>().PickUpPlankCall(this.gameObject);
@@ -410,7 +415,7 @@ public class PlayerActions : MonoBehaviour
     private void PlacingPlankAction()
     {
         //place cooldown
-        coolDownLength = pickUpPlaceCooldown;
+        coolDownLength = pickUpPlaceCooldown + pickPlaceDelayForAnim;
 
         //print("placing board action");
 
@@ -474,11 +479,11 @@ public class PlayerActions : MonoBehaviour
         //turn on player collider detection
         //heldPlank.GetComponent<PlankManager>().SetToHitPlayers();
 
-        
+        //make slam go on cooldown cause successfully hit someone
+        coolDownLength = slamCooldown + boardSlamDelayForAnim;
+
         //plank animation
         StartCoroutine(BoardSlamPlankAnim());
-     
-        //board slam animation called earlier
 
         //after certain amount of time cast forward to see if player in front of me
         StartCoroutine(BoardSlamCoroutine());
@@ -514,9 +519,6 @@ public class PlayerActions : MonoBehaviour
                 //stun that player
                 PlayerController slammedPlayer = boxHitInfo[index].collider.gameObject.GetComponent<PlayerController>();
                 slammedPlayer.StunMe(playerForward, slamStunTime);
-
-                //make slam go on cooldown cause successfully hit someone
-                coolDownLength = slamCooldown;
             }
         }
 

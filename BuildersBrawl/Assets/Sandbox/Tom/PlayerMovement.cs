@@ -257,7 +257,7 @@ public class PlayerMovement : MonoBehaviour
     public void PushMe(Vector3 pushDirection, float pushForce)
     { 
         //if stunned don't let them get pushed
-        if(playerController.playerState == PlayerController.PlayerState.stunned)
+        if(playerController.playerState == PlayerController.PlayerState.stunned || playerController.playerInvulnerable)
         {
             return;
         }

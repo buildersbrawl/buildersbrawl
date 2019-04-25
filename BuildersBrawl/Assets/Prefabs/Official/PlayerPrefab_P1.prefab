@@ -148,6 +148,7 @@ MonoBehaviour:
   playerAnimation: {fileID: 0}
   jumpEnabled: 0
   tempStopMovement: 0
+  playerInvulnerable: 0
 --- !u!114 &4205513807017318952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -178,6 +179,7 @@ MonoBehaviour:
   pickUpPlaceCooldown: 0.9
   PickUpPlaceStopTime: 0.9
   slamStunTime: 3
+  postSlammedInvTime: 1
 --- !u!114 &4205513807017318953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -404,16 +406,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205513807017318954}
     m_Modifications:
-    - target: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
-        type: 3}
-      propertyPath: m_Name
-      value: RespawnArrow
-      objectReference: {fileID: 0}
-    - target: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5339601446248461923, guid: c29fd40348723a84f9c27aff04dc52db,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -469,6 +461,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
+        type: 3}
+      propertyPath: m_Name
+      value: RespawnArrow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8864427779934222114, guid: c29fd40348723a84f9c27aff04dc52db,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c29fd40348723a84f9c27aff04dc52db, type: 3}
 --- !u!4 &5339601447038884283 stripped
@@ -484,14 +486,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205513807017318954}
     m_Modifications:
-    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
-      propertyPath: m_Name
-      value: Player_Model
-      objectReference: {fileID: 0}
-    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 400048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -548,6 +542,14 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 1.3
       objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_Name
+      value: Player_Model
+      objectReference: {fileID: 0}
+    - target: {fileID: 100048, guid: efd44932711404d4ab5de147838da1a1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 13700000, guid: efd44932711404d4ab5de147838da1a1, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -567,10 +569,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4205513807017318954}
     m_Modifications:
-    - target: {fileID: 100000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
-      propertyPath: m_Name
-      value: builder_rig
-      objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -626,6 +624,10 @@ PrefabInstance:
     - target: {fileID: 400000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_LocalScale.z
       value: 1.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
+      propertyPath: m_Name
+      value: builder_rig
       objectReference: {fileID: 0}
     - target: {fileID: 9500000, guid: 243ae669bc8ba7147b4ee3207d79a134, type: 3}
       propertyPath: m_Controller
