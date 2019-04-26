@@ -11,6 +11,7 @@ public class VolcanoMechanic : MonoBehaviour
     public bool eruptCooldown = true;
     public float shakeDuration;
     public float shakeMagnitude;
+    public GameObject lavaGeyserPrefab;
 
     private Vector3 lavaStartingPos;
     private float startTimer;
@@ -145,6 +146,10 @@ public class VolcanoMechanic : MonoBehaviour
         transform.position = lavaStartingPos;
         eruptCooldown = true;
         allowFlash = true;
+        for (int i = 0; i < 3; i++)
+        {
+            lavaGeyserPrefab.transform.GetChild(i).GetComponent<ParticleSystem>().Play();
+        }
         //explosionStartTimer = Time.time;
     }
 
