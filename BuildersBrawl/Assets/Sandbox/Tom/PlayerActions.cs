@@ -42,8 +42,8 @@ public class PlayerActions : MonoBehaviour
     private float boxCastMaxDistancePlankPickUp = 1.5f;
     [SerializeField]
     private float boxCastMaxDistancePush = .5f;
-    //[SerializeField]
-    private float boxCastMaxDistanceSlam = 2;
+    [SerializeField]
+    private float boxCastMaxDistanceSlam = 2.5f;
     private Quaternion playerRotation;
     private Vector3 playerForward;
 

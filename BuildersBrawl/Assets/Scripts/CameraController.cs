@@ -968,9 +968,9 @@ public class CameraController : MonoBehaviour
 
     public void ZoomOnWinner()
     {
-        Debug.Log("IN ZOOM ON WINNER");
+        //Debug.Log("IN ZOOM ON WINNER");
 
-        Vector3 newPos = new Vector3(GameObject.Find("Goal").transform.position.x, GameManager.S.winner.transform.position.y, GameObject.Find("Goal").transform.position.z);
+        Vector3 newPos = new Vector3(GameObject.Find("Goal").transform.position.x + 2f, GameManager.S.winner.transform.position.y, GameObject.Find("Goal").transform.position.z - 2f);
         GameManager.S.winner.transform.position = newPos;
 
         Time.timeScale = 0.5f;
@@ -978,28 +978,34 @@ public class CameraController : MonoBehaviour
 
         //turn controls off
         Vector3 winPos = GameManager.S.winner.transform.position + winOffset;
-        Debug.Log("trigger points = " + triggerPoints);
-        Debug.Log("trigger win rotate = " + triggerWinRotate);
+        //Debug.Log("trigger points = " + triggerPoints);
+        //Debug.Log("trigger win rotate = " + triggerWinRotate);
         if (Vector3.Distance(cameraRef.transform.position, winPos) <= .6f)
             triggerWinRotate = true;
-        
+
+        Debug.Log("winPos = " + winPos);
+
         if (!triggerWinRotate)
         {
             //zoom
             //lerp from current position to position in front of player
             
-            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, winPos, .01f);
+            cameraRef.transform.position = Vector3.Lerp(cameraRef.transform.position, winPos, .03f);
             //set the camera height to a fixed value and pitch to lookat the winners position
             //AdjustCameraPitchAndHeightNew(winPos.y, GameManager.S.winner.transform.position);
             cameraRef.transform.LookAt(GameManager.S.winner.transform.position);    //adjust pitch
         }
         else
         {
+            
+
             if (triggerPoints)
             {
+
                 GameManager.S.winner.GetComponent<FlashyPoints>().ShowPointsGained(GameManager.S.winner.gameObject.transform.position, GameManager.S.winner.gameObject.GetComponent<Points>().pointsForOtherSide);
                 GameManager.S.winner.gameObject.GetComponent<Points>().AddPointsForOtherSide();
                 triggerPoints = false;
+                //Debug.Log("trigger points after the change = " + triggerPoints);
             }
             
             //Debug.Log("CAMERA IN RIGHT POSITION");
