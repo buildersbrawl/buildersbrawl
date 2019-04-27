@@ -149,6 +149,7 @@ MonoBehaviour:
   jumpEnabled: 0
   tempStopMovement: 0
   playerInvulnerable: 0
+  turnOffCollidersOnStun: 1
 --- !u!114 &4205513807017318952
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -164,7 +165,9 @@ MonoBehaviour:
   currentPAT: 0
   actionCooldown: 2
   throwBoardOnDrop: 0
+  throwBoardPower: 200
   boxCastMaxDistancePush: 0.5
+  boxCastMaxDistanceSlam: 2.5
   heldPlank: {fileID: 0}
   boardSlamDelayForAnim: 0.1
   slamCooldown: 2

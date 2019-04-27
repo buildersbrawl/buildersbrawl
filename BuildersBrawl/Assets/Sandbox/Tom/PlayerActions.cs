@@ -31,7 +31,10 @@ public class PlayerActions : MonoBehaviour
     private Vector3 whereBoardHeld = new Vector3(0, 1.1f, -.5f);
     private float zRotationEnd = -160f;
 
-    public bool throwBoardOnDrop = false;
+    [SerializeField]
+    private bool throwBoardOnDrop = false;
+    [SerializeField]
+    private float throwBoardPower = 100f;
 
     [Header("BoxCast")]
     //[SerializeField]
@@ -460,7 +463,7 @@ public class PlayerActions : MonoBehaviour
             if (throwBoardOnDrop)
             {
                 print("throwing");
-                heldPlank.GetComponent<Rigidbody>().AddForce(this.gameObject.transform.forward * 500f);
+                heldPlank.GetComponent<Rigidbody>().AddForce(this.gameObject.transform.forward * throwBoardPower);
             }
 
 

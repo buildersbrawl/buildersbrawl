@@ -140,6 +140,9 @@ public class PlayerController : MonoBehaviour
     [HideInInspector]
     public bool playerInvulnerable;
 
+    [SerializeField]
+    private bool turnOffCollidersOnStun;
+
     //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
@@ -804,12 +807,22 @@ public class PlayerController : MonoBehaviour
 
     public IEnumerator ReturnPlayerStateToMovingStun(float waitTime)
     {
-        yield return new WaitForSeconds(waitTime);
-        //reset state
-        //TempFlatten(false);
-        //unflatten by calling to idle
+        yield return new WaitForSeconds(waitTime - .3f);
+        //unflatten before making player playable
         playerAnimation.CallAnimTrigger("ToIdle");
+
+        
+        yield return new WaitForSeconds(.3f);
+        //make playable
         StartCoroutine(MakePlayerTemporarilyInvulnerable(playerActions.postSlammedInvTime));
+
+        //tunr on collider
+        if (turnOffCollidersOnStun)
+        {
+            this.gameObject.GetComponent<Collider>().enabled = true;
+            charContRef.enabled = true;
+        }
+
         playerState = PlayerState.defaultMovement;
         playerActions.currentPAT = PlayerActions.PlayerActionType.none;
     }
@@ -884,6 +897,15 @@ public class PlayerController : MonoBehaviour
 
         playerState = PlayerState.stunned;
         //drop any held board before flattening
+
+        //tunr off collider
+        if (turnOffCollidersOnStun)
+        {
+            this.gameObject.GetComponent<Collider>().enabled = false;
+            charContRef.enabled = false;
+        }
+        
+
         if(playerActions.HeldPlank != null)
         {
             playerActions.SetUpAndExecuteAction(PlayerActions.PlayerActionType.drop);

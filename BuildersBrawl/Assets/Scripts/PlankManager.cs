@@ -203,8 +203,11 @@ public class PlankManager : MonoBehaviour
         //turn off artificial gravity
         snapRef.GravitySwitch(false);
 
-        //make hitable by players
+        this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
         SetToHitPlayers();
+
+        //StartCoroutine(DropDelaySetToHitPlayers());
 
         /*
         //if no rigidbody add one
@@ -213,7 +216,6 @@ public class PlankManager : MonoBehaviour
             this.gameObject.AddComponent<Rigidbody>();
         }
         */
-        this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
         plankState = PlankState.dropped;
     }
