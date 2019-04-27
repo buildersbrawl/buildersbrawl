@@ -1010,6 +1010,7 @@ public class CameraController : MonoBehaviour
             {
                 //turn on winUI
                 winUIRef.SetActive(true);
+                GameManager.S.winner.GetComponent<Points>().MakeWinner();
                 Debug.Log("WINUIREF ACTIVE");
 
                 GameManager.S.winner.GetComponent<FlashyPoints>().ShowPointsGained(GameManager.S.winner.gameObject.transform.position, GameManager.S.winner.gameObject.GetComponent<Points>().pointsForOtherSide);

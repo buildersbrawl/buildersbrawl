@@ -86,7 +86,11 @@ public class PointsBar : MonoBehaviour
             //player3Head.sprite = player3.GetComponent<Points>().GetFace();
             //players[2] = player3;
             if (player3.activeInHierarchy)
+            {
                 player3Head.gameObject.SetActive(true);
+                
+            }
+                
             else
                 player3Head.gameObject.SetActive(false);
             Debug.Log("Player3Head active: " + player3.activeInHierarchy);
@@ -236,10 +240,15 @@ public class PointsBar : MonoBehaviour
             {
                 player4Head.sprite = player4.GetComponent<Points>().GetFace();
             }
-            
 
+            if(player3.GetComponent<Points>().GetPointsTotal() == 0)
+            {
+                Vector2 p3HeadPos = player3Head.rectTransform.anchoredPosition;
+                Vector2 p2HeadPos = player2Head.rectTransform.anchoredPosition;
+                Vector2 newP3HeadPos = new Vector2(p3HeadPos.x, p2HeadPos.y - 1.6f);
+                player3Head.rectTransform.localPosition = newP3HeadPos;
+            }
             
-
 
             //position on bar is the player's points as a percentage of the totalgamepoints
             pointsPercent = ((float)player.GetComponent<Points>().GetPointsTotal() / (float)winner);
@@ -263,12 +272,17 @@ public class PointsBar : MonoBehaviour
                     //move head to right position
                     empty.transform.position = Vector3.Lerp(startPosition.transform.position, endPosition.transform.position, pointsPercent);
                 }
+                else
+                {
+
+                }
                 
                 //gradual movement
                 playerHeads[index].transform.position = Vector3.Lerp(playerHeads[index].transform.position, empty.transform.position, 0.05f);
             }
 
             Vector3 after = playerHeads[index].transform.position;
+            
         }
 
     }
@@ -288,7 +302,7 @@ public class PointsBar : MonoBehaviour
             if (p.GetComponent<Points>().GetPointsTotal() >= winner)
             {
                 p.GetComponent<Points>().ChangeFaceNum(2);
-                p.GetComponent<Points>().MakeWinner();
+                //p.GetComponent<Points>().MakeWinner();
                 winner = p.GetComponent<Points>().GetPointsTotal();
                 //Debug.Log("NEW WINNER FACE = " + p.GetComponent<Points>().activeFaceNum);
                 //Debug.Log("WINNER HAS " + winner + " name = " + p.name);
