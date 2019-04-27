@@ -3170,6 +3170,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerSelectManagement
       objectReference: {fileID: 0}
+    - target: {fileID: 6541098295299690130, guid: e204eb6f9f82c89478df5abcc468ea15,
+        type: 3}
+      propertyPath: allowControllerSelection
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6541098295299690129, guid: e204eb6f9f82c89478df5abcc468ea15,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3223,11 +3228,6 @@ PrefabInstance:
     - target: {fileID: 6541098295299690129, guid: e204eb6f9f82c89478df5abcc468ea15,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6541098295299690130, guid: e204eb6f9f82c89478df5abcc468ea15,
-        type: 3}
-      propertyPath: allowControllerSelection
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -4045,7 +4045,7 @@ MonoBehaviour:
   eruptCooldown: 1
   shakeDuration: 4
   shakeMagnitude: 0.3
-  dangerSign: {fileID: 1791480216}
+  lavaGeyserPrefab: {fileID: 0}
 --- !u!1001 &472193422
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5938,6 +5938,48 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Pivot.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 44831666, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 9187799924272446056, guid: 9b893c3ea2777d2459d2b69de320ae7b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2830357514217980413, guid: 9b893c3ea2777d2459d2b69de320ae7b,
+        type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e06b55d9e45c6d74fae38c7f84ddc3d1,
+        type: 3}
+    - target: {fileID: 5984286394328885798, guid: 9b893c3ea2777d2459d2b69de320ae7b,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -14.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1444486075, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -9.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 252147791, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -12
+      objectReference: {fileID: 0}
+    - target: {fileID: 252147792, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e06b55d9e45c6d74fae38c7f84ddc3d1,
+        type: 3}
+    - target: {fileID: 1444486076, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+      propertyPath: m_FontData.m_Font
+      value: 
+      objectReference: {fileID: 12800000, guid: e06b55d9e45c6d74fae38c7f84ddc3d1,
+        type: 3}
+    - target: {fileID: 1444486076, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
+      propertyPath: m_FontData.m_LineSpacing
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b893c3ea2777d2459d2b69de320ae7b, type: 3}
@@ -16756,15 +16798,15 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 872300737}
-    - target: {fileID: 4847274759241547813, guid: e47230838d2df6145bf584f5f0377f22,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2547010475574165548, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}
       propertyPath: inputType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4847274759241547813, guid: e47230838d2df6145bf584f5f0377f22,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6420598282248969211, guid: e47230838d2df6145bf584f5f0377f22,
         type: 3}

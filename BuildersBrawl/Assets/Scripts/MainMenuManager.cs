@@ -20,7 +20,7 @@ public class MainMenuManager : MonoBehaviour
     public Button lastPressed;
 
     public Image BG;
-    private float low = 0.6f;
+    private float low = 0.25f;
     private float normal = 1f;
 
     void Start()

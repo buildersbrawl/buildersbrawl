@@ -172,7 +172,7 @@ public class PlayerSelect : MonoBehaviour
         {
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
-                if (RoundsManager.R.round == 1)
+                if (RoundsManager.R.round <= 1)
                 {
                     //if someone hits "Submit" button (A)
                     if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))

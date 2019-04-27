@@ -64,6 +64,16 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                 }
+
+                if(!PlayerSelect.S.FourPlayersReady)
+                {
+                    player4.SetActive(false);
+                }
+
+                if(!PlayerSelect.S.ThreePlayersReady)
+                {
+                    player3.SetActive(false);
+                }
             }
         }
         
