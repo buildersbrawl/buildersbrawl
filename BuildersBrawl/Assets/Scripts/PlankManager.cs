@@ -243,7 +243,10 @@ public class PlankManager : MonoBehaviour
         {
             //print("hit " + hitInfo.collider.gameObject.name);
 
-            if (hitInfo.collider.gameObject.GetComponent<PlankManager>() == null && hitInfo.collider.gameObject.GetComponent<PlayerController>() == null)
+            //make sure not beginning of game to stop it affecting environment planks
+
+            if (hitInfo.collider.gameObject.GetComponent<PlankManager>() == null && hitInfo.collider.gameObject.GetComponent<PlayerController>() == null
+                && Time.time > 3f)
             {
                 //if it is drop it and return
                 DropPlank();
