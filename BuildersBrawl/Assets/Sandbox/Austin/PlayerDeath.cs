@@ -26,8 +26,10 @@ public class PlayerDeath : MonoBehaviour
 
     private Renderer playerRenderer;
     public Transform spawnPoint;
+    public bool isSuicide = false;
     public float respawnTime = 5f;
     public float timeToWaitAfterPushed = 1f;
+    public bool wasPushed = false;
     private GameObject otherPlayer;
     public GameObject OtherPlayer
     {
@@ -126,6 +128,10 @@ public class PlayerDeath : MonoBehaviour
         //print(this.gameObject.transform.position + " " + this.gameObject.name);
         
         StartCoroutine(WaitForRenderer());
+        if (!wasPushed)
+        {
+            this.GetComponent<Points>().SubtractPointsForSuicide();
+        }
 
         //change the camera settings to lerp/move the camera towards the player respawn
         
@@ -165,16 +171,19 @@ public class PlayerDeath : MonoBehaviour
 
 
         playerDead = false;
+        wasPushed = false;
         print(this.gameObject.transform.position + " " + this.gameObject.name);
     }
 
     public IEnumerator WaitForDeathToHappen()
     {
+        wasPushed = true;
         //Debug.Log(playerDead);
         yield return new WaitForSeconds(timeToWaitAfterPushed);
         //if player dies after a push (which would trigger this function), give points to other player
         if (playerDead)
         {
+            isSuicide = false;
             Debug.Log("Player was pushed and killed");
             otherPlayer.GetComponent<Points>().AddPointsForKill();
             otherPlayer.GetComponent<FlashyPoints>().ShowPointsGained(otherPlayer.transform.position, GetComponent<Points>().pointsForKill);
@@ -196,14 +205,17 @@ public class PlayerDeath : MonoBehaviour
         }
 
     }
-
+    */
     
 
     void Update()
     {
+        if(!wasPushed && playerDead)
+        {
+            //this.GetComponent<Points>().SubtractPointsForSuicide();
+        }
 
-
-        if(deathHappened)
+        /*if(deathHappened)
         {
             print("death happened");
             if(playerDeathNumber == 0)
@@ -221,7 +233,7 @@ public class PlayerDeath : MonoBehaviour
                 StartCoroutine(WaitForRenderer());
 
             }
-        }
+        }*/
     }  
-    */
+    
 }

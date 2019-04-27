@@ -7065,6 +7065,11 @@ PrefabInstance:
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1777612803}
+    - target: {fileID: 1514009779995566858, guid: a122de2bbb5da164b872459a52abdec9,
+        type: 3}
+      propertyPath: timeToWaitAfterPushed
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a122de2bbb5da164b872459a52abdec9, type: 3}
 --- !u!1001 &1857920930
