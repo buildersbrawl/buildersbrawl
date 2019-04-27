@@ -168,7 +168,7 @@ public class CameraController : MonoBehaviour
     public bool isRightToLeft = false;
     public bool shouldDoStartPan = true;
     public GameObject UICanvas;
-    public GameObject WinUI;
+    public GameObject winUIRef;
 
     public AudioSource audio;
     public AudioClip[] clips;
@@ -271,6 +271,11 @@ public class CameraController : MonoBehaviour
                 player3ref = GameManager.S.player3;
                 player4ref = GameManager.S.player4;
             }
+        }
+
+        if(winUIRef == null)
+        {
+            winUIRef = WinUI.S.gameObject;
         }
 
         deathLerpTime = player1ref.GetComponent<PlayerDeath>().respawnTime * .8f;
@@ -1003,6 +1008,9 @@ public class CameraController : MonoBehaviour
 
             if (triggerPoints)
             {
+                //turn on winUI
+                winUIRef.SetActive(true);
+                Debug.Log("WINUIREF ACTIVE");
 
                 GameManager.S.winner.GetComponent<FlashyPoints>().ShowPointsGained(GameManager.S.winner.gameObject.transform.position, GameManager.S.winner.gameObject.GetComponent<Points>().pointsForOtherSide);
                 GameManager.S.winner.gameObject.GetComponent<Points>().AddPointsForOtherSide();
@@ -1011,7 +1019,7 @@ public class CameraController : MonoBehaviour
             }
             
             //Debug.Log("CAMERA IN RIGHT POSITION");
-            Debug.Log(cameraRef.transform.rotation.y);
+            //Debug.Log(cameraRef.transform.rotation.y);
             if (cameraRef.transform.rotation.y >= -.66)
             {
                 //stop rotating camera
@@ -1022,7 +1030,8 @@ public class CameraController : MonoBehaviour
             if (finalCameraPosition)
             {
                 //trigger the win UI
-                WinUI.SetActive(true);
+                //winUIRef.SetActive(true);
+                //Debug.Log("WINUIREF ACTIVE");
             }
                 
             if(!finalCameraPosition)

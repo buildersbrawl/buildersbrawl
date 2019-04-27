@@ -17,6 +17,15 @@ public class WinUI : MonoBehaviour
 
     private void Start()
     {
+        if(S == null)
+        {
+            S = this;
+        }
+        else
+        {
+            Destroy(this);
+        }
+
         this.gameObject.SetActive(false);
     }
 
