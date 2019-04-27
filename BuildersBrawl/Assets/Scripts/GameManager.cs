@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
+        
         if(S == null)
         {
             S = this;
@@ -64,13 +65,14 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                 }
-
+                Debug.Log("There are four players: " + PlayerSelect.S.FourPlayersReady);
                 if(!PlayerSelect.S.FourPlayersReady)
                 {
                     player4.SetActive(false);
                 }
 
-                if(!PlayerSelect.S.ThreePlayersReady)
+                Debug.Log("There are three players: " + PlayerSelect.S.ThreePlayersReady);
+                if (!PlayerSelect.S.ThreePlayersReady)
                 {
                     player3.SetActive(false);
                 }

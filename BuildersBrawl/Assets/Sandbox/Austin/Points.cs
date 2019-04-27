@@ -10,6 +10,7 @@ public class Points : MonoBehaviour
     public int pointsForKill = 30;
     public int pointsForBoardPlace = 10;
     public int pointsForOtherSide = 200;
+    public int pointsForSuicide = 10;
     public Sprite[] faces = new Sprite[3];
     public int activeFaceNum = 1;
     private int winNum = -1;
@@ -58,6 +59,17 @@ public class Points : MonoBehaviour
         PrintPointsTotal();
         //Debug.Log("Points printed");
         AddPlayerWin();
+    }
+
+    public void SubtractPointsForSuicide()
+    {
+        if(pointsTotal > 0)
+        {
+            pointsTotal -= pointsForSuicide;
+            PrintPointsTotal();
+            SubtractPlayerSuicide();
+        }
+        
     }
 
     public int GetPointsTotal()
@@ -168,6 +180,34 @@ public class Points : MonoBehaviour
         {
             PointsStorage.P.P4Points[PointsStorage.P.total] += pointsForOtherSide;
             PointsStorage.P.P4Points[PointsStorage.P.wins]++;
+        }
+    }
+
+    void SubtractPlayerSuicide()
+    {
+        Debug.Log("STORE POINTS");
+        Debug.Log(GameManager.S.player1.name);
+        Debug.Log(this.gameObject.name);
+        if (this.gameObject.name.Equals(GameManager.S.player1.name))
+        {
+            Debug.Log("Store Player 1 points");
+            PointsStorage.P.P1Points[PointsStorage.P.total] -= pointsForSuicide;
+            //PointsStorage.P.P1Points[PointsStorage.P.wins]++;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player2.name))
+        {
+            PointsStorage.P.P2Points[PointsStorage.P.total] -= pointsForSuicide;
+            //PointsStorage.P.P2Points[PointsStorage.P.wins]++;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player3.name))
+        {
+            PointsStorage.P.P3Points[PointsStorage.P.total] -= pointsForSuicide;
+            //PointsStorage.P.P3Points[PointsStorage.P.wins]++;
+        }
+        if (this.gameObject.name.Equals(GameManager.S.player4.name))
+        {
+            PointsStorage.P.P4Points[PointsStorage.P.total] -= pointsForSuicide;
+            //PointsStorage.P.P4Points[PointsStorage.P.wins]++;
         }
     }
 }
