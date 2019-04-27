@@ -168,6 +168,7 @@ public class CameraController : MonoBehaviour
     public bool isRightToLeft = false;
     public bool shouldDoStartPan = true;
     public GameObject UICanvas;
+    public GameObject WinUI;
 
     public AudioSource audio;
     public AudioClip[] clips;
@@ -200,6 +201,7 @@ public class CameraController : MonoBehaviour
     GameObject furthestPlayer1Z;
     GameObject furthestPlayer2Z;
 
+    
 
     //--------------------------------------------------------------------------------------------------------------------------------------------------------------
 
@@ -1020,7 +1022,7 @@ public class CameraController : MonoBehaviour
             if (finalCameraPosition)
             {
                 //trigger the win UI
-                WinUI.S.gameObject.SetActive(true);
+                WinUI.SetActive(true);
             }
                 
             if(!finalCameraPosition)
