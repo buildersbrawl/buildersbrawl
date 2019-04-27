@@ -190,6 +190,10 @@ public class PlankManager : MonoBehaviour
     {
         print(this.gameObject + " Dropped");
         //turn on collider
+
+        //to stop it from falling through floor
+        this.gameObject.transform.position += new Vector3(0, .2f, 0);
+
         this.gameObject.GetComponent<Collider>().enabled = true;
 
         //not trigger
@@ -231,6 +235,25 @@ public class PlankManager : MonoBehaviour
             Destroy(this.gameObject.GetComponent<Rigidbody>());
         }
         */
+
+        RaycastHit hitInfo;
+
+        //raycast down to make sure not on ground
+        if (Physics.Raycast(this.gameObject.transform.position, Vector3.down, out hitInfo, .1f))
+        {
+            //print("hit " + hitInfo.collider.gameObject.name);
+
+            if (hitInfo.collider.gameObject.GetComponent<PlankManager>() == null && hitInfo.collider.gameObject.GetComponent<PlayerController>() == null)
+            {
+                //if it is drop it and return
+                DropPlank();
+                //gets 0 points
+                //GameManager.S.player1.GetComponent<FlashyPoints>().ShowPointsGained(transform.position, 0);
+                return;
+            }
+        }
+        
+
         if(this.gameObject.GetComponent<Rigidbody>() != null)
         {
             this.gameObject.GetComponent<Rigidbody>().isKinematic = true;
@@ -266,6 +289,8 @@ public class PlankManager : MonoBehaviour
         if (playerWhoPlacedMe != null)
         {
             playerWhoPlacedMe.GetComponent<Points>().AddPointsForBoardPlace();
+            //show
+            GameManager.S.player1.GetComponent<FlashyPoints>().ShowPointsGained(transform.position, GameManager.S.player1.GetComponent<Points>().pointsForBoardPlace);
             /*playerWhoPlacedMe.GetComponent<FlashyPoints>().ShowPointsGained(playerWhoPlacedMe.transform.position,
                 playerWhoPlacedMe.GetComponent<Points>().pointsForBoardPlace);*/
         }
