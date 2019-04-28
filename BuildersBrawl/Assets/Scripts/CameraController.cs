@@ -977,7 +977,7 @@ public class CameraController : MonoBehaviour
     {
         //Debug.Log("IN ZOOM ON WINNER");
 
-        Vector3 newPos = new Vector3(GameObject.Find("Goal").transform.position.x + 2f, GameManager.S.winner.transform.position.y, GameObject.Find("Goal").transform.position.z - 2f);
+        Vector3 newPos = new Vector3(GameObject.Find("Goal").transform.position.x + 1f, GameManager.S.winner.transform.position.y, GameObject.Find("Goal").transform.position.z - 1f);
         GameManager.S.winner.transform.position = newPos;
 
         Time.timeScale = 0.5f;
