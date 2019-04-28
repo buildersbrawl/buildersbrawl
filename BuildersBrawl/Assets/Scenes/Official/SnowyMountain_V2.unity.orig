@@ -5370,6 +5370,38 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 4205513807017318954, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318954, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318954, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 4205513807017318959, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: inputType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5339601447038884283, guid: a976d66702bbc334d9a158045b06242f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 925820139, guid: a976d66702bbc334d9a158045b06242f, type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 23263755}
+=======
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4fb4ce7938b1d9040b2fbab371551211, type: 3}
 --- !u!4 &314054880 stripped
@@ -6077,6 +6109,169 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: player1ref
+      value: 
+      objectReference: {fileID: 434221934}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: player2ref
+      value: 
+      objectReference: {fileID: 1581061196}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: player3ref
+      value: 
+      objectReference: {fileID: 225065600}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: player4ref
+      value: 
+      objectReference: {fileID: 143887865}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: averagePositionBetweenPlayers.x
+      value: 26.8875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: averagePositionBetweenPlayers.y
+      value: 2.6184878
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: averagePositionBetweenPlayers.z
+      value: -1.7399998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: distanceBetweenPlayers
+      value: 5.879999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraXOffset
+      value: 12.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraZOffset
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraYOffset
+      value: 13.52936
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraFOVCeiling
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraYHeightCeiling
+      value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraYHeightFloor
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraZoomSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraFOVFactor
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraFOVFloor
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: cameraPlayerDistanceFloor
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: timeStartedLerping
+      value: 62.116364
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathStartDistance
+      value: 11.663537
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathEndDistance
+      value: 5.879999
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathStartAvgPos.x
+      value: 27.03689
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathStartAvgPos.y
+      value: 2.3859272
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathStartAvgPos.z
+      value: 1.0393453
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathEndAvgPos.x
+      value: 26.8875
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathEndAvgPos.y
+      value: 2.5938659
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: deathEndAvgPos.z
+      value: -1.7399998
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: startGameStart
+      value: 
+      objectReference: {fileID: 353148074}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: startGameEnd
+      value: 
+      objectReference: {fileID: 207341392}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: UICanvas
+      value: 
+      objectReference: {fileID: 1741694402}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: winOffset.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+        type: 3}
+      propertyPath: winOffset.y
+      value: 0
+      objectReference: {fileID: 0}
+=======
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 61f5c85089ba3a343992dc2184ab44a0, type: 3}
 --- !u!4 &362218736 stripped
@@ -8076,10 +8271,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
+<<<<<<< HEAD
+    - target: {fileID: 9187799924272446056, guid: 9b893c3ea2777d2459d2b69de320ae7b,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -607.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984286394328885798, guid: 9b893c3ea2777d2459d2b69de320ae7b,
+=======
       propertyPath: cameraYHeightFloor
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: cameraZoomSpeed
       value: 5
@@ -8161,13 +8365,8 @@ PrefabInstance:
       objectReference: {fileID: 1741694402}
     - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
         type: 3}
-      propertyPath: winOffset.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1219435167560681251, guid: 9f696b49a827a3044882a85a174dccf6,
-        type: 3}
-      propertyPath: winOffset.y
-      value: 0
+      propertyPath: sweepStartLerpRate
+      value: 0.0001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9f696b49a827a3044882a85a174dccf6, type: 3}
@@ -8697,12 +8896,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1368517368}
     m_Modifications:
+<<<<<<< HEAD
+    - target: {fileID: 7761090531474180682, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+        type: 3}
+      propertyPath: m_Name
+      value: EnviroPlankPrefab (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440200582224156455, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 2978666482748389288, guid: 2aa648d5132ffa548a114af7f722a7f1,
         type: 3}
       propertyPath: m_Name
       value: snowman_02_prefab 1 (6)
       objectReference: {fileID: 0}
     - target: {fileID: 2973190955066835976, guid: 2aa648d5132ffa548a114af7f722a7f1,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 16.010002
@@ -8765,7 +8973,16 @@ PrefabInstance:
     - target: {fileID: 2973190955066835976, guid: 2aa648d5132ffa548a114af7f722a7f1,
         type: 3}
       propertyPath: m_LocalScale.z
+<<<<<<< HEAD
+      value: 0.6898345
+      objectReference: {fileID: 0}
+    - target: {fileID: 648114102108414453, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+=======
       value: 1
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2aa648d5132ffa548a114af7f722a7f1, type: 3}
@@ -10884,7 +11101,6 @@ PrefabInstance:
       value: snowRock_07_mesh (1)
       objectReference: {fileID: 0}
     - target: {fileID: 1880825516735199964, guid: 7e97c63ac56992b4c8a1bd422563fdfe,
-      objectReference: {fileID: 0}
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.01620988
@@ -12660,7 +12876,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1671351779}
     m_Modifications:
+<<<<<<< HEAD
+    - target: {fileID: 7761090531474180682, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+        type: 3}
+      propertyPath: m_Name
+      value: EnviroPlankPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440200582224156455, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 4995398000683715022, guid: 7e5f8eda1efcb744eb16e6f8a7b6fca8,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_Name
       value: snowRock_01_mesh (3)
@@ -12723,9 +12948,15 @@ PrefabInstance:
     - target: {fileID: 4995398000683816430, guid: 7e5f8eda1efcb744eb16e6f8a7b6fca8,
         type: 3}
       propertyPath: m_LocalScale.x
+<<<<<<< HEAD
+      value: 4.103632
+      objectReference: {fileID: 0}
+    - target: {fileID: 648114102108414453, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
       value: 116.78624
       objectReference: {fileID: 0}
     - target: {fileID: 4995398000683816430, guid: 7e5f8eda1efcb744eb16e6f8a7b6fca8,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalScale.z
       value: 183.10799
@@ -13318,12 +13549,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1045741057}
     m_Modifications:
+<<<<<<< HEAD
+    - target: {fileID: 7761090531474180682, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+        type: 3}
+      propertyPath: m_Name
+      value: EnviroPlankPrefab (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440200582224156455, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 3241782778337962200, guid: d89e763a62784ca4b94121728cf320e7,
         type: 3}
       propertyPath: m_Name
       value: snowRock_08_mesh (5)
       objectReference: {fileID: 0}
     - target: {fileID: 3241782778338456824, guid: d89e763a62784ca4b94121728cf320e7,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.10206178
@@ -13383,12 +13623,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.0231189
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 648114102108414453, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 3241782778338456824, guid: d89e763a62784ca4b94121728cf320e7,
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.0968266
       objectReference: {fileID: 0}
     - target: {fileID: 3241782778338456824, guid: d89e763a62784ca4b94121728cf320e7,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0231189
@@ -14888,12 +15132,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1338872116}
     m_Modifications:
+<<<<<<< HEAD
+    - target: {fileID: 7761090531474180682, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+        type: 3}
+      propertyPath: m_Name
+      value: EnviroPlankPrefab (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440200582224156455, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 3241782778337962200, guid: d89e763a62784ca4b94121728cf320e7,
         type: 3}
       propertyPath: m_Name
       value: snowRock_08_mesh (1)
       objectReference: {fileID: 0}
     - target: {fileID: 3241782778338456824, guid: d89e763a62784ca4b94121728cf320e7,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.0722673
@@ -14953,12 +15206,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 1.0231189
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 648114102108414453, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 3241782778338456824, guid: d89e763a62784ca4b94121728cf320e7,
         type: 3}
       propertyPath: m_LocalScale.y
       value: 0.64156866
       objectReference: {fileID: 0}
     - target: {fileID: 3241782778338456824, guid: d89e763a62784ca4b94121728cf320e7,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1.0231189
@@ -24959,17 +25216,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2452697667803802988, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: inputType
       value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1753385755599016872, guid: 90fecd509f8421045a7e40a875876d99,
         type: 3}
       propertyPath: spawnPoint
       value: 
       objectReference: {fileID: 1303828688}
-    - target: {fileID: 2452697667803802988, guid: 90fecd509f8421045a7e40a875876d99,
-        type: 3}
-      propertyPath: inputType
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 5931051833755791096, guid: 90fecd509f8421045a7e40a875876d99,
         type: 3}
       propertyPath: m_RootOrder
@@ -25610,6 +25866,19 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 1753385755599016872, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: spawnPoint
+      value: 
+      objectReference: {fileID: 1303828688}
+    - target: {fileID: 2452697667803802988, guid: 90fecd509f8421045a7e40a875876d99,
+        type: 3}
+      propertyPath: inputType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5931051833755791096, guid: 90fecd509f8421045a7e40a875876d99,
+=======
     - target: {fileID: 787498406382859601, guid: a78e3a4cabb68c14d91bad408bac4f6e,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -25621,6 +25890,7 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 787498406382859601, guid: a78e3a4cabb68c14d91bad408bac4f6e,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalScale.z
       value: 1
@@ -25634,12 +25904,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1045741057}
     m_Modifications:
+<<<<<<< HEAD
+    - target: {fileID: 7761090531474180682, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+        type: 3}
+      propertyPath: m_Name
+      value: EnviroPlankPrefab (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5440200582224156455, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 2727016170163176684, guid: 99526c12eb564b84983423bc06e960aa,
         type: 3}
       propertyPath: m_Name
       value: snowRock_10_mesh (1)
       objectReference: {fileID: 0}
     - target: {fileID: 2727016170163345612, guid: 99526c12eb564b84983423bc06e960aa,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.1178
@@ -25699,12 +25978,16 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0.61024946
       objectReference: {fileID: 0}
+<<<<<<< HEAD
+    - target: {fileID: 648114102108414453, guid: 8b35edbb5df456a4e95c1c4ea2886518,
+=======
     - target: {fileID: 2727016170163345612, guid: 99526c12eb564b84983423bc06e960aa,
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.6229551
       objectReference: {fileID: 0}
     - target: {fileID: 2727016170163345612, guid: 99526c12eb564b84983423bc06e960aa,
+>>>>>>> 590761e3640cb626c97f48623a1b9021c5189ce4
         type: 3}
       propertyPath: m_LocalScale.x
       value: 0.96498775
