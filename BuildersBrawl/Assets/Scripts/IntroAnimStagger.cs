@@ -6,9 +6,18 @@ public class IntroAnimStagger : MonoBehaviour
 {
     public PlayerAnimation playerAnimRef;
 
+
+
     private void OnTriggerEnter(Collider other)
     {
         //print("triggered");
+
+        if (playerAnimRef == null)
+        {
+            print("no player anim intro");
+            this.gameObject.SetActive(false);
+            return;
+        } 
 
         if(other.gameObject.GetComponent<CameraController>() != null)
         {
