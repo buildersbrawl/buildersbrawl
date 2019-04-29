@@ -33,7 +33,20 @@ public class GameManager : MonoBehaviour
             Destroy(this);
         }
 
+        Debug.Log("There are four players: " + PlayerSelect.S.FourPlayersReady);
+        if (!PlayerSelect.S.FourPlayersReady)
+        {
+            player4.SetActive(false);
+        }
+
+        Debug.Log("There are three players: " + PlayerSelect.S.ThreePlayersReady);
+        if (!PlayerSelect.S.ThreePlayersReady)
+        {
+            player3.SetActive(false);
+        }
+
         playerList = GameObject.FindObjectsOfType<PlayerController>();
+        Debug.Log("playerList.Length = " + playerList.Length);
 
         if (player1 == null || player2 == null || player3 == null || player4 == null)
         {
@@ -45,6 +58,7 @@ public class GameManager : MonoBehaviour
             }
             else
             {
+
                 foreach(PlayerController player in playerList)
                 {
                     switch (player.playerNumber)
@@ -65,17 +79,7 @@ public class GameManager : MonoBehaviour
                             break;
                     }
                 }
-                Debug.Log("There are four players: " + PlayerSelect.S.FourPlayersReady);
-                if(!PlayerSelect.S.FourPlayersReady)
-                {
-                    player4.SetActive(false);
-                }
-
-                Debug.Log("There are three players: " + PlayerSelect.S.ThreePlayersReady);
-                if (!PlayerSelect.S.ThreePlayersReady)
-                {
-                    player3.SetActive(false);
-                }
+                
             }
         }
         
