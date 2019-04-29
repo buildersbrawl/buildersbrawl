@@ -14,7 +14,7 @@ public class IntroAnimStagger : MonoBehaviour
         {
             playerAnimRef.CallIntroAnimation();
 
-            //print(playerAnimRef.gameObject.name + " intro.");
+            print(playerAnimRef.gameObject.name + " intro.");
 
             this.gameObject.SetActive(false);
         }

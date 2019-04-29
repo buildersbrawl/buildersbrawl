@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlankManager : MonoBehaviour
 {
@@ -31,8 +32,14 @@ public class PlankManager : MonoBehaviour
 
     bool initialized;
 
+    private float timePlankCreated;
+
+    //------------------------------------------------------------------------------------------------------
+
     private void Start()
     {
+        timePlankCreated = Time.time;
+
         if (plankState == PlankState.dropped || plankState == PlankState.placed)
         {
             Init();
@@ -236,6 +243,9 @@ public class PlankManager : MonoBehaviour
         }
         */
 
+        //CHECK TO MAKE SURE NOT BEING PLACED ON GROUND (needs fixing)
+        /*
+
         RaycastHit hitInfo;
 
         //raycast down to make sure not on ground
@@ -243,10 +253,12 @@ public class PlankManager : MonoBehaviour
         {
             //print("hit " + hitInfo.collider.gameObject.name);
 
-            //make sure not beginning of game to stop it affecting environment planks
+            //make sure not too soon after plank initially created
 
-            if (hitInfo.collider.gameObject.GetComponent<PlankManager>() == null && hitInfo.collider.gameObject.GetComponent<PlayerController>() == null
-                && Time.time > 3f)
+            print("Time plank" + (Time.time - timePlankCreated));
+
+            if (hitInfo.collider.gameObject.GetComponent<PlankManager>() == null && hitInfo.collider.gameObject.GetComponent<PlayerController>() == null 
+                && (Time.time - timePlankCreated) < 1f)
             {
                 //if it is drop it and return
                 DropPlank();
@@ -255,7 +267,7 @@ public class PlankManager : MonoBehaviour
                 return;
             }
         }
-        
+        */
 
         if(this.gameObject.GetComponent<Rigidbody>() != null)
         {
