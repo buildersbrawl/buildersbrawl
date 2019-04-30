@@ -14,6 +14,7 @@ public class Points : MonoBehaviour
     public Sprite[] faces = new Sprite[3];
     public int activeFaceNum = 1;
     private int winNum = -1;
+    public bool hitByLava = false;
 
     private void Start()
     {
@@ -63,7 +64,7 @@ public class Points : MonoBehaviour
 
     public void SubtractPointsForSuicide()
     {
-        if(pointsTotal > 0)
+        if(pointsTotal > 0 && !hitByLava)
         {
             pointsTotal -= pointsForSuicide;
             PrintPointsTotal();
