@@ -193,32 +193,7 @@ public class PlayerMovement : MonoBehaviour
             return gravityVector;
         }
     }
-    /*
-    public Vector3 ApplyDrag(Vector3 directionMoving, bool grounded)
-    {
-        if (grounded)
-        {
-            //ground drag
-            //take x and z
-            //reduce them by drag percentage
-            directionMoving.x *= (1 - groundDrag);
-            directionMoving.z *= (1 - groundDrag);
-
-
-        }
-        else
-        {
-            //airdrag
-            //take x and z
-            //reduce them by drag percentage
-            directionMoving.x *= (1 - airDrag);
-            directionMoving.z *= (1 - airDrag);
-
-
-        }
-        return directionMoving;
-    }
-    */
+    
     public void ApplyDrag(bool grounded)
     {
         //TODO: add if mometum lower than certain number just make 0
@@ -245,9 +220,17 @@ public class PlayerMovement : MonoBehaviour
     {
         //playerCombatMomentum = Vector3.zero;
         playerJumpMomentum = Vector3.zero;
-        playerEnvironmentMomentum = Vector3.zero;
+
+        //only in non-stun
+        if(playerController.playerState != PlayerController.PlayerState.stunned)
+        {
+            playerEnvironmentMomentum = Vector3.zero;
+        }
+        
         playerMomentum = Vector3.zero;
         reversePlayerMovementFromJoysticks = Vector3.zero;
+
+        //only in death
         if (playerController.playerDeath.playerDead)
         {
             playerCombatMomentum = Vector3.zero;
