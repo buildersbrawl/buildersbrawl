@@ -37,7 +37,7 @@ public class GameManager : MonoBehaviour
         //created planks add themseleves to this
         planksInScene = new List<PlankManager>();
 
-        Debug.Log("There are four players: " + PlayerSelect.S.FourPlayersReady);
+        /*Debug.Log("There are four players: " + PlayerSelect.S.FourPlayersReady);
         if (!PlayerSelect.S.FourPlayersReady)
         {
             player4.SetActive(false);
@@ -47,7 +47,7 @@ public class GameManager : MonoBehaviour
         if (!PlayerSelect.S.ThreePlayersReady)
         {
             player3.SetActive(false);
-        }
+        }*/
 
         playerList = GameObject.FindObjectsOfType<PlayerController>();
         Debug.Log("playerList.Length = " + playerList.Length);
@@ -94,6 +94,24 @@ public class GameManager : MonoBehaviour
 
         someoneWon = false;
 
+    }
+
+    private void Start()
+    {
+        if (PlayerSelect.S.startedPS)
+        {
+            Debug.Log("There are four players: " + PlayerSelect.S.FourPlayersReady);
+            if (!PlayerSelect.S.FourPlayersReady)
+            {
+                player4.SetActive(false);
+            }
+
+            Debug.Log("There are three players: " + PlayerSelect.S.ThreePlayersReady);
+            if (!PlayerSelect.S.ThreePlayersReady)
+            {
+                player3.SetActive(false);
+            }
+        }
     }
 
     public void RestartGame()

@@ -44,11 +44,12 @@ public class LevelSelector : MonoBehaviour
         levelDisplay = GetComponent<Image>();
         Debug.Log(levels.Length);
 
-        //Immediately chooses the next level
+        //Immediately chooses the next level for random
         ChooseLevel();
 
         levelDisplay.sprite = levels[show];
 
+        //prevents players from using left and right arrow buttons on screen
         nextLevel.interactable = false;
         prevLevel.interactable = false;
 
@@ -69,6 +70,8 @@ public class LevelSelector : MonoBehaviour
                 timer -= waitTime;
             }
         }*/
+
+        //Allow players to navigate UI by only using their controllers
         for (int i = 0; i < ReInput.players.playerCount; i++)
         {
             if (Rewired.ReInput.players.GetPlayer(i).GetButtonDown("UIRight"))
@@ -87,6 +90,7 @@ public class LevelSelector : MonoBehaviour
 
         if (PlayerSelect.S.TwoPlayersReady)
         {
+            //enables users to select level once two players are selected
             DisplayChosen();
 
             /*if (Rewired.ReInput.players.GetPlayer(0).GetButtonDown("Submit"))
@@ -147,7 +151,7 @@ public class LevelSelector : MonoBehaviour
             show ++;
         }
 
-
+        //Displays level if the show variable is in range of the number of levels
         if(show < levels.Length)
         {
            levelDisplay.sprite = levels[show];
@@ -213,13 +217,14 @@ public class LevelSelector : MonoBehaviour
         if(!PlayerSelect.S.LevelStartBtn.interactable)
         {
             PlayerSelect.S.LevelStartBtn.interactable = set;
-            if(PlayerSelect.S.LevelStartBtn.interactable)
-            {
-                EventSystem.current.SetSelectedGameObject(PlayerSelect.S.LevelStartBtn.gameObject, null);
-                nextLevel.interactable = true;
-                prevLevel.interactable = true;
-            }
         }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(PlayerSelect.S.LevelStartBtn.gameObject, null);
+            nextLevel.interactable = true;
+            prevLevel.interactable = true;
+        }
+
         PlayerSelect.S.LevelStartBtnText.text = "Start Game";
     }
 

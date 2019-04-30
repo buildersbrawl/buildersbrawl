@@ -65,6 +65,7 @@ public class PlayerSelect : MonoBehaviour
 
     public bool inPlayerSelect = true;
     private bool initialized = false;
+    public bool startedPS = false;
 
     //Tom: for testing
     public bool allowControllerSelection;
@@ -121,7 +122,7 @@ public class PlayerSelect : MonoBehaviour
         FourPlayersReady = false;
 
         //Displays the text that shows up before the players are selected
-        if (inPlayerSelect)
+        if (SceneManager.GetActiveScene().name == "Player_Select")
         {
             P1_select.gameObject.SetActive(true);
             P2_select.gameObject.SetActive(true);
@@ -154,8 +155,11 @@ public class PlayerSelect : MonoBehaviour
             LevelStartBtn.interactable = false;
             LevelStartBtnText.text = "Waiting for Players...";
 
-
+            //records that this started in the Player Select screen
+            startedPS = true;
         }
+
+
     }
 
     // Update is called once per frame
@@ -172,10 +176,8 @@ public class PlayerSelect : MonoBehaviour
         {
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
-                if (RoundsManager.R.round <= 1)
-                {
                     //if someone hits "Submit" button (A)
-                    if (ReInput.players.GetPlayer(i).GetButtonDown("Submit"))
+                    if (ReInput.players.GetPlayer(i).GetButtonDown("Submit") && RoundsManager.R.round <= 1)
                     {
                         //TODO: if controller isnt already attached to player add player
 
@@ -223,7 +225,6 @@ public class PlayerSelect : MonoBehaviour
                         //Debug.Log(playerCounter);
                         AssignNextPlayer(i);
                     }
-                }
             }
         }
 
