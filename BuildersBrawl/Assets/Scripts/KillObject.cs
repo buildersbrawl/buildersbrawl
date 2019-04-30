@@ -14,6 +14,8 @@ public class KillObject : MonoBehaviour
         }
         else if(other.gameObject.GetComponent<PlankManager>() != null)
         {
+            //get rid of plank for Gamemananeger list
+            GameManager.S.planksInScene.Remove(other.gameObject.GetComponent<PlankManager>());
             //destroys boards that go below map
             Destroy(other.gameObject);
         }

@@ -42,7 +42,7 @@ public class WindMechanic : MonoBehaviour
                 if(GameManager.S.planksInScene[index].plankState == PlankManager.PlankState.dropped)
                 {
                     //move it wiht wind
-                    GameManager.S.planksInScene[index].GetComponent<Rigidbody>().AddForce(windFlow * 10f);
+                    GameManager.S.planksInScene[index].GetComponent<Rigidbody>().AddForce(windFlow * (windSpeed / 100f));
                 }
             }
             

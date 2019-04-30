@@ -146,34 +146,33 @@ public class PointsBar : MonoBehaviour
             }
         }*/
 
-        foreach (GameObject player in players)
+        for (int index = 0; index < players.Count; index++)
         {
-            
             //winner will be constant
-            if(player.GetComponent<Points>().GetPointsTotal() >= winner)
-                winner = player.GetComponent<Points>().GetPointsTotal();
+            if(players[index].GetComponent<Points>().GetPointsTotal() >= winner)
+                winner = players[index].GetComponent<Points>().GetPointsTotal();
             //if there are 2 players
             else if(players.Count == 2)
-                loser = player.GetComponent<Points>().GetPointsTotal();
+                loser = players[index].GetComponent<Points>().GetPointsTotal();
             //if there are 3 players
             else if(players.Count == 3)
             {
-                if (player.GetComponent<Points>().GetPointsTotal() < middleOne)
-                    loser = player.GetComponent<Points>().GetPointsTotal();
-                if (player.GetComponent<Points>().GetPointsTotal() > middleOne)
-                    middleOne = player.GetComponent<Points>().GetPointsTotal();
+                if (players[index].GetComponent<Points>().GetPointsTotal() < middleOne)
+                    loser = players[index].GetComponent<Points>().GetPointsTotal();
+                if (players[index].GetComponent<Points>().GetPointsTotal() > middleOne)
+                    middleOne = players[index].GetComponent<Points>().GetPointsTotal();
             }
             //if there are 4 players
             else if(players.Count == 4)
             {
-                if (player.GetComponent<Points>().GetPointsTotal() < middleTwo)
-                    loser = player.GetComponent<Points>().GetPointsTotal();
-                else if (player.GetComponent<Points>().GetPointsTotal() > loser && player.GetComponent<Points>().GetPointsTotal() < winner)
+                if (players[index].GetComponent<Points>().GetPointsTotal() < middleTwo)
+                    loser = players[index].GetComponent<Points>().GetPointsTotal();
+                else if (players[index].GetComponent<Points>().GetPointsTotal() > loser && players[index].GetComponent<Points>().GetPointsTotal() < winner)
                 {
-                    if (player.GetComponent<Points>().GetPointsTotal() > middleOne)
-                        middleOne = player.GetComponent<Points>().GetPointsTotal();
-                    else if (player.GetComponent<Points>().GetPointsTotal() > middleTwo && player.GetComponent<Points>().GetPointsTotal() < middleOne)
-                        middleTwo = player.GetComponent<Points>().GetPointsTotal();
+                    if (players[index].GetComponent<Points>().GetPointsTotal() > middleOne)
+                        middleOne = players[index].GetComponent<Points>().GetPointsTotal();
+                    else if (players[index].GetComponent<Points>().GetPointsTotal() > middleTwo && players[index].GetComponent<Points>().GetPointsTotal() < middleOne)
+                        middleTwo = players[index].GetComponent<Points>().GetPointsTotal();
                 }
             }
             /*
