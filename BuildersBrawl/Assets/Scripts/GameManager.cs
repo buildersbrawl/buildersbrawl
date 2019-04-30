@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public PlayerController[] playerList;
 
+    public List<PlankManager> planksInScene;
 
     public GameObject winner;
     [HideInInspector]
@@ -32,6 +33,9 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this);
         }
+
+        //created planks add themseleves to this
+        planksInScene = new List<PlankManager>();
 
         Debug.Log("There are four players: " + PlayerSelect.S.FourPlayersReady);
         if (!PlayerSelect.S.FourPlayersReady)
@@ -101,6 +105,7 @@ public class GameManager : MonoBehaviour
     public void EndLevel()
     {
         someoneWon = false;
+        planksInScene = new List<PlankManager>();
         SceneManager.LoadScene("EndScreen");
     }
 

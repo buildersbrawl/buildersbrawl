@@ -50,6 +50,8 @@ public class PlankManager : MonoBehaviour
     {
         //print("pick up");
         plankState = PlankState.spawned;
+        //add this to game manager list
+        GameManager.S.planksInScene.Add(this);
         Init();
     }
 

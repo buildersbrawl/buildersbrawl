@@ -168,7 +168,7 @@ public class CameraController : MonoBehaviour
     public bool isRightToLeft = false;
     public bool shouldDoStartPan = true;
     public GameObject UICanvas;
-    public GameObject winUIRef;
+    public WinUI winUIRef;
 
     public AudioSource audio;
     public AudioClip[] clips;
@@ -275,7 +275,7 @@ public class CameraController : MonoBehaviour
 
         if(winUIRef == null)
         {
-            winUIRef = WinUI.S.gameObject;
+            winUIRef = WinUI.S;
         }
 
         deathLerpTime = player1ref.GetComponent<PlayerDeath>().respawnTime * .8f;
@@ -1009,7 +1009,7 @@ public class CameraController : MonoBehaviour
             if (triggerPoints)
             {
                 //turn on winUI
-                winUIRef.SetActive(true);
+                winUIRef.gameObject.SetActive(true);
                 GameManager.S.winner.GetComponent<Points>().MakeWinner();
                 Debug.Log("WINUIREF ACTIVE");
 
