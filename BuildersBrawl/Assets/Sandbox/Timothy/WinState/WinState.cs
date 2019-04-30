@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class WinState : MonoBehaviour
 {
     string playerWhoWon;
+    private bool someoneWon = false;
     
 
     public GameObject winUI;
@@ -28,6 +29,7 @@ public class WinState : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
         print("Win trigger " + other.gameObject.name);
 
         print(other.gameObject.GetComponent<PlayerController>() != null);
@@ -60,6 +62,8 @@ public class WinState : MonoBehaviour
             //make ability to move to MM available
             GameManager.S.someoneWon = true;
             Debug.Log("someone won = " + GameManager.S.someoneWon);
+
+            //look at pole, stand next to, then trigger animation
         }
     }
 }

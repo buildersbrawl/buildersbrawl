@@ -975,10 +975,18 @@ public class CameraController : MonoBehaviour
 
     public void ZoomOnWinner()
     {
-        //Debug.Log("IN ZOOM ON WINNER");
+        //turn controls off
+        InputManager.isUsingUI = true;
+        Debug.Log("ISUSINGUI = " + InputManager.isUsingUI);
 
-        Vector3 newPos = new Vector3(GameObject.Find("Goal").transform.position.x + 1f, GameManager.S.winner.transform.position.y, GameObject.Find("Goal").transform.position.z - 1f);
-        GameManager.S.winner.transform.position = newPos;
+        //Debug.Log("IN ZOOM ON WINNER");
+        GameObject goal = GameObject.Find("Goal");
+        Vector3 newPos = new Vector3(goal.transform.position.x -1f, GameManager.S.winner.transform.position.y, goal.transform.position.z);
+        GameManager.S.winner.transform.position = newPos; // new Vector3(goal.transform.position.x, this.gameObject.transform.position.y, goal.transform.position.z);
+        //GameManager.S.winner.transform.LookAt(goal.transform);
+
+        Quaternion rotation = Quaternion.LookRotation(goal.transform.position);
+        GameManager.S.winner.transform.rotation = Quaternion.Slerp(GameManager.S.winner.transform.rotation, rotation, Time.deltaTime * 1f);
 
         Time.timeScale = 0.5f;
         //Debug.Log("Timescale = " + Time.timeScale);

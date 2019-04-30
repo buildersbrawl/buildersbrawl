@@ -545,7 +545,6 @@ public class PlayerController : MonoBehaviour
             moveVector = Vector3.zero;
             playerMovement.ResetMovement();
             joyInput = Vector3.zero;
-            return;
         }
 
         //temp
@@ -557,7 +556,8 @@ public class PlayerController : MonoBehaviour
 
 
             //check to see if just hit the ground from jumping
-        if (playerGrounded && playerState == PlayerState.jumping)
+        if (playerGrounded && playerState == PlayerState.jumping
+            && !playerDeath.playerDead && playerState != PlayerState.stunned)
         {
             playerMovement.JumpEnd();
 
@@ -567,7 +567,8 @@ public class PlayerController : MonoBehaviour
         }
 
         //if not doing something else and grounded a will activate jump
-        if (playerState != PlayerState.action && playerState != PlayerState.jumping && playerGrounded)
+        if (playerState != PlayerState.action && playerState != PlayerState.jumping && playerGrounded
+            && !playerDeath.playerDead && playerState != PlayerState.stunned)
         {
             //a jump
 
@@ -578,12 +579,10 @@ public class PlayerController : MonoBehaviour
             }
         }
 
-        //print("After jump state is " + playerState);
-
-        //print("frame " + joyInput);
-
         //IF JUMPING OVERRIDE ACTION or if doing other action or if anim stop
-        if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown && playerState != PlayerState.pushed && !tempStopMovement)
+        if (playerState != PlayerState.jumping && playerState != PlayerState.cooldown 
+            && playerState != PlayerState.pushed && !tempStopMovement
+            && !playerDeath.playerDead && playerState != PlayerState.stunned)
         {
             //y pick up
             //y drop board
@@ -630,20 +629,26 @@ public class PlayerController : MonoBehaviour
         //move based off of joystick
         if (!tempStopMovement)
         {
-            if (playerMovement.addWackyMovement)
-            {
-                joyInput = playerMovement.UpdateWackMovement(joyInput);
-            }
-            if (playerMovement.addWobble)
-            {
-                joyInput = playerMovement.UpdateWobbleMovement(joyInput);
-            }
 
-            //call player movement based off of joystick movement
-            moveVector += playerMovement.PlayerSideMovement(joyInput, playerState);
-            //moveVector += playerMovement.AddPlayerMomentum(joyInput);
+            if(!playerDeath.playerDead && playerState != PlayerState.stunned)
+            {
+                if (playerMovement.addWackyMovement)
+                {
+                    joyInput = playerMovement.UpdateWackMovement(joyInput);
+                }
+                if (playerMovement.addWobble)
+                {
+                    joyInput = playerMovement.UpdateWobbleMovement(joyInput);
+                }
 
-            playerAnimation.RunAnim(moveVector);
+
+                //call player movement based off of joystick movement
+                moveVector += playerMovement.PlayerSideMovement(joyInput, playerState);
+                //moveVector += playerMovement.AddPlayerMomentum(joyInput);
+
+                playerAnimation.RunAnim(moveVector);
+            }
+            
         }
         else
         {
@@ -673,6 +678,11 @@ public class PlayerController : MonoBehaviour
 
 
 
+        if (playerState == PlayerState.stunned)
+        {
+            print("stun move vec" + moveVector);
+        }
+
         //-------------------------
         //apply movement
         charContRef.Move(moveVector * Time.fixedDeltaTime);
@@ -690,7 +700,8 @@ public class PlayerController : MonoBehaviour
 
         //if (moveVectorLimitY != Vector3.zero)
         //player rotation
-        if (joyInput != Vector3.zero && !tempStopMovement)
+        if (joyInput != Vector3.zero && !tempStopMovement
+            && !playerDeath.playerDead && playerState != PlayerState.stunned)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(joyInput, Vector3.up), 0.15f);
         }
@@ -730,7 +741,7 @@ public class PlayerController : MonoBehaviour
             moveVector.y = 0;
         }
 
-       
+        
 
         //Mathf.Clamp(moveVector.x, 0, 0);
         //Mathf.Clamp(moveVector.z, 0, 0);

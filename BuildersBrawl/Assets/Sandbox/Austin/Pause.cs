@@ -68,6 +68,6 @@ public class Pause : MonoBehaviour
     public void ExitToMenu()
     {
         InputManager.isUsingUI = true;
-        SceneManager.LoadScene(0, LoadSceneMode.Single);
+        SceneManager.LoadScene("Main_Menu");
     }
 }
