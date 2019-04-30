@@ -124,7 +124,9 @@ public class PlayerSelect : MonoBehaviour
         //Displays the text that shows up before the players are selected
         if (SceneManager.GetActiveScene().name == "Player_Select")
         {
-            P1_select.gameObject.SetActive(true);
+            InitializeScene();
+
+            /*P1_select.gameObject.SetActive(true);
             P2_select.gameObject.SetActive(true);
             P3_select.gameObject.SetActive(true);
             P4_select.gameObject.SetActive(true);
@@ -144,19 +146,22 @@ public class PlayerSelect : MonoBehaviour
             B4_P4_select.text = "Waiting for Player 1";
 
 
-            /*//Hides the text
+            //Hides the text
             P1_selected.enabled = false;
-            P2_selected.enabled = false;*/
+            P2_selected.enabled = false;
 
             //Hides the player models
             //player1.SetActive(false);
             //player2.SetActive(false);
 
             LevelStartBtn.interactable = false;
-            LevelStartBtnText.text = "Waiting for Players...";
+            LevelStartBtnText.text = "Waiting for Players...";*/
 
             //records that this started in the Player Select screen
             startedPS = true;
+
+            //allow player to select controllers
+            allowControllerSelection = true;
         }
 
 
@@ -177,7 +182,7 @@ public class PlayerSelect : MonoBehaviour
             for (int i = 0; i < ReInput.players.playerCount; i++)
             {
                     //if someone hits "Submit" button (A)
-                    if (ReInput.players.GetPlayer(i).GetButtonDown("Submit") && RoundsManager.R.round <= 1)
+                    if (ReInput.players.GetPlayer(i).GetButtonDown("Submit") && allowControllerSelection)
                     {
                         //TODO: if controller isnt already attached to player add player
 
@@ -514,6 +519,8 @@ public class PlayerSelect : MonoBehaviour
 
                 //reset player count
                 playerCounter = 0;
+
+                allowControllerSelection = true;
             }
 
             initialized = true;
@@ -535,6 +542,14 @@ public class PlayerSelect : MonoBehaviour
             P3_select.gameObject.SetActive(false);
             P4_select.gameObject.SetActive(false);
 
+            if (!FourPlayersReady)
+            {
+                player1.SetActive(true);
+                player2.SetActive(true);
+                player3.SetActive(true);
+                player4.SetActive(false);
+            }
+
             if (!ThreePlayersReady)
             {
                 player1.SetActive(true);
@@ -543,13 +558,7 @@ public class PlayerSelect : MonoBehaviour
                 player4.SetActive(false); 
             }
 
-            if (!FourPlayersReady)
-            {
-                player1.SetActive(true);
-                player2.SetActive(true);
-                player3.SetActive(true);
-                player4.SetActive(false);
-            }
+            allowControllerSelection = false;
         }
     }
 

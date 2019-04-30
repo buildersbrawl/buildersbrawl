@@ -9,10 +9,14 @@ using UnityEngine.EventSystems;
 public class LevelSelector : MonoBehaviour
 {
     public Image levelDisplay;
+    public Image levelNameDisplay;
+
     public Sprite[] levels;
+    public Sprite[] names;
     public Sprite random;
 
     public int levelNumber;
+    public int nameNumber;
     public int show = 0;
     public int RandomShow = 0;
     public bool chosenShown = false;
@@ -48,6 +52,7 @@ public class LevelSelector : MonoBehaviour
         ChooseLevel();
 
         levelDisplay.sprite = levels[show];
+        levelNameDisplay.sprite = names[show];
 
         //prevents players from using left and right arrow buttons on screen
         nextLevel.interactable = false;
@@ -152,15 +157,16 @@ public class LevelSelector : MonoBehaviour
         }
 
         //Displays level if the show variable is in range of the number of levels
-        if(show < levels.Length)
+        if (show < levels.Length)
         {
-           levelDisplay.sprite = levels[show];
+            levelDisplay.sprite = levels[show];
+            levelNameDisplay.sprite = names[show];
 
             if (show > 0)
             {
                 chosenLevel = levelNames[show];
             }
-            if (show == 0)
+            else if (show == 0)
             {
                 ChooseLevel();
             }
@@ -182,12 +188,13 @@ public class LevelSelector : MonoBehaviour
         if (show < levels.Length)
         {
             levelDisplay.sprite = levels[show];
+            levelNameDisplay.sprite = names[show];
 
             if (show > 0)
             {
                 chosenLevel = levelNames[show];
             }
-            if (show == 0)
+            else if (show == 0)
             {
                 ChooseLevel();
             }
@@ -230,6 +237,7 @@ public class LevelSelector : MonoBehaviour
 
     public void ActuallyStartLevel()
     {
+        PlayerSelect.S.allowControllerSelection = false;
         StartLevel(chosenLevel);
     }
 

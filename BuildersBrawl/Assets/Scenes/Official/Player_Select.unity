@@ -1548,15 +1548,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelDisplay: {fileID: 820531789}
+  levelNameDisplay: {fileID: 1778744720}
   levels:
   - {fileID: 21300000, guid: acd8278e920cf5e46bbef8a57bd04ae5, type: 3}
-  - {fileID: 21300000, guid: 9318c5422eab99b48a60bf9421661476, type: 3}
-  - {fileID: 21300000, guid: d051a2b9dc802d54a87f8467ad14b714, type: 3}
-  - {fileID: 21300000, guid: 1a10dc594277da747b5d5768514524b7, type: 3}
-  - {fileID: 21300000, guid: 325a96ae8b95652498a13f64c40b05ab, type: 3}
-  - {fileID: 21300000, guid: 7578c25dce49a42458f9c72764a3204a, type: 3}
+  - {fileID: 21300000, guid: 90f66340c8063544e84631cd1adf7c0b, type: 3}
+  - {fileID: 21300000, guid: 2ff2c7afaf688394ab0ee8df2cafc1df, type: 3}
+  - {fileID: 21300000, guid: 35fdcaa967891d34d940b2305b664311, type: 3}
+  - {fileID: 21300000, guid: be2c5550518066c41b3a26a97821ae7d, type: 3}
+  - {fileID: 21300000, guid: ad10a4f3344c20744b072384d9fccc9d, type: 3}
+  names:
+  - {fileID: 21300000, guid: b8c3199494e3f6d4ba4705c4ea08d8a6, type: 3}
+  - {fileID: 21300000, guid: e5d06f8e988bfcf43885d59825c4b7db, type: 3}
+  - {fileID: 21300000, guid: 6635c318f6a265947a3cec03c2638d39, type: 3}
+  - {fileID: 21300000, guid: 74dfaf727ddce7440b485efc913d0e43, type: 3}
+  - {fileID: 21300000, guid: d4ef7425d53fad4448b80e301f9244b3, type: 3}
+  - {fileID: 21300000, guid: 2a3771bd14d57ac4f99758e4f6ffa33f, type: 3}
   random: {fileID: 0}
   levelNumber: 0
+  nameNumber: 0
   show: 0
   RandomShow: 0
   chosenShown: 0
@@ -3580,8 +3589,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4, y: 203}
-  m_SizeDelta: {x: 350, y: 200}
+  m_AnchoredPosition: {x: 4, y: 207}
+  m_SizeDelta: {x: 350, y: 170}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1778744720
 MonoBehaviour:
