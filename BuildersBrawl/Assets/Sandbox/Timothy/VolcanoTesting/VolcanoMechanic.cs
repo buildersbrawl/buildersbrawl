@@ -11,7 +11,6 @@ public class VolcanoMechanic : MonoBehaviour
     public bool eruptCooldown = true;
     public float shakeDuration;
     public float shakeMagnitude;
-    public GameObject lavaGeyserPrefab;
 
     private Vector3 lavaStartingPos;
     private float startTimer;
@@ -24,16 +23,21 @@ public class VolcanoMechanic : MonoBehaviour
     private GameObject countdown;
     private GameObject dangerSign;
     private bool allowFlash = true;
+    private LavaParticlesIdentifier[] lavaParticleRef;
+    private GameObject[] lavaGeysers;
+    private bool currentlyExploding = false;
+    private bool returnLavaState = false;
 
     private void Awake()
     {
         countdownRef = FindObjectOfType(typeof(Countdown)) as Countdown;
         dangerSignRef = FindObjectOfType(typeof(DangerIdentifier)) as DangerIdentifier;
+        lavaParticleRef = FindObjectsOfType<LavaParticlesIdentifier>();
     }
 
     private void Start()
     {
-        lavaStartingPos = transform.position;
+        lavaStartingPos = transform.localPosition;
         //startTimer = Time.time;
         explosionTimer = 0f;
         cameraTransform = GameManager.S.cameraRef.transform;
@@ -41,6 +45,11 @@ public class VolcanoMechanic : MonoBehaviour
         countdown = countdownRef.gameObject;
         dangerSign = dangerSignRef.gameObject;
         dangerSign.SetActive(false);
+        lavaGeysers = new GameObject[lavaParticleRef.Length];
+        for (int i = 0; i < lavaParticleRef.Length; i++)
+        {
+            lavaGeysers[i] = lavaParticleRef[i].gameObject;
+        }
     }
 
     private void Update()
@@ -48,7 +57,18 @@ public class VolcanoMechanic : MonoBehaviour
         if (!countdownRef.GetComponent<Countdown>().countDown)
         {
             float timePassed = Time.time - startTimer;
+            /*
+            if (!eruptCooldown && currentlyExploding)
+            {
+                if (!lavaGeysers[lavaGeysers.Length - 1].transform.GetChild(2).GetComponent<ParticleSystem>().isEmitting)
+                {
+                    currentlyExploding = false;
+                    transform.position = lavaStartingPos;
+                    eruptCooldown = true;
+                    allowFlash = true;
+                }
 
+            }*/
             if (!eruptCooldown)
             {
                 if (transform.localPosition.y <= lavaEndYPos)
@@ -63,9 +83,21 @@ public class VolcanoMechanic : MonoBehaviour
                         doCameraShake = false;
                     }
                 }
-                if (transform.localPosition.y >= lavaEndYPos)
+                if (transform.localPosition.y >= lavaEndYPos - 2 && !currentlyExploding)
                 {
-                    ExplodeVolcano();
+                    currentlyExploding = true;
+                    EruptLava();
+                }
+                if (currentlyExploding)
+                {
+                    if (!lavaGeysers[lavaGeysers.Length - 1].transform.GetChild(2).GetComponent<ParticleSystem>().isEmitting)
+                    {
+                        currentlyExploding = false;
+                        //transform.position = lavaStartingPos;
+                        eruptCooldown = true;
+                        returnLavaState = true;
+                        //allowFlash = true;
+                    }
                 }
                 /*
                 if (timePassed >= timeUntilExplosion)
@@ -74,12 +106,28 @@ public class VolcanoMechanic : MonoBehaviour
                 }*/
 
             }
+            else if (eruptCooldown && returnLavaState)
+            {
+                Debug.Log("Receding Lava!");
+                if (transform.localPosition.y > lavaStartingPos.y)
+                {
+                    transform.position += Vector3.down * moveSpeed * Time.deltaTime;
+                }
+                else
+                {
+                    returnLavaState = false;
+                    allowFlash = true;
+                    startTimer = Time.time;
+
+                }
+
+            }
             else
             {
                 Debug.Log("The Volcano Lies Dormant.");
                 if (timePassed >= timeUntilErupt)
                 {
-                    
+
                     eruptCooldown = false; //End the Cooldown (Volcano is now active!)
                     startTimer = Time.time;
                     //timePassedUntilExplosion = 0f;
@@ -95,6 +143,7 @@ public class VolcanoMechanic : MonoBehaviour
                     }
                 }
             }
+
         }
         else
         {
@@ -140,19 +189,6 @@ public class VolcanoMechanic : MonoBehaviour
         //cameraTransform.position = originalCamPos;
     }
 
-    private void ExplodeVolcano()
-    {
-        Debug.Log("Explosion!!");
-        transform.position = lavaStartingPos;
-        eruptCooldown = true;
-        allowFlash = true;
-        for (int i = 0; i < 3; i++)
-        {
-            lavaGeyserPrefab.transform.GetChild(i).GetComponent<ParticleSystem>().Play();
-        }
-        //explosionStartTimer = Time.time;
-    }
-
     private IEnumerator ShowDangerSign()
     {
         dangerSign.SetActive(true);
@@ -167,6 +203,18 @@ public class VolcanoMechanic : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         dangerSign.SetActive(false);
     }
+
+    private void EruptLava()
+    {
+        for (int i = 0; i < lavaGeysers.Length; i++)
+        {
+            for (int c = 0; c < lavaGeysers[i].transform.childCount; c++)
+            {
+                lavaGeysers[i].transform.GetChild(c).GetComponent<ParticleSystem>().Play();
+            }
+        }
+    }
+
     /*
     public IEnumerator ScreenShake()
     {
