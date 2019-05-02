@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 7385802440248335321}
   - component: {fileID: 7385802440248335327}
   - component: {fileID: 7385802440248335320}
+  - component: {fileID: 660717603}
   m_Layer: 0
   m_Name: LavaGeyserFX
   m_TagString: Untagged
@@ -48,7 +49,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -3558,9 +3559,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -3628,7 +3629,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -3736,11 +3737,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 1024
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -3753,7 +3754,7 @@ ParticleSystem:
     collisionShape5: {fileID: 0}
     inside: 1
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     radiusScale: 1
   SubModule:
@@ -4756,6 +4757,23 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &660717603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385802440248335322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e492fb6b82cf4a74885cc79e9ae2ab10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burningPlayers:
+  - {fileID: 1623315336735342781, guid: e4c8befaf2d309043877ec49dc3f5976, type: 3}
+  - {fileID: 3885375596403747324, guid: 5809d578413577c49a145a344083f801, type: 3}
+  - {fileID: 5771704484492897352, guid: 935d3a7a1ab0d414bb7ee58ed898ea7a, type: 3}
+  - {fileID: 50412965975583924, guid: 4744fb9729aa4f048b9bf2a45be20e23, type: 3}
 --- !u!1 &7385802440607569841
 GameObject:
   m_ObjectHideFlags: 0
@@ -4767,6 +4785,7 @@ GameObject:
   - component: {fileID: 7385802440607569840}
   - component: {fileID: 7385802440607569846}
   - component: {fileID: 7385802440607569847}
+  - component: {fileID: 553840012}
   m_Layer: 0
   m_Name: LavaGlopFX
   m_TagString: Untagged
@@ -4804,7 +4823,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -8314,9 +8333,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -8384,7 +8403,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -8492,11 +8511,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 1024
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -8509,7 +8528,7 @@ ParticleSystem:
     collisionShape5: {fileID: 0}
     inside: 1
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     radiusScale: 1
   SubModule:
@@ -9512,6 +9531,23 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &553840012
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385802440607569841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e492fb6b82cf4a74885cc79e9ae2ab10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burningPlayers:
+  - {fileID: 1623315336735342781, guid: e4c8befaf2d309043877ec49dc3f5976, type: 3}
+  - {fileID: 3885375596403747324, guid: 5809d578413577c49a145a344083f801, type: 3}
+  - {fileID: 5771704484492897352, guid: 935d3a7a1ab0d414bb7ee58ed898ea7a, type: 3}
+  - {fileID: 50412965975583924, guid: 4744fb9729aa4f048b9bf2a45be20e23, type: 3}
 --- !u!1 &7385802440782935912
 GameObject:
   m_ObjectHideFlags: 0
@@ -9523,6 +9559,7 @@ GameObject:
   - component: {fileID: 7385802440782935919}
   - component: {fileID: 7385802440782935917}
   - component: {fileID: 7385802440782935918}
+  - component: {fileID: 1783647882}
   m_Layer: 0
   m_Name: LavaBubbleFX
   m_TagString: Untagged
@@ -9560,7 +9597,7 @@ ParticleSystem:
   ringBufferLoopRange: {x: 0, y: 1}
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   useRigidbodyForVelocity: 1
@@ -13012,9 +13049,9 @@ ParticleSystem:
         m_NumAlphaKeys: 2
     range: {x: 0, y: 1}
   CollisionModule:
-    enabled: 0
+    enabled: 1
     serializedVersion: 3
-    type: 0
+    type: 1
     collisionMode: 0
     colliderForce: 0
     multiplyColliderForceByParticleSize: 0
@@ -13082,7 +13119,7 @@ ParticleSystem:
     m_Bounce:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13190,11 +13227,11 @@ ParticleSystem:
     radiusScale: 1
     collidesWith:
       serializedVersion: 2
-      m_Bits: 4294967295
+      m_Bits: 1024
     maxCollisionShapes: 256
     quality: 0
     voxelSize: 0.5
-    collisionMessages: 0
+    collisionMessages: 1
     collidesWithDynamic: 1
     interiorCollisions: 0
   TriggerModule:
@@ -13207,7 +13244,7 @@ ParticleSystem:
     collisionShape5: {fileID: 0}
     inside: 1
     outside: 0
-    enter: 0
+    enter: 2
     exit: 0
     radiusScale: 1
   SubModule:
@@ -14210,6 +14247,23 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &1783647882
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385802440782935912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e492fb6b82cf4a74885cc79e9ae2ab10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  burningPlayers:
+  - {fileID: 1623315336735342781, guid: e4c8befaf2d309043877ec49dc3f5976, type: 3}
+  - {fileID: 3885375596403747324, guid: 5809d578413577c49a145a344083f801, type: 3}
+  - {fileID: 5771704484492897352, guid: 935d3a7a1ab0d414bb7ee58ed898ea7a, type: 3}
+  - {fileID: 50412965975583924, guid: 4744fb9729aa4f048b9bf2a45be20e23, type: 3}
 --- !u!1 &7385802442016330997
 GameObject:
   m_ObjectHideFlags: 0
@@ -14219,6 +14273,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7385802442016330996}
+  - component: {fileID: 1609881898}
   m_Layer: 0
   m_Name: LavaGeyser
   m_TagString: Untagged
@@ -14233,7 +14288,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7385802442016330997}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 27.799997, y: 0, z: 29.799995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14243,3 +14298,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1609881898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7385802442016330997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 503ec599f594c6d4b83ea1941f896a49, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

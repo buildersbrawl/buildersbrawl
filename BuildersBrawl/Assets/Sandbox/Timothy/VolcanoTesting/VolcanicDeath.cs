@@ -6,6 +6,7 @@ public class VolcanicDeath : MonoBehaviour
 {
     public GameObject[] burningPlayers;
     private Vector3 deathPos;
+    private bool instantiateBurningPlayer = true;
 
     
     private void OnParticleCollision(GameObject other)
@@ -14,7 +15,11 @@ public class VolcanicDeath : MonoBehaviour
         {
             deathPos = other.gameObject.transform.position;
             other.gameObject.GetComponent<PlayerDeath>().KillMe();
-            InstantiateBurningPlayer(other.gameObject, deathPos);
+            if (instantiateBurningPlayer)
+            {
+                InstantiateBurningPlayer(other.gameObject, deathPos);
+                instantiateBurningPlayer = false;
+            }
         }
     }
 
@@ -34,21 +39,25 @@ public class VolcanicDeath : MonoBehaviour
         if (player == GameManager.S.player1)//Blue
         {
             Instantiate(burningPlayers[0], deathPos + new Vector3(0, -1.1f, 0), Quaternion.identity);
+            instantiateBurningPlayer = true;
         }
         //Instantiate(iceCubePrefab[0], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player2)//Red
         {
             Instantiate(burningPlayers[1], deathPos + new Vector3(0, -1.1f, 0), Quaternion.identity);
+            instantiateBurningPlayer = true;
         }
         //Instantiate(iceCubePrefab[1], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player3)//Yellow
         {
             Instantiate(burningPlayers[2], deathPos + new Vector3(0, -1.1f, 0), Quaternion.identity);
+            instantiateBurningPlayer = true;
         }
         //Instantiate(iceCubePrefab[2], deathPos, Quaternion.identity);
         else if (player == GameManager.S.player4)//Purple
         {
             Instantiate(burningPlayers[3], deathPos + new Vector3(0, -1.1f, 0), Quaternion.identity);
+            instantiateBurningPlayer = true;
         }
     }
 }

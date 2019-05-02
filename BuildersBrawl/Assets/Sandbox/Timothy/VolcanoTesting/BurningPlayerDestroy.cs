@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class BurningPlayerDestroy : MonoBehaviour
 {
-    public float jumpForce;
+    //public float jumpForce;
     private float startTimer;
     private float timeTilDestruction = 5;
-    RaycastHit hit;
+    //RaycastHit hit;
     //private LayerMask mask;
 
     private void Start()
     {
         startTimer = Time.time;
-        GetComponent<Rigidbody>().AddForce(new Vector3(0, 1 * jumpForce, 0));
+        //GetComponent<Rigidbody>().AddForce(new Vector3(0, 1 * jumpForce, 0));
     }
     private void Update()
     {
@@ -21,7 +21,7 @@ public class BurningPlayerDestroy : MonoBehaviour
 
         if (timePassed >= timeTilDestruction)
         {
-            Destroy(this.gameObject);
+            Destroy(this.transform.parent.gameObject);
         }
         
     }
