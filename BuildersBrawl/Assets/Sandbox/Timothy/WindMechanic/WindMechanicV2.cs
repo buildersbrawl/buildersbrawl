@@ -118,6 +118,17 @@ public class WindMechanicV2 : MonoBehaviour
         {
             startTimer = Time.time;
         }
+
+        for (int index = 0; index < GameManager.S.planksInScene.Count; index++)
+        {
+            //if plank is dropped
+            if (GameManager.S.planksInScene[index].plankState == PlankManager.PlankState.dropped)
+            {
+                //move it wiht wind
+                GameManager.S.planksInScene[index].GetComponent<Rigidbody>().AddForce(windFlow * (windSpeed / 100f));
+            }
+        }
+
     }
 
     private Vector3 GetWindFlowDirectiond(WindDirection direction)

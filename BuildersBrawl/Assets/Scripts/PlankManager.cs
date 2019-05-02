@@ -333,10 +333,11 @@ public class PlankManager : MonoBehaviour
            
 
             //also if in windy level don't let hit wind
-            if (GameObject.FindObjectOfType<WindMechanic>() != null)
+            /*if (GameObject.FindObjectOfType<WindMechanicV2>() != null)
             {
-                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameObject.FindObjectOfType<WindMechanic>().GetComponent<Collider>(), true);
+                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameObject.FindObjectOfType<WindMechanicV2>().GetComponent<Collider>(), true);
             }
+            */
 
             
             //also ignore anything with ignore plank when being placed
@@ -374,11 +375,12 @@ public class PlankManager : MonoBehaviour
                 Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player4.GetComponent<Collider>(), false);
             }
             //also if in windy level let hit wind
-            if (GameObject.FindObjectOfType<WindMechanic>() != null)
+            /*
+            if (GameObject.FindObjectOfType<WindMechanicV2>() != null)
             {
-                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameObject.FindObjectOfType<WindMechanic>().GetComponent<Collider>(), false);
+                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameObject.FindObjectOfType<WindMechanicV2>().GetComponent<Collider>(), false);
             }
-
+            */
             //also ignore anything with ignore plank when being placed
             if (GameObject.FindObjectOfType<IgnoreMeWhenPlacingPlank>() != null)
             {
