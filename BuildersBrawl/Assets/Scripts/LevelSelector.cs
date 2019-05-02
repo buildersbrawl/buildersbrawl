@@ -224,10 +224,10 @@ public class LevelSelector : MonoBehaviour
         if(!PlayerSelect.S.LevelStartBtn.interactable)
         {
             PlayerSelect.S.LevelStartBtn.interactable = set;
+            EventSystem.current.SetSelectedGameObject(PlayerSelect.S.LevelStartBtn.gameObject, null);
         }
         else
         {
-            EventSystem.current.SetSelectedGameObject(PlayerSelect.S.LevelStartBtn.gameObject, null);
             nextLevel.interactable = true;
             prevLevel.interactable = true;
         }
