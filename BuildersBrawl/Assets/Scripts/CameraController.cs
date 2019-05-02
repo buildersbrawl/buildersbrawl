@@ -984,9 +984,11 @@ public class CameraController : MonoBehaviour
         Vector3 newPos = new Vector3(goal.transform.position.x -1f, GameManager.S.winner.transform.position.y, goal.transform.position.z);
         GameManager.S.winner.transform.position = newPos; // new Vector3(goal.transform.position.x, this.gameObject.transform.position.y, goal.transform.position.z);
         //GameManager.S.winner.transform.LookAt(goal.transform);
+        
 
         Quaternion rotation = Quaternion.LookRotation(goal.transform.position);
-        GameManager.S.winner.transform.rotation = Quaternion.Slerp(GameManager.S.winner.transform.rotation, rotation, Time.deltaTime * 1f);
+        GameManager.S.winner.transform.rotation = Quaternion.Slerp(GameManager.S.winner.transform.rotation, rotation, .5f);
+        Debug.Log(Quaternion.Slerp(GameManager.S.winner.transform.rotation, rotation, Time.deltaTime * 1f));
 
         Time.timeScale = 0.5f;
         //Debug.Log("Timescale = " + Time.timeScale);
@@ -1019,7 +1021,7 @@ public class CameraController : MonoBehaviour
                 //turn on winUI
                 winUIRef.gameObject.SetActive(true);
                 GameManager.S.winner.GetComponent<Points>().MakeWinner();
-                Debug.Log("WINUIREF ACTIVE");
+                //Debug.Log("WINUIREF ACTIVE");
 
                 GameManager.S.winner.GetComponent<FlashyPoints>().ShowPointsGained(GameManager.S.winner.gameObject.transform.position, GameManager.S.winner.gameObject.GetComponent<Points>().pointsForOtherSide);
                 GameManager.S.winner.gameObject.GetComponent<Points>().AddPointsForOtherSide();
