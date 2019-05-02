@@ -549,11 +549,17 @@ public class PlayerController : MonoBehaviour
 
         //temp
         //if someone won then if "b" hit restart
-        if (GameManager.S != null && GameManager.S.someoneWon && BCharge)
+        if (GameManager.S != null && GameManager.S.someoneWon)
         {
-            print("Game end");
-            tempStopMovement = true;
-            GameManager.S.EndLevel();
+            if (!tempStopMovement)
+            {
+                tempStopMovement = true;
+            }
+            if (BCharge)
+            {
+                GameManager.S.EndLevel();
+            }
+            
         }
 
 
