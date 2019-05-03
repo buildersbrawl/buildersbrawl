@@ -100,6 +100,24 @@ public class PlankManager : MonoBehaviour
             PlacePlank();
         }
 
+        //ignore collision with player char cont but not collider
+        /*Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<CharacterController>(), true);
+        Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player2.GetComponent<CharacterController>(), true);
+
+        if(GameManager.S.player3 != null)
+        {
+            Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player3.GetComponent<CharacterController>(), true);
+
+            if (GameManager.S.player3 != null)
+            {
+                Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player4.GetComponent<CharacterController>(), true);
+            }
+        }
+        */
+
+        
+
+
     }
 
 
@@ -219,6 +237,9 @@ public class PlankManager : MonoBehaviour
         this.gameObject.GetComponent<Rigidbody>().isKinematic = false;
 
         SetToHitPlayers();
+
+
+
 
         //StartCoroutine(DropDelaySetToHitPlayers());
 
@@ -364,6 +385,7 @@ public class PlankManager : MonoBehaviour
     {
         if (GameManager.S != null && GameManager.S.player1 != null & GameManager.S.player2 != null)
         {
+
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player1.GetComponent<Collider>(), false);
             Physics.IgnoreCollision(this.gameObject.GetComponent<Collider>(), GameManager.S.player2.GetComponent<Collider>(), false);
             if (GameManager.S.player3 != null)

@@ -660,7 +660,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
-            //stop player momentum and joystick movement if performing action
+            //stop player joystick movement if performing action
             playerMovement.ResetMovement();
         }
 
@@ -678,6 +678,7 @@ public class PlayerController : MonoBehaviour
         moveVector += playerMovement.PlayerMomentum;
         //-------------------------
 
+        
 
         //print("After update state is " + playerState);
 
@@ -688,7 +689,7 @@ public class PlayerController : MonoBehaviour
 
         if (playerState == PlayerState.stunned)
         {
-            print("stun move vec" + moveVector);
+            print("stun move vec" + moveVector * Time.fixedDeltaTime);
         }
 
         //-------------------------

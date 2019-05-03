@@ -94,6 +94,17 @@ public class WindMechanicV2 : MonoBehaviour
                     //players[i].GetComponent<PlayerMovement>().SetEnvironmentMomentum(windFlow);
 
                 }
+                //do planks too
+                for (int index = 0; index < GameManager.S.planksInScene.Count; index++)
+                {
+                    //if plank is dropped
+                    if (GameManager.S.planksInScene[index].plankState == PlankManager.PlankState.dropped)
+                    {
+                        //move it wiht wind
+                        GameManager.S.planksInScene[index].GetComponent<Rigidbody>().AddForce(windFlow * (windSpeed / 100f));
+                    }
+                }
+
             }
             else
             {
@@ -117,16 +128,6 @@ public class WindMechanicV2 : MonoBehaviour
         else
         {
             startTimer = Time.time;
-        }
-
-        for (int index = 0; index < GameManager.S.planksInScene.Count; index++)
-        {
-            //if plank is dropped
-            if (GameManager.S.planksInScene[index].plankState == PlankManager.PlankState.dropped)
-            {
-                //move it wiht wind
-                GameManager.S.planksInScene[index].GetComponent<Rigidbody>().AddForce(windFlow * (windSpeed / 100f));
-            }
         }
 
     }

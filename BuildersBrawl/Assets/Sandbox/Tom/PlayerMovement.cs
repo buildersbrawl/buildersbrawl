@@ -220,12 +220,6 @@ public class PlayerMovement : MonoBehaviour
     {
         //playerCombatMomentum = Vector3.zero;
         playerJumpMomentum = Vector3.zero;
-
-        //only in non-stun
-        if(playerController.playerState != PlayerController.PlayerState.stunned)
-        {
-            playerEnvironmentMomentum = Vector3.zero;
-        }
         
         playerMomentum = Vector3.zero;
         reversePlayerMovementFromJoysticks = Vector3.zero;
@@ -233,9 +227,12 @@ public class PlayerMovement : MonoBehaviour
         //only in death
         if (playerController.playerDeath.playerDead)
         {
+            playerEnvironmentMomentum = Vector3.zero;
             playerCombatMomentum = Vector3.zero;
         }
     }
+
+
 
     public void PushMe(Vector3 pushDirection, float pushForce)
     { 

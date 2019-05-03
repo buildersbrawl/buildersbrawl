@@ -615,7 +615,7 @@ public class PlayerActions : MonoBehaviour
         boardAnimCont = true;
         boardAnimSwitch = true;
 
-        while (boardAnimCont)
+        while (boardAnimCont && heldPlank != null)
         {
             yield return new WaitForSeconds(.01f);
 
