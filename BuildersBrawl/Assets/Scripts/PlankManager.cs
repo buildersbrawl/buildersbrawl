@@ -34,16 +34,25 @@ public class PlankManager : MonoBehaviour
 
     private float timePlankCreated;
 
+    private bool earlyPlank = true;
+
     //------------------------------------------------------------------------------------------------------
 
     private void Start()
     {
-        timePlankCreated = Time.time;
+        StartCoroutine(IsEarlyPlank());
 
         if (plankState == PlankState.dropped || plankState == PlankState.placed)
         {
             Init();
         }
+    }
+
+    //determines whether plank is made by player or placed at beginning of level
+    IEnumerator IsEarlyPlank()
+    {
+        yield return new WaitForSeconds(1f);
+        earlyPlank = false;
     }
 
     public void PickUpSpawn()
@@ -267,7 +276,7 @@ public class PlankManager : MonoBehaviour
         */
 
         //CHECK TO MAKE SURE NOT BEING PLACED ON GROUND (needs fixing)
-        /*
+        
 
         RaycastHit hitInfo;
 
@@ -278,10 +287,10 @@ public class PlankManager : MonoBehaviour
 
             //make sure not too soon after plank initially created
 
-            print("Time plank" + (Time.time - timePlankCreated));
+            print("Early plank " + earlyPlank);
 
             if (hitInfo.collider.gameObject.GetComponent<PlankManager>() == null && hitInfo.collider.gameObject.GetComponent<PlayerController>() == null 
-                && (Time.time - timePlankCreated) < 1f)
+                && !earlyPlank)
             {
                 //if it is drop it and return
                 DropPlank();
@@ -290,7 +299,7 @@ public class PlankManager : MonoBehaviour
                 return;
             }
         }
-        */
+        
 
         if(this.gameObject.GetComponent<Rigidbody>() != null)
         {
