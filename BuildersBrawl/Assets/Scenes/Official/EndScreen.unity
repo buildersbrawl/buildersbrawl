@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -158,21 +158,21 @@ MonoBehaviour:
   playerName: []
   playerImages: []
   P1Faces:
-  - {fileID: 21300000, guid: 96506e5a8462b3847ab969555d5710b3, type: 3}
-  - {fileID: 21300000, guid: 3ca4925122dc11b42a902fc2c911a322, type: 3}
-  - {fileID: 21300000, guid: cd2a215ec1c805241856f68ddd0e5766, type: 3}
+  - {fileID: 21300000, guid: df254a9e3d857824a9a1aff1b84881e8, type: 3}
+  - {fileID: 21300000, guid: 721603867e4070a42bfad0a8bf9ab24a, type: 3}
+  - {fileID: 21300000, guid: ed961069dc576ec4cb4433198f9a0704, type: 3}
   P2Faces:
-  - {fileID: 21300000, guid: 541668a847b884243b76aec317c60e45, type: 3}
-  - {fileID: 21300000, guid: 98c6eb71a88218647884fbcf055df409, type: 3}
-  - {fileID: 21300000, guid: d8bb4cb85936c5149a0b65c1bb95ab23, type: 3}
+  - {fileID: 21300000, guid: b2594cd2f486c044d901e0525deb465a, type: 3}
+  - {fileID: 21300000, guid: 13ceb51824d693e4696e769d0b59bcf9, type: 3}
+  - {fileID: 21300000, guid: aa034bff6a9b7d141a714327486cf14e, type: 3}
   P3Faces:
   - {fileID: 21300000, guid: 77c739f54a44a0e4c8fed897b83b5483, type: 3}
   - {fileID: 21300000, guid: a45d4ffe29d35a648ac6372a1c0b276b, type: 3}
   - {fileID: 21300000, guid: f36cc04532f86b048bbbc6cd2755f4cb, type: 3}
   P4Faces:
-  - {fileID: 21300000, guid: c05f19c39e6c83c49b69b48f154e1641, type: 3}
-  - {fileID: 21300000, guid: 2694a54c95284db43b9257af0b7b51ef, type: 3}
-  - {fileID: 21300000, guid: ee91f20a98d1c544fabe11337643acaa, type: 3}
+  - {fileID: 21300000, guid: bbaa82ed25ff382469f47aafc4fe2088, type: 3}
+  - {fileID: 21300000, guid: 1fd7a337301142045aabe5eb9c7ee88e, type: 3}
+  - {fileID: 21300000, guid: 20759b8a1dc30f640ba1480d6f6fa0df, type: 3}
   P1Crown: {fileID: 1893138243}
   P2Crown: {fileID: 1142831189}
   P3Crown: {fileID: 1775718013}
@@ -485,7 +485,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 96506e5a8462b3847ab969555d5710b3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: df254a9e3d857824a9a1aff1b84881e8, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1350,7 +1350,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.254002}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 289.6, y: 331.1}
+  m_AnchoredPosition: {x: 291.4, y: 327.7}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &741463495
@@ -2204,7 +2204,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: 541668a847b884243b76aec317c60e45, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b2594cd2f486c044d901e0525deb465a, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2255,7 +2255,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.254002}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -128.2, y: 328.7}
+  m_AnchoredPosition: {x: -126.7, y: 326.2}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1142831189
@@ -2905,7 +2905,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 21300000, guid: c05f19c39e6c83c49b69b48f154e1641, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bbaa82ed25ff382469f47aafc4fe2088, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -3667,6 +3667,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8325632790314577044, guid: f29c06c7a910017409121d59b26cd171,
+        type: 3}
+      propertyPath: m_Name
+      value: InputManager
+      objectReference: {fileID: 0}
     - target: {fileID: 8325632790314577047, guid: f29c06c7a910017409121d59b26cd171,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -3721,11 +3726,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8325632790314577044, guid: f29c06c7a910017409121d59b26cd171,
-        type: 3}
-      propertyPath: m_Name
-      value: InputManager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f29c06c7a910017409121d59b26cd171, type: 3}
@@ -3995,7 +3995,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 21.254002}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -332.2, y: 326.2}
+  m_AnchoredPosition: {x: -330.7, y: 324}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1893138243
